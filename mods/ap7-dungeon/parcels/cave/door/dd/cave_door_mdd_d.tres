@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/door/dd/cave_door_dd_d_3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/door/dd/cave_door_dd_d_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/door/dd/cave_door_dd_d_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/door/dd/cave_door_dd_d_4.tscn" type="PackedScene" id=5]
+
+[resource]
+script = ExtResource( 1 )
+zones = [ "mdd" ]
+target_zones = [ "mdl", "ldd", "ldl", "exit" ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+offset = Vector3( 0, 0, 0 )
+parcels = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ) ]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/zoning/ZoningPassMall.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/testbench/TestFloorGeneratorNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/plotting/PlottingPass.gd" type="Script" id=3]
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=4]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_4x1.tres" type="Resource" id=5]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_2x3.tres" type="Resource" id=6]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_donut.tres" type="Resource" id=7]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_1x1.tres" type="Resource" id=8]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_2x2.tres" type="Resource" id=9]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_1x2.tres" type="Resource" id=10]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_2x1.tres" type="Resource" id=11]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x1.tres" type="Resource" id=12]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x2.tres" type="Resource" id=13]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x3.tres" type="Resource" id=14]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_down.tres" type="Resource" id=15]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_r_left.tres" type="Resource" id=16]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_l_left.tres" type="Resource" id=17]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_l_right.tres" type="Resource" id=18]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_r_right.tres" type="Resource" id=19]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_up.tres" type="Resource" id=20]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/FloorGenerator.gd" type="Script" id=21]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/mapping/MappingPass.gd" type="Script" id=22]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/mapping/map_quadrants.png" type="Image" id=23]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 4000.0
+margin_bottom = 4000.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 2 )
+draw_grid = false
+draw_map = false
+
+[node name="FloorGenerator" type="Node" parent="Node2D"]
+script = ExtResource( 21 )
+
+[node name="Plotting" type="Node" parent="Node2D/FloorGenerator"]
+script = ExtResource( 3 )
+seed_plots = [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 7 ) ]
+standard_plots = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 20 ) ]
+edge_plots = [ ExtResource( 8 ) ]
+exit_plots = [ ExtResource( 8 ) ]
+
+[node name="Zoning" type="Node" parent="Node2D/FloorGenerator"]
+script = ExtResource( 1 )
+
+[node name="Mapping" type="Node" parent="Node2D/FloorGenerator"]
+script = ExtResource( 22 )
+wall_atlas = ExtResource( 23 )
+
+[node name="play" type="Button" parent="Node2D"]
+margin_left = 1253.0
+margin_top = 22.0
+margin_right = 1429.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 65, 29 )
+theme = ExtResource( 4 )
+text = "Play level"
+
+[node name="generate" type="Button" parent="Node2D"]
+margin_left = 961.0
+margin_top = 22.0
+margin_right = 1188.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 65, 29 )
+theme = ExtResource( 4 )
+text = "Generate Map"

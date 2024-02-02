@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/maps/HouseMeshlib.meshlib" type="MeshLibrary" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 11, 1, 11 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65535, 1, 98, -65534, 1, 98, -65533, 1, 98, -65532, 1, 98, -65531, 1, 98, -65530, 1, 98, -65529, 1, 98, -65528, 1, 98, -65527, 1, 98, -65535, 2, 98, -65534, 2, 98, -65533, 2, 98, -65532, 2, 98, -65531, 2, 98, -65530, 2, 98, -65529, 2, 98, -65528, 2, 98, -65527, 2, 98, -65535, 3, 98, -65534, 3, 98, -65533, 3, 98, -65532, 3, 98, -65531, 3, 98, -65530, 3, 98, -65529, 3, 98, -65528, 3, 98, -65527, 3, 98, -65535, 4, 98, -65534, 4, 98, -65533, 4, 98, -65532, 4, 98, -65531, 4, 98, -65530, 4, 98, -65529, 4, 98, -65528, 4, 98, -65527, 4, 98, -65535, 5, 98, -65534, 5, 98, -65533, 5, 98, -65532, 5, 98, -65531, 5, 98, -65530, 5, 98, -65529, 5, 98, -65528, 5, 98, -65527, 5, 98, -65535, 6, 98, -65534, 6, 98, -65533, 6, 98, -65532, 6, 98, -65531, 6, 98, -65530, 6, 98, -65529, 6, 98, -65528, 6, 98, -65527, 6, 98, -65535, 7, 98, -65534, 7, 98, -65533, 7, 98, -65532, 7, 98, -65531, 7, 98, -65530, 7, 98, -65529, 7, 98, -65528, 7, 98, -65527, 7, 98, -65535, 8, 98, -65534, 8, 98, -65533, 8, 98, -65532, 8, 98, -65531, 8, 98, -65530, 8, 98, -65529, 8, 98, -65528, 8, 98, -65527, 8, 98, -65535, 9, 98, -65534, 9, 98, -65533, 9, 98, -65532, 9, 98, -65531, 9, 98, -65530, 9, 98, -65529, 9, 98, -65528, 9, 98, -65527, 9, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65535, 0, 98, -65534, 0, 98, -65533, 0, 98, -65532, 0, 98, -65531, 0, 98, -65530, 0, 98, -65529, 0, 98, -65528, 0, 98, -65527, 0, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_E" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65526, 1, 98, -65526, 2, 98, -65526, 3, 98, -65526, 4, 98, -65526, 5, 98, -65526, 6, 98, -65526, 7, 98, -65526, 8, 98, -65526, 9, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65535, 10, 98, -65534, 10, 98, -65533, 10, 98, -65532, 10, 98, -65531, 10, 98, -65530, 10, 98, -65529, 10, 98, -65528, 10, 98, -65527, 10, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_W" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 1, 98, -65536, 2, 98, -65536, 3, 98, -65536, 4, 98, -65536, 5, 98, -65536, 6, 98, -65536, 7, 98, -65536, 8, 98, -65536, 9, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_NE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65526, 0, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_SE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65526, 10, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_SW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 10, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_NW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 98 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="roof" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 7, 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="roof"]
+shape = SubResource( 1 )

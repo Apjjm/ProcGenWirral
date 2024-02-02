@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomFloatyNode.gd" type="Script" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/final_station_brick.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.75, 0.4, 0.5 )
+
+[node name="FloatyBrick" type="Spatial"]
+script = ExtResource( 1 )
+speed = 0.25
+
+[node name="RandomRot" type="Spatial" parent="."]
+script = ExtResource( 3 )
+axis = 3
+
+[node name="final_station_brick" type="MeshInstance" parent="RandomRot"]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="RandomRot"]
+
+[node name="CollisionShape" type="CollisionShape" parent="RandomRot/StaticBody"]
+shape = SubResource( 1 )

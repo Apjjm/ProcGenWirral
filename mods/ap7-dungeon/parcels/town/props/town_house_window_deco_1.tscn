@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=1]
+[ext_resource path="res://sprites/environment/world/window_blinds_1.png" type="Texture" id=2]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+never_south = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+centered = false
+offset = Vector2( -14, -12 )
+pixel_size = 0.125
+shaded = true
+double_sided = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 28, 24 )
+__meta__ = {
+"_ase_imported": true
+}

@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/PartnerDialog.gd" type="Script" id=2]
+[ext_resource path="res://sfx/typing/archangel/archangel.tres" type="Resource" id=3]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogAction.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=5]
+[ext_resource path="res://sprites/portraits/eugene_angry.png" type="Texture" id=10]
+[ext_resource path="res://sprites/portraits/kayleigh_angry.png" type="Texture" id=11]
+[ext_resource path="res://sprites/portraits/felix_angry.png" type="Texture" id=12]
+[ext_resource path="res://sprites/portraits/meredith_angry.png" type="Texture" id=13]
+[ext_resource path="res://sprites/portraits/viola_angry.png" type="Texture" id=14]
+[ext_resource path="res://sprites/portraits/dog_angry.png" type="Texture" id=15]
+
+[node name="IntroDialog" type="Node"]
+script = ExtResource( 1 )
+
+[node name="AA1" type="Node" parent="."]
+script = ExtResource( 5 )
+type_sounds = ExtResource( 3 )
+messages = [ "AP7_DUNGEON_AAHAND_INTRO_1" ]
+style = 1
+
+[node name="AA2" type="Node" parent="."]
+script = ExtResource( 4 )
+type_sounds = ExtResource( 3 )
+style = 1
+message_loc_key = "AP7_DUNGEON_AAHAND_INTRO_2_"
+counter_key = "AP7_DUNGEON_AAHAND_INTRO"
+message_count = 3
+advance_counter = true
+
+[node name="AA3" type="Node" parent="."]
+script = ExtResource( 5 )
+type_sounds = ExtResource( 3 )
+messages = [ "AP7_DUNGEON_AAHAND_INTRO_3" ]
+style = 1
+
+[node name="Partner3" type="Node" parent="."]
+script = ExtResource( 2 )
+kayleigh_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_KAYLEIGH" ]
+meredith_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_MEREDITH" ]
+felix_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_FELIX" ]
+eugene_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_EUGENE" ]
+viola_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_VIOLA" ]
+dog_messages = [ "AP7_DUNGEON_AAHAND_INTRO_3_DOG" ]
+kayleigh_portrait = ExtResource( 11 )
+meredith_portrait = ExtResource( 13 )
+felix_portrait = ExtResource( 12 )
+eugene_portrait = ExtResource( 10 )
+viola_portrait = ExtResource( 14 )
+dog_portrait = ExtResource( 15 )
+
+[node name="AA4" type="Node" parent="."]
+script = ExtResource( 5 )
+type_sounds = ExtResource( 3 )
+messages = [ "AP7_DUNGEON_AAHAND_INTRO_4" ]
+style = 1

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/secret/SecretTransitionLandkeeper.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWalkAction.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Door" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 12 )
+
+[node name="walk" type="Node" parent="Door/Npc/IdleBehavior" index="2"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+max_ticks = 4
+hide_avatars_if_cutscene = false
+
+[node name="OpenDoor" parent="Door/Npc/InteractionBehavior/Selector/NotOpened/AskForSticker/Option/TradeSelector/TakeSticker" index="0"]
+wire = NodePath("../../../../../../../../../Trapdoor/Wire")
+
+[editable path="Door"]
+[editable path="Door/Npc/InteractionBehavior"]

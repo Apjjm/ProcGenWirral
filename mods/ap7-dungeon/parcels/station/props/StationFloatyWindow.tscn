@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomFloatyNode.gd" type="Script" id=1]
+[ext_resource path="res://sprites/environment/world/final_station_window_1A.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+params_cull_mode = 2
+params_depth_draw_mode = 3
+albedo_texture = ExtResource( 2 )
+emission_enabled = true
+emission = Color( 0.458824, 0.686275, 0.980392, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.9, 2.9, 0.1 )
+
+[node name="FloatyWindow" type="Spatial"]
+script = ExtResource( 1 )
+speed = 0.25
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource( 1 )
+cast_shadow = 0
+centered = false
+offset = Vector2( -16, -24 )
+pixel_size = 0.125
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 48 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )

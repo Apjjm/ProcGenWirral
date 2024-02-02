@@ -1,0 +1,72 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://nodes/actions/ExchangeMenuAction.gd" type="Script" id=1]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=4]
+[ext_resource path="res://data/items/tape_astral.tres" type="Resource" id=5]
+[ext_resource path="res://data/items/tape_air.tres" type="Resource" id=6]
+[ext_resource path="res://music/demo/merchant_theme_1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=8]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=9]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomMerchantNode.gd" type="Script" id=11]
+[ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=12]
+[ext_resource path="res://data/items/tape_plastic.tres" type="Resource" id=13]
+[ext_resource path="res://data/items/tape_ice.tres" type="Resource" id=14]
+[ext_resource path="res://data/items/tape_water.tres" type="Resource" id=15]
+[ext_resource path="res://data/items/tape_basic.tres" type="Resource" id=16]
+[ext_resource path="res://data/items/tape_beast.tres" type="Resource" id=17]
+[ext_resource path="res://data/items/tape_plant.tres" type="Resource" id=18]
+[ext_resource path="res://data/items/tape_fire.tres" type="Resource" id=19]
+[ext_resource path="res://data/items/tape_lightning.tres" type="Resource" id=20]
+[ext_resource path="res://data/items/tape_metal.tres" type="Resource" id=21]
+[ext_resource path="res://data/items/tape_chrome.tres" type="Resource" id=22]
+[ext_resource path="res://data/items/tape_earth.tres" type="Resource" id=23]
+[ext_resource path="res://data/items/tape_poison.tres" type="Resource" id=24]
+
+[node name="ItemMerchant" type="Spatial"]
+script = ExtResource( 11 )
+possible_items = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 13 ), ExtResource( 24 ), ExtResource( 15 ) ]
+item_cout = 5
+item_stock = 3
+merchant_key = "tapes"
+
+[node name="HumanNPC" parent="." instance=ExtResource( 10 )]
+npc_name = "AP7_DUNGEON_TAPES_MERCHANT_NAME"
+sprite_body = null
+character = null
+
+[node name="InteractionBehavior" type="Node" parent="HumanNPC"]
+script = ExtResource( 9 )
+
+[node name="FaceTowardsAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 3 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 2 )
+
+[node name="GetPlayer" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 4 )
+
+[node name="MessageDialogAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 8 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_TAPES_MERCHANT_OPEN" ]
+
+[node name="ChangeMusicAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 12 )
+music = ExtResource( 7 )
+hide_avatars_if_cutscene = false
+
+[node name="ExchangeMenuAction" type="Node" parent="HumanNPC/InteractionBehavior/ChangeMusicAction"]
+script = ExtResource( 1 )
+title = "{pawn}"
+
+[node name="MessageDialogAction2" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 8 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_GENERIC_MERCHANT_EXIT" ]

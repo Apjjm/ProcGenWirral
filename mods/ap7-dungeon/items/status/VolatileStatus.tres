@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://data/hit_vfx/hit_glass_combined.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/status/VolatileStatusEffect.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/items/status/VolatileStatusIcon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 2 )
+name = "AP7_DUNGEON_STATUS_VOLATILE_NAME"
+description = "AP7_DUNGEON_STATUS_VOLATILE_DESC"
+has_duration = false
+reduce_duration_at = 0
+icon = ExtResource( 3 )
+is_removable = false
+is_transferable = false
+is_buff = false
+is_debuff = true
+is_decoy = false
+always_hidden_from_display = false
+tags = [  ]
+toast_on_remove = ""
+vfx_on_add = [  ]
+vfx_on_remove = [  ]
+name_modifier = ""
+sprite_animation_prefix = ""
+sprite_animation_prefix_priority = 0
+volatile_damage_frac = 0.2
+hit_vfx = [ ExtResource( 1 ) ]

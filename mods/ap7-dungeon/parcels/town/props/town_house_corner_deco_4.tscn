@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest" type="Position3D" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.67917, 0, 1.41703 )
+script = ExtResource( 1 )
+possible_types = 8

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://addons/misc_utils/ResourceList.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/mall_shelf_books.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/mall_shelf_clothes.tres" type="Resource" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/mall_shelf_vinyl.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+resources = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]

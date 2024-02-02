@@ -1,0 +1,52 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://data/status_effects/healing_steam.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/stickers/SacredWater.gd" type="Script" id=2]
+[ext_resource path="res://data/elemental_types/water.tres" type="Resource" id=3]
+[ext_resource path="res://data/sticker_attribute_profiles/status.tres" type="Resource" id=4]
+[ext_resource path="res://data/attack_vfx/boil.tres" type="Resource" id=6]
+
+[resource]
+script = ExtResource( 2 )
+name = "AP7_DUNGEON_MOVE_NAME_SACREDWATER"
+category_name = "AP7_DUNGEON_MOVE_CATEGORY_SIGIL"
+description = "AP7_DUNGEON_MOVE_DESC_SACREDWATER"
+title_override = ""
+tags = [ "any", "rare_sigil", "unsellable" ]
+priority = 0
+cost = 4
+is_debug = false
+is_passive_only = false
+power = 0
+physicality = 0
+target_type = 1
+default_target = 2
+elemental_types = [ ExtResource( 3 ) ]
+accuracy = 100
+unavoidable = false
+crit_rate_numerator = 1
+crit_rate_denominator = 16
+crit_damage_percent = 150
+play_attack_animation = true
+fade_lights_during_attack = false
+windup_animation = "windup"
+attack_animation = "attack"
+windup_sfx_override = [  ]
+attack_vfx = [ ExtResource( 6 ) ]
+play_attack_vfx_against_allies = true
+attack_duration = 0.1
+hit_vfx = [  ]
+hit_delay = 0.0
+disable_melee_movement = false
+can_be_copied = true
+attribute_profile = ExtResource( 4 )
+camera_state_override = ""
+status_effects = [ ExtResource( 1 ) ]
+amount = 3
+varied_amounts = [  ]
+status_effects_to_apply = 0
+num_at_random = 1
+fail_if_already_present = false
+fail_against_archangels = false
+fail_if_has_tag = ""
+sacrifice_hp_percent = 0

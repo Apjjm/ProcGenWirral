@@ -1,0 +1,40 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/items/stickers/ElementalSigil.gd" type="Script" id=1]
+[ext_resource path="res://data/elemental_types/lightning.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "AP7_DUNGEON_MOVE_NAME_LIGHTNING_SIGIL"
+category_name = "AP7_DUNGEON_MOVE_CATEGORY_SIGIL"
+description = "AP7_DUNGEON_MOVE_DESC_LIGHTNING_SIGIL"
+title_override = ""
+tags = [ "any", "sigil", "unsellable" ]
+priority = 0
+cost = 0
+is_debug = false
+is_passive_only = true
+power = 0
+physicality = 0
+target_type = 0
+default_target = 0
+elemental_types = [  ]
+accuracy = 100
+unavoidable = false
+crit_rate_numerator = 1
+crit_rate_denominator = 16
+crit_damage_percent = 150
+play_attack_animation = true
+fade_lights_during_attack = false
+windup_animation = "windup"
+attack_animation = "attack"
+windup_sfx_override = [  ]
+attack_vfx = [  ]
+play_attack_vfx_against_allies = false
+attack_duration = 0.0
+hit_vfx = [  ]
+hit_delay = 0.0
+disable_melee_movement = false
+can_be_copied = false
+camera_state_override = ""
+elemental_type = ExtResource( 2 )

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/props/gemstone.tres" type="Resource" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 3 )
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+script = ExtResource( 1 )
+possible_types = 13
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+script = ExtResource( 1 )
+possible_types = 13
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomTreasureRot"]
+transform = Transform( 0.967524, 0, 0.252779, 0, 1, 0, -0.252779, 0, 0.967524, -2.39798, 0, -1.4267 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 4 )
+preview_index = -2
+
+[node name="RandomParcelNode2" type="Spatial" parent="RandomTreasureRot"]
+transform = Transform( 0.252779, 0, -0.967524, 0, 1, 0, 0.967524, 0, 0.252779, 2.60202, 0, 2.5733 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 4 )
+preview_index = -2

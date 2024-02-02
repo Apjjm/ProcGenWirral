@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 30, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="GridMap2" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 3, 15, -131071, 3, 15, -131070, 3, 15, -131069, 3, 15, -131064, 3, 15, -131063, 3, 15, -131062, 3, 15, -131061, 3, 15, -65536, 3, 655373, -65535, 3, 655373, -65534, 3, 655373, -65533, 3, 655373, -65528, 3, 655373, -65527, 3, 655373, -65526, 3, 655373, -65525, 3, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 3, 15, -131071, 3, 15, -131070, 3, 15, -131069, 3, 15, -65536, 3, 655373, -65535, 3, 655373, -65534, 3, 655373, -65533, 3, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_R" type="Spatial" parent="."]
+
+[node name="GridMap3" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131064, 3, 15, -131063, 3, 15, -131062, 3, 15, -131061, 3, 15, -65528, 3, 655373, -65527, 3, 655373, -65526, 3, 655373, -65525, 3, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Shared" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131068, 3, 15, -131067, 3, 15, -131066, 3, 15, -131065, 3, 15, -65532, 3, 655373, -65531, 3, 655373, -65530, 3, 655373, -65529, 3, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
+
+[node name="EnemyBlocker" type="StaticBody" parent="."]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyBlocker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1 )
+shape = SubResource( 1 )

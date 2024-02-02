@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/WaitAction.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=4]
+[ext_resource path="res://world/recurring_npcs/Magikrab_NoBehavior.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/Traffikrab_Final.tscn" type="PackedScene" id=6]
+
+[node name="FinalMagikrab" type="Spatial"]
+
+[node name="Magikrab" parent="." instance=ExtResource( 5 )]
+npc_name = "MAGIKRAB_NAME"
+
+[node name="Sprite" parent="Magikrab" index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="IdleBehavior" type="Node" parent="Magikrab"]
+script = ExtResource( 4 )
+
+[node name="FaceTowardsAction" type="Node" parent="Magikrab/IdleBehavior"]
+script = ExtResource( 2 )
+
+[node name="GetPlayer" type="Node" parent="Magikrab/IdleBehavior/FaceTowardsAction"]
+script = ExtResource( 3 )
+which = 3
+
+[node name="WaitAction" type="Node" parent="Magikrab/IdleBehavior"]
+script = ExtResource( 1 )
+base_seconds = 0.5
+
+[node name="InteractionBehavior" parent="Magikrab" instance=ExtResource( 6 )]
+
+[editable path="Magikrab"]

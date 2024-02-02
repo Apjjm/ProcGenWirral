@@ -1,0 +1,157 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/entrance/sign_front2.png" type="Texture" id=1]
+[ext_resource path="res://nodes/sprite_container/sprite.shader" type="Shader" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/entrance/sign_front1.png" type="Texture" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/entrance/sign_back.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/albedo = Color( 0.4, 0.921569, 0.847059, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = null
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0.694118, 1, 1 )
+shader_param/emission_energy = 0.5
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = null
+shader_param/swap_from_1 = null
+shader_param/swap_from_2 = null
+shader_param/swap_from_3 = null
+shader_param/swap_from_4 = null
+shader_param/swap_from_5 = null
+shader_param/swap_from_6 = null
+shader_param/swap_from_7 = null
+shader_param/swap_from_8 = null
+shader_param/swap_from_9 = null
+shader_param/swap_from_10 = null
+shader_param/swap_from_11 = null
+shader_param/swap_from_12 = null
+shader_param/swap_from_13 = null
+shader_param/swap_from_14 = null
+shader_param/swap_default_0 = null
+shader_param/swap_default_1 = null
+shader_param/swap_default_2 = null
+shader_param/swap_default_3 = null
+shader_param/swap_default_4 = null
+shader_param/swap_default_5 = null
+shader_param/swap_default_6 = null
+shader_param/swap_default_7 = null
+shader_param/swap_default_8 = null
+shader_param/swap_default_9 = null
+shader_param/swap_default_10 = null
+shader_param/swap_default_11 = null
+shader_param/swap_default_12 = null
+shader_param/swap_default_13 = null
+shader_param/swap_default_14 = null
+shader_param/swap_to_0 = null
+shader_param/swap_to_1 = null
+shader_param/swap_to_2 = null
+shader_param/swap_to_3 = null
+shader_param/swap_to_4 = null
+shader_param/swap_to_5 = null
+shader_param/swap_to_6 = null
+shader_param/swap_to_7 = null
+shader_param/swap_to_8 = null
+shader_param/swap_to_9 = null
+shader_param/swap_to_10 = null
+shader_param/swap_to_11 = null
+shader_param/swap_to_12 = null
+shader_param/swap_to_13 = null
+shader_param/swap_to_14 = null
+shader_param/emission_color_0 = Color( 0, 0, 0, 1 )
+shader_param/emission_color_1 = null
+shader_param/emission_color_2 = null
+shader_param/emission_color_3 = null
+shader_param/emission_color_4 = null
+shader_param/emission_color_5 = null
+shader_param/emission_color_6 = null
+shader_param/emission_color_7 = null
+shader_param/emission_color_8 = null
+shader_param/emission_color_9 = null
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 1.0
+shader_param/billboard_mode = 0
+shader_param/billboard_depth_hack = false
+shader_param/static_offset = 0.37
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.01
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("front:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 1.2, 1.8, 3.5, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 98, 28 ), Rect2( 0, 28, 98, 28 ), Rect2( 0, 0, 98, 28 ), Rect2( 0, 28, 98, 28 ), Rect2( 0, 0, 98, 28 ), Rect2( 0, 28, 98, 28 ), Rect2( 0, 0, 98, 28 ) ]
+}
+
+[node name="Sprite" type="Spatial"]
+
+[node name="back" type="Sprite3D" parent="."]
+centered = false
+offset = Vector2( -49, 0 )
+pixel_size = 0.125
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 28, 98, 28 )
+
+[node name="mid" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0473137 )
+centered = false
+offset = Vector2( -49, 0 )
+pixel_size = 0.125
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 28, 98, 28 )
+
+[node name="front" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0840604, 0.0665387, 0.0980163 )
+material_override = SubResource( 3 )
+centered = false
+offset = Vector2( -49, 0 )
+pixel_size = 0.125
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 98, 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "sign"
+reset_on_save = false
+anims/sign = SubResource( 2 )

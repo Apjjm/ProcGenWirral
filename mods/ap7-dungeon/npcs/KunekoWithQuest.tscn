@@ -1,0 +1,313 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://nodes/actions/IdleBehavior.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/RandomDirectionAction.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWaitAction.gd" type="Script" id=4]
+[ext_resource path="res://world/recurring_npcs/Kuneko.tscn" type="PackedScene" id=5]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=6]
+[ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=7]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/CheckKunekoQuestAction.gd" type="Script" id=8]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=9]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=11]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_story_4.wav" type="AudioStream" id=12]
+[ext_resource path="res://sprites/portraits/kuneko_happy.png" type="Texture" id=13]
+[ext_resource path="res://sprites/portraits/felix_shocked.png" type="Texture" id=14]
+[ext_resource path="res://sprites/portraits/kuneko.png" type="Texture" id=15]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_greeting.wav" type="AudioStream" id=16]
+[ext_resource path="res://sprites/portraits/kuneko_awkward.png" type="Texture" id=17]
+[ext_resource path="res://nodes/actions/ConfirmDialogAction.gd" type="Script" id=18]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=19]
+[ext_resource path="res://sprites/portraits/kuneko_crying.png" type="Texture" id=20]
+[ext_resource path="res://sprites/portraits/felix_happy.png" type="Texture" id=21]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_thanks.wav" type="AudioStream" id=22]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_awkward.wav" type="AudioStream" id=23]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/RemoveKunekoSigilAction.gd" type="Script" id=24]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SecretFloorAction.gd" type="Script" id=25]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=26]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=27]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_kuneko_sigil.tres" type="Resource" id=28]
+[ext_resource path="res://nodes/actions/GiveItemAction.gd" type="Script" id=29]
+[ext_resource path="res://data/item_scripts/StickerItem.gd" type="Script" id=30]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelRngRoot.gd" type="Script" id=31]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 30 )
+name = ""
+aux_name = ""
+description = ""
+category = "stickers"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+value = 1
+usable_contexts = 0
+battle_usage = 0
+sort_order = 0
+battle_move = ExtResource( 28 )
+rarity = 0
+attributes = [  ]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 31 )
+subseed = "secret.kuneko"
+
+[node name="Kuneko" parent="." instance=ExtResource( 5 )]
+npc_name = "KUNEKO_NAME"
+
+[node name="Sprite" parent="Kuneko" index="2"]
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="IdleBehavior" type="Node" parent="Kuneko"]
+script = ExtResource( 1 )
+
+[node name="wait1" type="Node" parent="Kuneko/IdleBehavior"]
+script = ExtResource( 4 )
+ticks = 4
+
+[node name="spin" type="Node" parent="Kuneko/IdleBehavior"]
+script = ExtResource( 3 )
+
+[node name="InteractionBehavior" type="Node" parent="Kuneko"]
+script = ExtResource( 6 )
+
+[node name="FaceTowardsAction" type="Node" parent="Kuneko/InteractionBehavior"]
+script = ExtResource( 27 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="Kuneko/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 26 )
+
+[node name="GetPlayer" type="Node" parent="Kuneko/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 2 )
+
+[node name="Selector" type="Node" parent="Kuneko/InteractionBehavior"]
+script = ExtResource( 7 )
+
+[node name="DoneAskAgain" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 10 )
+require_flags = [ "AP7_DUNGEON_KUNEKO_QUEST_COMPLETED" ]
+
+[node name="Choice" type="Node" parent="Kuneko/InteractionBehavior/Selector/DoneAskAgain"]
+script = ExtResource( 7 )
+
+[node name="ConfirmDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/DoneAskAgain/Choice"]
+script = ExtResource( 18 )
+message = "AP7_DUNGEON_QUEST_KUNEKO_DONE_6"
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/DoneAskAgain/Choice/ConfirmDialogAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_6_Y" ]
+
+[node name="GoToSecretFloor" type="Node" parent="Kuneko/InteractionBehavior/Selector/DoneAskAgain/Choice/ConfirmDialogAction"]
+script = ExtResource( 25 )
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/DoneAskAgain/Choice"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_6_N" ]
+
+[node name="Done" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 8 )
+
+[node name="RemoveSigil" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 24 )
+
+[node name="SetFlagAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 19 )
+flag = "AP7_DUNGEON_KUNEKO_QUEST_COMPLETED"
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 11 )
+portrait = ExtResource( 13 )
+audio = ExtResource( 22 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_1" ]
+
+[node name="felix" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 9 )
+
+[node name="CheckConditionAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/felix"]
+script = ExtResource( 10 )
+require_partner_id = "felix"
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/felix/CheckConditionAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 21 )
+title = "FELIX_NAME"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_2_FELIX" ]
+
+[node name="MessageDialogAction3" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_3" ]
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 11 )
+portrait = ExtResource( 20 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_4" ]
+
+[node name="MessageDialogAction5" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 11 )
+portrait = ExtResource( 17 )
+audio = ExtResource( 23 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_5" ]
+
+[node name="Choice" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done"]
+script = ExtResource( 7 )
+
+[node name="ConfirmDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/Choice"]
+script = ExtResource( 18 )
+message = "AP7_DUNGEON_QUEST_KUNEKO_DONE_6"
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/Choice/ConfirmDialogAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_6_Y" ]
+
+[node name="GoToSecretFloor" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/Choice/ConfirmDialogAction"]
+script = ExtResource( 25 )
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/Done/Choice"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_DONE_6_N" ]
+
+[node name="KoDone" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 8 )
+requires_shrine = false
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/KoDone"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_NOSHRINE" ]
+
+[node name="ShrineDone" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 8 )
+requires_ko = false
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/ShrineDone"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_NOWIN" ]
+
+[node name="NothingDone" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 8 )
+requires_ko = false
+requires_shrine = false
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/NothingDone"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_NOFLAG" ]
+
+[node name="NoTape" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 8 )
+requires_tape = false
+requires_ko = false
+requires_shrine = false
+
+[node name="MessageDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/NoTape"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_NOTAPE" ]
+
+[node name="Intro" type="Node" parent="Kuneko/InteractionBehavior/Selector"]
+script = ExtResource( 9 )
+
+[node name="felix" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 9 )
+
+[node name="CheckConditionAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/felix"]
+script = ExtResource( 10 )
+require_partner_id = "felix"
+
+[node name="MessageDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/felix/CheckConditionAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 13 )
+audio = ExtResource( 12 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_1_FELIX1" ]
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/felix/CheckConditionAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 14 )
+title = "FELIX_NAME"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_1_FELIX2" ]
+
+[node name="nofelix" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 9 )
+
+[node name="CheckConditionAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/nofelix"]
+script = ExtResource( 10 )
+deny_partner_id = "felix"
+
+[node name="MessageDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/nofelix/CheckConditionAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+audio = ExtResource( 16 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_1_OTHER" ]
+
+[node name="MessageDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_2" ]
+
+[node name="MessageDialogAction2" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 11 )
+portrait = ExtResource( 17 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_3" ]
+
+[node name="MessageDialogAction3" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_4" ]
+
+[node name="Choice" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro"]
+script = ExtResource( 7 )
+
+[node name="ConfirmDialogAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/Choice"]
+script = ExtResource( 18 )
+message = "AP7_DUNGEON_QUEST_KUNEKO_INTRO_5"
+
+[node name="GiveItemAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/Choice/ConfirmDialogAction"]
+script = ExtResource( 29 )
+item = SubResource( 1 )
+
+[node name="SetFlagAction" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/Choice/ConfirmDialogAction"]
+script = ExtResource( 19 )
+flag = "AP7_DUNGEON_KUNEKO_QUEST_STARTED"
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/Choice/ConfirmDialogAction"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_5_Y1", "AP7_DUNGEON_QUEST_KUNEKO_INTRO_5_Y2", "AP7_DUNGEON_QUEST_KUNEKO_INTRO_5_Y3" ]
+
+[node name="MessageDialogAction4" type="Node" parent="Kuneko/InteractionBehavior/Selector/Intro/Choice"]
+script = ExtResource( 11 )
+portrait = ExtResource( 15 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_QUEST_KUNEKO_INTRO_5_N" ]
+
+[editable path="Kuneko"]

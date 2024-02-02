@@ -1,0 +1,175 @@
+keys,en
+AP7_DUNGEON_STATUS_VOLATILE_NAME,Volatile
+AP7_DUNGEON_STATUS_VOLATILE_DESC,"Volatile Deals damage at the end of each turn. Damage dealt increases with total damage taken by the character."
+AP7_DUNGEON_STATUS_AWAKENING_NAME,Awakening
+AP7_DUNGEON_STATUS_AWAKENING_DESC,"Characters with Awakening cannot fall below 1 HP, but are defeated when the timer on the Awakening status runs out."
+AP7_DUNGEON_MOVE_CATEGORY_SIGIL,Sigils
+AP7_DUNGEON_MOVE_NAME_ALPHA_SIGIL,Alpha Strike
+AP7_DUNGEON_MOVE_DESC_ALPHA_SIGIL,"Gives 4 AP if used at the very start of battle. Attack power increases with AP gained."
+AP7_DUNGEON_MOVE_NAME_MEMORY_SIGIL,Memory Sigil
+AP7_DUNGEON_MOVE_DESC_MEMORY_SIGIL,"Recall a tape after leaving the dungeon. No battle effect."
+AP7_DUNGEON_MOVE_NAME_POWER_SIGIL,Power Sigil
+AP7_DUNGEON_MOVE_DESC_POWER_SIGIL,Recover 1 AP after each move.
+AP7_DUNGEON_MOVE_NAME_AIR_SIGIL,Air Sigil
+AP7_DUNGEON_MOVE_DESC_AIR_SIGIL,Increases power of air type moves.
+AP7_DUNGEON_MOVE_NAME_BEAST_SIGIL,Beast Sigil
+AP7_DUNGEON_MOVE_DESC_BEAST_SIGIL,Increases power of beast type moves.
+AP7_DUNGEON_MOVE_NAME_ASTRAL_SIGIL,Astral Sigil
+AP7_DUNGEON_MOVE_DESC_ASTRAL_SIGIL,Increases power of astral type moves.
+AP7_DUNGEON_MOVE_NAME_EARTH_SIGIL,Earth Sigil
+AP7_DUNGEON_MOVE_DESC_EARTH_SIGIL,Increases power of earth type moves.
+AP7_DUNGEON_MOVE_NAME_FIRE_SIGIL,Fire Sigil
+AP7_DUNGEON_MOVE_DESC_FIRE_SIGIL,Increases power of fire type moves.
+AP7_DUNGEON_MOVE_NAME_GLASS_SIGIL,Glass Sigil
+AP7_DUNGEON_MOVE_DESC_GLASS_SIGIL,Increases power of glass type moves.
+AP7_DUNGEON_MOVE_NAME_GLITTER_SIGIL,Glitter Sigil
+AP7_DUNGEON_MOVE_DESC_GLITTER_SIGIL,Increases power of glitter type moves.
+AP7_DUNGEON_MOVE_NAME_ICE_SIGIL,Ice Sigil
+AP7_DUNGEON_MOVE_DESC_ICE_SIGIL,Increases power of ice type moves.
+AP7_DUNGEON_MOVE_NAME_LIGHTNING_SIGIL,Lightning Sigil
+AP7_DUNGEON_MOVE_DESC_LIGHTNING_SIGIL,Increases power of lightning type moves.
+AP7_DUNGEON_MOVE_NAME_METAL_SIGIL,Metal Sigil
+AP7_DUNGEON_MOVE_DESC_METAL_SIGIL,Increases power of metal type moves.
+AP7_DUNGEON_MOVE_NAME_PLANT_SIGIL,Plant Sigil
+AP7_DUNGEON_MOVE_DESC_PLANT_SIGIL,Increases power of plant type moves.
+AP7_DUNGEON_MOVE_NAME_PLASTIC_SIGIL,Plastic Sigil
+AP7_DUNGEON_MOVE_DESC_PLASTIC_SIGIL,Increases power of plastic type moves.
+AP7_DUNGEON_MOVE_NAME_POISON_SIGIL,Poison Sigil
+AP7_DUNGEON_MOVE_DESC_POISON_SIGIL,Increases power of poison type moves.
+AP7_DUNGEON_MOVE_NAME_WATER_SIGIL,Water Sigil
+AP7_DUNGEON_MOVE_DESC_WATER_SIGIL,Increases power of water type moves.
+AP7_DUNGEON_MOVE_NAME_OOB_SIGIL,Out Of Band
+AP7_DUNGEON_MOVE_DESC_OOB_SIGIL,"Harness a powerful signal, but at a price...\nTape starts with Volatile status."
+AP7_DUNGEON_MOVE_BANR_OOB_SIGIL,Volatile Signal
+AP7_DUNGEON_MOVE_NAME_TERRAFORM,Terraform
+AP7_DUNGEON_MOVE_DESC_TERRAFORM,Reconstruction at a massive scale
+AP7_DUNGEON_MOVE_NAME_STONEWORK,Stonework
+AP7_DUNGEON_MOVE_DESC_STONEWORK,Petrifies the target. Never misses.
+AP7_DUNGEON_MOVE_NAME_SCULPT,Sculpt
+AP7_DUNGEON_MOVE_DESC_SCULPT,Damages petrified targets.
+AP7_DUNGEON_MOVE_NAME_SACREDWATER,Sacred Water
+AP7_DUNGEON_MOVE_DESC_SACREDWATER,"Removes negative status effects and applies healing steam to the target.\nClears negative effect of Ritual."
+AP7_DUNGEON_MOVE_NAME_AWAKENING,Awakening
+AP7_DUNGEON_MOVE_DESC_AWAKENING,"Gives an Awakening buff, which prevents the user from dropping below 1 HP. When the status expires, the user is defeated."
+AP7_DUNGEON_MOVE_TOAST_AWAKENING_OVER,"Awakening Expired"
+AP7_DUNGEON_MOVE_NAME_AWAKENING_PREFIX,"Awakening: {move}"
+AP7_DUNGEON_MOVE_NAME_KUNEKO,Kuneko's Sticker
+AP7_DUNGEON_MOVE_DESC_KUNEKO_1,A sticker with Kuneko's face on it :3\nNo combat effect.
+AP7_DUNGEON_MOVE_DESC_KUNEKO_2,A sticker with Kuneko's face on it :3\nIt's faintly glowing and needs more power. No combat effect.
+AP7_DUNGEON_MOVE_DESC_KUNEKO_3,A sticker with Kuneko's face on it :3\nKuneko will be pleased to see it shining brightly. No combat effect. 
+AP7_DUNGEON_ITEM_NAME_RERECORD,Tape Rewriter
+AP7_DUNGEON_ITEM_DESC_RERECORD,"Overwrites a tape in your party with a tape from storage. The overwritten tape will be lost."
+AP7_DUNGEON_ITEM_OPTS_RERECORD,Overwrite tape
+AP7_DUNGEON_ITEM_NAME_SECRET_TICKET,Counterfeit Ticket
+AP7_DUNGEON_ITEM_DESC_SECRET_TICKET,"It seems to be for some kind of show?"
+AP7_DUNGEON_ITEM_NAME_KEY_SECRET_RANGER_NAME,"Distorted Key"
+AP7_DUNGEON_ITEM_NAME_KEY_SECRET_RANGER_DESC,"A ghostly key that seems to flicker and fade.\nIt looks like it could still open a lock."
+AP7_DUNGEON_DJINNTERLUDE_AREA_NAME,Djinnterlude
+AP7_DUNGEON_FLOOR_AREA_MALL,"{floor_modifier}Mall {floor_number}"
+AP7_DUNGEON_FLOOR_AREA_CAVE,"{floor_modifier}Depths {floor_number}"
+AP7_DUNGEON_FLOOR_AREA_TOWN,"{floor_modifier}Town {floor_number}"
+AP7_DUNGEON_FLOOR_AREA_STATION,"{floor_modifier}Station {floor_number}"
+AP7_DUNGEON_FLOOR_INTRO_MALL,"Mall Entrance"
+AP7_DUNGEON_FLOOR_INTRO_CAVE,"Depths Entrance"
+AP7_DUNGEON_FLOOR_INTRO_TOWN,"Town Entrance"
+AP7_DUNGEON_FLOOR_INTRO_STATION,"Station Entrance"
+AP7_DUNGEON_FLOOR_AREA_ROAD,"Byroad"
+AP7_DUNGEON_FLOOR_AREA_INN,"Allie Inn"
+AP7_DUNGEON_FLOOR_AREA_DOJO,"Kuneko's Retreat"
+AP7_DUNGEON_FLOOR_AREA_LANDKEEPER,"Intellectual Property Branch"
+AP7_DUNGEON_FLOOR_AREA_VOLATILE,"Fragmented space"
+AP7_DUNGEON_FLOOR_AREA_FINAL,"Vanishing Point Station"
+AP7_DUNGEON_FLOOR_ADJ_TREASURE,"Lucky "
+AP7_DUNGEON_FLOOR_ADJ_SWARMING,"Crowded "
+AP7_DUNGEON_FLOOR_ADJ_SPRAWLING,"Sprawling "
+AP7_DUNGEON_FLOOR_ADJ_AIR,"Windy "
+AP7_DUNGEON_FLOOR_ADJ_ASTRAL,"Starlit "
+AP7_DUNGEON_FLOOR_ADJ_BEAST,"Primal "
+AP7_DUNGEON_FLOOR_ADJ_EARTH,"Dusty "
+AP7_DUNGEON_FLOOR_ADJ_FIRE,"Infernal "
+AP7_DUNGEON_FLOOR_ADJ_GLASS,"Glossy "
+AP7_DUNGEON_FLOOR_ADJ_GLITTER,"Sparkling "
+AP7_DUNGEON_FLOOR_ADJ_ICE,"Frosty "
+AP7_DUNGEON_FLOOR_ADJ_LIGHTNING,"Crackling "
+AP7_DUNGEON_FLOOR_ADJ_METAL,"Clanking "
+AP7_DUNGEON_FLOOR_ADJ_PLANT,"Verdant "
+AP7_DUNGEON_FLOOR_ADJ_PLASTIC,"Synthetic "
+AP7_DUNGEON_FLOOR_ADJ_POISON,"Toxic "
+AP7_DUNGEON_FLOOR_ADJ_WATER,"Damp "
+AP7_DUNGEON_MENU_RERECORD_TITLE_FROM,"Select a tape from storage"
+AP7_DUNGEON_MENU_RERECORD_TITLE_TO,"Select a party tape to overwrite"
+AP7_DUNGEON_MENU_RERECORD_CONFIRM,"{tape_to} will be overwritten by {tape_from}.\nDo you wish to continue?"
+AP7_DUNGEON_MENU_SHRINE_PREPROMPT,"It's an active shrine of power.\nMake an offering?"
+AP7_DUNGEON_MENU_SHRINE_CONFIRM,"{tape} may be lost or changed by the shrine.\nDo you wish to continue?"
+AP7_DUNGEON_MENU_SHRINE_DRAINED,"The shrine seems inactive..."
+AP7_DUNGEON_MENU_SHRINE_TITLE,"Shrine of power"
+AP7_DUNGEON_MENU_SHRINE_COST_NONE,"No cost"
+AP7_DUNGEON_MENU_SHRINE_COST_TAPE,"Offered tape will be consumed"
+AP7_DUNGEON_MENU_SHRINE_COST_SIGIL,"Offered sigils will be consumed"
+AP7_DUNGEON_MENU_SHRINE_BLESSING_AIR,Blessing of Air
+AP7_DUNGEON_MENU_SHRINE_BLESSING_ASTRAL,Blessing of Heaven
+AP7_DUNGEON_MENU_SHRINE_BLESSING_BEAST,Blessing of Beasts
+AP7_DUNGEON_MENU_SHRINE_BLESSING_EARTH,Blessing of Earth
+AP7_DUNGEON_MENU_SHRINE_BLESSING_FIRE,Blessing of Fire
+AP7_DUNGEON_MENU_SHRINE_BLESSING_GLASS,Blessing of Glass
+AP7_DUNGEON_MENU_SHRINE_BLESSING_GLITTER,Blessing of Glitter
+AP7_DUNGEON_MENU_SHRINE_BLESSING_ICE,Blessing of Ice
+AP7_DUNGEON_MENU_SHRINE_BLESSING_LIGHTNING,Blessing of Lightning
+AP7_DUNGEON_MENU_SHRINE_BLESSING_METAL,Blessing of Metal
+AP7_DUNGEON_MENU_SHRINE_BLESSING_PLANT,Blessing of Plant
+AP7_DUNGEON_MENU_SHRINE_BLESSING_PLASTIC,Blessing of Plastic
+AP7_DUNGEON_MENU_SHRINE_BLESSING_POISON,Blessing of Poison
+AP7_DUNGEON_MENU_SHRINE_BLESSING_WATER,Blessing of Water
+AP7_DUNGEON_MENU_SHRINE_BLESSING_KUNEKO,Empower Sticker
+AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_EXP,Level Up!
+AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP,Tape Heal
+AP7_DUNGEON_MENU_SHRINE_GIVE_PARTY_HP,Party Heal
+AP7_DUNGEON_MENU_SHRINE_TAPE_SWAP,Tape Swap
+AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP,HP Up
+AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP,Melee Defense Up
+AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP,Ranged Defense Up
+AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP,Melee Attack Up
+AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP,Ranged Attack Up
+AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP,Speed Up
+AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL,Healing Items
+AP7_DUNGEON_MENU_SHRINE_ITEMS_TAPE,Tape Collection
+AP7_DUNGEON_MENU_SHRINE_ITEMS_FUSED,Fused Material
+AP7_DUNGEON_MENU_SHRINE_ITEMS_SIGIL,Rare Sigil
+AP7_DUNGEON_MENU_SHRINE_BLESSING_AIR_DESC,The next floor will be imbued with Air
+AP7_DUNGEON_MENU_SHRINE_BLESSING_ASTRAL_DESC,The next floor will be imbued with Astral energy
+AP7_DUNGEON_MENU_SHRINE_BLESSING_BEAST_DESC,The next floor will be imbued with Beasts
+AP7_DUNGEON_MENU_SHRINE_BLESSING_EARTH_DESC,The next floor will be imbued with Earth
+AP7_DUNGEON_MENU_SHRINE_BLESSING_FIRE_DESC,The next floor will be imbued with Fire
+AP7_DUNGEON_MENU_SHRINE_BLESSING_GLASS_DESC,The next floor will be imbued with Glass
+AP7_DUNGEON_MENU_SHRINE_BLESSING_GLITTER_DESC,The next floor will be imbued with Glitter
+AP7_DUNGEON_MENU_SHRINE_BLESSING_ICE_DESC,The next floor will be imbued with Ice
+AP7_DUNGEON_MENU_SHRINE_BLESSING_LIGHTNING_DESC,The next floor will be imbued with Lightning
+AP7_DUNGEON_MENU_SHRINE_BLESSING_METAL_DESC,The next floor will be imbued with Metal
+AP7_DUNGEON_MENU_SHRINE_BLESSING_PLANT_DESC,The next floor will be imbued with Plant
+AP7_DUNGEON_MENU_SHRINE_BLESSING_PLASTIC_DESC,The next floor will be imbued with Plastic
+AP7_DUNGEON_MENU_SHRINE_BLESSING_POISON_DESC,The next floor will be imbued with Poison
+AP7_DUNGEON_MENU_SHRINE_BLESSING_WATER_DESC,The next floor will be imbued with Water
+AP7_DUNGEON_MENU_SHRINE_BLESSING_KUNEKO_DESC,Empower Kuneko's sticker with a blessing
+AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_EXP_DESC,Give tape a level up
+AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP_DESC,Fully restore tape HP
+AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP_DESC,Fully restore party HP
+AP7_DUNGEON_MENU_SHRINE_TAPE_SWAP_DESC,Returns a random tape
+AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP_DESC,Raises your HP stat
+AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP_DESC,Raises your Melee Defense stat
+AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP_DESC,Raises your Ranged Defense stat
+AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP_DESC,Raises your Melee Attack stat
+AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP_DESC,Raises your Ranged Attack stat
+AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP_DESC,Raises your Speed stat
+AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL_DESC,Receive some healing Items
+AP7_DUNGEON_MENU_SHRINE_ITEMS_TAPE_DESC,Receive some tapes
+AP7_DUNGEON_MENU_SHRINE_ITEMS_FUSED_DESC,Receive some Fused Material
+AP7_DUNGEON_MENU_SHRINE_ITEMS_SIGIL_DESC,Receive a Rare sigil
+AP7_DUNGEON_MENU_REWARD_TITLE,Select a reward
+AP7_DUNGEON_MENU_REWARD_FUSION_CRIT_DESC,Makes your fusion meter fill a bit when you land a critical hit
+AP7_DUNGEON_MENU_REWARD_FUSION_FILL_DESC,Makes your fusion meter fill a bit faster
+AP7_DUNGEON_MENU_REWARD_FUSION_RECORD_DESC,Increases recording chance when your fusion meter is full
+AP7_DUNGEON_MENU_REWARD_FUSION_TYPEADV_DESC,Makes your fusion meter fill a bit when you land a type-advantaged hit
+AP7_DUNGEON_MENU_REWARD_FUSION_VICTORY_DESC,Makes your fusion meter fill a bit when you win a battle
+AP7_DUNGEON_EXIT_UNUSED_MEMORY_CONFIRM,"You have unused Memory Sigils. You will return to New Wirral with any found resources and tapes with a Memory Sigil equipped.\nDo you want to leave anyway?"
+AP7_DUNGEON_EXIT_USED_MEMORY_CONFIRM,"You will return to New Wirral with any found resources and tapes with a Memory Sigil.\nAre you ready to leave?"
+AP7_DUNGEON_EXIT_NO_MEMORY_CONFIRM,"You will return to New Wirral with any found resources.\nAre you ready to leave?"

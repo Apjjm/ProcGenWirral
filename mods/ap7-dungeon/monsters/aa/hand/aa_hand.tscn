@@ -1,0 +1,258 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/models/aahand/hand_16.glb" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/shaders/aahand.gdshader" type="Shader" id=2]
+
+[sub_resource type="Environment" id=3]
+ambient_light_color = Color( 0.603922, 0.596078, 0.756863, 1 )
+ambient_light_energy = 0.5
+
+[sub_resource type="Animation" id=4]
+resource_name = "alt_idle"
+tracks/0/type = "animation"
+tracks/0/path = NodePath("hand_16/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "alt_idle" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "appear"
+length = 1.3
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("MeshInstance:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 2.9, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MeshInstance:scale:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("hand_16:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -14, -0.25, 0, 0.25, 0, -1.57858, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.1 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("hand_16/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "hurt" ),
+"times": PoolRealArray( 0.5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("hand_16:rotation_degrees:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 40, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.7, 1.2 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 0.583
+tracks/0/type = "animation"
+tracks/0/path = NodePath("hand_16/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "attack" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "disappear"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("MeshInstance:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 2.9, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 0.9 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MeshInstance:scale:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 0.9 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("hand_16:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -1.57858, -0.25, 0, 0.25, 0, -14, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.35, 0.7 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("hand_16/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "alt_idle2" ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("hand_16:rotation_degrees:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "hurt"
+length = 0.833333
+tracks/0/type = "animation"
+tracks/0/path = NodePath("hand_16/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "hurt" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+loop = true
+tracks/0/type = "animation"
+tracks/0/path = NodePath("hand_16/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "idle" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "windup"
+length = 0.583
+tracks/0/type = "animation"
+tracks/0/path = NodePath("hand_16/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "windup" ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="SphereMesh" id=9]
+height = 1.0
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 2 )
+shader_param/grid_scale = Vector3( 1, 1, 1 )
+shader_param/grid_line = Vector3( 0.1, 0.1, 0.1 )
+shader_param/grid_cell_color = Color( 0, 0, 0, 1 )
+shader_param/grid_line_color = Color( 0.6, 0.470588, 0.470588, 1 )
+shader_param/cull_y = -20.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="hand_16" parent="." instance=ExtResource( 1 )]
+transform = Transform( -8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, -1.57858, 0 )
+
+[node name="BoneAttachment" parent="hand_16/body/Skeleton" index="0"]
+transform = Transform( 0.0295658, 0.212096, 0.976802, 0.128364, 0.968332, -0.214142, -0.991287, 0.131717, 0.00140399, -3.08369, 3.54568, 0.0428607 )
+
+[node name="hand" parent="hand_16/body/Skeleton" index="1"]
+transform = Transform( 1, 1.13687e-13, -5.0822e-21, -1.13687e-13, 1, 0, 6.77626e-21, 7.10543e-15, 1, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.0523359, 0.121702, -0.991186, 0, 0.992546, 0.121869, 0.99863, -0.00637814, 0.0519457, -8, 7.5, 0 )
+projection = 1
+size = 16.0
+
+[node name="Camera2" type="Camera" parent="."]
+transform = Transform( 0.978148, 0.0253381, -0.206362, 0, 0.992546, 0.121869, 0.207912, -0.119206, 0.970857, -2, 8.2, 12 )
+projection = 1
+size = 16.0
+
+[node name="Positions" type="Spatial" parent="."]
+
+[node name="attack" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 8.54464 )
+
+[node name="decoy" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.756 )
+
+[node name="melee_range" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.438 )
+
+[node name="hit" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.53505, 6.03872 )
+
+[node name="eye" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.58221, 6.122 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.0148744, 0.939711, -0.341645, -0.0116201, 0.341823, 0.939693, 0.999822, -0.0100074, 0.016004, -1.1585, 14.1037, 12.2992 )
+light_energy = 0.32
+light_specular = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/alt_idle = SubResource( 4 )
+anims/appear = SubResource( 12 )
+anims/attack = SubResource( 5 )
+anims/disappear = SubResource( 13 )
+anims/hurt = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/windup = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 2.9, 0, 0, 0, 0.1, 0, 0, 0, 4, 0, -1.1, -2.2 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+
+[editable path="hand_16"]

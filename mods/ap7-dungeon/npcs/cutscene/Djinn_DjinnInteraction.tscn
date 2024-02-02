@@ -1,0 +1,196 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/decorators/Repeater.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=4]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Failer.gd" type="Script" id=5]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=6]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SetLastWarp.gd" type="Script" id=7]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/StartDungeonAction.gd" type="Script" id=8]
+[ext_resource path="res://nodes/actions/MenuDialogAction.gd" type="Script" id=9]
+[ext_resource path="res://sfx/cries/djinn_entonic_cry.wav" type="AudioStream" id=10]
+[ext_resource path="res://sprites/portraits/eugene_shocked.png" type="Texture" id=11]
+[ext_resource path="res://sfx/voices/eugene/eugene_surprise_2.wav" type="AudioStream" id=12]
+[ext_resource path="res://sprites/portraits/meredith_shocked.png" type="Texture" id=13]
+[ext_resource path="res://sfx/voices/dog/dog_bark_1.wav" type="AudioStream" id=14]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/PartnerDialog.gd" type="Script" id=15]
+[ext_resource path="res://sprites/portraits/kayleigh_shocked.png" type="Texture" id=16]
+[ext_resource path="res://sprites/portraits/viola_shocked.png" type="Texture" id=17]
+[ext_resource path="res://sfx/voices/felix/felix_surprise_2.wav" type="AudioStream" id=18]
+[ext_resource path="res://sfx/voices/kayleigh/kayleigh_surprise_1.wav" type="AudioStream" id=19]
+[ext_resource path="res://sprites/portraits/felix_shocked.png" type="Texture" id=20]
+[ext_resource path="res://sprites/portraits/dog_shocked.png" type="Texture" id=21]
+[ext_resource path="res://sfx/voices/viola/viola_surprise_2.wav" type="AudioStream" id=22]
+[ext_resource path="res://sfx/voices/meredith/meredith_surprise_1.wav" type="AudioStream" id=23]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=24]
+[ext_resource path="res://sprites/portraits/meredith_thinking.png" type="Texture" id=25]
+[ext_resource path="res://sprites/portraits/eugene_thinking.png" type="Texture" id=26]
+[ext_resource path="res://sprites/portraits/felix_thinking.png" type="Texture" id=27]
+[ext_resource path="res://sprites/portraits/kayleigh_thinking.png" type="Texture" id=28]
+[ext_resource path="res://sprites/portraits/viola_thinking.png" type="Texture" id=29]
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FirstTime" type="Node" parent="."]
+script = ExtResource( 4 )
+always_succeed = true
+deny_flags = [ "AP7_CV_DJINN_PRE_INTRO" ]
+require_primary_player = true
+
+[node name="Partner" type="Node" parent="FirstTime"]
+script = ExtResource( 15 )
+kayleigh_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_KAYLEIGH" ]
+meredith_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_MEREDITH" ]
+felix_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_FELIX" ]
+eugene_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_EUGENE" ]
+viola_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_VIOLA" ]
+dog_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1_DOG" ]
+kayleigh_portrait = ExtResource( 16 )
+meredith_portrait = ExtResource( 13 )
+felix_portrait = ExtResource( 20 )
+eugene_portrait = ExtResource( 11 )
+viola_portrait = ExtResource( 17 )
+dog_portrait = ExtResource( 21 )
+kayleigh_audio = ExtResource( 19 )
+meredith_audio = ExtResource( 23 )
+felix_audio = ExtResource( 18 )
+eugene_audio = ExtResource( 12 )
+viola_audio = ExtResource( 22 )
+dog_audio = ExtResource( 14 )
+
+[node name="MessageDialogAction" type="Node" parent="FirstTime"]
+script = ExtResource( 3 )
+audio = ExtResource( 10 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_1", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_2", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_3" ]
+
+[node name="MenuDialogAction" type="Node" parent="FirstTime"]
+script = ExtResource( 9 )
+menu_options = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_3_OPTION_A", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_3_OPTION_B" ]
+formatting = [ "", "" ]
+
+[node name="Yes" type="Node" parent="FirstTime/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="MessageDialogAction" type="Node" parent="FirstTime/MenuDialogAction/Yes"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4" ]
+
+[node name="Partner" type="Node" parent="FirstTime/MenuDialogAction/Yes"]
+script = ExtResource( 15 )
+kayleigh_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4_KAYLEIGH" ]
+meredith_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4_MEREDITH" ]
+felix_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4_FELIX" ]
+eugene_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4_EUGENE" ]
+viola_messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_4_VIOLA" ]
+kayleigh_portrait = ExtResource( 28 )
+meredith_portrait = ExtResource( 25 )
+felix_portrait = ExtResource( 27 )
+eugene_portrait = ExtResource( 26 )
+viola_portrait = ExtResource( 29 )
+
+[node name="MessageDialogAction2" type="Node" parent="FirstTime/MenuDialogAction/Yes"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_5", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_6", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_7" ]
+
+[node name="SetFlagAction" type="Node" parent="FirstTime/MenuDialogAction/Yes"]
+script = ExtResource( 24 )
+flag = "AP7_CV_DJINN_PRE_INTRO"
+
+[node name="No" type="Node" parent="FirstTime/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="Leave" type="Node" parent="FirstTime/MenuDialogAction/No"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_1", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_2", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_3", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_4" ]
+
+[node name="Failer" type="Node" parent="FirstTime/MenuDialogAction/No"]
+script = ExtResource( 5 )
+
+[node name="MainDialog" type="Node" parent="."]
+script = ExtResource( 4 )
+always_succeed = true
+require_flags = [ "AP7_CV_DJINN_PRE_INTRO" ]
+require_primary_player = true
+
+[node name="Intro" type="Node" parent="MainDialog"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_MENU" ]
+wait_for_confirm = false
+close_after = false
+
+[node name="NormalDialogue_Repeater" type="Node" parent="MainDialog"]
+script = ExtResource( 1 )
+stop_on_failure = true
+
+[node name="MenuDialogAction" type="Node" parent="MainDialog/NormalDialogue_Repeater"]
+script = ExtResource( 9 )
+menu_options = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_D", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_A", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_B", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_C", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_E" ]
+formatting = [ "[color=#3fbb9f]{0}[/color]", "", "", "", "" ]
+
+[node name="OptionD" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="MessageDialogAction" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_D_1" ]
+
+[node name="SetLastWarp" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
+script = ExtResource( 7 )
+scene = "res://mods/ap7-dungeon/floors/Djinntermission.tscn"
+target = "InDungeon"
+
+[node name="StartDungeon" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
+script = ExtResource( 8 )
+
+[node name="Failer" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
+script = ExtResource( 5 )
+
+[node name="OptionA" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="Dialog" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionA"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_A_1", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_A_2", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_A_3" ]
+
+[node name="OptionB" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="Dialog" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionB"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_B_1", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_B_2", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_B_3" ]
+
+[node name="OptionC" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="Dialog" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionC"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_C_1", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_C_2", "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_C_3" ]
+
+[node name="OptionE" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 6 )
+
+[node name="MessageDialogAction" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionE"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_E_1" ]
+
+[node name="Failer" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionE"]
+script = ExtResource( 5 )
+
+[node name="MessageDialogAction" type="Node" parent="MainDialog/NormalDialogue_Repeater"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_MENU" ]
+wait_for_confirm = false
+close_after = false

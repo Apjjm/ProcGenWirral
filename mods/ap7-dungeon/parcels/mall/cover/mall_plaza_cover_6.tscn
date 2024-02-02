@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://world/objects/rigid_physics/RigidMallBin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/objects/static_physics/mall_props/MallSignpost1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/grime/mall_floor_grime.tres" type="Resource" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=6]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 6 )
+y_min = -10.0
+y_max = 10.0
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2 )
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="RandomRot" type="Spatial" parent="RandomTreasureRot"]
+transform = Transform( 0.495753, 0, -0.868464, 0, 1, 0, 0.868464, 0, 0.495753, 4.5539, 1, 0.0901003 )
+script = ExtResource( 6 )
+
+[node name="Bin2" parent="RandomTreasureRot/RandomRot" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
+
+[node name="RandomRot2" type="Spatial" parent="RandomTreasureRot"]
+transform = Transform( 0.917477, 0, 0.397788, 0, 1, 0, -0.397788, 0, 0.917477, 1.018, 1, 2.5196 )
+script = ExtResource( 6 )
+
+[node name="MallSignpost3" parent="RandomTreasureRot/RandomRot2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -1.83496, 0, -0.795576 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.01, 12 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 4 )
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.01, 13 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 4 )

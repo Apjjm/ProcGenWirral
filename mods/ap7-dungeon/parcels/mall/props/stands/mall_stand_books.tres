@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_9.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_0.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_7.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_8.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_6.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_5.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_book_2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=11]
+
+[resource]
+script = ExtResource( 11 )
+zones = [ "shop", "shop_book" ]
+
+parcels = [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ) ]

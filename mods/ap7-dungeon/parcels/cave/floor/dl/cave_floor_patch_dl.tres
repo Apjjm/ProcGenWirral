@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=13 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_6.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_5.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_9.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_8.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_10.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_7.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_4.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl_11.tscn" type="PackedScene" id=12]
+
+[resource]
+script = ExtResource( 1 )
+zones = [  ]
+target_zones = [  ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+offset = Vector3( 0, 0, 0 )
+parcels = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ]

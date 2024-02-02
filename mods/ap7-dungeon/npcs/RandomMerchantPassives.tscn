@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://nodes/actions/ExchangeMenuAction.gd" type="Script" id=1]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=4]
+[ext_resource path="res://music/demo/merchant_theme_1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=6]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=7]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomMerchantNode.gd" type="Script" id=9]
+[ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=10]
+
+[node name="ItemMerchant" type="Spatial"]
+script = ExtResource( 9 )
+item_cout = 6
+item_stock = 2
+merchant_key = "stickers"
+include_all_stickers = true
+filter_stickers_by_tag = "passive"
+
+[node name="HumanNPC" parent="." instance=ExtResource( 8 )]
+npc_name = "AP7_DUNGEON_PASSIVES_MERCHANT_NAME"
+sprite_body = null
+character = null
+
+[node name="InteractionBehavior" type="Node" parent="HumanNPC"]
+script = ExtResource( 7 )
+
+[node name="FaceTowardsAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 3 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 2 )
+
+[node name="GetPlayer" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 4 )
+
+[node name="MessageDialogAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 6 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_PASSIVES_MERCHANT_OPEN" ]
+
+[node name="ChangeMusicAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 10 )
+music = ExtResource( 5 )
+hide_avatars_if_cutscene = false
+
+[node name="ExchangeMenuAction" type="Node" parent="HumanNPC/InteractionBehavior/ChangeMusicAction"]
+script = ExtResource( 1 )
+title = "{pawn}"
+
+[node name="MessageDialogAction2" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 6 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_GENERIC_MERCHANT_EXIT" ]

@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/grime/mall_grime_large.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_ceiling_1A.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_wall_1A.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_trim_1A.mesh" type="ArrayMesh" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 5, 0.5 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 11, 5, 0.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 10, 5, 0.5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_LR"]
+script = ExtResource( 1 )
+
+[node name="wall" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 12, 0, 2.68616e-07, 0, 4, 0, -3.22339e-06, 0, 1, 12, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="wall2" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 12, 0, 0, 0, -4, 8.74228e-08, 0, -3.49691e-07, -1, 12, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="border" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 12, 0, 0, 0, 1, 0, 0, 0, 1, 12, 9, 2.25 )
+mesh = ExtResource( 3 )
+
+[node name="collider" type="StaticBody" parent="Wall_LR"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_LR/collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 1.5 )
+shape = SubResource( 1 )
+
+[node name="border2" type="MeshInstance" parent="Wall_LR"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 23, -1, 1 )
+mesh = ExtResource( 5 )
+
+[node name="border1" type="MeshInstance" parent="Wall_LR"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1, -1, 1 )
+mesh = ExtResource( 5 )
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_L"]
+script = ExtResource( 1 )
+
+[node name="wall" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 11, 0, 2.68616e-07, 0, 4, 0, -2.95478e-06, 0, 1, 11, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="wall2" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 11, 0, 0, 0, -4, 8.74228e-08, 0, -3.49691e-07, -1, 11, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="border" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 11, 0, 0, 0, 1, 0, 0, 0, 1, 11, 9, 2.25 )
+mesh = ExtResource( 3 )
+
+[node name="collider" type="StaticBody" parent="Wall_L"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_L/collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 1.5 )
+shape = SubResource( 2 )
+
+[node name="border1" type="MeshInstance" parent="Wall_L"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1, -1, 1 )
+mesh = ExtResource( 5 )
+
+[node name="Wall_R" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="VIZ" type="Spatial" parent="Wall_R"]
+script = ExtResource( 1 )
+
+[node name="wall" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 11, 0, 2.68616e-07, 0, 4, 0, -2.95478e-06, 0, 1, 11, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="wall2" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 11, 0, 0, 0, -4, 8.74228e-08, 0, -3.49691e-07, -1, 11, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="border" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 11, 0, 0, 0, 1, 0, 0, 0, 1, 11, 9, 2.25 )
+mesh = ExtResource( 3 )
+
+[node name="collider" type="StaticBody" parent="Wall_R"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_R/collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 1.5 )
+shape = SubResource( 2 )
+
+[node name="border2" type="MeshInstance" parent="Wall_R"]
+transform = Transform( -1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 21, -1, 1 )
+mesh = ExtResource( 5 )
+
+[node name="Wall_S" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_S"]
+script = ExtResource( 1 )
+
+[node name="wall" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 10, 0, 2.68616e-07, 0, 4, 0, -2.68616e-06, 0, 1, 12, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="wall2" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 10, 0, 0, 0, -4, 8.74228e-08, 0, -3.49691e-07, -1, 12, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 4 )
+
+[node name="border" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 1, 12, 9, 2.25 )
+mesh = ExtResource( 3 )
+
+[node name="collider" type="StaticBody" parent="Wall_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_S/collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 1.5 )
+shape = SubResource( 3 )
+
+[node name="VIZ" type="Spatial" parent="."]
+script = ExtResource( 1 )
+never_south = true
+
+[node name="Sprite3D" parent="VIZ" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37417, 1.34625, 1.64717 )
+
+[node name="Sprite3D2" parent="VIZ" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3286, 1.34625, 1.64717 )
+
+[node name="Sprite3D3" parent="VIZ" instance=ExtResource( 2 )]
+transform = Transform( -0.999929, 0.0119029, 0, -0.0119029, -0.999929, 0, 0, 0, 1, 11.5002, 6.84754, 1.64717 )
+
+[node name="border1" type="MeshInstance" parent="."]
+transform = Transform( -10, 0, 1.50996e-07, 0, 1, 0, -1.50996e-06, 0, -1, 12, -1, 1 )
+mesh = ExtResource( 5 )

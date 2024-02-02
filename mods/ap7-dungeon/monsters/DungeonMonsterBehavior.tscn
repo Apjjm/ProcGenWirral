@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehaviorState.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehavior.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/AdvantageCheckAction.gd" type="Script" id=4]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/DisableInteractionDecorator.gd" type="Script" id=5]
+[ext_resource path="res://nodes/actions/AggroAction.gd" type="Script" id=6]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/StopAction.gd" type="Script" id=8]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Failer.gd" type="Script" id=9]
+
+[node name="MonsterBehavior" type="Node"]
+script = ExtResource( 2 )
+default_state = "Idle"
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Pursue" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="AggroAction" type="Node" parent="Pursue"]
+script = ExtResource( 6 )
+wait_for_intro = false
+wait_for_outro = false
+
+[node name="Failer" type="Node" parent="Pursue/AggroAction"]
+script = ExtResource( 9 )
+
+[node name="Battle" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="DisableInteraction" type="Node" parent="Battle"]
+script = ExtResource( 5 )
+
+[node name="AdvantageCheckAction" type="Node" parent="Battle/DisableInteraction"]
+script = ExtResource( 4 )
+
+[node name="Stop" type="Node" parent="Battle/DisableInteraction/AdvantageCheckAction"]
+script = ExtResource( 8 )
+
+[node name="BattleAction" type="Node" parent="Battle/DisableInteraction/AdvantageCheckAction"]
+script = ExtResource( 3 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+remove_pawn_on_success = true

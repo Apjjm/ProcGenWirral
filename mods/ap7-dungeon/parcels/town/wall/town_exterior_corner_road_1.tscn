@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 8, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Floor" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 1, 0, 1441846, -458751, 0, 1441856, -393215, 0, 1441856, -327679, 0, 1441856, -262143, 0, 1441856, -196607, 0, 1441856, -131071, 0, 1441856, -65535, 0, 1441841, -65534, 0, 655408, -65533, 0, 1048625, 0, 1, 655414, 1, 1, 1441886, -458752, 1, 655424, -458751, 1, 72, -393216, 1, 655424, -393215, 1, 72, -327680, 1, 655424, -327679, 1, 72, -262144, 1, 655424, -262143, 1, 72, -196608, 1, 655424, -196607, 1, 72, -131072, 1, 655424, -131071, 1, 72, -65536, 1, 655409, -65535, 1, 1441850, -65534, 1, 655408, -65533, 1, 1048625, -65536, 2, 655408, -65535, 2, 655408, -65534, 2, 655408, -65533, 2, 1048625, -65536, 3, 49, -65535, 3, 49, -65534, 3, 49, -65533, 3, 1048626 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -3, 0 )
+}
+
+[node name="monster" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="wall" type="CollisionShape" parent="monster"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+shape = SubResource( 1 )

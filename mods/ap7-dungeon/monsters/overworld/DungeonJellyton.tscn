@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/RandomSelectorAction.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWalkAction.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonNPC.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWaitAction.gd" type="Script" id=4]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/CycleDirectionAction.gd" type="Script" id=5]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MoveTowardsPlayerAction.gd" type="Script" id=6]
+[ext_resource path="res://world/core/PlayerDetector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sfx/world/footsteps/land_2.wav" type="AudioStream" id=9]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world/monsters/MonsterPalette.gd" type="Script" id=11]
+[ext_resource path="res://data/monster_forms/jellyton.tres" type="Resource" id=12]
+[ext_resource path="res://sprites/monsters/world/jellyton.json" type="PackedScene" id=13]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehavior.tscn" type="PackedScene" id=14]
+
+[sub_resource type="CapsuleShape" id=11]
+height = 1.1
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 1, 4 )
+
+[node name="Jellyton" instance=ExtResource( 8 )]
+collision_layer = 16528
+collision_mask = 40977
+script = ExtResource( 3 )
+can_swim = false
+can_dash = false
+
+[node name="Sprite" parent="." index="2"]
+idle = "idle_"
+emission_palette = [ Color( 0.435294, 0.0862745, 0.145098, 1 ), Color( 0.694118, 0.12549, 0.192157, 1 ), Color( 0.913725, 0.258824, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
+emission = Color( 0, 0, 0, 1 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="Sprite" parent="Sprite" index="0" instance=ExtResource( 13 )]
+
+[node name="Interaction" parent="." index="4"]
+display_marker = false
+
+[node name="Footsteps" parent="." index="5"]
+footsteps_disabled = true
+land_audio = ExtResource( 9 )
+
+[node name="StateMachine" parent="." index="8" instance=ExtResource( 10 )]
+
+[node name="Dashing" parent="StateMachine" index="1"]
+sprint_max_speed = 30.0
+sprint_min_speed = 12.0
+loop_animation = "run"
+
+[node name="PlayerTouchDetector" parent="." index="9" instance=ExtResource( 7 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerTouchDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 11 )
+
+[node name="PlayerSightDetector" parent="." index="10" instance=ExtResource( 7 )]
+sneak_immunity = false
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerSightDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4 )
+shape = SubResource( 2 )
+
+[node name="MonsterBehavior" parent="." index="11" instance=ExtResource( 14 )]
+
+[node name="walk" type="Node" parent="MonsterBehavior/Idle" index="0"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+max_ticks = 4
+max_distance = 100.0
+allow_block = false
+
+[node name="wait1" type="Node" parent="MonsterBehavior/Idle" index="1"]
+script = ExtResource( 4 )
+
+[node name="turn" type="Node" parent="MonsterBehavior/Idle" index="2"]
+script = ExtResource( 1 )
+
+[node name="spin1" type="Node" parent="MonsterBehavior/Idle/turn" index="0"]
+script = ExtResource( 5 )
+cycle_mode = 1
+
+[node name="spin2" type="Node" parent="MonsterBehavior/Idle/turn" index="1"]
+script = ExtResource( 5 )
+
+[node name="AggroAction" parent="MonsterBehavior/Pursue" index="0"]
+wait_for_intro = true
+
+[node name="chase1" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="0"]
+script = ExtResource( 6 )
+max_ticks = 8
+motion_type = 3
+can_jump = true
+can_fall = true
+speed_multiplier = 2.0
+
+[node name="chase2" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="1"]
+script = ExtResource( 6 )
+max_ticks = 4
+motion_type = 3
+can_fall = true
+speed_multiplier = 1.5
+
+[node name="chase3" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="2"]
+script = ExtResource( 6 )
+max_ticks = 4
+motion_type = 3
+
+[node name="wait" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="3"]
+script = ExtResource( 4 )
+ticks = 2
+
+[node name="MonsterPalette" type="Node" parent="." index="12"]
+script = ExtResource( 11 )
+species = ExtResource( 12 )
+
+[connection signal="interacted" from="Interaction" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerTouchDetector" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerSightDetector" to="MonsterBehavior" method="pursue"]
+
+[editable path="StateMachine"]
+[editable path="MonsterBehavior"]

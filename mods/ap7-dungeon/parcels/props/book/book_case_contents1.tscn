@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=1]
+[ext_resource path="res://world/objects/interior_props/video_cassette_1.mesh" type="ArrayMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="rot" type="Spatial" parent="."]
+transform = Transform( 0.987284, 0, 0.158968, 0, 1, 0, -0.158968, 0, 0.987284, 0.18202, 3.25485, 0.317326 )
+script = ExtResource( 1 )
+
+[node name="video_cassette_1" type="MeshInstance" parent="rot"]
+transform = Transform( 0.918826, 0, -0.394664, 0, 1, 0, 0.394664, 0, 0.918826, 0.00236766, 0, -0.0147046 )
+mesh = ExtResource( 2 )
+
+
+[node name="rot2" type="Spatial" parent="."]
+transform = Transform( 0.974975, 0, -0.222315, 0, 1, 0, 0.222315, 0, 0.974975, 0.18202, 0.379446, 0.244355 )
+script = ExtResource( 1 )
+
+[node name="video_cassette_2" type="MeshInstance" parent="rot2"]
+transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 2 )
+
+
+[node name="video_cassette_3" type="MeshInstance" parent="rot2"]
+transform = Transform( 0.851507, 0, 0.524342, 0, 1, 0, -0.524342, 0, 0.851507, 0, 0.10145, 0 )
+mesh = ExtResource( 2 )
+
+
+[node name="rot3" type="Spatial" parent="."]
+transform = Transform( 0.995857, 0, -0.0909281, 0, 1, 0, 0.0909281, 0, 0.995857, -0.410288, 1.74564, 0.182961 )
+
+[node name="video_cassette_4" type="MeshInstance" parent="rot3"]
+transform = Transform( 0.950321, 0, 0.311273, 0, 1, 0, -0.311273, 0, 0.950321, 0, 0, 0 )
+mesh = ExtResource( 2 )
+

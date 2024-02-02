@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4.24, 11 )
+script = ExtResource( 2 )
+
+[node name="treasure" type="Position3D" parent="Spatial"]
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="Patch_N" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="PointOfInterest_L2" type="Position3D" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.240091, 4 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="Patch_E" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="PointOfInterest_L3" type="Position3D" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.240091, 11 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="Patch_S" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="PointOfInterest_L3" type="Position3D" parent="Patch_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.240091, 18 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="Patch_W" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="PointOfInterest_L2" type="Position3D" parent="Patch_W"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.240091, 11 )
+script = ExtResource( 1 )
+possible_types = 7

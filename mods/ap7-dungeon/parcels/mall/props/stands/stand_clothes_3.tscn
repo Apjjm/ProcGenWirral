@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes.tres" type="Resource" id=1]
+[ext_resource path="res://world/objects/static_physics/mall_props/mall_wall_clothes_rack_1.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.2, 1, 0.08 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.1, 0.15, 1.5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( -8.74228e-08, -1, 0, 2, -4.37114e-08, 0, 0, 0, 1, 0, 1, 0 )
+mesh = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.425 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.425 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0 )
+shape = SubResource( 2 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 0.959604, 0, 0.281353, 0, 1, 0, -0.281353, 0, 0.959604, 1, 0.98032, 1.06343 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 0.987089, 0, -0.160174, 0, 1, 0, 0.160174, 0, 0.987089, 1, 0.98032, 0.447037 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode3" type="Spatial" parent="."]
+transform = Transform( 0.992918, 0, -0.118803, 0, 1, 0, 0.118803, 0, 0.992918, 1, 0.98032, 0.0139748 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode4" type="Spatial" parent="."]
+transform = Transform( 0.999921, 0, -0.0126009, 0, 1, 0, 0.0126009, 0, 0.999921, 1, 0.98032, -0.456678 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode5" type="Spatial" parent="."]
+transform = Transform( 0.930922, 0, 0.365218, 0, 1, 0, -0.365218, 0, 0.930922, 1, 0.98032, -0.925956 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 1 )

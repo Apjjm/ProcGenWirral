@@ -1,0 +1,1153 @@
+[gd_scene load_steps=79 format=2]
+
+[ext_resource path="res://world/maps/HouseMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://nodes/warp_region/WarpTarget.gd" type="Script" id=2]
+[ext_resource path="res://sprites/sky_battle_grasslands_day.png" type="Texture" id=3]
+[ext_resource path="res://world/objects/static_physics/office_props/OfficeCeilingLamp2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sprites/environment/world/office_palmtree_1.json" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/market_stall.tres" type="Resource" id=6]
+[ext_resource path="res://world/core/LevelMap.gd" type="Script" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/desk/OfficeDesk.tres" type="Resource" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/whiteboard/whiteboard.tres" type="Resource" id=9]
+[ext_resource path="res://world/objects/chests/OfficeCabinet1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://sprites/environment/world/landkeeper_poster_5.json" type="PackedScene" id=11]
+[ext_resource path="res://sprites/environment/world/landkeeper_poster_6.json" type="PackedScene" id=12]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sprites/environment/world/landkeeper_poster_1.json" type="PackedScene" id=14]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomLandkeeperNpcs.gd" type="Script" id=15]
+[ext_resource path="res://data/LootTable.gd" type="Script" id=16]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/FusionStatRewardMenu.tscn" type="PackedScene" id=17]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/Landkeeper_BystanderDialog.tscn" type="PackedScene" id=18]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/StatRewardMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://mods/ap7-dungeon/floors/region_settings/DungeonFloor_Landkeeper.tres" type="Resource" id=20]
+[ext_resource path="res://mods/ap7-dungeon/floors/region_settings/DungeonFloor_LandkeeperMetadata.tres" type="Resource" id=21]
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=22]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/PartnerDialog_Landkeeper.tscn" type="PackedScene" id=23]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=24]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=25]
+[ext_resource path="res://data/MonsterTape.gd" type="Script" id=26]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelRngRoot.gd" type="Script" id=27]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=28]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Failer.gd" type="Script" id=29]
+[ext_resource path="res://data/monster_forms/apocrowlypse.tres" type="Resource" id=30]
+[ext_resource path="res://data/monster_forms/snoopin.tres" type="Resource" id=31]
+[ext_resource path="res://data/monster_forms/ripterra.tres" type="Resource" id=32]
+[ext_resource path="res://data/monster_forms/scampire.tres" type="Resource" id=33]
+[ext_resource path="res://data/monster_forms/hopskin.tres" type="Resource" id=34]
+[ext_resource path="res://data/monster_forms/undyin.tres" type="Resource" id=35]
+[ext_resource path="res://data/monster_forms/skelevangelist.tres" type="Resource" id=36]
+[ext_resource path="res://data/monster_forms/queenyx.tres" type="Resource" id=37]
+[ext_resource path="res://data/monster_forms/kingrave.tres" type="Resource" id=38]
+[ext_resource path="res://data/monster_forms/wyrmaw.tres" type="Resource" id=39]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/mall_posters_generic.tres" type="Resource" id=40]
+[ext_resource path="res://data/monster_forms/spooki-onna.tres" type="Resource" id=41]
+[ext_resource path="res://data/monster_forms/draculeaf.tres" type="Resource" id=42]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_sacredwater_sigil.tres" type="Resource" id=43]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonRangerCharacterConfig.gd" type="Script" id=44]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=45]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=46]
+[ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=47]
+[ext_resource path="res://battle/backgrounds/BattleOffice.tscn" type="PackedScene" id=48]
+[ext_resource path="res://nodes/camera/WorldCamera.tscn" type="PackedScene" id=49]
+[ext_resource path="res://nodes/actions/MenuDialogAction.gd" type="Script" id=50]
+[ext_resource path="res://mods/ap7-dungeon/monsters/FixedEncounterNode.gd" type="Script" id=51]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/TakeRandomStickerAction.gd" type="Script" id=52]
+[ext_resource path="res://music/release/battle_human_instr.ogg" type="AudioStream" id=53]
+[ext_resource path="res://music/release/battle_human_vox.ogg" type="AudioStream" id=54]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SetLastWarp.gd" type="Script" id=55]
+[ext_resource path="res://nodes/camera/LaggingTracker.gd" type="Script" id=68]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=69]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=71]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/NextFloorWarpArea.gd" type="Script" id=72]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=76]
+
+[sub_resource type="SpatialMaterial" id=30]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.5
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Resource" id=43]
+script = ExtResource( 16 )
+items = [  ]
+guaranteed_items = [ ExtResource( 43 ) ]
+guaranteed_item_amounts = [ 1 ]
+rare_items = [  ]
+rare_item_chance = 0.1
+max_stickers = 2
+sticker_tags = [  ]
+allow_unsellable_stickers = false
+upgrade_sticker_rarity = true
+upgrade_sticker_rarity_chance = 100
+fixed_max_value = 0
+fixed_max_num = 0
+
+[sub_resource type="Resource" id=31]
+resource_name = "kingrave Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 38 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=32]
+resource_name = "queenyx Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 37 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=33]
+resource_name = "scampire Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 33 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=34]
+resource_name = "ripterra Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 32 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=35]
+resource_name = "snoopin Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 31 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=36]
+resource_name = "hopskin Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 34 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=37]
+resource_name = "skelevangelist Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 36 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=38]
+resource_name = "apocrowlypse Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 30 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=39]
+resource_name = "draculeaf Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 42 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=40]
+resource_name = "spooki-onna Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 41 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=41]
+resource_name = "undyin Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 35 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=42]
+resource_name = "wyrmaw Gr0"
+script = ExtResource( 26 )
+name_override = ""
+form = ExtResource( 39 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [  ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 10, 10, 1 )
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 3 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 3
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 88.0
+background_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+background_energy = 0.4
+ambient_light_color = Color( 0.34902, 0.32549, 0.419608, 1 )
+ambient_light_energy = 0.5
+ambient_light_sky_contribution = 0.25
+fog_enabled = true
+fog_color = Color( 0.34902, 0.32549, 0.419608, 1 )
+fog_sun_color = Color( 1, 0.956863, 0.87451, 1 )
+fog_depth_begin = 50.0
+fog_transmit_enabled = true
+ssao_color = Color( 0.2, 0.172549, 0.25098, 1 )
+dof_blur_far_enabled = true
+dof_blur_far_distance = 51.0
+dof_blur_far_transition = 20.0
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+dof_blur_near_distance = 37.0
+dof_blur_near_transition = 5.0
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 6, 10, 1.5 )
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 7 )
+map_metadata = ExtResource( 21 )
+kill_depth = -5.0
+default_region_settings = ExtResource( 20 )
+
+[node name="Interior" type="Spatial" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Interior"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 1048607, 27, 0, 1441823, 28, 0, 1048607, 65535, 0, 1441824, 65536, 0, 1048598, 65563, 0, 1441814, 131072, 0, 1048598, 131099, 0, 1441814, 196608, 0, 1048598, 196635, 0, 1441814, 262144, 0, 1048603, 262171, 0, 1441819, -65536, 0, 20, -65535, 0, 20, -65534, 0, 20, -65533, 0, 20, -65532, 0, 20, -65531, 0, 20, -65530, 0, 20, -65529, 0, 20, -65528, 0, 20, -65527, 0, 20, -65526, 0, 20, -65525, 0, 20, -65524, 0, 20, -65523, 0, 20, -65522, 0, 20, -65521, 0, 20, -65520, 0, 20, -65519, 0, 20, -65518, 0, 20, -65517, 0, 20, -65516, 0, 20, -65515, 0, 20, -65514, 0, 20, -65513, 0, 20, -65512, 0, 20, -65511, 0, 20, -65510, 0, 20, -65509, 0, 20, -65508, 0, 1048611, -1, 0, 1441827, 0, 1, 1048607, 27, 1, 1441823, 28, 1, 1048607, 65535, 1, 1441824, 65536, 1, 1048598, 65563, 1, 1441814, 131072, 1, 1048598, 131099, 1, 1441814, 196608, 1, 1048598, 196635, 1, 1441814, 262144, 1, 1048603, 262171, 1, 1441819, -65536, 1, 20, -65535, 1, 20, -65534, 1, 20, -65533, 1, 20, -65532, 1, 20, -65531, 1, 20, -65530, 1, 20, -65529, 1, 20, -65528, 1, 20, -65527, 1, 20, -65526, 1, 20, -65525, 1, 20, -65524, 1, 20, -65523, 1, 20, -65522, 1, 20, -65521, 1, 20, -65520, 1, 20, -65519, 1, 20, -65518, 1, 20, -65517, 1, 20, -65516, 1, 20, -65515, 1, 20, -65514, 1, 20, -65513, 1, 20, -65512, 1, 20, -65511, 1, 20, -65510, 1, 20, -65509, 1, 20, -65508, 1, 1048611, -1, 1, 1441827, 0, 2, 1048607, 27, 2, 1441823, 28, 2, 1048607, 65535, 2, 1441824, 65536, 2, 1048598, 65563, 2, 1441814, 131072, 2, 1048598, 131099, 2, 1441814, 196608, 2, 1048598, 196635, 2, 1441814, 262144, 2, 1048603, 262171, 2, 1441819, -65536, 2, 1441812, -65535, 2, 1441812, -65534, 2, 20, -65533, 2, 20, -65532, 2, 20, -65531, 2, 20, -65530, 2, 20, -65529, 2, 20, -65528, 2, 20, -65527, 2, 20, -65526, 2, 20, -65525, 2, 20, -65524, 2, 20, -65523, 2, 20, -65522, 2, 20, -65521, 2, 20, -65520, 2, 20, -65519, 2, 20, -65518, 2, 20, -65517, 2, 20, -65516, 2, 20, -65515, 2, 20, -65514, 2, 20, -65513, 2, 20, -65512, 2, 20, -65511, 2, 20, -65510, 2, 20, -65509, 2, 20, -65508, 2, 1048611, -1, 2, 1441827, 0, 3, 1048607, 27, 3, 1441823, 28, 3, 1048607, 65535, 3, 1441824, 65536, 3, 1048598, 65563, 3, 1441814, 131072, 3, 1048598, 131099, 3, 1441814, 196608, 3, 1048598, 196635, 3, 1441814, 262144, 3, 1048603, 262171, 3, 1441819, -65536, 3, 1441812, -65535, 3, 1441812, -65534, 3, 20, -65533, 3, 20, -65532, 3, 20, -65531, 3, 20, -65530, 3, 20, -65529, 3, 20, -65528, 3, 20, -65527, 3, 20, -65526, 3, 20, -65525, 3, 20, -65524, 3, 20, -65523, 3, 20, -65522, 3, 20, -65521, 3, 21, -65520, 3, 20, -65519, 3, 20, -65518, 3, 20, -65517, 3, 20, -65516, 3, 20, -65515, 3, 20, -65514, 3, 20, -65513, 3, 20, -65512, 3, 20, -65511, 3, 20, -65510, 3, 20, -65509, 3, 20, -65508, 3, 1048611, -1, 3, 1441827, 0, 4, 1048607, 27, 4, 1441823, 28, 4, 1048607, 65535, 4, 1441824, 65536, 4, 1048598, 65563, 4, 1441814, 131072, 4, 1048598, 131099, 4, 1441814, 196608, 4, 1048598, 196635, 4, 1441814, 262144, 4, 1048603, 262171, 4, 1441819, -65536, 4, 43, -65535, 4, 43, -65534, 4, 43, -65533, 4, 43, -65532, 4, 43, -65531, 4, 43, -65530, 4, 43, -65529, 4, 20, -65528, 4, 20, -65527, 4, 20, -65526, 4, 20, -65525, 4, 20, -65524, 4, 20, -65523, 4, 20, -65522, 4, 20, -65521, 4, 20, -65520, 4, 20, -65519, 4, 20, -65518, 4, 20, -65517, 4, 20, -65516, 4, 20, -65515, 4, 43, -65514, 4, 43, -65513, 4, 43, -65512, 4, 43, -65511, 4, 43, -65510, 4, 43, -65509, 4, 43, -65508, 4, 1048611, -1, 4, 1441827, 0, 5, 1048607, 27, 5, 1441823, 28, 5, 1048607, 65535, 5, 1441824, 65536, 5, 1048598, 65563, 5, 1441814, 131072, 5, 1048598, 131099, 5, 1441814, 196608, 5, 1048598, 196635, 5, 1441814, 262144, 5, 1048603, 262171, 5, 1441819, -65536, 5, 1441833, -65535, 5, 41, -65534, 5, 41, -65533, 5, 41, -65532, 5, 41, -65531, 5, 41, -65530, 5, 43, -65529, 5, 20, -65528, 5, 20, -65527, 5, 20, -65526, 5, 20, -65525, 5, 20, -65524, 5, 20, -65523, 5, 20, -65522, 5, 20, -65521, 5, 20, -65520, 5, 20, -65519, 5, 20, -65518, 5, 20, -65517, 5, 20, -65516, 5, 20, -65515, 5, 43, -65514, 5, 42, -65513, 5, 41, -65512, 5, 41, -65511, 5, 41, -65510, 5, 41, -65509, 5, 41, -65508, 5, 1048611, -1, 5, 1441827, 0, 6, 1048607, 27, 6, 1441823, 28, 6, 1048607, 65535, 6, 1441824, 65536, 6, 1048598, 65563, 6, 1441814, 131072, 6, 1048598, 131099, 6, 1441814, 196608, 6, 1048598, 196635, 6, 1441814, 262144, 6, 1048603, 262171, 6, 1441819, -65536, 6, 1441833, -65535, 6, 1441833, -65534, 6, 41, -65533, 6, 41, -65532, 6, 41, -65531, 6, 41, -65530, 6, 43, -65529, 6, 20, -65528, 6, 20, -65527, 6, 20, -65526, 6, 20, -65525, 6, 20, -65524, 6, 20, -65523, 6, 21, -65522, 6, 20, -65521, 6, 20, -65520, 6, 20, -65519, 6, 20, -65518, 6, 20, -65517, 6, 20, -65516, 6, 20, -65515, 6, 43, -65514, 6, 41, -65513, 6, 41, -65512, 6, 41, -65511, 6, 41, -65510, 6, 42, -65509, 6, 41, -65508, 6, 1048611, -1, 6, 1441827, 0, 7, 1048607, 27, 7, 1441823, 28, 7, 1048607, 65535, 7, 1441824, 65536, 7, 1048598, 65563, 7, 1441814, 131072, 7, 1048598, 131099, 7, 1441814, 196608, 7, 1048598, 196635, 7, 1441814, 262144, 7, 1048603, 262171, 7, 1441819, -65536, 7, 1441833, -65535, 7, 1441833, -65534, 7, 41, -65533, 7, 41, -65532, 7, 41, -65531, 7, 41, -65530, 7, 43, -65529, 7, 20, -65528, 7, 20, -65527, 7, 20, -65526, 7, 20, -65525, 7, 20, -65524, 7, 20, -65523, 7, 20, -65522, 7, 20, -65521, 7, 20, -65520, 7, 20, -65519, 7, 20, -65518, 7, 20, -65517, 7, 20, -65516, 7, 20, -65515, 7, 43, -65514, 7, 41, -65513, 7, 42, -65512, 7, 41, -65511, 7, 41, -65510, 7, 41, -65509, 7, 41, -65508, 7, 1048611, -1, 7, 1441827, 0, 8, 1048607, 27, 8, 1441823, 28, 8, 1048607, 65535, 8, 1441824, 65536, 8, 1048598, 65563, 8, 1441814, 131072, 8, 1048598, 131099, 8, 1441814, 196608, 8, 1048598, 196635, 8, 1441814, 262144, 8, 1048603, 262171, 8, 1441819, -65536, 8, 1441833, -65535, 8, 41, -65534, 8, 41, -65533, 8, 42, -65532, 8, 41, -65531, 8, 42, -65530, 8, 43, -65529, 8, 20, -65528, 8, 20, -65527, 8, 20, -65526, 8, 20, -65525, 8, 20, -65524, 8, 20, -65523, 8, 20, -65522, 8, 20, -65521, 8, 20, -65520, 8, 20, -65519, 8, 20, -65518, 8, 20, -65517, 8, 20, -65516, 8, 20, -65515, 8, 43, -65514, 8, 41, -65513, 8, 41, -65512, 8, 41, -65511, 8, 42, -65510, 8, 41, -65509, 8, 41, -65508, 8, 1048611, -1, 8, 1441827, 0, 9, 1048607, 27, 9, 1441823, 28, 9, 1048607, 65535, 9, 1441824, 65536, 9, 1048598, 65563, 9, 1441814, 131072, 9, 1048598, 131099, 9, 1441814, 196608, 9, 1048598, 196635, 9, 1441814, 262144, 9, 1048603, 262171, 9, 1441819, -65536, 9, 1441833, -65535, 9, 41, -65534, 9, 41, -65533, 9, 41, -65532, 9, 41, -65531, 9, 41, -65530, 9, 43, -65529, 9, 20, -65528, 9, 21, -65527, 9, 20, -65526, 9, 20, -65525, 9, 20, -65524, 9, 20, -65523, 9, 20, -65522, 9, 20, -65521, 9, 20, -65520, 9, 20, -65519, 9, 20, -65518, 9, 20, -65517, 9, 20, -65516, 9, 20, -65515, 9, 43, -65514, 9, 41, -65513, 9, 41, -65512, 9, 41, -65511, 9, 41, -65510, 9, 41, -65509, 9, 20, -65508, 9, 1048611, -1, 9, 1441827, 0, 10, 1048607, 27, 10, 1441823, 28, 10, 1048607, 65535, 10, 1441824, 65536, 10, 1048598, 65563, 10, 1441814, 131072, 10, 1048598, 131099, 10, 1441814, 196608, 10, 1048598, 196635, 10, 1441814, 262144, 10, 1048603, 262171, 10, 1441819, -65536, 10, 1441833, -65535, 10, 41, -65534, 10, 41, -65533, 10, 41, -65532, 10, 41, -65531, 10, 41, -65530, 10, 43, -65529, 10, 20, -65528, 10, 20, -65527, 10, 20, -65526, 10, 20, -65525, 10, 20, -65524, 10, 20, -65523, 10, 20, -65522, 10, 20, -65521, 10, 20, -65520, 10, 20, -65519, 10, 20, -65518, 10, 20, -65517, 10, 20, -65516, 10, 21, -65515, 10, 43, -65514, 10, 41, -65513, 10, 41, -65512, 10, 41, -65511, 10, 41, -65510, 10, 41, -65509, 10, 41, -65508, 10, 1048611, -1, 10, 1441827, 0, 11, 1048607, 27, 11, 1441823, 28, 11, 1048607, 65535, 11, 1441824, 65536, 11, 1048598, 65563, 11, 1441814, 131072, 11, 1048598, 131099, 11, 1441814, 196608, 11, 1048598, 196635, 11, 1441814, 262144, 11, 1048603, 262171, 11, 1441819, -65536, 11, 1441833, -65535, 11, 41, -65534, 11, 41, -65533, 11, 42, -65532, 11, 41, -65531, 11, 41, -65530, 11, 43, -65529, 11, 20, -65528, 11, 20, -65527, 11, 20, -65526, 11, 20, -65525, 11, 20, -65524, 11, 20, -65523, 11, 20, -65522, 11, 20, -65521, 11, 20, -65520, 11, 20, -65519, 11, 20, -65518, 11, 20, -65517, 11, 20, -65516, 11, 20, -65515, 11, 43, -65514, 11, 41, -65513, 11, 42, -65512, 11, 41, -65511, 11, 41, -65510, 11, 41, -65509, 11, 41, -65508, 11, 1048611, -1, 11, 1441827, 0, 12, 1048607, 27, 12, 1441823, 28, 12, 1048607, 65535, 12, 1441824, 65536, 12, 1048598, 65563, 12, 1441814, 131072, 12, 1048598, 131099, 12, 1441814, 196608, 12, 1048598, 196635, 12, 1441814, 262144, 12, 1048603, 262171, 12, 1441819, -65536, 12, 1441833, -65535, 12, 41, -65534, 12, 42, -65533, 12, 41, -65532, 12, 41, -65531, 12, 41, -65530, 12, 43, -65529, 12, 20, -65528, 12, 20, -65527, 12, 20, -65526, 12, 20, -65525, 12, 20, -65524, 12, 20, -65523, 12, 20, -65522, 12, 20, -65521, 12, 20, -65520, 12, 20, -65519, 12, 20, -65518, 12, 20, -65517, 12, 20, -65516, 12, 20, -65515, 12, 43, -65514, 12, 41, -65513, 12, 41, -65512, 12, 42, -65511, 12, 41, -65510, 12, 42, -65509, 12, 41, -65508, 12, 1048611, -1, 12, 1441827, 0, 13, 1048607, 27, 13, 1441823, 28, 13, 1048607, 65535, 13, 1441824, 65536, 13, 1048598, 65563, 13, 1441814, 131072, 13, 1048598, 131099, 13, 1441814, 196608, 13, 1048598, 196635, 13, 1441814, 262144, 13, 1048603, 262171, 13, 1441819, -65536, 13, 41, -65535, 13, 41, -65534, 13, 41, -65533, 13, 41, -65532, 13, 41, -65531, 13, 41, -65530, 13, 43, -65529, 13, 20, -65528, 13, 20, -65527, 13, 20, -65526, 13, 20, -65525, 13, 20, -65524, 13, 20, -65523, 13, 20, -65522, 13, 20, -65521, 13, 20, -65520, 13, 20, -65519, 13, 20, -65518, 13, 20, -65517, 13, 20, -65516, 13, 20, -65515, 13, 43, -65514, 13, 42, -65513, 13, 41, -65512, 13, 41, -65511, 13, 41, -65510, 13, 41, -65509, 13, 41, -65508, 13, 1048611, -1, 13, 1441827, 28, 14, 1048610, 65535, 14, 34, 65536, 14, 1048606, 65563, 14, 30, 131072, 14, 1048606, 131099, 14, 30, 196608, 14, 1048606, 196635, 14, 30, 262144, 14, 1048605, 262171, 14, 29, -65536, 14, 36, -65535, 14, 35, -65534, 14, 35, -65533, 14, 35, -65532, 14, 35, -65531, 14, 35, -65530, 14, 35, -65529, 14, 35, -65528, 14, 35, -65527, 14, 35, -65526, 14, 35, -65525, 14, 39, -65524, 14, 20, -65523, 14, 1048596, -65522, 14, 20, -65521, 14, 1048615, -65520, 14, 35, -65519, 14, 35, -65518, 14, 35, -65517, 14, 35, -65516, 14, 35, -65515, 14, 35, -65514, 14, 35, -65513, 14, 35, -65512, 14, 35, -65511, 14, 35, -65510, 14, 35, -65509, 14, 37, -65508, 14, 1048614, -1, 14, 38, -65525, 15, 1441827, -65524, 15, 20, -65523, 15, 1048596, -65522, 15, 20, -65521, 15, 1048611, -65525, 16, 1441827, -65524, 16, 20, -65523, 16, 1048596, -65522, 16, 20, -65521, 16, 1048611, -65525, 17, 1441827, -65524, 17, 20, -65523, 17, 20, -65522, 17, 20, -65521, 17, 1048611, -65525, 18, 1441827, -65524, 18, 20, -65523, 18, 20, -65522, 18, 20, -65521, 18, 1048611, -65525, 19, 38, -65524, 19, 35, -65523, 19, 35, -65522, 19, 35, -65521, 19, 1048614, 0, 65535, 1048609, 1, 65535, 31, 2, 65535, 31, 3, 65535, 31, 4, 65535, 31, 5, 65535, 31, 6, 65535, 31, 7, 65535, 31, 8, 65535, 31, 9, 65535, 31, 10, 65535, 31, 11, 65535, 31, 12, 65535, 31, 13, 65535, 31, 14, 65535, 31, 15, 65535, 31, 16, 65535, 31, 17, 65535, 31, 18, 65535, 31, 19, 65535, 31, 20, 65535, 31, 21, 65535, 31, 22, 65535, 31, 23, 65535, 31, 24, 65535, 31, 25, 65535, 31, 26, 65535, 31, 27, 65535, 33, 28, 65535, 1048607, 65535, 65535, 1441824, 65536, 65535, 1048601, 65537, 65535, 22, 65538, 65535, 22, 65539, 65535, 22, 65540, 65535, 22, 65541, 65535, 26, 65543, 65535, 22, 65544, 65535, 22, 65545, 65535, 22, 65546, 65535, 22, 65547, 65535, 22, 65548, 65535, 22, 65549, 65535, 26, 65551, 65535, 22, 65552, 65535, 22, 65553, 65535, 22, 65554, 65535, 22, 65555, 65535, 22, 65556, 65535, 22, 65557, 65535, 26, 65559, 65535, 22, 65560, 65535, 22, 65561, 65535, 22, 65562, 65535, 22, 65563, 65535, 25, 131072, 65535, 1048601, 131073, 65535, 22, 131074, 65535, 22, 131075, 65535, 22, 131076, 65535, 22, 131079, 65535, 22, 131080, 65535, 22, 131081, 65535, 22, 131082, 65535, 22, 131083, 65535, 22, 131084, 65535, 22, 131087, 65535, 22, 131088, 65535, 22, 131089, 65535, 22, 131090, 65535, 22, 131091, 65535, 22, 131092, 65535, 22, 131095, 65535, 22, 131096, 65535, 22, 131097, 65535, 22, 131098, 65535, 22, 131099, 65535, 25, 196608, 65535, 1048601, 196609, 65535, 22, 196610, 65535, 22, 196611, 65535, 22, 196612, 65535, 22, 196613, 65535, 22, 196614, 65535, 22, 196615, 65535, 22, 196616, 65535, 22, 196617, 65535, 22, 196618, 65535, 22, 196619, 65535, 22, 196620, 65535, 22, 196621, 65535, 22, 196622, 65535, 22, 196623, 65535, 22, 196624, 65535, 22, 196625, 65535, 22, 196626, 65535, 22, 196627, 65535, 22, 196628, 65535, 22, 196629, 65535, 22, 196630, 65535, 22, 196631, 65535, 22, 196632, 65535, 22, 196633, 65535, 22, 196634, 65535, 22, 196635, 65535, 25, 262144, 65535, 1048604, 262145, 65535, 27, 262146, 65535, 27, 262147, 65535, 27, 262148, 65535, 27, 262149, 65535, 27, 262150, 65535, 27, 262151, 65535, 27, 262152, 65535, 27, 262153, 65535, 27, 262154, 65535, 27, 262155, 65535, 27, 262156, 65535, 27, 262157, 65535, 27, 262158, 65535, 27, 262159, 65535, 27, 262160, 65535, 27, 262161, 65535, 27, 262162, 65535, 27, 262163, 65535, 27, 262164, 65535, 27, 262165, 65535, 27, 262166, 65535, 27, 262167, 65535, 27, 262168, 65535, 27, 262169, 65535, 27, 262170, 65535, 27, 262171, 65535, 28, -65536, 65535, 20, -65535, 65535, 20, -65534, 65535, 20, -65533, 65535, 20, -65532, 65535, 20, -65531, 65535, 20, -65530, 65535, 20, -65529, 65535, 20, -65528, 65535, 20, -65527, 65535, 20, -65526, 65535, 20, -65525, 65535, 20, -65524, 65535, 20, -65523, 65535, 20, -65522, 65535, 20, -65521, 65535, 20, -65520, 65535, 20, -65519, 65535, 20, -65518, 65535, 20, -65517, 65535, 20, -65516, 65535, 20, -65515, 65535, 20, -65514, 65535, 20, -65513, 65535, 20, -65512, 65535, 20, -65511, 65535, 20, -65510, 65535, 20, -65509, 65535, 20, -65508, 65535, 1048611, -1, 65535, 1441827 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="office_ceiling_lamp_2" parent="Interior" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 13, 13 )
+
+[node name="OmniLight2" type="OmniLight" parent="Interior/office_ceiling_lamp_2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+light_color = Color( 0.972549, 0.901961, 0.545098, 1 )
+omni_range = 20.0
+
+[node name="office_ceiling_lamp_3" parent="Interior" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 13, 13 )
+
+[node name="OmniLight2" type="OmniLight" parent="Interior/office_ceiling_lamp_3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+light_color = Color( 0.972549, 0.901961, 0.545098, 1 )
+omni_range = 20.0
+
+[node name="office_ceiling_lamp_4" parent="Interior" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 13, 13 )
+
+[node name="OmniLight2" type="OmniLight" parent="Interior/office_ceiling_lamp_4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0 )
+light_color = Color( 0.972549, 0.901961, 0.545098, 1 )
+omni_range = 20.0
+
+[node name="Sprite2" parent="Interior" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 5, -1.49 )
+
+[node name="Sprite3" parent="Interior" instance=ExtResource( 5 )]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 51.5, 5, -1.49 )
+
+[node name="Window1" type="CSGBox" parent="Interior"]
+transform = Transform( 0.999998, -0.00131675, 0.00178305, 0.00178306, 7.09847e-06, -0.999998, 0.00131674, 0.999999, 9.43407e-06, 12, 4, -2 )
+width = 2.57463
+height = 0.002
+depth = 3.16955
+material = SubResource( 30 )
+
+[node name="Window2" type="CSGBox" parent="Interior"]
+transform = Transform( 0.999998, -0.00131675, 0.00178305, 0.00178306, 7.09847e-06, -0.999998, 0.00131674, 0.999999, 9.43407e-06, 28, 4, -2 )
+width = 2.57463
+height = 0.002
+depth = 3.16955
+material = SubResource( 30 )
+
+[node name="Window3" type="CSGBox" parent="Interior"]
+transform = Transform( 0.999998, -0.00131675, 0.00178305, 0.00178306, 7.09847e-06, -0.999998, 0.00131674, 0.999999, 9.43407e-06, 44, 4, -2 )
+width = 2.57463
+height = 0.002
+depth = 3.16955
+material = SubResource( 30 )
+
+[node name="OfficeCabinet" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -0.5 )
+
+[node name="OfficeCabinet2" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -0.5 )
+
+[node name="OfficeCabinet3" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, -0.5 )
+
+[node name="OfficeCabinet4" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -0.5 )
+
+[node name="OfficeCabinet5" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.6551, 0, 6.5 )
+
+[node name="OfficeCabinet6" parent="Interior" instance=ExtResource( 10 )]
+transform = Transform( 5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, 1.3663, 0, 6.5 )
+
+[node name="RandomRoot" type="Spatial" parent="."]
+script = ExtResource( 27 )
+
+[node name="Desks1" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 18 )
+
+[node name="Desk1" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk2" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk3" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk4" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk5" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk6" type="Spatial" parent="RandomRoot/Desks1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, -5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desks2" type="Spatial" parent="RandomRoot"]
+transform = Transform( -1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 55, 0, 18 )
+
+[node name="Desk1" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk2" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 0 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk3" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk4" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk5" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Desk6" type="Spatial" parent="RandomRoot/Desks2"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, -5 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 8 )
+
+[node name="Board1" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, -1.46912 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 9 )
+preview_index = 2
+
+[node name="Board2" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 5, -1.46912 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 9 )
+preview_index = 2
+
+[node name="Stand1" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 1 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 6 )
+
+[node name="Stand2" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 1 )
+script = ExtResource( 69 )
+parcel_set = ExtResource( 6 )
+
+[node name="Wall1" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )
+
+[node name="Poster1" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.548356, 5, 5 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster1"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Poster2" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.548356, 5, -4 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster2"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Poster3" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.548356, 5, -13 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster3"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Poster4" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4959, 5, 5 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster4"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Poster5" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4959, 5, -4 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster5"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Poster6" type="Spatial" parent="RandomRoot/Wall1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4959, 5, -13 )
+script = ExtResource( 71 )
+y_min = -10.0
+y_max = 10.0
+axis = 0
+
+[node name="RandomParcelNode" type="Spatial" parent="RandomRoot/Wall1/Poster6"]
+script = ExtResource( 69 )
+parcel_set = ExtResource( 40 )
+
+[node name="Floor1" type="Spatial" parent="RandomRoot"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 22, 0, 14 )
+script = ExtResource( 71 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="Sprite7" parent="RandomRoot/Floor1" instance=ExtResource( 12 )]
+transform = Transform( 0.209107, 0.977893, 9.64359e-09, 1.53781e-07, -4.27451e-08, 1, 0.977893, -0.209107, -1.59319e-07, -0.525, 0.0477486, -1.3867 )
+
+[node name="Floor2" type="Spatial" parent="RandomRoot"]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 33, 0, 20 )
+script = ExtResource( 71 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="Sprite6" parent="RandomRoot/Floor2" instance=ExtResource( 14 )]
+transform = Transform( 0.209107, 0.977893, 9.64359e-09, 1.53781e-07, -4.27451e-08, 1, 0.977893, -0.209107, -1.59319e-07, -0.525002, 0.0477486, -1.3867 )
+
+[node name="Floor3" type="Spatial" parent="RandomRoot"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 26, 0, 23 )
+script = ExtResource( 71 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="Sprite3" parent="RandomRoot/Floor3" instance=ExtResource( 11 )]
+transform = Transform( 0.209107, 0.977893, 9.64359e-09, 1.53781e-07, -4.27451e-08, 1, 0.977893, -0.209107, -1.59319e-07, -0.525002, 0.0477486, -1.3867 )
+
+[node name="RandomLandkeepers" type="Node" parent="RandomRoot"]
+script = ExtResource( 15 )
+npcs = [ NodePath("LandkeeperRandom1"), NodePath("LandkeeperRandom2"), NodePath("LandkeeperRandom3"), NodePath("LandkeeperRandom4"), NodePath("Trader1/Npc"), NodePath("Trader2/Npc") ]
+
+[node name="Trader1" type="Spatial" parent="RandomRoot/RandomLandkeepers"]
+script = ExtResource( 51 )
+battle_background = ExtResource( 48 )
+music_novox = ExtResource( 53 )
+music_vox = ExtResource( 54 )
+enable_fusion = true
+max_tapes_per_char = 2
+loot_table_override = SubResource( 43 )
+
+[node name="Char1" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1"]
+script = ExtResource( 44 )
+character_name = "AP7_DUNGEON_LK_TRADER_NAME"
+level_scale_override_key = "npc"
+character_kind = 1
+copy_human_sprite = NodePath("../Npc")
+tapes = [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ]
+
+[node name="Char2" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1"]
+script = ExtResource( 44 )
+character_name = "AP7_DUNGEON_LK_NPC_NAME"
+level_scale_override_key = "npc"
+character_kind = 1
+copy_human_sprite = NodePath("../../LandkeeperRandom1")
+tapes = [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ]
+
+[node name="Npc" parent="RandomRoot/RandomLandkeepers/Trader1" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 1.25 )
+npc_name = "AP7_DUNGEON_LK_TRADER_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc"]
+script = ExtResource( 24 )
+
+[node name="Selector" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior"]
+script = ExtResource( 47 )
+
+[node name="GiveChoice" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 25 )
+deny_flags = [ "AP7_DUNGEON_LANDKEEPER_COMBAT1", "AP7_DUNGEON_LANDKEEPER_TRADE1" ]
+
+[node name="Intro" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_1", "AP7_DUNGEON_LK_TRADER_A_2" ]
+
+[node name="Menu" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice"]
+script = ExtResource( 45 )
+
+[node name="Message" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 28 )
+messages = [ "AP7_DUNGEON_LK_TRADER_CHOICE_RARE" ]
+wait_for_confirm = false
+close_after = false
+
+[node name="Option" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 50 )
+menu_options = [ "AP7_DUNGEON_LK_TRADER_OPTION_1", "AP7_DUNGEON_LK_TRADER_OPTION_2", "AP7_DUNGEON_LK_TRADER_OPTION_3" ]
+
+[node name="TradeSelector" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 47 )
+
+[node name="TakeSticker" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector"]
+script = ExtResource( 52 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_3_Trade" ]
+
+[node name="SetTradeFlag" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector/TakeSticker"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_TRADE1"
+
+[node name="NoSticker" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_3_NoTrade" ]
+
+[node name="Failer" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector/NoSticker"]
+script = ExtResource( 29 )
+
+[node name="FightSequence" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 46 )
+
+[node name="Dialog" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_3_Battle" ]
+
+[node name="BattleAction" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 22 )
+result_on_player_win = 1
+disable_fleeing = true
+remove_pawn_on_success = true
+
+[node name="SetCombatFlag" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_COMBAT1"
+
+[node name="Exit" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_3_Exit" ]
+
+[node name="Failer2" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/Exit"]
+script = ExtResource( 29 )
+
+[node name="RewardMenu" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 45 )
+
+[node name="Reward" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/GiveChoice/Menu/RewardMenu" instance=ExtResource( 17 )]
+
+[node name="AlreadyTraded" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 25 )
+require_flags = [ "AP7_DUNGEON_LANDKEEPER_TRADE1" ]
+
+[node name="Exit" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector/AlreadyTraded"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_A_4" ]
+
+[node name="Defeated" type="Node" parent="RandomRoot/RandomLandkeepers/Trader1/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_DEFEAT" ]
+
+[node name="Trader2" type="Spatial" parent="RandomRoot/RandomLandkeepers"]
+script = ExtResource( 51 )
+battle_background = ExtResource( 48 )
+music_novox = ExtResource( 53 )
+music_vox = ExtResource( 54 )
+enable_fusion = true
+max_tapes_per_char = 2
+loot_table_override = SubResource( 43 )
+
+[node name="Char1" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2"]
+script = ExtResource( 44 )
+character_name = "AP7_DUNGEON_LK_TRADER_NAME"
+level_scale_override_key = "npc"
+character_kind = 1
+copy_human_sprite = NodePath("../Npc")
+tapes = [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ]
+
+[node name="Char2" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2"]
+script = ExtResource( 44 )
+character_name = "AP7_DUNGEON_LK_NPC_NAME"
+level_scale_override_key = "npc"
+character_kind = 1
+copy_human_sprite = NodePath("../../LandkeeperRandom3")
+tapes = [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ]
+
+[node name="Npc" parent="RandomRoot/RandomLandkeepers/Trader2" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 0, 1.25 )
+npc_name = "AP7_DUNGEON_LK_TRADER_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc"]
+script = ExtResource( 24 )
+
+[node name="Selector" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior"]
+script = ExtResource( 47 )
+
+[node name="GiveChoice" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 25 )
+deny_flags = [ "AP7_DUNGEON_LANDKEEPER_COMBAT2", "AP7_DUNGEON_LANDKEEPER_TRADE2" ]
+
+[node name="Intro" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_1", "AP7_DUNGEON_LK_TRADER_B_2" ]
+
+[node name="Menu" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice"]
+script = ExtResource( 45 )
+
+[node name="Message" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 28 )
+messages = [ "AP7_DUNGEON_LK_TRADER_CHOICE_RARE" ]
+wait_for_confirm = false
+close_after = false
+
+[node name="Option" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 50 )
+menu_options = [ "AP7_DUNGEON_LK_TRADER_OPTION_1", "AP7_DUNGEON_LK_TRADER_OPTION_2", "AP7_DUNGEON_LK_TRADER_OPTION_3" ]
+
+[node name="TradeSelector" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 47 )
+
+[node name="TakeSticker" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector"]
+script = ExtResource( 52 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_3_Trade" ]
+
+[node name="SetTradeFlag" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector/TakeSticker"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_TRADE2"
+
+[node name="NoSticker" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_3_NoTrade" ]
+
+[node name="Failer" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/TradeSelector/NoSticker"]
+script = ExtResource( 29 )
+
+[node name="FightSequence" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 46 )
+
+[node name="Dialog" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_3_Battle" ]
+
+[node name="BattleAction" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 22 )
+result_on_player_win = 1
+disable_fleeing = true
+remove_pawn_on_success = true
+
+[node name="SetCombatFlag" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/FightSequence"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_COMBAT2"
+
+[node name="Exit" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_3_Exit" ]
+
+[node name="Failer2" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/Option/Exit"]
+script = ExtResource( 29 )
+
+[node name="RewardMenu" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu"]
+script = ExtResource( 45 )
+
+[node name="Rewards" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/GiveChoice/Menu/RewardMenu" instance=ExtResource( 19 )]
+
+[node name="AlreadyTraded" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 25 )
+require_flags = [ "AP7_DUNGEON_LANDKEEPER_TRADE2" ]
+
+[node name="Exit" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector/AlreadyTraded"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_B_4" ]
+
+[node name="Defeated" type="Node" parent="RandomRoot/RandomLandkeepers/Trader2/Npc/InteractionBehavior/Selector"]
+script = ExtResource( 28 )
+title = "AP7_DUNGEON_LK_TRADER_NAME"
+messages = [ "AP7_DUNGEON_LK_TRADER_DEFEAT" ]
+
+[node name="LandkeeperRandom1" parent="RandomRoot/RandomLandkeepers" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.658043, 23.25 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+npc_name = "AP7_DUNGEON_LK_NPC_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" parent="RandomRoot/RandomLandkeepers/LandkeeperRandom1" instance=ExtResource( 18 )]
+
+[node name="LandkeeperRandom2" parent="RandomRoot/RandomLandkeepers" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 0.658043, 18.0578 )
+initial_direction = "left"
+direction = Vector2( -1, 0 )
+npc_name = "AP7_DUNGEON_LK_NPC_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" parent="RandomRoot/RandomLandkeepers/LandkeeperRandom2" instance=ExtResource( 18 )]
+
+[node name="LandkeeperRandom3" parent="RandomRoot/RandomLandkeepers" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 0.658043, 23.25 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+npc_name = "AP7_DUNGEON_LK_NPC_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" parent="RandomRoot/RandomLandkeepers/LandkeeperRandom3" instance=ExtResource( 18 )]
+
+[node name="LandkeeperRandom4" parent="RandomRoot/RandomLandkeepers" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 52, 0.658043, 13.0578 )
+initial_direction = "right"
+direction = Vector2( 1, 0 )
+npc_name = "AP7_DUNGEON_LK_NPC_NAME"
+sprite_colors = {
+"body_color_1": 12,
+"body_color_2": 14,
+"eye_color": 12,
+"face_accessory_color": 12,
+"favorite_color": 12,
+"hair_accessory_color": -1,
+"hair_color": 12,
+"legs_color": 14,
+"shoe_color": 12,
+"skin_color": 14
+}
+sprite_part_names = {
+"arms": "jacket",
+"body": "jacket",
+"hair": "neat1",
+"head": "glasses_1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 12
+human_colors/body_color_2 = 14
+human_colors/eye_color = 12
+human_colors/face_accessory_color = 12
+human_colors/favorite_color = 12
+human_colors/hair_color = 12
+human_colors/legs_color = 14
+human_colors/shoe_color = 12
+human_colors/skin_color = 14
+
+[node name="InteractionBehavior" parent="RandomRoot/RandomLandkeepers/LandkeeperRandom4" instance=ExtResource( 18 )]
+
+[node name="Start" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.939, 0, 23 )
+script = ExtResource( 2 )
+direction = "up"
+
+[node name="PlayerTarget" type="Position3D" parent="Start"]
+
+[node name="ResetCombat1" type="Node" parent="Start/PlayerTarget"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_COMBAT1"
+value = false
+
+[node name="ResetCombat2" type="Node" parent="Start/PlayerTarget"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_COMBAT2"
+value = false
+
+[node name="ResetTrade1" type="Node" parent="Start/PlayerTarget"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_TRADE1"
+value = false
+
+[node name="ResetTrade2" type="Node" parent="Start/PlayerTarget"]
+script = ExtResource( 76 )
+flag = "AP7_DUNGEON_LANDKEEPER_TRADE2"
+value = false
+
+[node name="PartnerTarget" type="Position3D" parent="Start"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="SetLastWarp" type="Node" parent="Start"]
+script = ExtResource( 55 )
+scene = "res://mods/ap7-dungeon/floors/special/Special_Landkeeper.tscn"
+target = "InRoom"
+
+[node name="OneTimeDialog" parent="Start" instance=ExtResource( 23 )]
+
+[node name="InRoom" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.939, 0, 23 )
+script = ExtResource( 2 )
+direction = "up"
+
+[node name="PlayerTarget" type="Position3D" parent="InRoom"]
+
+[node name="PartnerTarget" type="Position3D" parent="InRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Tracker" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 20 )
+script = ExtResource( 68 )
+limits = AABB( 8, 0, 0, 40, 0, 20 )
+limit_x = true
+limit_z = true
+
+[node name="WorldCamera" parent="Tracker" instance=ExtResource( 49 )]
+clouds_enabled = false
+
+[node name="Walls" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls"]
+transform = Transform( -2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 31, 0, 39.9107 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Walls"]
+transform = Transform( -2.98023e-08, 0, 1, 0, 1, 0, -1, 0, -2.98023e-08, 22.8636, 0, 39.9107 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Walls"]
+transform = Transform( -1, 0, -7.35137e-08, 0, 1, 0, 7.35137e-08, 0, -1, 26.8636, 0, 38.9107 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 13.945, 0, 29.0763 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 40.0113, 0, 29.0763 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 60.0113, 0, 29.0763 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, -6.05497, 0, 29.0763 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Walls"]
+transform = Transform( 3, 0, 0, 0, -8.74228e-08, -1, 0, 2, -4.37114e-08, 26.945, 10, 17.0763 )
+shape = SubResource( 27 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="ExitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 6, 33 )
+script = ExtResource( 72 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ExitArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000562668, -4, -0.49519 )
+shape = SubResource( 29 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5655, 0.824749, 0, -0.824749, 0.5655, 17, 9.19128, 34.3961 )
+light_color = Color( 0.870588, 0.764706, 0.513726, 1 )
+light_energy = 0.5
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true

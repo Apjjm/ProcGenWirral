@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_plaza_sw_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+zones = [ "plaza" ]
+target_zones = [ "plaza" ]
+target_direction_only = 12
+parcels = [ ExtResource( 1 ) ]

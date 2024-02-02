@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/maps/CaveMeshlib.meshlib" type="MeshLibrary" id=1]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 1048587, -65535, 0, 11, -65534, 0, 8, -65533, 0, 655368, -65536, 1, 655370, -65535, 1, 9, -65534, 1, 8, -65533, 1, 8, -65536, 2, 655371, -65535, 2, 1441803, -65534, 2, 8, -65533, 2, 8, -65536, 3, 655368, -65535, 3, 8, -65534, 3, 8, -65533, 3, 8 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}

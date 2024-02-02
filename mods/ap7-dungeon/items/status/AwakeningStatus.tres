@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://data/hit_vfx/stat_up.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/status/AwakeningStatusEffect.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/items/status/AwakeningStatusIcon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 2 )
+name = "AP7_DUNGEON_STATUS_AWAKENING_NAME"
+description = "AP7_DUNGEON_STATUS_AWAKENING_DESC"
+has_duration = true
+reduce_duration_at = 1
+icon = ExtResource( 3 )
+is_removable = true
+is_transferable = false
+is_buff = true
+is_debuff = false
+is_decoy = false
+always_hidden_from_display = false
+tags = [ "ap7awakening" ]
+toast_on_remove = ""
+vfx_on_add = [ ExtResource( 1 ) ]
+vfx_on_remove = [  ]
+name_modifier = ""
+sprite_animation_prefix = ""
+sprite_animation_prefix_priority = 0

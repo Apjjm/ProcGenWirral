@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://battle/Battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/actions/battle/BattleEndCutscene.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/ExitDungeonAction.gd" type="Script" id=3]
+
+[node name="Battle" instance=ExtResource( 1 )]
+game_over_on_lose = false
+
+[node name="BattleEndCutscene" type="Node" parent="." index="5"]
+script = ExtResource( 2 )
+triggers = 2
+
+[node name="ExitDungeon" type="Node" parent="BattleEndCutscene" index="0"]
+script = ExtResource( 3 )
+defeated = true

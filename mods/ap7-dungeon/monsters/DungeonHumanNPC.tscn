@@ -1,0 +1,134 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/core/PlayerDetector.tscn" type="PackedScene" id=2]
+[ext_resource path="res://nodes/layered_sprite/WorldHumanSprite3D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/npc/HumanNPC.gd" type="Script" id=4]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=6]
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=7]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=8]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=9]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=10]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogAction.gd" type="Script" id=11]
+[ext_resource path="res://nodes/actions/RemoveNodeAction.gd" type="Script" id=12]
+[ext_resource path="res://nodes/actions/SetNPCStateAction.gd" type="Script" id=13]
+[ext_resource path="res://nodes/actions/InteractAction.gd" type="Script" id=15]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=19]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 8, 6, 0.25 )
+
+[node name="HumanNPC" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="Sprite" parent="." index="2"]
+idle = "idle"
+emission = Color( 0, 0, 0, 1 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="Sprite" index="0" instance=ExtResource( 3 )]
+
+[node name="StateMachine" parent="." index="8" instance=ExtResource( 5 )]
+
+[node name="PlayerTouchDetector" parent="." index="9" instance=ExtResource( 2 )]
+pawn = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerTouchDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+shape = SubResource( 1 )
+
+[node name="InteractAction" type="Node" parent="PlayerTouchDetector" index="1"]
+script = ExtResource( 15 )
+
+[node name="GetPawn" type="Node" parent="PlayerTouchDetector/InteractAction" index="0"]
+script = ExtResource( 6 )
+
+[node name="InteractionBehavior" type="Node" parent="." index="10"]
+script = ExtResource( 10 )
+
+[node name="Succeeder" type="Node" parent="InteractionBehavior" index="0"]
+script = ExtResource( 19 )
+
+[node name="FaceTowardsAction" type="Node" parent="InteractionBehavior/Succeeder" index="0"]
+script = ExtResource( 8 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="InteractionBehavior/Succeeder/FaceTowardsAction" index="0"]
+script = ExtResource( 6 )
+
+[node name="GetPlayer" type="Node" parent="InteractionBehavior/Succeeder/FaceTowardsAction" index="1"]
+script = ExtResource( 9 )
+
+[node name="DialogIntro" type="Node" parent="InteractionBehavior" index="1"]
+script = ExtResource( 11 )
+title = "{pawn}"
+message_loc_key = "AP7_DUNGEON_RANGER_BATTLE_"
+counter_key = "AP7_DUNGEON_RANGER_DIALOG"
+message_count = 26
+
+[node name="BattleAction" type="Node" parent="InteractionBehavior" index="2"]
+script = ExtResource( 7 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+
+[node name="SetNPCStateAction" type="Node" parent="InteractionBehavior" index="3"]
+script = ExtResource( 13 )
+state = "Defeated"
+
+[node name="DialogDefeat" type="Node" parent="InteractionBehavior" index="4"]
+script = ExtResource( 11 )
+title = "{pawn}"
+message_loc_key = "AP7_DUNGEON_RANGER_DEFEAT_"
+counter_key = "AP7_DUNGEON_RANGER_DIALOG"
+message_count = 26
+advance_counter = true
+
+[node name="RemoveNodeAction" type="Node" parent="InteractionBehavior" index="5"]
+script = ExtResource( 12 )
+__meta__ = {
+"action_tree": true
+}

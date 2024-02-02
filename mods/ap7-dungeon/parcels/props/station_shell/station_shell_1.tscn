@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://world/objects/static_physics/station_entrance/station_entrance_2.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://world/objects/dungeons/station_entrance_sign_1.png" type="Texture" id=2]
+[ext_resource path="res://world/objects/wired/door/DoorLarge.tscn" type="PackedScene" id=3]
+
+[sub_resource type="PlaneMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 4, 1, 4 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.25, 4, 3 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.25, 4, 1 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 0.25, 2.3, 1 )
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 3.125, 0.5, 3.125 )
+
+[node name="Station" type="Spatial"]
+
+[node name="Station" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+
+[node name="Darkness" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133831, 0.208681, -1.15658 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.54542, 2.93316 )
+pixel_size = 0.125
+shaded = true
+texture = ExtResource( 2 )
+
+[node name="Collider" type="StaticBody" parent="."]
+
+[node name="floor" type="CollisionShape" parent="Collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 5 )
+
+[node name="body" type="CollisionShape" parent="Collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87417, 4.5, 0 )
+shape = SubResource( 6 )
+
+[node name="body2" type="CollisionShape" parent="Collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86465, 4.5, 0 )
+shape = SubResource( 6 )
+
+[node name="body3" type="CollisionShape" parent="Collider"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0238285, 4.5, -2.84488 )
+shape = SubResource( 6 )
+
+[node name="body4" type="CollisionShape" parent="Collider"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.0359, 4.5, 2.79766 )
+shape = SubResource( 7 )
+
+[node name="body5" type="CollisionShape" parent="Collider"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.99247, 4.5, 2.79766 )
+shape = SubResource( 7 )
+
+[node name="body6" type="CollisionShape" parent="Collider"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00752831, 6.20272, 2.79766 )
+shape = SubResource( 8 )
+
+[node name="roof" type="CollisionShape" parent="Collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+shape = SubResource( 9 )
+
+[node name="DoorLarge" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, -8.9407e-08, 0, 8.9407e-08, -1, 0, 0, 0, 1, 0, -0.0353203, 2.6867 )
+invert = true

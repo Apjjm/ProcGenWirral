@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/dl/cave_floor_patch_dl.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+
+[node name="Floor" type="Spatial"]
+
+[node name="Patch_N" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_E" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_S" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_W" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_NW" type="Spatial" parent="."]
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_NE" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_SW" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_SE" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="Patch_C" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )

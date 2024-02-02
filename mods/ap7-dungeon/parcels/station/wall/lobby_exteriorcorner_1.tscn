@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/StationLamppost2A.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -720896, 0, 1441811, -655360, 0, 1441811, -589824, 0, 1441811, -524288, 0, 1441811, -458752, 0, 1441811, -393216, 0, 1441811, -327680, 0, 1441811, -262144, 0, 1441811, -196608, 0, 1441811, -131072, 0, 1441811, -65536, 0, 1441810, -65535, 0, 655361, -65534, 0, 655360, -65536, 1, 655361, -65535, 1, 0, -65534, 1, 655360, -65536, 2, 655360, -65535, 2, 655360, -65534, 2, 655360 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4 )
+script = ExtResource( 3 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="StationLampost2A" parent="Spatial" instance=ExtResource( 2 )]

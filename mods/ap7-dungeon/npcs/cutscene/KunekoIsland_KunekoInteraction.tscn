@@ -1,0 +1,219 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=5]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=6]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=7]
+[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=8]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=9]
+[ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=10]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/StatRewardMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/FusionStatRewardMenu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=13]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=14]
+[ext_resource path="res://nodes/actions/ConfirmDialogAction.gd" type="Script" id=15]
+[ext_resource path="res://sprites/portraits/kuneko.png" type="Texture" id=16]
+[ext_resource path="res://sprites/portraits/kuneko_angry.png" type="Texture" id=17]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_greeting.wav" type="AudioStream" id=18]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_sigh_1.wav" type="AudioStream" id=19]
+[ext_resource path="res://sprites/portraits/kuneko_crying.png" type="Texture" id=20]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_motivated_2.wav" type="AudioStream" id=21]
+[ext_resource path="res://sfx/voices/kuneko/kuneko_farewell.wav" type="AudioStream" id=22]
+[ext_resource path="res://sprites/portraits/felix_happy.png" type="Texture" id=23]
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 5 )
+
+[node name="FaceTowardsAction" type="Node" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="FaceTowardsAction"]
+script = ExtResource( 1 )
+
+[node name="GetPlayer" type="Node" parent="FaceTowardsAction"]
+script = ExtResource( 3 )
+
+[node name="CheckFlags" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="Battle1" type="Node" parent="CheckFlags"]
+script = ExtResource( 7 )
+deny_flags = [ "AP7_DUNGEON_KUNEKO_BATTLE1" ]
+
+[node name="felix" type="Node" parent="CheckFlags/Battle1"]
+script = ExtResource( 7 )
+always_succeed = true
+require_partner_id = "felix"
+
+[node name="MessageDialogAction" type="Node" parent="CheckFlags/Battle1/felix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+audio = ExtResource( 18 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_1_FELIX", "AP7_DUNGEON_DOJO_KUNEKO_A_2" ]
+
+[node name="MessageDialogAction2" type="Node" parent="CheckFlags/Battle1/felix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 23 )
+title = "FELIX_NAME"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_2_FELIX" ]
+
+[node name="nofelix" type="Node" parent="CheckFlags/Battle1"]
+script = ExtResource( 7 )
+always_succeed = true
+deny_partner_id = "felix"
+
+[node name="MessageDialogAction2" type="Node" parent="CheckFlags/Battle1/nofelix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+audio = ExtResource( 18 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_1_OTHER", "AP7_DUNGEON_DOJO_KUNEKO_A_2" ]
+
+[node name="Selector" type="Node" parent="CheckFlags/Battle1"]
+script = ExtResource( 10 )
+
+[node name="ConfirmDialogAction" type="Node" parent="CheckFlags/Battle1/Selector"]
+script = ExtResource( 15 )
+message = "AP7_DUNGEON_DOJO_KUNEKO_A_3"
+
+[node name="Yes" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+audio = ExtResource( 21 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_3_1" ]
+
+[node name="NextCombat" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction"]
+script = ExtResource( 13 )
+flag = "AP7_DUNGEON_KUNEKO_BATTLE1"
+
+[node name="Battle" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction"]
+script = ExtResource( 2 )
+result_on_player_win = 1
+disable_fleeing = true
+
+[node name="Win" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_4" ]
+
+[node name="Rewards" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction" instance=ExtResource( 11 )]
+script = ExtResource( 14 )
+menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
+menu_open_sound = ExtResource( 8 )
+
+[node name="No" type="Node" parent="CheckFlags/Battle1/Selector"]
+script = ExtResource( 6 )
+portrait = ExtResource( 20 )
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_3_2" ]
+
+[node name="Battle2" type="Node" parent="CheckFlags"]
+script = ExtResource( 7 )
+require_flags = [ "AP7_DUNGEON_KUNEKO_BATTLE1" ]
+deny_flags = [ "AP7_DUNGEON_KUNEKO_BATTLE2" ]
+
+[node name="MessageDialogAction" type="Node" parent="CheckFlags/Battle2"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_1", "AP7_DUNGEON_DOJO_KUNEKO_B_2" ]
+
+[node name="felix" type="Node" parent="CheckFlags/Battle2"]
+script = ExtResource( 7 )
+always_succeed = true
+require_partner_id = "felix"
+
+[node name="MessageDialogAction2" type="Node" parent="CheckFlags/Battle2/felix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 23 )
+title = "FELIX_NAME"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_2_FELIX" ]
+
+[node name="Selector" type="Node" parent="CheckFlags/Battle2"]
+script = ExtResource( 10 )
+
+[node name="ConfirmDialogAction" type="Node" parent="CheckFlags/Battle2/Selector"]
+script = ExtResource( 15 )
+message = "AP7_DUNGEON_DOJO_KUNEKO_A_3"
+
+[node name="Yes" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 6 )
+portrait = ExtResource( 17 )
+audio = ExtResource( 21 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_3_1" ]
+
+[node name="NextCombat1" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 13 )
+flag = "AP7_DUNGEON_KUNEKO_BATTLE1"
+
+[node name="NextCombat2" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 13 )
+flag = "AP7_DUNGEON_KUNEKO_BATTLE2"
+
+[node name="Battle" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 2 )
+result_on_player_win = 1
+disable_fleeing = true
+
+[node name="Win" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 6 )
+portrait = ExtResource( 20 )
+audio = ExtResource( 19 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_4" ]
+
+[node name="Rewards" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction" instance=ExtResource( 12 )]
+script = ExtResource( 14 )
+menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
+menu_open_sound = ExtResource( 8 )
+
+[node name="felix" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 9 )
+
+[node name="felix" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction/felix"]
+script = ExtResource( 7 )
+require_partner_id = "felix"
+
+[node name="Win2" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction/felix/felix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_5_FELIX" ]
+
+[node name="nofelix" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
+script = ExtResource( 9 )
+
+[node name="nofelix" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction/nofelix"]
+script = ExtResource( 7 )
+deny_partner_id = "felix"
+
+[node name="Win2" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction/nofelix/nofelix"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_5_OTHER" ]
+
+[node name="No" type="Node" parent="CheckFlags/Battle2/Selector"]
+script = ExtResource( 6 )
+portrait = ExtResource( 20 )
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_3_2" ]
+
+[node name="Done" type="Node" parent="CheckFlags"]
+script = ExtResource( 7 )
+require_flags = [ "AP7_DUNGEON_KUNEKO_BATTLE2" ]
+
+[node name="Bye" type="Node" parent="CheckFlags/Done"]
+script = ExtResource( 6 )
+portrait = ExtResource( 16 )
+audio = ExtResource( 22 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_6" ]

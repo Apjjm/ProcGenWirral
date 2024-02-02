@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/objects/static_physics/deadworld_props/DeadPost3.tscn" type="PackedScene" id=1]
+
+[node name="Lamp" type="Spatial"]
+
+[node name="DeadPost4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.996983, 0.0776239, 0, -0.0776239, 0.996983, 0, 0, 0, 1, 0, -0.294, 0 )

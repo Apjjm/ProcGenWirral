@@ -1,0 +1,66 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomMerchantNode.gd" type="Script" id=1]
+[ext_resource path="res://data/items/rewind.tres" type="Resource" id=2]
+[ext_resource path="res://data/items/respool.tres" type="Resource" id=3]
+[ext_resource path="res://data/items/cure_all.tres" type="Resource" id=4]
+[ext_resource path="res://data/items/cure_poisoned.tres" type="Resource" id=5]
+[ext_resource path="res://data/items/cure_burned.tres" type="Resource" id=6]
+[ext_resource path="res://data/items/cure_sleep.tres" type="Resource" id=7]
+[ext_resource path="res://data/items/cure_leeched.tres" type="Resource" id=8]
+[ext_resource path="res://nodes/actions/ExchangeMenuAction.gd" type="Script" id=9]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=11]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=12]
+[ext_resource path="res://music/demo/merchant_theme_1.ogg" type="AudioStream" id=13]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=14]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=15]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=16]
+[ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=17]
+[ext_resource path="res://data/items/tape_chrome.tres" type="Resource" id=18]
+[ext_resource path="res://data/items/cure_petrified.tres" type="Resource" id=20]
+[ext_resource path="res://data/items/cure_stat.tres" type="Resource" id=24]
+
+[node name="ItemMerchant" type="Spatial"]
+script = ExtResource( 1 )
+possible_items = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 20 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 24 ), ExtResource( 18 ) ]
+value_percentage = 2.0
+
+[node name="HumanNPC" parent="." instance=ExtResource( 16 )]
+npc_name = "AP7_DUNGEON_HEALTH_MERCHANT_NAME"
+sprite_body = null
+character = null
+
+[node name="InteractionBehavior" type="Node" parent="HumanNPC"]
+script = ExtResource( 15 )
+
+[node name="FaceTowardsAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 11 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 10 )
+
+[node name="GetPlayer" type="Node" parent="HumanNPC/InteractionBehavior/FaceTowardsAction"]
+script = ExtResource( 12 )
+
+[node name="MessageDialogAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 14 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_HEALTH_MERCHANT_OPEN" ]
+
+[node name="ChangeMusicAction" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 17 )
+music = ExtResource( 13 )
+hide_avatars_if_cutscene = false
+
+[node name="ExchangeMenuAction" type="Node" parent="HumanNPC/InteractionBehavior/ChangeMusicAction"]
+script = ExtResource( 9 )
+title = "{pawn}"
+
+[node name="MessageDialogAction2" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 14 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_GENERIC_MERCHANT_EXIT" ]

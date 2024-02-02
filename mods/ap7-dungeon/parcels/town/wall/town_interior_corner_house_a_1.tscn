@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://world/maps/HouseMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/town/props/town_house_corner_deco.tres" type="Resource" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.25, 8, 0.25 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="hitcheck" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 1.75 )
+
+[node name="wall" type="CollisionShape" parent="hitcheck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+shape = SubResource( 5 )
+
+[node name="floor" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( -393216, 0, 655432, -327680, 0, 655432, -262144, 0, 655432, -196608, 0, 655432, -131072, 0, 655432, -65536, 0, 1441842 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="post" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 1441799, 65536, 0, 1441808, 131072, 0, 1441808, 196608, 0, 1441807, 65537, 1, 1048591 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="deco" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, 2.5 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 4 )
+preview_index = 1

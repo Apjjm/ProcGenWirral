@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/battle_vfx_scripts/CameraVfx.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+initial_delay = 2.45
+sound_pitch_scale = 1.0
+sound_random_pitch = 1.1
+background_lighting = 1.0
+background_lighting_ease_duration = 0.5
+origin_anchor_name = "attack"
+target_anchor_name = "hit"
+origin_anchor_on_ground = false
+target_anchor_on_ground = false
+play_form_sound = ""
+delay = 0.0
+duration = 0.8
+tween_in_duration = 0.05
+tween_out_duration = 0.25
+jitter = Vector3( 0.5, 0.5, 0 )
+wave_amplitude = Vector3( 0, 0, 0 )
+wave_frequency = 0.0

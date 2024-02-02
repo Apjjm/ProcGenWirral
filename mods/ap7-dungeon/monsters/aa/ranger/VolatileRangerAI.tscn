@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/aa/ranger/VolatileRangerAI.gd" type="Script" id=1]
+
+[node name="VolatileRangerAI" type="Node"]
+script = ExtResource( 1 )
+max_move_orders = 2
+cooldown_wall = 3.0
+cooldown_buff = 2.0
+cooldown_debuff = 3.0
+weight_debuff = 1.01
+weight_ap_cost = -0.1

@@ -1,0 +1,14 @@
+[gd_resource type="CubeMesh" load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/shaders/GlitchEffectOverworld.gdshader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = ExtResource( 1 )
+shader_param/scale = Vector3( 0.75, 1, 0.75 )
+shader_param/thresholds = Vector2( 0.3, 0.5 )
+shader_param/power = 0.02
+shader_param/ngonality = 0.7
+shader_param/speed = 2.0
+
+[resource]
+material = SubResource( 16 )

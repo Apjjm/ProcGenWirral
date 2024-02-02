@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wallsegments/station_plainstrip.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wallsegments/station_plainstrip.tscn" type="PackedScene" id=4]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_1A.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=6]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_ceiling_3.mesh" type="ArrayMesh" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.25, 12, 0.5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 6 )
+data = {
+"cells": PoolIntArray( 1, 0, 1441798, 2, 0, 1048582, -589823, 0, 1441804, -524287, 0, 1441804, -458751, 0, 1441804, -393215, 0, 1441804, -327679, 0, 1441804, -262143, 0, 1441804, -196607, 0, 1441804, -131071, 0, 1441804, -65535, 0, 1441804, -65534, 0, 1048579, 0, 1, 655366, 1, 1, 1441801, 2, 1, 1048582, -589824, 1, 655372, -589823, 1, 1441809, -524288, 1, 655372, -524287, 1, 1441809, -458752, 1, 655372, -458751, 1, 1441809, -393216, 1, 655372, -393215, 1, 1441809, -327680, 1, 655372, -327679, 1, 1441809, -262144, 1, 655372, -262143, 1, 1441809, -196608, 1, 655372, -196607, 1, 1441809, -131072, 1, 655372, -131071, 1, 1441809, -65536, 1, 655372, -65535, 1, 1441809, -65534, 1, 1048579, 0, 2, 6, 1, 2, 6, 2, 2, 1048584, 65538, 2, 1048602, 131074, 2, 1048602, 196610, 2, 1048602, 262146, 2, 1048606, -65536, 2, 1048579, -65535, 2, 1048579, -65534, 2, 1048579 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 4, 0 )
+}
+
+[node name="viz_z" type="Spatial" parent="."]
+script = ExtResource( 3 )
+force_backface_cull = true
+
+[node name="inner" parent="viz_z" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 4 )
+
+[node name="outer" type="Spatial" parent="viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4 )
+script = ExtResource( 1 )
+parcel_set = ExtResource( 2 )
+
+[node name="cornercap" type="MeshInstance" parent="viz_z"]
+transform = Transform( -2.18557e-08, 0, 1, 0, 3, 0, -0.5, 0, -4.37114e-08, 4.5, 5, 4 )
+mesh = ExtResource( 5 )
+
+[node name="viz_x" type="Spatial" parent="."]
+script = ExtResource( 3 )
+north = Vector3( -1, 0, 0 )
+force_backface_cull = true
+
+[node name="inner" parent="viz_x" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 2, 4 )
+
+[node name="outer" type="Spatial" parent="viz_x"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 2, 2 )
+script = ExtResource( 1 )
+parcel_set = ExtResource( 2 )
+
+[node name="cornercap" type="MeshInstance" parent="viz_x"]
+transform = Transform( 0.5, 0, 0, 0, 3, 0, 0, 0, 1, 4, 5, 4.5 )
+mesh = ExtResource( 5 )
+
+[node name="edgecap2" type="MeshInstance" parent="."]
+transform = Transform( 0.0001, 0, 0, 0, 1, 0, 0, 0, 1, 4, 9, 5 )
+mesh = ExtResource( 7 )
+
+[node name="edgecap1" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-10, 1, 0, -0.01, -4.37114e-08, 0, 0, 0, 1, 4.25, 0, 4.25 )
+mesh = ExtResource( 7 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 12, 4 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 12, 2.25 )
+shape = SubResource( 1 )

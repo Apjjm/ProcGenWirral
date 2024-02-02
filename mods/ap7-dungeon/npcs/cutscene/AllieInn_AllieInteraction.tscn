@@ -1,0 +1,159 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=1]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Repeater.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=5]
+[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=6]
+[ext_resource path="res://data/items/pulp.tres" type="Resource" id=7]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Failer.gd" type="Script" id=8]
+[ext_resource path="res://nodes/actions/RemoveNodeAction.gd" type="Script" id=9]
+[ext_resource path="res://data/items/coffee1.tres" type="Resource" id=10]
+[ext_resource path="res://nodes/actions/ExchangeMenuAction.gd" type="Script" id=11]
+[ext_resource path="res://data/exchange_scripts/SimpleExchange.gd" type="Script" id=12]
+[ext_resource path="res://addons/misc_utils/actions/values/GetNode.gd" type="Script" id=13]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=14]
+[ext_resource path="res://data/items/coffee2.tres" type="Resource" id=15]
+[ext_resource path="res://data/items/pear_fusilli.tres" type="Resource" id=16]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/FusionStatRewardMenu.tscn" type="PackedScene" id=17]
+[ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=18]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=19]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=20]
+[ext_resource path="res://nodes/actions/ConfirmDialogAction.gd" type="Script" id=21]
+[ext_resource path="res://nodes/actions/MenuDialogAction.gd" type="Script" id=22]
+[ext_resource path="res://nodes/actions/ChangeTrackerTargetAction.gd" type="Script" id=23]
+[ext_resource path="res://sfx/cries/binvader_cry.wav" type="AudioStream" id=24]
+[ext_resource path="res://music/demo/menacing_theme.ogg" type="AudioStream" id=25]
+
+[sub_resource type="Resource" id=31]
+script = ExtResource( 12 )
+item = ExtResource( 10 )
+max_amount = 1000
+only_sold_if_unowned = false
+currency = ExtResource( 7 )
+
+[sub_resource type="Resource" id=32]
+script = ExtResource( 12 )
+item = ExtResource( 15 )
+max_amount = 1000
+only_sold_if_unowned = false
+currency = ExtResource( 7 )
+
+[sub_resource type="Resource" id=33]
+script = ExtResource( 12 )
+item = ExtResource( 16 )
+max_amount = 1000
+only_sold_if_unowned = false
+currency = ExtResource( 7 )
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Intro" type="Node" parent="."]
+script = ExtResource( 4 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_INTRO_1a" ]
+
+[node name="NormalDialogue_Repeater" type="Node" parent="."]
+script = ExtResource( 2 )
+stop_on_failure = true
+
+[node name="Intro2" type="Node" parent="NormalDialogue_Repeater"]
+script = ExtResource( 4 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_MENU" ]
+
+[node name="MenuDialogAction" type="Node" parent="NormalDialogue_Repeater"]
+script = ExtResource( 22 )
+menu_options = [ "AP7_DUNGEON_INN_BARKEEP_OPTION_1", "AP7_DUNGEON_INN_BARKEEP_OPTION_2", "AP7_DUNGEON_INN_BARKEEP_OPTION_3" ]
+formatting = [ "[color=#3fbb9f]{0}[/color]", "", "" ]
+
+[node name="Rowdy" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 5 )
+deny_flags = [ "AP7_DUNGEON_INN_COMBAT" ]
+
+[node name="Info" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 4 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_ITEM_1_1", "AP7_DUNGEON_INN_BARKEEP_ITEM_1_2" ]
+
+[node name="Cofirm" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 21 )
+message = "AP7_DUNGEON_INN_BARKEEP_ITEM_1_CONFIRM"
+
+[node name="SetCombat" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 20 )
+flag = "AP7_DUNGEON_INN_COMBAT"
+
+[node name="Music" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 18 )
+music = ExtResource( 25 )
+music_vox = ExtResource( 25 )
+
+[node name="Camera" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music"]
+script = ExtResource( 23 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetNode" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music/Camera"]
+script = ExtResource( 13 )
+path = NodePath("../../../../../../../../../../TargetCutscene")
+
+[node name="BattleStartDialog" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music/Camera"]
+script = ExtResource( 4 )
+audio = ExtResource( 24 )
+title = "AP7_DUNGEON_INN_BINVADER_NAME"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_ITEM_1_START_1", "AP7_DUNGEON_INN_BARKEEP_ITEM_1_START_2" ]
+
+[node name="Battle" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music/Camera"]
+script = ExtResource( 1 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+
+[node name="RemoveBins" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music/Camera"]
+script = ExtResource( 9 )
+animation = 0
+
+[node name="GetNode" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy/Music/Camera/RemoveBins"]
+script = ExtResource( 13 )
+path = NodePath("../../../../../../../../../../Crowd")
+
+[node name="BattleOverDialog" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 4 )
+messages = [ "AP7_DUNGEON_INN_BARKEEP_ITEM_1_END" ]
+
+[node name="Rewards" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy" instance=ExtResource( 17 )]
+script = ExtResource( 19 )
+menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
+menu_open_sound = ExtResource( 6 )
+
+[node name="Failer" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Rowdy"]
+script = ExtResource( 8 )
+
+[node name="Order" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 14 )
+
+[node name="MessageDialogAction2" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Order"]
+script = ExtResource( 4 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_ITEM_2_1" ]
+
+[node name="Exchange" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Order"]
+script = ExtResource( 11 )
+exchanges = [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ]
+discountable = false
+
+[node name="Leave" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction"]
+script = ExtResource( 14 )
+
+[node name="MessageDialogAction" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Leave"]
+script = ExtResource( 4 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_INN_BARKEEP_ITEM_3_1" ]
+
+[node name="Failer" type="Node" parent="NormalDialogue_Repeater/MenuDialogAction/Leave"]
+script = ExtResource( 8 )

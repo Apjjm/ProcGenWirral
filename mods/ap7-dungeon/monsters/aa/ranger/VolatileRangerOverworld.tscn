@@ -1,0 +1,343 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/FixedEncounterNode.gd" type="Script" id=1]
+[ext_resource path="res://music/demo/battle_archangel_vox.ogg" type="AudioStream" id=2]
+[ext_resource path="res://music/demo/battle_archangel_instr.ogg" type="AudioStream" id=3]
+[ext_resource path="res://mods/ap7-dungeon/monsters/aa/ranger/VolatileRangerAI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/layered_sprite/WorldHumanSprite3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=6]
+[ext_resource path="res://world/npc/HumanNPC.gd" type="Script" id=7]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=8]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogAction.gd" type="Script" id=9]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogForAAAction.gd" type="Script" id=10]
+[ext_resource path="res://nodes/sprite_container/SpriteContainer.gd" type="Script" id=11]
+[ext_resource path="res://world/core/Interaction.tscn" type="PackedScene" id=12]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/PartnerDialog.gd" type="Script" id=13]
+[ext_resource path="res://world/npc/EmotePlayer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://world/npc/Footsteps.tscn" type="PackedScene" id=15]
+[ext_resource path="res://world/npc/FloorRay.gd" type="Script" id=16]
+[ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=17]
+[ext_resource path="res://world/npc/Controls.gd" type="Script" id=18]
+[ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=19]
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=20]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=21]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=22]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonRangerCharacterConfig.gd" type="Script" id=23]
+[ext_resource path="res://mods/ap7-dungeon/shaders/GlitchEffect.gdshader" type="Shader" id=24]
+[ext_resource path="res://menus/boss_title/TitleBannerConfig.gd" type="Script" id=25]
+[ext_resource path="res://menus/boss_title/ArchangelTitleBanner.tscn" type="PackedScene" id=26]
+[ext_resource path="res://nodes/actions/SetWireStateAction.gd" type="Script" id=27]
+[ext_resource path="res://nodes/actions/SetNPCStateAction.gd" type="Script" id=28]
+[ext_resource path="res://nodes/actions/RemoveNodeAction.gd" type="Script" id=29]
+[ext_resource path="res://nodes/misc_shaders/WorldAnalogueHorror.tscn" type="PackedScene" id=30]
+[ext_resource path="res://nodes/actions/InstanceNodeAction.gd" type="Script" id=31]
+[ext_resource path="res://addons/misc_utils/actions/values/GetNode.gd" type="Script" id=32]
+[ext_resource path="res://addons/misc_utils/actions/CallMethodAction.gd" type="Script" id=33]
+[ext_resource path="res://music/demo/archangel_encounter.ogg" type="AudioStream" id=34]
+[ext_resource path="res://nodes/actions/ZoomCameraAction.gd" type="Script" id=35]
+[ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=36]
+[ext_resource path="res://nodes/actions/SetTrackerTargetAction.gd" type="Script" id=37]
+[ext_resource path="res://nodes/actions/ChangeTrackerTargetAction.gd" type="Script" id=38]
+[ext_resource path="res://addons/misc_utils/actions/WaitAction.gd" type="Script" id=39]
+[ext_resource path="res://sfx/typing/archangel/archangel.tres" type="Resource" id=40]
+[ext_resource path="res://sprites/portraits/meredith_thinking.png" type="Texture" id=41]
+[ext_resource path="res://sprites/portraits/felix_thinking.png" type="Texture" id=42]
+[ext_resource path="res://sprites/portraits/eugene_thinking.png" type="Texture" id=43]
+[ext_resource path="res://sprites/portraits/kayleigh_thinking.png" type="Texture" id=44]
+[ext_resource path="res://sprites/portraits/viola_thinking.png" type="Texture" id=45]
+[ext_resource path="res://mods/ap7-dungeon/monsters/loot/loot_volatileRanger.tres" type="Resource" id=46]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=47]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=48]
+[ext_resource path="res://addons/misc_utils/wiring/Wire.gd" type="Script" id=49]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/FusionStatRewardMenu.tscn" type="PackedScene" id=50]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 25 )
+banner_scene = ExtResource( 26 )
+title = "AP7_VOLATILE_RANGER_BANNER_TITLE"
+subtitle = "AP7_VOLATILE_RANGER_BANNER_SUBTITLE"
+title_subs = {
+}
+tutorial = ""
+title_is_monster_name = false
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.9
+height = 0.9
+
+[sub_resource type="CapsuleMesh" id=5]
+radius = 1.75
+mid_height = 1.75
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 24 )
+shader_param/scale = Vector3( 0.7, 1.4, 0.7 )
+shader_param/thresholds = Vector2( 0.4, 0.8 )
+shader_param/power = 0.01
+shader_param/ngonality = 0.6
+shader_param/speed = 2.0
+shader_param/clip_depth = 1.8
+
+[node name="VolatileRangerGen" type="Spatial"]
+script = ExtResource( 1 )
+randomize_npc_sprite = true
+music_novox = ExtResource( 3 )
+music_vox = ExtResource( 2 )
+encounter_exp = 200
+title_banner = SubResource( 6 )
+copy_human_sprite = true
+max_tapes_per_char = 1
+loot_table_override = ExtResource( 46 )
+
+[node name="FighterConfig" type="Node" parent="."]
+script = ExtResource( 23 )
+character_name = "AP7_VOLATILE_RANGER"
+level_scale_override_key = "monster_boss_smart"
+exp_yield = 100
+character_kind = 1
+ai = ExtResource( 4 )
+disable_overspill_damage = true
+max_ap = 10
+base_max_hp = 600
+base_melee_attack = 125
+base_melee_defense = 125
+base_ranged_attack = 125
+base_ranged_defense = 125
+
+[node name="Wire" type="Spatial" parent="."]
+script = ExtResource( 49 )
+
+[node name="HumanNPC" type="KinematicBody" parent="."]
+collision_layer = 144
+collision_mask = 32785
+script = ExtResource( 7 )
+direction = Vector2( 0, 1 )
+npc_name = "AP7_VOLATILE_RANGER"
+sprite_colors = {
+"body_color_1": -1,
+"body_color_2": -1,
+"eye_color": -1,
+"face_accessory_color": -1,
+"favorite_color": -1,
+"hair_accessory_color": -1,
+"hair_color": -1,
+"legs_color": -1,
+"shoe_color": -1,
+"skin_color": -1
+}
+sprite_part_names = {
+"arms": "sweater1",
+"body": "sweater1",
+"hair": "short",
+"head": "generic",
+"legs": "generic",
+"wings": "generic"
+}
+human_colors/body_color_1 = -1
+human_colors/body_color_2 = -1
+human_colors/eye_color = -1
+human_colors/face_accessory_color = -1
+human_colors/favorite_color = -1
+human_colors/hair_accessory_color = -1
+human_colors/hair_color = -1
+human_colors/legs_color = -1
+human_colors/shoe_color = -1
+human_colors/skin_color = -1
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="HumanNPC"]
+aabb = AABB( -2, -1, -2, 4, 4.7, 4 )
+max_distance = 100.0
+
+[node name="CollisionShape" type="CollisionShape" parent="HumanNPC"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Spatial" parent="HumanNPC"]
+script = ExtResource( 11 )
+idle = "idle"
+direction = "down"
+billboard_depth_hack = true
+wave_amplitude = 0.01
+wave_t_frequency = 20.0
+wave_v_frequency = 20.0
+
+[node name="HumanSprite" parent="HumanNPC/Sprite" instance=ExtResource( 5 )]
+
+[node name="EmotePlayer" parent="HumanNPC" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="Interaction" parent="HumanNPC" instance=ExtResource( 12 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="HumanNPC/Interaction"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 1 )
+
+[node name="Footsteps" parent="HumanNPC" instance=ExtResource( 15 )]
+
+[node name="Controls" type="Node" parent="HumanNPC"]
+script = ExtResource( 18 )
+
+[node name="FloorRay" type="RayCast" parent="HumanNPC"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+enabled = true
+cast_to = Vector3( 0, -5, 0 )
+collision_mask = 8193
+collide_with_areas = true
+script = ExtResource( 16 )
+
+[node name="StateMachine" parent="HumanNPC" instance=ExtResource( 6 )]
+
+[node name="InteractionBehavior" type="Node" parent="HumanNPC"]
+script = ExtResource( 22 )
+
+[node name="NotBattled" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 48 )
+always_succeed = true
+deny_flags = [ "AP7_VOLATILE_RANGER_DEFEATED" ]
+
+[node name="ChangeTrackerTargetAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled"]
+script = ExtResource( 38 )
+
+[node name="Succeeder" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 8 )
+
+[node name="FaceTowardsAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction/Succeeder"]
+script = ExtResource( 20 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="GetPawn" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction/Succeeder/FaceTowardsAction"]
+script = ExtResource( 19 )
+
+[node name="GetPlayer" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction/Succeeder/FaceTowardsAction"]
+script = ExtResource( 21 )
+
+[node name="ChangeMusicAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 36 )
+music = ExtResource( 34 )
+revert_on_exit = false
+
+[node name="InstanceNodeAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 31 )
+scene = ExtResource( 30 )
+parent = 1
+
+[node name="ZoomCameraAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 35 )
+__meta__ = {
+"action_tree": true
+}
+wait_for_arrival = false
+wait_for_exit = false
+zoom = 1.5
+revert_on_exit = false
+
+[node name="SetTrackerTargetAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 37 )
+
+[node name="WaitAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 39 )
+base_seconds = 0.5
+
+[node name="DialogIntro" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 9 )
+type_sounds = ExtResource( 40 )
+title = "{pawn}"
+style = 1
+message_loc_key = "AP7_VOLATILE_RANGER_BATTLE_"
+counter_key = "AP7_DUNGEON_VOLATILE_RANGER_DIALOG1"
+message_count = 7
+advance_counter = true
+
+[node name="DialogIntro2" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 10 )
+type_sounds = ExtResource( 40 )
+title = "{pawn}"
+style = 1
+morgante = "AP7_VOLATILE_RANGER_BATTLE_MORGANTE"
+lamento = "AP7_VOLATILE_RANGER_BATTLE_LAMENTO"
+cube = "AP7_VOLATILE_RANGER_BATTLE_CUBE"
+alice = "AP7_VOLATILE_RANGER_BATTLE_ALICE"
+puppetox = "AP7_VOLATILE_RANGER_BATTLE_PUPPETOX"
+tower = "AP7_VOLATILE_RANGER_BATTLE_TOWER"
+helia = "AP7_VOLATILE_RANGER_BATTLE_HELIA"
+monarch = "AP7_VOLATILE_RANGER_BATTLE_MONARCH"
+mammon = "AP7_VOLATILE_RANGER_BATTLE_MAMMON"
+morningstar = "AP7_VOLATILE_RANGER_BATTLE_MORNINGSTAR"
+robin = "AP7_VOLATILE_RANGER_BATTLE_ROBIN"
+aleph = "AP7_VOLATILE_RANGER_BATTLE_ALEPH"
+clown = "AP7_VOLATILE_RANGER_BATTLE_CLOWN"
+counter_key = "AP7_VOLATILE_RANGER_BATTLE2"
+advance_counter = true
+
+[node name="BattleAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 17 )
+result_on_player_win = 1
+result_on_player_loss = 0
+result_on_flee = 0
+disable_fleeing = true
+
+[node name="SetNPCStateAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 28 )
+state = "Defeated"
+
+[node name="ChangeMusicAction2" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 36 )
+revert_on_exit = false
+
+[node name="DialogVictory" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 13 )
+kayleigh_messages = [ "AP7_VOLATILE_RANGER_VICTORY_KAYLEIGH" ]
+meredith_messages = [ "AP7_VOLATILE_RANGER_VICTORY_MEREDITH" ]
+felix_messages = [ "AP7_VOLATILE_RANGER_VICTORY_FELIX" ]
+eugene_messages = [ "AP7_VOLATILE_RANGER_VICTORY_EUGENE" ]
+viola_messages = [ "AP7_VOLATILE_RANGER_VICTORY_VIOLA" ]
+dog_messages = [ "AP7_VOLATILE_RANGER_VICTORY_DOG" ]
+kayleigh_portrait = ExtResource( 44 )
+meredith_portrait = ExtResource( 41 )
+felix_portrait = ExtResource( 42 )
+eugene_portrait = ExtResource( 43 )
+viola_portrait = ExtResource( 45 )
+dog_is_narrated = true
+
+[node name="SetDefeatedFlagAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 47 )
+flag = "AP7_VOLATILE_RANGER_DEFEATED"
+
+[node name="Rewards" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 8 )
+
+[node name="Rewards" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction/Rewards" instance=ExtResource( 50 )]
+
+[node name="CallMethodAction" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction"]
+script = ExtResource( 33 )
+method = "fade_out"
+
+[node name="GetNode" type="Node" parent="HumanNPC/InteractionBehavior/NotBattled/ChangeTrackerTargetAction/CallMethodAction"]
+script = ExtResource( 32 )
+path = NodePath("../../../../..")
+node_name = "WorldAnalogueHorror"
+
+[node name="BattleCompleted" type="Node" parent="HumanNPC/InteractionBehavior"]
+script = ExtResource( 48 )
+require_flags = [ "AP7_VOLATILE_RANGER_DEFEATED" ]
+
+[node name="SetWireStateAction" type="Node" parent="HumanNPC/InteractionBehavior/BattleCompleted"]
+script = ExtResource( 27 )
+wire = NodePath("../../../../Wire")
+state = true
+wait_for_animation = false
+
+[node name="RemoveNodeAction" type="Node" parent="HumanNPC/InteractionBehavior/BattleCompleted"]
+script = ExtResource( 29 )
+animation = 1
+
+[node name="GlitchyOrb" type="MeshInstance" parent="HumanNPC"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 4 )
+
+[connection signal="screen_entered" from="HumanNPC/VisibilityNotifier" to="HumanNPC" method="set_paused" binds= [ false ]]
+[connection signal="screen_exited" from="HumanNPC/VisibilityNotifier" to="HumanNPC" method="set_paused" binds= [ true ]]

@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/maps/HouseMeshlib.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://models/world_scenes/world_house/world_house_ceiling_1A.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://models/world_scenes/world_house/world_house_wall_1A.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://models/world_scenes/world_house/world_house_ceiling_3A.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://models/world_scenes/world_house/world_house_ceiling_4A.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/lamppost/df_lamppost_town_1.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 11, 8, 1.3 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 0.5, 2 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.3, 2, 0.3 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="Floor_LR" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 1, 655414, 1, 1, 655414, 2, 1, 655414, 3, 1, 655414, 7, 1, 655414, 8, 1, 655414, 9, 1, 655414, 10, 1, 655414, -393216, 1, 655424, -393215, 1, 655424, -393214, 1, 655424, -393213, 1, 655424, -393209, 1, 655424, -393208, 1, 655424, -393207, 1, 655424, -393206, 1, 655424, -327680, 1, 655424, -327679, 1, 655424, -327678, 1, 655424, -327677, 1, 655424, -327673, 1, 655424, -327672, 1, 655424, -327671, 1, 655424, -327670, 1, 655424, -262144, 1, 655424, -262143, 1, 655424, -262142, 1, 655424, -262141, 1, 655424, -262137, 1, 655424, -262136, 1, 655424, -262135, 1, 655424, -262134, 1, 655424, -196608, 1, 655424, -196607, 1, 655424, -196606, 1, 655424, -196605, 1, 655424, -196601, 1, 655424, -196600, 1, 655424, -196599, 1, 655424, -196598, 1, 655424, -131072, 1, 655424, -131071, 1, 655424, -131070, 1, 655424, -131069, 1, 655424, -131065, 1, 655424, -131064, 1, 655424, -131063, 1, 655424, -131062, 1, 655424, -65536, 1, 655409, -65535, 1, 655409, -65534, 1, 655409, -65533, 1, 655409, -65529, 1, 655409, -65528, 1, 655409, -65527, 1, 655409, -65526, 1, 655409, -65536, 2, 48, -65535, 2, 48, -65534, 2, 48, -65533, 2, 48, -65529, 2, 48, -65528, 2, 48, -65527, 2, 48, -65526, 2, 48, -65536, 3, 49, -65535, 3, 49, -65534, 3, 49, -65533, 3, 49, -65529, 3, 49, -65528, 3, 49, -65527, 3, 49, -65526, 3, 49 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="lamppost_L" parent="Wall_LR" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.375 )
+
+[node name="lamppost_R" parent="Wall_LR" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2.375 )
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="Floor_L" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 1, 655414, 1, 1, 655414, 2, 1, 655414, 3, 1, 655414, -393216, 1, 655424, -393215, 1, 655424, -393214, 1, 655424, -393213, 1, 655424, -327680, 1, 655424, -327679, 1, 655424, -327678, 1, 655424, -327677, 1, 655424, -262144, 1, 655424, -262143, 1, 655424, -262142, 1, 655424, -262141, 1, 655424, -196608, 1, 655424, -196607, 1, 655424, -196606, 1, 655424, -196605, 1, 655424, -131072, 1, 655424, -131071, 1, 655424, -131070, 1, 655424, -131069, 1, 655424, -65536, 1, 655409, -65535, 1, 655409, -65534, 1, 655409, -65533, 1, 655409, -65536, 2, 48, -65535, 2, 48, -65534, 2, 48, -65533, 2, 48, -65536, 3, 49, -65535, 3, 49, -65534, 3, 49, -65533, 3, 49 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="lamppost_L" parent="Wall_L" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2.375 )
+
+[node name="Wall_R" type="Spatial" parent="."]
+
+[node name="Floor_R" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 7, 1, 655414, 8, 1, 655414, 9, 1, 655414, 10, 1, 655414, -393209, 1, 655424, -393208, 1, 655424, -393207, 1, 655424, -393206, 1, 655424, -327673, 1, 655424, -327672, 1, 655424, -327671, 1, 655424, -327670, 1, 655424, -262137, 1, 655424, -262136, 1, 655424, -262135, 1, 655424, -262134, 1, 655424, -196601, 1, 655424, -196600, 1, 655424, -196599, 1, 655424, -196598, 1, 655424, -131065, 1, 655424, -131064, 1, 655424, -131063, 1, 655424, -131062, 1, 655424, -65529, 1, 655409, -65528, 1, 655409, -65527, 1, 655409, -65526, 1, 655409, -65529, 2, 48, -65528, 2, 48, -65527, 2, 48, -65526, 2, 48, -65529, 3, 49, -65528, 3, 49, -65527, 3, 49, -65526, 3, 49 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="lamppost_R" parent="Wall_R" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2.375 )
+
+[node name="Floor" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 4, 0, 69, 5, 0, 69, 4, 1, 59, 5, 1, 60, 6, 1, 655414, -393212, 1, 655424, -393211, 1, 655424, -393210, 1, 655424, -327676, 1, 655424, -327675, 1, 655424, -327674, 1, 655424, -262140, 1, 655424, -262139, 1, 655424, -262138, 1, 655424, -196604, 1, 655424, -196603, 1, 655424, -196602, 1, 655424, -131068, 1, 655424, -131067, 1, 655424, -131066, 1, 655424, -65532, 1, 655409, -65531, 1, 655409, -65530, 1, 655409, -65532, 2, 1441840, -65531, 2, 1441840, -65530, 2, 1441840, -65532, 3, 49, -65531, 3, 49, -65530, 3, 49, 4, 65534, 655420, 5, 65534, 655419, 6, 65534, 54, -65532, 65534, 49, -65531, 65534, 49, -65530, 65534, 49, 4, 65535, 655429, 5, 65535, 655429 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="monster" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 1 )
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="wall" type="CollisionShape" parent="monster"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8, 0.3 )
+shape = SubResource( 1 )
+
+[node name="bridge" type="Spatial" parent="."]
+
+[node name="trim_u2" type="MeshInstance" parent="bridge"]
+transform = Transform( -8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 11.001, 2, 0 )
+mesh = ExtResource( 3 )
+
+
+[node name="trim_u1" type="MeshInstance" parent="bridge"]
+transform = Transform( -8.74228e-08, 0, -1, 0, 1, 0, 2, 0, -4.37114e-08, 7.499, 2, 0 )
+mesh = ExtResource( 3 )
+
+
+[node name="trim_p1" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 2, 0, 0, 0, 1.03, 7.48, 2, 3.02 )
+mesh = ExtResource( 6 )
+
+
+[node name="trim_t1" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 1, 0, 0, 0, 1.03, 7.48, 5, -1.48 )
+mesh = ExtResource( 5 )
+
+
+[node name="trim_p2" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 2, 0, 0, 0, 1.03, 7.48, 2, -1.48 )
+mesh = ExtResource( 6 )
+
+
+[node name="trim_t2" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 1, 0, 0, 0, 1.03, 7.48, 5, 3.02 )
+mesh = ExtResource( 5 )
+
+
+[node name="trim_p3" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 2, 0, 0, 0, 1.03, 10.999, 2, 3.02 )
+mesh = ExtResource( 6 )
+
+
+[node name="trim_t3" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 1, 0, 0, 0, 1.03, 10.999, 5, 3.02 )
+mesh = ExtResource( 5 )
+
+
+[node name="trim_p4" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 2, 0, 0, 0, 1.03, 10.99, 2, -1.48 )
+mesh = ExtResource( 6 )
+
+
+[node name="trim_t4" type="MeshInstance" parent="bridge"]
+transform = Transform( 1.02, 0, 0, 0, 1, 0, 0, 0, 1.03, 10.999, 5, -1.48 )
+mesh = ExtResource( 5 )
+
+
+[node name="BridgeDetailing" type="GridMap" parent="bridge"]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 4, 0, 1048620, 5, 0, 1048620, 65540, 0, 1048589, 65541, 0, 1441805, 4, 65535, 1048620, 5, 65535, 1048620, 65540, 65535, 1048589, 65541, 65535, 1441805 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="StaticBody" type="StaticBody" parent="bridge"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7936, 2.50836, 2.24208 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7961, 2.50836, 2.24208 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7936, 2.50836, -2.18849 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="bridge/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7961, 2.50836, -2.18849 )
+shape = SubResource( 3 )
+
+[node name="cap" type="MeshInstance" parent="."]
+transform = Transform( 8.74228e-08, -1.49012e-08, 1, -8.74228e-08, -0.5, -2.98023e-08, 2, -2.18557e-08, -4.37114e-08, 12.5, 1.5, -4.37114e-08 )
+mesh = ExtResource( 4 )
+
+
+[node name="cap2" type="MeshInstance" parent="."]
+transform = Transform( 8.74228e-08, -4.47035e-08, 1, -8.74228e-08, -0.5, -8.9407e-08, 2, -2.18557e-08, -4.37114e-08, 8.5, 1.5, 0 )
+mesh = ExtResource( 4 )
+

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/MonsterForm.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "AP7_DUNGEON_AAHAND_NAME"
+swap_colors = [  ]
+default_palette = [  ]
+emission_palette = [  ]
+named_positions = {
+"attack": NodePath("Positions/attack"),
+"decoy": NodePath("Positions/decoy"),
+"eye": NodePath("Positions/eye"),
+"hit": NodePath("Positions/hit"),
+"melee_range": NodePath("Positions/melee_range")
+}
+elemental_types = [  ]
+exp_yield = 300
+require_dlc = ""
+battle_sprite_path = "res://mods/ap7-dungeon/monsters/aa/hand/aa_hand_battle.tscn"
+ui_sprite_path = "res://mods/ap7-dungeon/monsters/aa/hand/aa_hand_battle.tscn"
+pronouns = 2
+description = ""
+max_hp = 600
+melee_attack = 150
+melee_defense = 200
+ranged_attack = 150
+ranged_defense = 200
+speed = 1
+accuracy = 100
+evasion = 100
+max_ap = 10
+move_slots = 8
+evolutions = [  ]
+evolution_specialization_question = ""
+capture_rate = 0
+exp_gradient = 14
+exp_base_level = 0
+move_tags = [  ]
+initial_moves = [  ]
+tape_upgrades = [  ]
+unlock_ability = ""
+fusion_name_prefix = ""
+fusion_name_suffix = ""
+fusion_generator_path = ""
+bestiary_index = -1
+bestiary_category = 1
+bestiary_bios = [ "AP7_DUNGEON_AAHAND_BESTIARY_1" ]
+bestiary_data_requirement = 1
+bestiary_data_requirement_flag = ""
+loot_table = ""

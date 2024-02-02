@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://data/battle_moves/ritual.tres" type="Resource" id=1]
+[ext_resource path="res://battle/ai/WeightedAIMovePreference.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/monsters/aa/hand/AAHandAI.gd" type="Script" id=3]
+
+[node name="ArchangelAI" type="Node"]
+script = ExtResource( 3 )
+max_move_orders = 2
+
+[node name="RitualPreference" type="Node" parent="."]
+script = ExtResource( 2 )
+move = ExtResource( 1 )
+score = 100.0

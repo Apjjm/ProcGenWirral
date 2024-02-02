@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/npcs/KunekoWithQuest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWalkAction.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Kuneko" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+
+[node name="walk" type="Node" parent="Kuneko/Kuneko/IdleBehavior" index="2"]
+script = ExtResource( 2 )
+__meta__ = {
+"action_tree": true
+}
+max_ticks = 4
+hide_avatars_if_cutscene = false
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 15 )
+script = ExtResource( 7 )
+possible_types = 4
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15 )
+script = ExtResource( 7 )
+possible_types = 4
+
+[editable path="Kuneko"]
+[editable path="Kuneko/Kuneko"]

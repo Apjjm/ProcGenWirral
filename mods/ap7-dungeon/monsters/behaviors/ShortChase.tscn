@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MoveTowardsPlayerAction.gd" type="Script" id=1]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=2]
+
+[node name="Sequence" type="Node"]
+script = ExtResource( 2 )
+
+[node name="player_step1" type="Node" parent="."]
+script = ExtResource( 1 )
+max_ticks = 2
+motion_type = 3
+
+[node name="player_step_random" type="Node" parent="."]
+script = ExtResource( 1 )
+max_ticks = 2
+motion_type = 2
+
+[node name="player_step2" type="Node" parent="."]
+script = ExtResource( 1 )
+max_ticks = 2
+motion_type = 3

@@ -1,0 +1,48 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/battle_move_scripts/PureStatus.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/status/AwakeningStatus.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "AP7_DUNGEON_MOVE_NAME_AWAKENING"
+category_name = "MOVE_CATEGORY_STATUS"
+description = "AP7_DUNGEON_MOVE_DESC_AWAKENING"
+title_override = ""
+tags = [  ]
+priority = 0
+cost = 4
+is_debug = false
+is_passive_only = false
+power = 0
+physicality = 1
+target_type = 2
+default_target = 1
+elemental_types = [  ]
+accuracy = 100
+unavoidable = false
+crit_rate_numerator = 1
+crit_rate_denominator = 16
+crit_damage_percent = 150
+play_attack_animation = true
+fade_lights_during_attack = false
+windup_animation = "windup"
+attack_animation = "attack"
+windup_sfx_override = [  ]
+attack_vfx = [  ]
+play_attack_vfx_against_allies = true
+attack_duration = 0.0
+hit_vfx = [  ]
+hit_delay = 0.0
+disable_melee_movement = false
+can_be_copied = true
+camera_state_override = ""
+status_effects = [ ExtResource( 2 ) ]
+amount = 3
+varied_amounts = [  ]
+status_effects_to_apply = 0
+num_at_random = 1
+fail_if_already_present = true
+fail_against_archangels = false
+fail_if_has_tag = "ap7awakening"
+sacrifice_hp_percent = 0

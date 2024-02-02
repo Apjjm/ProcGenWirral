@@ -1,0 +1,206 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=1]
+[ext_resource path="res://ui/fonts/regular/regular_50.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/fonts/regular/regular_36.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/fonts/regular/regular_36_italic.tres" type="DynamicFont" id=4]
+[ext_resource path="res://ui/fonts/regular/regular_36_bold.tres" type="DynamicFont" id=5]
+[ext_resource path="res://mods/ap7-dungeon/treasure/GetTreasureMessage.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 16.0
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+corner_radius_top_right = 128
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -16, 16 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -16, 16 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+content_margin_top = 2.0
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_bottom_right = 64
+corner_detail = 1
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -16, 16 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "get_item"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:anchor_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.35 ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.47
+rect_pivot_offset = Vector2( -1845, 0 )
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0.2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 608.0
+margin_top = 177.0
+margin_right = 1312.0
+margin_bottom = 329.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 704.0
+margin_bottom = 70.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 400.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 400, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+margin_left = 16.0
+margin_right = 400.0
+margin_bottom = 70.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "LOOT_TITLE"
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 404.0
+margin_right = 704.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 704.0
+margin_bottom = 132.0
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+margin_right = 704.0
+margin_bottom = 62.0
+mouse_filter = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = 4
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 696.0
+margin_bottom = 58.0
+mouse_filter = 2
+custom_constants/separation = 16
+
+[node name="IconTexture" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 52, 0 )
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="ItemLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2/HBoxContainer"]
+margin_left = 68.0
+margin_top = 2.0
+margin_right = 688.0
+margin_bottom = 51.0
+rect_clip_content = false
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 3 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+bbcode_enabled = true
+text = "ITEM_TEXT"
+fit_content_height = true
+scroll_active = false
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
+margin_right = 704.0
+margin_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = -2
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+
+[node name="CountLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer3"]
+margin_left = 8.0
+margin_top = -2.0
+margin_right = 696.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "x1"
+align = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 704.0
+margin_bottom = 152.0
+custom_constants/separation = 0
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+show_behind_parent = true
+margin_right = 704.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+custom_styles/panel = SubResource( 7 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/get_item = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -0.4
+bus = "Music"

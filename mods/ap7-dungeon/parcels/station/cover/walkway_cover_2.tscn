@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12 )
+script = ExtResource( 1 )
+possible_types = 4
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 12 )
+script = ExtResource( 1 )
+possible_types = 4
+
+[node name="PointOfInterest_y1_x3" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 14 )
+script = ExtResource( 1 )
+possible_types = 4
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+y_min = -15.0
+y_max = 15.0
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+script = ExtResource( 1 )
+possible_types = 8

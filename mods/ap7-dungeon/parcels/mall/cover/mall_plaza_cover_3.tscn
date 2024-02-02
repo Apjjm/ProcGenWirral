@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://world/objects/grass/GrassParticles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/objects/grass/grass_emitter.shader" type="Shader" id=2]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=3]
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/random_seed = -51082
+shader_param/offset = Vector3( 0, 1, 0 )
+shader_param/rows = 2
+shader_param/spacing = 1.25
+shader_param/rand_theta_max = 0.5
+shader_param/rand_flip = true
+shader_param/aabb_min = Vector3( -2, 0, -2 )
+shader_param/aabb_max = Vector3( 0.5, 4, 4 )
+shader_param/num_frames = 20
+shader_param/frame_odds_curve = 3.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 3 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 3 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 3 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 3 )
+possible_types = 5
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6773, 0.53, 12 )
+script = ExtResource( 5 )
+y_min = -15.0
+y_max = 15.0
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+script = ExtResource( 3 )
+possible_types = 9
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 10 )
+
+[node name="GridMap" type="GridMap" parent="Spatial"]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 0, 65532, 1441796, 1, 65532, 655364, 0, 65533, 1441797, 1, 65533, 1048581, 0, 65534, 1441797, 1, 65534, 1048581, 0, 65535, 4, 1, 65535, 1048580 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="GrassParticles2" parent="Spatial" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66302, 0.247356, -5.08207 )
+amount = 8
+visibility_aabb = AABB( -2, 0, -2, 2.5, 4, 6 )
+process_material = SubResource( 1 )

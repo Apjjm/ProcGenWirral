@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://sprites/items/respool.png" type="Texture" id=1]
+[ext_resource path="res://data/exchange_scripts/InflatingExchange.gd" type="Script" id=2]
+[ext_resource path="res://data/items/respool.tres" type="Resource" id=3]
+[ext_resource path="res://data/items/metal.tres" type="Resource" id=5]
+
+[resource]
+script = ExtResource( 2 )
+item = ExtResource( 3 )
+max_amount = 2
+only_sold_if_unowned = false
+name = "ITEM_RESPOOL_NAME"
+description = "ITEM_RESPOOL_DESCRIPTION"
+icon = ExtResource( 1 )
+rarity = 0
+amount = 1
+service = ""
+currency = ExtResource( 5 )
+price_initial = 10
+price_step = 0.0
+stat_key = "ap7_dungeon_campsite_respool"
+max_allowed_initial = 1
+max_allowed_per_captain = 0.0
+max_allowed_limit = 1
+description_num_multiplier = 1

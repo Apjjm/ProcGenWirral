@@ -1,0 +1,1278 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://nodes/misc_shaders/BattleAnalogueHorror.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationFloorTile1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationWallChunk3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationWallChunk6.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformTerrainBlock.gd" type="Script" id=5]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationWallChunk1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/camera/BattleCamera_Archangel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://battle/backgrounds/battle_plains_meshlib.meshlib" type="MeshLibrary" id=8]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationWallChunk9.tscn" type="PackedScene" id=9]
+[ext_resource path="res://nodes/environment/ConfigurableEnvironment.gd" type="Script" id=10]
+[ext_resource path="res://nodes/battle_slot/BattleSlot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_wall_chunk_2.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_floor_tile_1.mesh" type="ArrayMesh" id=13]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_brick_1.mesh" type="ArrayMesh" id=14]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_brick_2.mesh" type="ArrayMesh" id=15]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_wall_chunk_7.mesh" type="ArrayMesh" id=16]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/battle_station_wall_chunk_4.mesh" type="ArrayMesh" id=17]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformThemeBlock.gd" type="Script" id=18]
+[ext_resource path="res://battle/backgrounds/BattleBackground.gd" type="Script" id=19]
+[ext_resource path="res://battle/backgrounds/battle_station_meshlib.meshlib" type="MeshLibrary" id=20]
+[ext_resource path="res://battle/backgrounds/archangel/noise1.png" type="Texture" id=21]
+[ext_resource path="res://models/battle_scenes/battle_station_platform/BattleStationWallChunk10.tscn" type="PackedScene" id=22]
+[ext_resource path="res://sprites/environment/battle/grasslands_rope_1.json" type="PackedScene" id=23]
+[ext_resource path="res://mods/ap7-dungeon/shaders/BlackHole.gdshader" type="Shader" id=24]
+[ext_resource path="res://mods/ap7-dungeon/shaders/WorldGridOpaque.gdshader" type="Shader" id=25]
+[ext_resource path="res://sprites/environment/battle/battle_star_1.json" type="PackedScene" id=26]
+[ext_resource path="res://sprites/environment/battle/grasslands_rope_2.json" type="PackedScene" id=27]
+[ext_resource path="res://world/objects/static_physics/lamppost/lamppost_battle.mesh" type="ArrayMesh" id=28]
+[ext_resource path="res://sprites/environment/battle/grasslands_foliage_1.json" type="PackedScene" id=29]
+[ext_resource path="res://sprites/environment/battle/tree_1.json" type="PackedScene" id=30]
+[ext_resource path="res://world/objects/static_physics/lamppost/lightbulb_large.json" type="PackedScene" id=31]
+[ext_resource path="res://world/objects/static_physics/lamppost/lightbulb_large_lit.json" type="PackedScene" id=32]
+[ext_resource path="res://models/battle_scenes/battle_cave/battle_cave_fence_1.mesh" type="ArrayMesh" id=33]
+[ext_resource path="res://models/battle_scenes/battle_cave/battle_cave_fence_2.mesh" type="ArrayMesh" id=34]
+[ext_resource path="res://battle/backgrounds/battle_cave_meshlib.meshlib" type="MeshLibrary" id=35]
+[ext_resource path="res://models/battle_scenes/battle_cave/battle_cave_light_1.mesh" type="ArrayMesh" id=36]
+[ext_resource path="res://sprites/environment/battle/dead_tree_1.json" type="PackedScene" id=37]
+[ext_resource path="res://models/battle_scenes/battle_grasslands/battle_gravestone_1.mesh" type="ArrayMesh" id=38]
+[ext_resource path="res://nodes/water/SeaWater.tscn" type="PackedScene" id=39]
+[ext_resource path="res://models/battle_scenes/battle_lake/battle_lake_island.mesh" type="ArrayMesh" id=40]
+[ext_resource path="res://battle/backgrounds/battle_mall.meshlib" type="MeshLibrary" id=41]
+[ext_resource path="res://models/battle_scenes/battle_mall/battle_mall_bin.mesh" type="ArrayMesh" id=42]
+[ext_resource path="res://models/battle_scenes/battle_mall/battle_mall_crate_1.mesh" type="ArrayMesh" id=43]
+[ext_resource path="res://models/battle_scenes/battle_mall/battle_mall_poster_1.json" type="PackedScene" id=44]
+[ext_resource path="res://models/battle_scenes/battle_mall/battle_mall_poster_2.json" type="PackedScene" id=45]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformSpritesPreloader.gd" type="Script" id=46]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformHammerAnim.tscn" type="PackedScene" id=47]
+[ext_resource path="res://mods/ap7-dungeon/sfx/terraform_impact.wav" type="AudioStream" id=48]
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 4, 50, 4 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 25 )
+shader_param/grid_scale = Vector3( 8, 8, 8 )
+shader_param/grid_line = Vector3( 0.05, 0.05, 0.05 )
+shader_param/grid_cell_color = Color( 0.521569, 0.52549, 0.580392, 1 )
+shader_param/grid_line_color = Color( 0.537255, 0.537255, 0.537255, 1 )
+shader_param/grid_line_emission = Color( 0.537255, 0.772549, 0.87451, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 25 )
+shader_param/grid_scale = Vector3( 8, 8, 8 )
+shader_param/grid_line = Vector3( 0.05, 0.05, 0.05 )
+shader_param/grid_cell_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
+shader_param/grid_line_color = Color( 0.278431, 0.290196, 0.301961, 1 )
+shader_param/grid_line_emission = Color( 0.568627, 0.835294, 0.952941, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 250, 150 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 25 )
+shader_param/grid_scale = Vector3( 8, 8, 8 )
+shader_param/grid_line = Vector3( 0.05, 0.05, 0.05 )
+shader_param/grid_cell_color = Color( 0.0980392, 0, 0.207843, 1 )
+shader_param/grid_line_color = Color( 0.129412, 0.137255, 0.14902, 1 )
+shader_param/grid_line_emission = Color( 0.188235, 0.266667, 0.305882, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+
+[sub_resource type="SphereMesh" id=6]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="ShaderMaterial" id=7]
+render_priority = 100
+shader = ExtResource( 24 )
+shader_param/radii = Vector3( 10, 13, 20 )
+shader_param/pulse = Vector2( 4, 6 )
+shader_param/swirl_color = Color( 0.701961, 0.882353, 1, 1 )
+shader_param/swirl_noise = ExtResource( 21 )
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 220, 8, 8 )
+
+[sub_resource type="CubeMesh" id=15]
+size = Vector3( 50, 30, 40 )
+
+[sub_resource type="CubeMesh" id=14]
+size = Vector3( 6, 6, 4 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "loop"
+length = 40.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("battle_mall_bin:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 14.2411, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, 14.2411, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 18, 21.4, 39 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("battle_mall_bin:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 12, -0.25, 0, 0.25, 0, 17, -0.25, 0, 0.25, 0, 17, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.2, 20.8, 24, 38 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("battle_mall_crate_5:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 13, -0.25, 0, 0.25, 0, 11.6037, -0.25, 0, 0.25, 0, 12, -0.25, 0, 0.25, 0, 13, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 12, 24.6, 40.3 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("battle_mall_crate_4:translation:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 22, -0.25, 0, 0.25, 0, 18, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0, 22, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2.3, 23.6, 30.8, 40.2 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("battle_mall_crate_4:rotation_degrees:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 23.0958, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0, 23.0958, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 11, 40 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("battle_mall_crate_4:rotation_degrees:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 12.9426, -0.25, 0, 0.25, 0, 30, -0.25, 0, 0.25, 0, 12.9426, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 18.5, 40 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("battle_mall_bin2:rotation_degrees:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 14.2411, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 14.2411, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 9.2, 26.2, 36.9 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("battle_mall_bin2:rotation_degrees:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( -10.7474, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 40 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("battle_mall_bin2:rotation_degrees:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 36.0271, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0, 36.0271, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 15.9, 23.6, 38.7 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("battle_mall_bin2:translation:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 18.3056, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0, 18.3056, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5.1, 22, 39.5 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("battle_mall_crate_6:translation:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 12.2377, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 14, -0.25, 0, 0.25, 0, 12.2377, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.8, 15.9, 19.5, 41.5 )
+}
+
+[sub_resource type="PlaneMesh" id=17]
+custom_aabb = AABB( -99, -1, -49, 198, 2, 98 )
+size = Vector2( 196, 96 )
+subdivide_width = 48
+subdivide_depth = 23
+
+[sub_resource type="Animation" id=2]
+resource_name = "animation_1"
+length = 60.0
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("arena/deco/station/battle_station_brick_1:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 50 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -10, 3.398, -15.25 ), Vector3( -7, 4.5, -15.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("arena/deco/station/battle_station_brick_1:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 50 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.05469e-07, -5.52, -31.598 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("arena/deco/station/battle_station_brick_3:translation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 18.6975, 3.3982, -15.25 ), Vector3( 16.6975, 5.7714, -15.25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("arena/deco/station/battle_station_brick_3:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -32.541 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("arena/deco/station/battle_station_brick_2:translation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -34.615, 1, -15.25 ), Vector3( -34.615, 5.88438, -15.25 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("arena/deco/station/battle_station_brick_2:rotation_degrees")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 11.1348, 5.48916, 26.4555 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("arena/deco/station/battle_station_brick_4:translation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -10, 2.025, -15.947 ), Vector3( -7, 3, -18 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("arena/deco/station/battle_station_brick_4:rotation_degrees")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 30.899, 0, 7 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("arena/deco/station/battle_station_wall_chunk_2:translation")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -18, 14.665, -16.232 ), Vector3( -20, 20, -16.232 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("arena/deco/station/battle_station_wall_chunk_2:rotation_degrees")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -13.309, 0, -17.202 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("arena/deco/station/battle_station_wall_chunk_7:translation")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 17.9292, 10.1201, -16.2315 ), Vector3( 18.4777, 12.1208, -21.2742 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("arena/deco/station/battle_station_wall_chunk_7:rotation_degrees")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -4.97321e-06, 180, 83.151 ), Vector3( -8.28337e-06, 180, 56.936 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("arena/deco/station/battle_station_wall_chunk_4:rotation_degrees")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 1.734 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("arena/deco/station/battle_station_wall_chunk_4:translation")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 32.9982, 3.16967, -14 ), Vector3( 33, 4, -14 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("arena/deco/station/battle_station_wall_chunk_8:rotation_degrees")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 9.176 ), Vector3( -18.723, 54.054, -30 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("arena/deco/station/battle_station_wall_chunk_8:translation")
+tracks/15/interp = 2
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 38.0811, 25.4121, -14.0691 ), Vector3( 41.713, 27, -20 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("arena/deco/station/battle_station_brick_5:translation")
+tracks/16/interp = 2
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 18.8776, 2, -16.2516 ), Vector3( 18.8776, 2, -19.5197 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("arena/deco/station/battle_station_brick_5:rotation_degrees")
+tracks/17/interp = 2
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -180, 0 ), Vector3( -15, -173.695, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("arena/deco/station/battle_station_brick_6:translation")
+tracks/18/interp = 2
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -30.3703, 3.35679, -15.1797 ), Vector3( -29.698, 6.866, -15 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("arena/deco/station/battle_station_brick_6:rotation_degrees")
+tracks/19/interp = 2
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -28.8791, 8.49878, -17.1921 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("arena/deco/station/BattleStationWallChunk10:translation")
+tracks/20/interp = 2
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 19, 20.502, -15.771 ), Vector3( 26.581, 22, -22.61 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("arena/deco/station/BattleStationWallChunk10:rotation_degrees")
+tracks/21/interp = 2
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -39.9303, 35.9259, -36.7486 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("arena/deco/station/battle_station_wall_chunk_3:translation")
+tracks/22/interp = 2
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 45.1151, 7.47153, -15.7069 ), Vector3( 49.3745, 8.00753, -24.236 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("arena/deco/station/battle_station_wall_chunk_3:rotation_degrees")
+tracks/23/interp = 2
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -7.67755e-08, 169.511, 174.846 ), Vector3( 45.6388, 159.481, 163.448 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("arena/deco/station/battle_station_floor_tile_1:translation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 25, 60 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -2, -2, -10 ), Vector3( -2, -2, -10 ), Vector3( -1.52842, -3.74238, -12.639 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("arena/deco/station/battle_station_floor_tile_1:rotation_degrees")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 25, 60 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( -15, -4.57536e-07, 15 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("arena/deco/station/battle_station_floor_tile_2:translation")
+tracks/26/interp = 2
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 15, 55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -14, -2, -22 ), Vector3( -14, -2, -22 ), Vector3( -14, -1, -24 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("arena/deco/station/battle_station_floor_tile_2:rotation_degrees")
+tracks/27/interp = 2
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 15, 55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 15, 0, 0 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("arena/deco/station/battle_station_floor_tile_3:translation")
+tracks/28/interp = 2
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 14, -2, -18 ), Vector3( 14, -5, -18 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("arena/deco/station/battle_station_floor_tile_3:rotation_degrees")
+tracks/29/interp = 2
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -15, 0, 0 ) ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("arena/deco/station/battle_station_floor_tile_4:rotation_degrees")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 10, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("arena/deco/station/battle_station_floor_tile_4:translation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 10, 50 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 10, -2, -14 ), Vector3( 10, -2, -14 ), Vector3( 10, -7, -14 ) ]
+}
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.258824, 0.294118, 0.462745, 1 )
+sky_horizon_color = Color( 0.258824, 0.294118, 0.462745, 1 )
+ground_bottom_color = Color( 0.258824, 0.294118, 0.462745, 1 )
+ground_horizon_color = Color( 0.258824, 0.294118, 0.462745, 1 )
+ground_curve = 0.134543
+
+[sub_resource type="Environment" id=10]
+resource_local_to_scene = true
+background_mode = 1
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 88.0
+background_color = Color( 0.168627, 0.113725, 0.223529, 1 )
+background_energy = 0.5
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.4
+ambient_light_sky_contribution = 0.25
+fog_enabled = true
+fog_color = Color( 0.0823529, 0.101961, 0.239216, 1 )
+fog_sun_color = Color( 1, 0.956863, 0.87451, 1 )
+fog_depth_begin = 60.0
+fog_depth_end = 120.0
+fog_depth_curve = 1.7411
+fog_transmit_enabled = true
+dof_blur_far_distance = 40.0
+dof_blur_far_transition = 30.0
+dof_blur_far_quality = 2
+dof_blur_near_distance = 22.0
+dof_blur_near_transition = 10.0
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[node name="BattleStationPlatform" type="Spatial"]
+script = ExtResource( 19 )
+clouds_enabled = false
+
+[node name="BattleSlotPlayer1" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 5 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer2")
+focus_neighbour_right = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotPlayer2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 10 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer3")
+focus_neighbour_left = NodePath("../BattleSlotPlayer3")
+focus_neighbour_right = NodePath("../BattleSlotPlayer1")
+focus_neighbour_top = NodePath("../BattleSlotPlayer1")
+
+[node name="BattleSlotPlayer3" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, 15 )
+focus_neighbour_right = NodePath("../BattleSlotPlayer2")
+focus_neighbour_top = NodePath("../BattleSlotPlayer2")
+
+[node name="BattleSlotEnemy1" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 7 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer1")
+focus_neighbour_right = NodePath("../BattleSlotEnemy2")
+
+[node name="BattleSlotEnemy2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 12 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy3")
+focus_neighbour_left = NodePath("../BattleSlotEnemy1")
+focus_neighbour_right = NodePath("../BattleSlotEnemy3")
+focus_neighbour_top = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotEnemy3" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 17 )
+direction = -1
+team = 1
+focus_neighbour_left = NodePath("../BattleSlotEnemy2")
+focus_neighbour_top = NodePath("../BattleSlotEnemy2")
+
+[node name="BattleCamera" parent="." instance=ExtResource( 7 )]
+
+[node name="backdrop" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.67224 )
+
+[node name="structure1" type="Spatial" parent="backdrop"]
+transform = Transform( 0.953222, 0.30227, 0, -0.260677, 0.822058, 0, 0, 0, 1, 0.375404, -16.8003, -6.29522 )
+
+[node name="gridblock6" type="MeshInstance" parent="backdrop/structure1"]
+transform = Transform( 5, 3.27826e-07, 0, 2.38419e-07, 0.999999, 0, 0, 0, 3, -60.2671, 12.9427, -47.2263 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 12 )
+
+[node name="gridblock7" type="MeshInstance" parent="backdrop/structure1"]
+transform = Transform( 5, 3.8743e-07, 0, 0, 1, 0, 0, 0, 3, -60.0564, -37.346, -47.2263 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 12 )
+
+[node name="gridblock9" type="MeshInstance" parent="backdrop/structure1"]
+transform = Transform( 5, 3.8743e-07, 0, 0, 1, 0, 0, 0, 3, 25.8322, 62.9935, -47.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 12 )
+
+[node name="gridblock12" type="MeshInstance" parent="backdrop/structure1"]
+transform = Transform( -2.5, -1.73205, 0, 4.33013, -1, 0, 0, 0, 3, -21.9804, 54.2503, -47.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 12 )
+
+[node name="gridblock13" type="MeshInstance" parent="backdrop/structure1"]
+transform = Transform( 2.5, -1.73205, 0, 4.33013, 1, 0, 0, 0, 3, 64.1074, 21.4544, -47.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 12 )
+
+[node name="blocks" type="Spatial" parent="backdrop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10 )
+
+[node name="gridblock1" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, -29.184, -1.64512, -36.0833 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="gridblock7" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( -0.584021, 0.354762, -0.730112, -0.106896, 0.857997, 0.502408, 0.804669, 0.371463, -0.463166, 29.0807, 1.02876, -29.532 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="gridblock4" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( 4.94495, -0.147982, 0, 0.73991, 0.98899, 0, 0, 0, 3, -50.6611, -3.26394, -22.8139 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="gridblock6" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 3, 60.9426, -0.148584, -22.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="gridblock8" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 3, 35.3232, 64.8514, -22.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="gridblock9" type="MeshInstance" parent="backdrop/blocks"]
+transform = Transform( 5, 0, 0, 0, 1, 0, 0, 0, 3, -44.0719, 59.5165, -22.2591 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="backdrop2" type="MeshInstance" parent="backdrop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046, 7, -53.4871 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 11 )
+
+[node name="blackhole" type="MeshInstance" parent="backdrop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111832, 22.2249, -42.9769 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Sprite" parent="backdrop/blackhole" instance=ExtResource( 26 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 2.54156e-05, 0.0901108, -7.90636 )
+visible = false
+
+[node name="arena" type="Spatial" parent="."]
+
+[node name="tf" type="Spatial" parent="arena"]
+
+[node name="wall1" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -16.6671 )
+mesh = SubResource( 13 )
+script = ExtResource( 5 )
+
+[node name="wall2" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 0.953254, -0.30217, 0, 0.30217, 0.953254, 0, 0, 0, 1, -35.7514, 6, -32.7074 )
+mesh = SubResource( 15 )
+script = ExtResource( 5 )
+
+[node name="wall3" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 0.930059, 0.36741, 0, -0.36741, 0.930059, 0, 0, 0, 1, 27.0889, -9.51795, -32.7074 )
+mesh = SubResource( 15 )
+script = ExtResource( 5 )
+
+[node name="wall4" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 51.326, 9.55665, -32.8084 )
+mesh = SubResource( 15 )
+script = ExtResource( 5 )
+
+[node name="wall5" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 0.989621, 0.1437, 0, -0.1437, 0.989621, 0, 0, 0, 1, 38.3737, 10.4242, -32.7074 )
+mesh = SubResource( 15 )
+script = ExtResource( 5 )
+
+[node name="wall6" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 0.953254, -0.30217, 0, 0.30217, 0.953254, 0, 0, 0, 1, -86.7754, 6, -32.8579 )
+mesh = SubResource( 15 )
+script = ExtResource( 5 )
+
+[node name="deco1" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 2.75, 0, 0, 0, 1, 0, 0, 0, 1, -10.4743, 2, -3 )
+mesh = SubResource( 14 )
+script = ExtResource( 5 )
+
+[node name="deco4" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 2.75, 0, 0, 0, 1, 0, 0, 0, 2, -10.0993, 1.13148, -24.3935 )
+mesh = SubResource( 14 )
+script = ExtResource( 5 )
+
+[node name="deco2" type="MeshInstance" parent="arena/tf"]
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, -45.2539, 2, 18 )
+mesh = SubResource( 14 )
+script = ExtResource( 5 )
+
+[node name="deco3" type="MeshInstance" parent="arena/tf"]
+transform = Transform( -1.20206e-07, -0.75, 0, 2.75, -3.27835e-08, 0, 0, 0, 1, 1.52567, -1, -1.17207 )
+mesh = SubResource( 14 )
+script = ExtResource( 5 )
+
+[node name="deco" type="Spatial" parent="arena"]
+script = ExtResource( 18 )
+
+[node name="station" type="Spatial" parent="arena/deco"]
+
+[node name="station" type="GridMap" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh_library = ExtResource( 20 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -65536, 0, 655360, -65535, 0, 655360, -65534, 0, 655360, -65533, 0, 655360, -65532, 0, 655360, -65531, 0, 655360, -65530, 0, 655360, -65529, 0, 655360, -65528, 0, 655360, -65527, 0, 655360, -65526, 0, 655360, -65525, 0, 655360, -65524, 0, 655360, -65523, 0, 655360, -65522, 0, 655360, -65521, 0, 0, -65520, 0, 0, -65519, 0, 655360, -65518, 0, 655360, -65517, 0, 655360, -65516, 0, 0, -65515, 0, 0, -65514, 0, 655360, -65513, 0, 655360, -65512, 0, 655360, -65511, 0, 0, -65510, 0, 0, -26, 0, 0, -25, 0, 0, -24, 0, 655360, -23, 0, 655360, -22, 0, 655360, -21, 0, 655360, -20, 0, 655360, -19, 0, 655360, -18, 0, 655360, -17, 0, 655360, -16, 0, 0, -15, 0, 0, -14, 0, 655360, -13, 0, 655360, -12, 0, 655360, -11, 0, 655360, -10, 0, 655360, -9, 0, 655360, -8, 0, 655360, -7, 0, 655360, -6, 0, 655360, -5, 0, 655360, -4, 0, 655360, -3, 0, 655360, -2, 0, 655360, -1, 0, 655360, -65536, 1, 655360, -65535, 1, 655360, -65534, 1, 655360, -65533, 1, 655360, -65532, 1, 655360, -65531, 1, 655360, -65530, 1, 655360, -65529, 1, 655360, -65528, 1, 655360, -65527, 1, 655360, -65526, 1, 655360, -65525, 1, 655360, -65524, 1, 655360, -65523, 1, 655360, -65522, 1, 655360, -65521, 1, 0, -65520, 1, 0, -65519, 1, 655360, -65518, 1, 655360, -65517, 1, 655360, -65516, 1, 0, -65515, 1, 0, -65514, 1, 655360, -65513, 1, 655360, -65512, 1, 655360, -65511, 1, 0, -65510, 1, 0, -26, 1, 0, -25, 1, 0, -24, 1, 655360, -23, 1, 655360, -22, 1, 655360, -21, 1, 655360, -20, 1, 655360, -19, 1, 655360, -18, 1, 655360, -17, 1, 655360, -16, 1, 0, -15, 1, 0, -14, 1, 655360, -13, 1, 655360, -12, 1, 655360, -11, 1, 655360, -10, 1, 655360, -9, 1, 655360, -8, 1, 655360, -7, 1, 655360, -6, 1, 655360, -5, 1, 655360, -4, 1, 655360, -3, 1, 655360, -2, 1, 655360, -1, 1, 655360, -65536, 2, 655360, -65535, 2, 655360, -65534, 2, 655360, -65533, 2, 655360, -65532, 2, 655360, -65531, 2, 655360, -65530, 2, 655360, -65529, 2, 655360, -65528, 2, 655360, -65527, 2, 655360, -65526, 2, 655360, -65525, 2, 655360, -65524, 2, 655360, -65523, 2, 655360, -65522, 2, 655360, -65521, 2, 0, -65520, 2, 0, -65519, 2, 655360, -65518, 2, 655360, -65517, 2, 655360, -65516, 2, 0, -65515, 2, 0, -65514, 2, 655360, -65513, 2, 655360, -65512, 2, 655360, -65511, 2, 0, -65510, 2, 0, -26, 2, 0, -25, 2, 0, -24, 2, 655360, -23, 2, 655360, -22, 2, 655360, -21, 2, 655360, -20, 2, 655360, -19, 2, 655360, -18, 2, 655360, -17, 2, 655360, -16, 2, 0, -15, 2, 0, -14, 2, 655360, -13, 2, 655360, -12, 2, 655360, -11, 2, 655360, -10, 2, 655360, -9, 2, 655360, -8, 2, 655360, -7, 2, 655360, -6, 2, 655360, -5, 2, 1441799, -4, 2, 655360, -3, 2, 0, -2, 2, 655360, -1, 2, 1441792, -65536, 3, 1, -65535, 3, 1, -65534, 3, 1, -65533, 3, 1, -65532, 3, 1, -65531, 3, 1, -65530, 3, 1, -65529, 3, 1, -65528, 3, 1, -65527, 3, 1, -65526, 3, 1, -65525, 3, 1, -65524, 3, 1, -65523, 3, 1, -65522, 3, 1, -65521, 3, 1, -65520, 3, 1, -65519, 3, 1, -65518, 3, 1, -65517, 3, 1, -65516, 3, 1, -65515, 3, 1, -65514, 3, 1, -65513, 3, 1, -65512, 3, 1, -65511, 3, 1, -65510, 3, 1, -26, 3, 1, -25, 3, 1, -24, 3, 1, -23, 3, 1, -22, 3, 1, -21, 3, 1, -20, 3, 1, -19, 3, 1, -18, 3, 1, -17, 3, 1, -16, 3, 1, -15, 3, 1, -14, 3, 1, -13, 3, 1, -12, 3, 1, -11, 3, 1, -10, 3, 1, -9, 3, 1, -8, 3, 1, -7, 3, 1, -6, 3, 1, -5, 3, 1, -4, 3, 1, -3, 3, 1, -2, 3, 10, -1, 3, 1, -65541, 4, 655360, -65540, 4, 655360, -65539, 4, 655360, -65538, 4, 655360, -65536, 4, 655360, -65535, 4, 655367, -65534, 4, 655360, -65533, 4, 655360, -65532, 4, 655360, -65531, 4, 655360, -65530, 4, 655360, -65529, 4, 655360, -65528, 4, 655360, -65527, 4, 655360, -65526, 4, 655360, -65525, 4, 655360, -65524, 4, 655360, -65523, 4, 655360, -65522, 4, 655360, -65521, 4, 0, -65520, 4, 0, -65519, 4, 655360, -65518, 4, 655360, -65517, 4, 655360, -65516, 4, 0, -65515, 4, 0, -65514, 4, 655360, -65513, 4, 655360, -65512, 4, 655360, -65511, 4, 0, -65510, 4, 0, -26, 4, 0, -25, 4, 0, -24, 4, 655360, -23, 4, 655360, -22, 4, 0, -21, 4, 0, -20, 4, 655360, -19, 4, 0, -18, 4, 0, -17, 4, 0, -16, 4, 0, -15, 4, 0, -14, 4, 655360, -13, 4, 655360, -12, 4, 0, -11, 4, 0, -10, 4, 0, -9, 4, 0, -8, 4, 0, -7, 4, 655360, -6, 4, 655360, -5, 4, 655360, -4, 4, 655360, -3, 4, 655360, -2, 4, 655360, -1, 4, 655360, -65538, 5, 655360, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 5, 0, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 0, -65518, 5, 0, -65517, 5, 0, -65516, 5, 0, -65515, 5, 0, -65514, 5, 0, -65513, 5, 0, -65512, 5, 0, -65511, 5, 0, -65510, 5, 0, -26, 5, 0, -25, 5, 0, -24, 5, 0, -23, 5, 0, -22, 5, 0, -21, 5, 0, -20, 5, 0, -19, 5, 0, -18, 5, 0, -17, 5, 0, -16, 5, 0, -15, 5, 0, -14, 5, 0, -13, 5, 0, -12, 5, 0, -11, 5, 0, -10, 5, 0, -9, 5, 0, -8, 5, 0, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 6, 655360, -65535, 6, 655360, -65534, 6, 655360, -65533, 6, 655360, -65532, 6, 655360, -65531, 6, 655360, -65530, 6, 655360, -65529, 6, 655360, -65528, 6, 655360, -65527, 6, 655360, -65526, 6, 655360, -65525, 6, 655360, -65524, 6, 655360, -65523, 6, 655360, -65522, 6, 655360, -65521, 6, 0, -65520, 6, 0, -65519, 6, 655360, -65518, 6, 655360, -65517, 6, 655360, -65516, 6, 0, -65515, 6, 0, -65514, 6, 655360, -65513, 6, 655360, -65512, 6, 655360, -65511, 6, 0, -65510, 6, 0, -26, 6, 0, -25, 6, 0, -24, 6, 655360, -23, 6, 655360, -22, 6, 655360, -21, 6, 655360, -20, 6, 655360, -19, 6, 655360, -18, 6, 655360, -17, 6, 655360, -16, 6, 0, -15, 6, 0, -14, 6, 655360, -13, 6, 655360, -12, 6, 655360, -11, 6, 655360, -10, 6, 655360, -9, 6, 655360, -8, 6, 655360, -7, 6, 655360, -6, 6, 655360, -5, 6, 655360, -4, 6, 655360, -3, 6, 655360, -2, 6, 655360, -1, 6, 655360, -65536, 7, 655360, -65535, 7, 655360, -65534, 7, 655360, -65533, 7, 655360, -65532, 7, 655360, -65531, 7, 655360, -65530, 7, 655360, -65529, 7, 655360, -65528, 7, 655360, -65527, 7, 655360, -65526, 7, 655360, -65525, 7, 655360, -65524, 7, 655360, -65523, 7, 655360, -65522, 7, 655360, -65521, 7, 0, -65520, 7, 0, -65519, 7, 655360, -65518, 7, 655360, -65517, 7, 655360, -65516, 7, 0, -65515, 7, 0, -65514, 7, 655360, -65513, 7, 655360, -65512, 7, 655360, -65511, 7, 0, -65510, 7, 0, -26, 7, 0, -25, 7, 0, -24, 7, 655360, -23, 7, 655360, -22, 7, 655360, -21, 7, 655360, -20, 7, 655360, -19, 7, 655360, -18, 7, 655360, -17, 7, 655360, -16, 7, 0, -15, 7, 0, -14, 7, 655360, -13, 7, 655360, -12, 7, 655360, -11, 7, 655360, -10, 7, 655360, -9, 7, 655360, -8, 7, 655360, -7, 7, 655360, -6, 7, 655360, -5, 7, 655360, -4, 7, 655360, -3, 7, 655360, -2, 7, 655360, -1, 7, 655360, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, -65530, 8, 0, -65529, 8, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 0, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, -65519, 8, 0, -65518, 8, 0, -65517, 8, 0, -65516, 8, 0, -65515, 8, 0, -65514, 8, 0, -65513, 8, 0, -65512, 8, 0, -65511, 8, 0, -65510, 8, 0, -26, 8, 0, -25, 8, 0, -24, 8, 0, -23, 8, 0, -22, 8, 0, -21, 8, 0, -20, 8, 0, -19, 8, 0, -18, 8, 0, -17, 8, 0, -16, 8, 0, -15, 8, 0, -14, 8, 0, -13, 8, 0, -12, 8, 0, -11, 8, 0, -10, 8, 0, -9, 8, 0, -8, 8, 0, -7, 8, 0, -6, 8, 0, -5, 8, 0, -4, 8, 0, -3, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 9, 655360, -65535, 9, 655367, -65534, 9, 655360, -65533, 9, 655360, -65532, 9, 655360, -65531, 9, 655360, -65530, 9, 655360, -65529, 9, 655360, -65528, 9, 655360, -65527, 9, 655360, -65526, 9, 655360, -65525, 9, 655360, -65524, 9, 655360, -65523, 9, 655360, -65522, 9, 655360, -65521, 9, 0, -65520, 9, 0, -65519, 9, 655360, -65518, 9, 655360, -65517, 9, 655360, -65516, 9, 0, -65515, 9, 0, -65514, 9, 655360, -65513, 9, 655360, -65512, 9, 655360, -65511, 9, 0, -65510, 9, 0, -26, 9, 0, -25, 9, 0, -24, 9, 655360, -23, 9, 655360, -22, 9, 0, -21, 9, 0, -20, 9, 655360, -19, 9, 0, -18, 9, 0, -17, 9, 0, -16, 9, 0, -15, 9, 0, -14, 9, 655360, -13, 9, 655360, -12, 9, 0, -11, 9, 0, -10, 9, 0, -9, 9, 0, -8, 9, 0, -7, 9, 655360, -6, 9, 655360, -5, 9, 655360, -4, 9, 655360, -3, 9, 655360, -2, 9, 655360, -1, 9, 655360, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 10, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, -65526, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 10, 0, -65519, 10, 0, -65518, 10, 0, -65517, 10, 0, -65516, 10, 0, -65515, 10, 0, -65514, 10, 0, -65513, 10, 0, -65512, 10, 0, -65511, 10, 0, -65510, 10, 0, -26, 10, 0, -25, 10, 0, -24, 10, 0, -23, 10, 0, -22, 10, 0, -21, 10, 0, -20, 10, 0, -19, 10, 0, -18, 10, 0, -17, 10, 0, -16, 10, 0, -15, 10, 0, -14, 10, 0, -13, 10, 0, -12, 10, 0, -11, 10, 0, -10, 10, 0, -9, 10, 0, -8, 10, 0, -7, 10, 0, -6, 10, 0, -5, 10, 0, -4, 10, 0, -3, 10, 0, -2, 10, 0, -1, 10, 0, -65536, 11, 655360, -65535, 11, 655360, -65534, 11, 655360, -65533, 11, 655360, -65532, 11, 655360, -65531, 11, 655360, -65530, 11, 655360, -65529, 11, 655360, -65528, 11, 655360, -65527, 11, 655360, -65526, 11, 655360, -65525, 11, 655360, -65524, 11, 655360, -65523, 11, 655360, -65522, 11, 655360, -65521, 11, 0, -65520, 11, 0, -65519, 11, 655360, -65518, 11, 655360, -65517, 11, 655360, -65516, 11, 0, -65515, 11, 0, -65514, 11, 655360, -65513, 11, 655360, -65512, 11, 655360, -65511, 11, 0, -65510, 11, 0, -26, 11, 0, -25, 11, 0, -24, 11, 655360, -23, 11, 655360, -22, 11, 655360, -21, 11, 655360, -20, 11, 655360, -19, 11, 655360, -18, 11, 655360, -17, 11, 655360, -16, 11, 0, -15, 11, 0, -14, 11, 655360, -13, 11, 655360, -12, 11, 655360, -11, 11, 655360, -10, 11, 655360, -9, 11, 655360, -8, 11, 655360, -7, 11, 655360, -6, 11, 655360, -5, 11, 655360, -4, 11, 655360, -3, 11, 655360, -2, 11, 655360, -1, 11, 655360, -65536, 12, 655360, -65535, 12, 655360, -65534, 12, 655360, -65533, 12, 655360, -65532, 12, 655360, -65531, 12, 655360, -65530, 12, 655360, -65529, 12, 655360, -65528, 12, 655360, -65527, 12, 655360, -65526, 12, 655360, -65525, 12, 655360, -65524, 12, 655360, -65523, 12, 655360, -65522, 12, 655360, -65521, 12, 0, -65520, 12, 0, -65519, 12, 655360, -65518, 12, 655360, -65517, 12, 655360, -65516, 12, 0, -65515, 12, 0, -65514, 12, 655360, -65513, 12, 655360, -65512, 12, 655360, -65511, 12, 0, -65510, 12, 0, -26, 12, 0, -25, 12, 0, -24, 12, 655360, -23, 12, 655360, -22, 12, 655360, -21, 12, 655360, -20, 12, 655360, -19, 12, 655360, -18, 12, 655360, -17, 12, 655360, -16, 12, 0, -15, 12, 0, -14, 12, 655360, -13, 12, 655360, -12, 12, 655360, -11, 12, 655360, -10, 12, 655360, -9, 12, 655360, -8, 12, 655360, -7, 12, 655360, -6, 12, 655360, -5, 12, 655360, -4, 12, 655360, -3, 12, 655360, -2, 12, 655360, -1, 12, 655360, -65536, 13, 0, -65535, 13, 0, -65534, 13, 0, -65533, 13, 0, -65532, 13, 0, -65531, 13, 0, -65530, 13, 0, -65529, 13, 0, -65528, 13, 0, -65527, 13, 0, -65526, 13, 0, -65525, 13, 0, -65524, 13, 0, -65523, 13, 0, -65522, 13, 0, -65521, 13, 0, -65520, 13, 0, -65519, 13, 0, -65518, 13, 0, -65517, 13, 0, -65516, 13, 0, -65515, 13, 0, -65514, 13, 0, -65513, 13, 0, -65512, 13, 0, -65511, 13, 0, -65510, 13, 0, -26, 13, 0, -25, 13, 0, -24, 13, 0, -23, 13, 0, -22, 13, 0, -21, 13, 0, -20, 13, 0, -19, 13, 0, -18, 13, 0, -17, 13, 0, -16, 13, 0, -15, 13, 0, -14, 13, 0, -13, 13, 0, -12, 13, 0, -11, 13, 0, -10, 13, 0, -9, 13, 0, -8, 13, 0, -7, 13, 0, -6, 13, 0, -5, 13, 0, -4, 13, 0, -3, 13, 0, -2, 13, 0, -1, 13, 0, -65533, 65530, 13, -65536, 65531, 13, -65534, 65531, 13, -9, 65531, 13, -4, 65531, 13, 5, 65532, 11, 6, 65532, 2, 7, 65532, 3, 8, 65532, 2, 9, 65532, 2, 10, 65532, 2, 11, 65532, 2, 12, 65532, 2, 13, 65532, 2, 14, 65532, 2, 15, 65532, 2, 16, 65532, 2, 17, 65532, 2, 18, 65532, 2, 19, 65532, 2, 20, 65532, 2, 21, 65532, 2, 22, 65532, 2, 23, 65532, 2, 24, 65532, 2, 25, 65532, 2, 26, 65532, 2, 65510, 65532, 2, 65511, 65532, 2, 65512, 65532, 2, 65513, 65532, 2, 65514, 65532, 2, 65515, 65532, 2, 65516, 65532, 2, 65517, 65532, 2, 65518, 65532, 2, 65519, 65532, 2, 65520, 65532, 2, 65521, 65532, 2, 65522, 65532, 2, 65523, 65532, 2, 65524, 65532, 3, 65525, 65532, 2, 65526, 65532, 12, -65536, 65532, 13, -65535, 65532, 13, -65533, 65532, 13, -65532, 65532, 13, -65530, 65532, 13, -65529, 65532, 655360, -65528, 65532, 13, -65527, 65532, 13, -65526, 65532, 13, -65525, 65532, 13, -65524, 65532, 655360, -65523, 65532, 655360, -65522, 65532, 655360, -65521, 65532, 0, -65520, 65532, 0, -65519, 65532, 655360, -65518, 65532, 655360, -65517, 65532, 655360, -65516, 65532, 0, -65515, 65532, 0, -65514, 65532, 655360, -65513, 65532, 655360, -65512, 65532, 655360, -65511, 65532, 0, -65510, 65532, 0, -26, 65532, 0, -25, 65532, 0, -24, 65532, 655360, -23, 65532, 655360, -22, 65532, 655360, -21, 65532, 655360, -20, 65532, 655360, -19, 65532, 655360, -18, 65532, 655360, -17, 65532, 655360, -16, 65532, 0, -15, 65532, 0, -14, 65532, 655360, -13, 65532, 655360, -12, 65532, 655360, -11, 65532, 655360, -10, 65532, 655360, -9, 65532, 13, -5, 65532, 13, -4, 65532, 13, -3, 65532, 13, -2, 65532, 13, -65536, 65533, 13, -65535, 65533, 7, -65534, 65533, 13, -65533, 65533, 0, -65532, 65533, 655360, -65531, 65533, 13, -65530, 65533, 13, -65529, 65533, 655360, -65528, 65533, 655360, -65527, 65533, 13, -65525, 65533, 13, -65524, 65533, 655360, -65523, 65533, 655360, -65522, 65533, 655360, -65521, 65533, 0, -65520, 65533, 0, -65519, 65533, 655360, -65518, 65533, 655360, -65517, 65533, 655360, -65516, 65533, 0, -65515, 65533, 0, -65514, 65533, 655360, -65513, 65533, 655360, -65512, 65533, 655360, -65511, 65533, 0, -65510, 65533, 0, -26, 65533, 0, -25, 65533, 0, -24, 65533, 655360, -23, 65533, 655360, -22, 65533, 655360, -21, 65533, 655360, -20, 65533, 655360, -19, 65533, 655360, -18, 65533, 655360, -17, 65533, 655360, -16, 65533, 0, -15, 65533, 0, -14, 65533, 655360, -13, 65533, 655360, -12, 65533, 655360, -11, 65533, 655360, -10, 65533, 655360, -9, 65533, 655360, -8, 65533, 13, -6, 65533, 13, -5, 65533, 655360, -4, 65533, 13, -3, 65533, 14, -2, 65533, 13, -65536, 65534, 1, -65535, 65534, 1, -65534, 65534, 1, -65533, 65534, 1, -65532, 65534, 1, -65531, 65534, 1, -65530, 65534, 1, -65529, 65534, 1, -65528, 65534, 1, -65527, 65534, 1, -65526, 65534, 1, -65525, 65534, 1, -65524, 65534, 1, -65523, 65534, 1, -65522, 65534, 1, -65521, 65534, 1, -65520, 65534, 1, -65519, 65534, 1, -65518, 65534, 1, -65517, 65534, 1, -65516, 65534, 1, -65515, 65534, 1, -65514, 65534, 1, -65513, 65534, 1, -65512, 65534, 1, -65511, 65534, 1, -65510, 65534, 1, -26, 65534, 1, -25, 65534, 1, -24, 65534, 1, -23, 65534, 1, -22, 65534, 1, -21, 65534, 1, -20, 65534, 1, -19, 65534, 1, -18, 65534, 1, -17, 65534, 1, -16, 65534, 1, -15, 65534, 1, -14, 65534, 1, -13, 65534, 1, -12, 65534, 1, -11, 65534, 1, -10, 65534, 1, -9, 65534, 1, -8, 65534, 1, -7, 65534, 1, -6, 65534, 1, -5, 65534, 1, -4, 65534, 1, -3, 65534, 14, -2, 65534, 16, -1, 65534, 1, -65536, 65535, 655360, -65535, 65535, 655360, -65534, 65535, 655360, -65533, 65535, 1441799, -65532, 65535, 655360, -65531, 65535, 655360, -65530, 65535, 655360, -65529, 65535, 655360, -65528, 65535, 655360, -65527, 65535, 655360, -65526, 65535, 655360, -65525, 65535, 655360, -65524, 65535, 655360, -65523, 65535, 655360, -65522, 65535, 655360, -65521, 65535, 0, -65520, 65535, 0, -65519, 65535, 655360, -65518, 65535, 655360, -65517, 65535, 655360, -65516, 65535, 0, -65515, 65535, 0, -65514, 65535, 655360, -65513, 65535, 655360, -65512, 65535, 655360, -65511, 65535, 0, -65510, 65535, 0, -26, 65535, 0, -25, 65535, 0, -24, 65535, 655360, -23, 65535, 655360, -22, 65535, 655360, -21, 65535, 655360, -20, 65535, 655360, -19, 65535, 655360, -18, 65535, 655360, -17, 65535, 655360, -16, 65535, 0, -15, 65535, 0, -14, 65535, 655360, -13, 65535, 655360, -12, 65535, 655360, -11, 65535, 655360, -10, 65535, 655360, -9, 65535, 655360, -8, 65535, 655360, -7, 65535, 655360, -6, 65535, 655360, -5, 65535, 655360, -4, 65535, 655360, -3, 65535, 15, -2, 65535, 14, -1, 65535, 655360 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, -5 )
+}
+
+[node name="BattleStationWallChunk1" parent="arena/deco/station" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97054, -1.64299, -17.1374 )
+
+[node name="BattleStationWallChunk3" parent="arena/deco/station" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -21, 8, -16 )
+
+[node name="BattleStationWallChunk6" parent="arena/deco/station" instance=ExtResource( 4 )]
+transform = Transform( 0.964428, 0, -0.264344, 0, 1, 0, 0.264344, 0, 0.964428, -7.12853, 1.34118, -20.2016 )
+
+[node name="BattleStationWallChunk9" parent="arena/deco/station" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -44.1214, 8.87495, -15 )
+
+[node name="BattleStationFloorTile1" parent="arena/deco/station" instance=ExtResource( 2 )]
+transform = Transform( 0.960631, -0.0362635, -0.275451, -0.0187307, 0.980735, -0.194438, 0.277196, 0.191943, 0.941445, -9.80371, -1.8359, -11.151 )
+
+[node name="BattleStationFloorTile2" parent="arena/deco/station" instance=ExtResource( 2 )]
+transform = Transform( 0.955837, -0.293896, 9.18773e-09, 0.288518, 0.938346, 0.190431, -0.0559669, -0.182021, 0.981701, -25.9659, 0.0715933, -18.7498 )
+
+[node name="BattleStationFloorTile3" parent="arena/deco/station" instance=ExtResource( 2 )]
+transform = Transform( 0.980948, -0.194268, 0, 0.194268, 0.980948, 0, 0, 0, 1, 42.4143, -2.53767, -11.0259 )
+
+[node name="BattleStationWallChunk10" parent="arena/deco/station" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 19, 20.502, -15.771 )
+
+[node name="battle_station_brick_1" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.398, -15.25 )
+mesh = ExtResource( 14 )
+
+[node name="battle_station_brick_3" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6975, 3.3982, -15.25 )
+mesh = ExtResource( 14 )
+
+[node name="battle_station_brick_2" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -34.615, 1, -15.25 )
+mesh = ExtResource( 14 )
+
+[node name="battle_station_brick_4" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.025, -15.947 )
+mesh = ExtResource( 15 )
+
+[node name="battle_station_wall_chunk_2" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 14.665, -16.232 )
+mesh = ExtResource( 12 )
+
+[node name="battle_station_wall_chunk_7" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( -0.119253, 0.992863, -8.74228e-08, 0.992863, 0.119253, 8.67989e-08, 9.66048e-08, -7.64478e-08, -1, 17.9292, 10.1201, -16.2315 )
+mesh = ExtResource( 12 )
+
+[node name="battle_station_wall_chunk_4" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 0.999542, -0.0302594, 0, 0.0302594, 0.999542, 0, 0, 0, 1, 32.9982, 3.16967, -14 )
+mesh = ExtResource( 17 )
+
+[node name="battle_station_wall_chunk_8" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 0.987203, -0.159468, 0, 0.159468, 0.987202, 0, 0, 0, 1, 38.0811, 25.4121, -14.0691 )
+mesh = ExtResource( 16 )
+
+[node name="battle_station_brick_5" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( -1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, 18.8776, 2, -16.2516 )
+mesh = ExtResource( 15 )
+
+[node name="battle_station_brick_6" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3703, 3.35679, -15.1797 )
+mesh = ExtResource( 14 )
+
+[node name="battle_station_wall_chunk_3" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 0.979314, 0.0883318, 0.182047, 0.089833, -0.995956, 1.33999e-09, 0.181311, 0.0163538, -0.98329, 45.1151, 7.47153, -15.7069 )
+mesh = ExtResource( 12 )
+
+[node name="battle_station_floor_tile_1" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, -10 )
+mesh = ExtResource( 13 )
+
+[node name="battle_station_floor_tile_2" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -2, -22 )
+mesh = ExtResource( 13 )
+
+[node name="battle_station_floor_tile_3" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -2, -18 )
+mesh = ExtResource( 13 )
+
+[node name="battle_station_floor_tile_4" type="MeshInstance" parent="arena/deco/station"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2, -14 )
+mesh = ExtResource( 13 )
+
+[node name="plains" type="Spatial" parent="arena/deco"]
+visible = false
+
+[node name="plains" type="GridMap" parent="arena/deco/plains"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh_library = ExtResource( 8 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 655360, -65515, 0, 655360, -65514, 0, 655360, -65513, 0, 655360, -65512, 0, 655360, -65511, 0, 655360, -25, 0, 655360, -24, 0, 655360, -23, 0, 655360, -22, 0, 655360, -21, 0, 655360, -20, 0, 0, -19, 0, 0, -18, 0, 0, -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 655362, -65535, 1, 655362, -65534, 1, 655362, -65533, 1, 655362, -65532, 1, 655363, -65531, 1, 655364, -65530, 1, 655362, -65529, 1, 655362, -65528, 1, 655362, -65527, 1, 655362, -65526, 1, 655362, -65525, 1, 655362, -65524, 1, 655362, -65523, 1, 655364, -65522, 1, 655362, -65521, 1, 655362, -65520, 1, 655362, -65519, 1, 655362, -65518, 1, 655362, -65517, 1, 655362, -65516, 1, 655362, -65515, 1, 655362, -65514, 1, 655362, -65513, 1, 655362, -65512, 1, 655362, -65511, 1, 655362, -25, 1, 655362, -24, 1, 655362, -23, 1, 655362, -22, 1, 655362, -21, 1, 655362, -20, 1, 655362, -19, 1, 655362, -18, 1, 655362, -17, 1, 655362, -16, 1, 655362, -15, 1, 655362, -14, 1, 655362, -13, 1, 655362, -12, 1, 655362, -11, 1, 655362, -10, 1, 655362, -9, 1, 655362, -8, 1, 655362, -7, 1, 655362, -6, 1, 655362, -5, 1, 655362, -4, 1, 655362, -3, 1, 655362, -2, 1, 655364, -1, 1, 655362, -65536, 2, 2, -65535, 2, 3, -65534, 2, 4, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -65530, 2, 2, -65529, 2, 2, -65528, 2, 2, -65527, 2, 2, -65526, 2, 2, -65525, 2, 2, -65524, 2, 2, -65523, 2, 3, -65522, 2, 4, -65521, 2, 2, -65520, 2, 2, -65519, 2, 2, -65518, 2, 2, -65517, 2, 2, -65516, 2, 2, -65515, 2, 2, -65514, 2, 2, -65513, 2, 2, -65512, 2, 2, -65511, 2, 2, -65510, 2, 2, -25, 2, 2, -24, 2, 2, -23, 2, 2, -22, 2, 2, -21, 2, 2, -20, 2, 2, -19, 2, 2, -18, 2, 2, -17, 2, 2, -16, 2, 2, -15, 2, 2, -14, 2, 2, -13, 2, 2, -12, 2, 2, -11, 2, 2, -10, 2, 2, -9, 2, 2, -8, 2, 2, -7, 2, 2, -6, 2, 2, -5, 2, 2, -4, 2, 2, -3, 2, 2, -2, 2, 2, -1, 2, 3, -65536, 3, 0, -65535, 3, 1, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0, -65526, 3, 0, -65525, 3, 0, -65524, 3, 0, -65523, 3, 0, -65522, 3, 0, -65521, 3, 0, -65520, 3, 0, -65519, 3, 0, -65518, 3, 0, -65517, 3, 0, -65516, 3, 655360, -65515, 3, 655360, -65514, 3, 655360, -65513, 3, 655360, -65512, 3, 655360, -65511, 3, 655360, -25, 3, 655360, -24, 3, 655360, -23, 3, 655360, -22, 3, 655360, -21, 3, 655360, -20, 3, 0, -19, 3, 0, -18, 3, 0, -17, 3, 0, -16, 3, 0, -15, 3, 0, -14, 3, 0, -13, 3, 0, -12, 3, 0, -11, 3, 0, -10, 3, 0, -9, 3, 0, -8, 3, 0, -7, 3, 0, -6, 3, 0, -5, 3, 0, -4, 3, 0, -3, 3, 0, -2, 3, 0, -1, 3, 0, 65524, 4, 655373, 65525, 4, 655373, 65526, 4, 655373, 65527, 4, 13, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 4, 0, -65529, 4, 0, -65528, 4, 0, -65527, 4, 0, -65526, 4, 0, -65525, 4, 0, -65524, 4, 0, -65523, 4, 0, -65522, 4, 0, -65521, 4, 0, -65520, 4, 0, -65519, 4, 0, -65518, 4, 0, -65517, 4, 0, -65516, 4, 655360, -65515, 4, 655360, -65514, 4, 655360, -65513, 4, 655360, -65512, 4, 655360, -65511, 4, 655360, -25, 4, 655360, -24, 4, 655360, -23, 4, 655360, -22, 4, 655360, -21, 4, 655360, -20, 4, 0, -19, 4, 0, -18, 4, 0, -17, 4, 0, -16, 4, 0, -15, 4, 0, -14, 4, 0, -13, 4, 0, -12, 4, 0, -11, 4, 0, -10, 4, 0, -9, 4, 0, -8, 4, 0, -7, 4, 0, -6, 4, 0, -5, 4, 0, -4, 4, 14, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 1441806, -65528, 5, 0, -65527, 5, 0, -65526, 5, 0, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 0, -65518, 5, 0, -65517, 5, 0, -65516, 5, 655360, -65515, 5, 655360, -65514, 5, 655360, -65513, 5, 655360, -65512, 5, 655360, -65511, 5, 655360, -25, 5, 655360, -24, 5, 655360, -23, 5, 655360, -22, 5, 655360, -21, 5, 655360, -20, 5, 0, -19, 5, 0, -18, 5, 0, -17, 5, 0, -16, 5, 0, -15, 5, 0, -14, 5, 0, -13, 5, 0, -12, 5, 0, -11, 5, 0, -10, 5, 0, -9, 5, 0, -8, 5, 0, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 0, -65525, 6, 0, -65524, 6, 0, -65523, 6, 0, -65522, 6, 0, -65521, 6, 0, -65520, 6, 0, -65519, 6, 0, -65518, 6, 0, -65517, 6, 0, -65516, 6, 655360, -65515, 6, 655360, -65514, 6, 655360, -65513, 6, 655360, -65512, 6, 655360, -65511, 6, 655360, -25, 6, 655360, -24, 6, 655360, -23, 6, 655360, -22, 6, 655360, -21, 6, 655360, -20, 6, 0, -19, 6, 0, -18, 6, 0, -17, 6, 0, -16, 6, 0, -15, 6, 0, -14, 6, 0, -13, 6, 0, -12, 6, 0, -11, 6, 0, -10, 6, 0, -9, 6, 0, -8, 6, 0, -7, 6, 0, -6, 6, 0, -5, 6, 0, -4, 6, 0, -3, 6, 0, -2, 6, 0, -1, 6, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 1048590, -65532, 7, 0, -65531, 7, 0, -65530, 7, 0, -65529, 7, 0, -65528, 7, 0, -65527, 7, 0, -65526, 7, 0, -65525, 7, 0, -65524, 7, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 7, 0, -65518, 7, 0, -65517, 7, 0, -65516, 7, 655360, -65515, 7, 655360, -65514, 7, 655360, -65513, 7, 655360, -65512, 7, 655360, -65511, 7, 655360, -25, 7, 655360, -24, 7, 655360, -23, 7, 655360, -22, 7, 655360, -21, 7, 655360, -20, 7, 0, -19, 7, 0, -18, 7, 0, -17, 7, 0, -16, 7, 0, -15, 7, 0, -14, 7, 0, -13, 7, 0, -12, 7, 0, -11, 7, 0, -10, 7, 0, -9, 7, 0, -8, 7, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, -65530, 8, 0, -65529, 8, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 0, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, -65519, 8, 0, -65518, 8, 0, -65517, 8, 0, -65516, 8, 655360, -65515, 8, 655360, -65514, 8, 655360, -65513, 8, 655360, -65512, 8, 655360, -65511, 8, 655360, -25, 8, 655360, -24, 8, 655360, -23, 8, 655360, -22, 8, 655360, -21, 8, 655360, -20, 8, 0, -19, 8, 0, -18, 8, 0, -17, 8, 0, -16, 8, 0, -15, 8, 0, -14, 8, 0, -13, 8, 0, -12, 8, 0, -11, 8, 0, -10, 8, 0, -9, 8, 0, -8, 8, 0, -7, 8, 0, -6, 8, 0, -5, 8, 0, -4, 8, 0, -3, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 9, 0, -65524, 9, 0, -65523, 9, 0, -65522, 9, 0, -65521, 9, 0, -65520, 9, 0, -65519, 9, 0, -65518, 9, 0, -65517, 9, 0, -65516, 9, 655360, -65515, 9, 655360, -65514, 9, 655360, -65513, 9, 655360, -65512, 9, 655360, -65511, 9, 655360, -25, 9, 655360, -24, 9, 655360, -23, 9, 655360, -22, 9, 655360, -21, 9, 655360, -20, 9, 0, -19, 9, 0, -18, 9, 0, -17, 9, 0, -16, 9, 0, -15, 9, 0, -14, 9, 0, -13, 9, 0, -12, 9, 0, -11, 9, 0, -10, 9, 0, -9, 9, 0, -8, 9, 0, -7, 9, 0, -6, 9, 0, -5, 9, 0, -4, 9, 0, -3, 9, 0, -2, 9, 0, -1, 9, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 10, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, -65526, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 10, 0, -65519, 10, 0, -65518, 10, 0, -65517, 10, 0, -65516, 10, 655360, -65515, 10, 655360, -65514, 10, 655360, -65513, 10, 655360, -65512, 10, 655360, -65511, 10, 655360, -25, 10, 655360, -24, 10, 655360, -23, 10, 655360, -22, 10, 655360, -21, 10, 655360, -20, 10, 0, -19, 10, 0, -18, 10, 0, -17, 10, 0, -16, 10, 0, -15, 10, 0, -14, 10, 0, -13, 10, 0, -12, 10, 0, -11, 10, 0, -10, 10, 0, -9, 10, 0, -8, 10, 0, -7, 10, 0, -6, 10, 0, -5, 10, 0, -4, 10, 0, -3, 10, 0, -2, 10, 0, -1, 10, 0, 131061, 65525, 655371, 131062, 65525, 655365, 131063, 65525, 655365, 131064, 65525, 655365, 131065, 65525, 1048587, 5, 65526, 655367, 6, 65526, 655365, 7, 65526, 655365, 8, 65526, 655365, 9, 65526, 655365, 10, 65526, 655365, 11, 65526, 655365, 12, 65526, 655365, 13, 65526, 655365, 14, 65526, 655365, 15, 65526, 655365, 16, 65526, 655365, 17, 65526, 655365, 18, 65526, 1048587, 131060, 65526, 655371, 131061, 65526, 655368, 131062, 65526, 1441792, 131063, 65526, 1441792, 131064, 65526, 1441792, 131065, 65526, 1048585, -65532, 65526, 655371, -65531, 65526, 655366, -65529, 65526, 0, 5, 65527, 1441797, 6, 65527, 1441792, 7, 65527, 1441792, 8, 65527, 1441792, 9, 65527, 1441792, 10, 65527, 1441792, 11, 65527, 1441792, 12, 65527, 1441792, 13, 65527, 1441792, 14, 65527, 1441792, 15, 65527, 1441792, 16, 65527, 1441792, 17, 65527, 1441792, 18, 65527, 1048581, 131060, 65527, 1441801, 131061, 65527, 1441792, 131062, 65527, 1441792, 131063, 65527, 1441792, 131064, 65527, 1441792, 131065, 65527, 1048585, -65532, 65527, 1441801, -65531, 65527, 655374, 5, 65528, 1441797, 6, 65528, 1441792, 7, 65528, 1441792, 8, 65528, 1441792, 9, 65528, 1441792, 10, 65528, 1441792, 11, 65528, 1441792, 12, 65528, 1441792, 13, 65528, 1441792, 14, 65528, 1441792, 15, 65528, 1441792, 16, 65528, 1441792, 17, 65528, 1441792, 18, 65528, 1048581, 65529, 65528, 1048584, 65530, 65528, 655365, 65531, 65528, 655365, 65532, 65528, 655365, 65533, 65528, 1048583, 131060, 65528, 1441801, 131061, 65528, 1441792, 131062, 65528, 1441792, 131063, 65528, 1441792, 131064, 65528, 1441792, 131065, 65528, 1048581, -65532, 65528, 1441801, -65531, 65528, 655360, 5, 65529, 1441797, 6, 65529, 1441792, 7, 65529, 1441792, 8, 65529, 1441792, 9, 65529, 1441792, 10, 65529, 1441792, 11, 65529, 1441792, 12, 65529, 1441792, 13, 65529, 1441792, 14, 65529, 1441792, 15, 65529, 1441792, 16, 65529, 1441792, 17, 65529, 1441792, 18, 65529, 1048581, 65528, 65529, 1441797, 65529, 65529, 1441792, 65530, 65529, 1441792, 65531, 65529, 1441792, 65532, 65529, 1441792, 65533, 65529, 1048584, 65534, 65529, 1048583, 131060, 65529, 1441801, 131061, 65529, 1441792, 131062, 65529, 1441793, 131063, 65529, 1441792, 131064, 65529, 1441792, 131065, 65529, 1048584, 131066, 65529, 1048583, -65532, 65529, 1441801, -65531, 65529, 655360, -6, 65529, 1441792, 5, 65530, 1441799, 6, 65530, 5, 7, 65530, 1441800, 8, 65530, 1441792, 9, 65530, 655374, 10, 65530, 1441792, 11, 65530, 1441792, 12, 65530, 1441792, 13, 65530, 1441792, 14, 65530, 1441792, 15, 65530, 1441792, 16, 65530, 1441792, 17, 65530, 1441792, 18, 65530, 1048581, 65528, 65530, 1441797, 65529, 65530, 1441792, 65530, 65530, 1441792, 65531, 65530, 1441793, 65532, 65530, 1441792, 65533, 65530, 1441792, 65534, 65530, 1048584, 65535, 65530, 1048583, 131060, 65530, 1441803, 131061, 65530, 1441804, 131062, 65530, 1441792, 131063, 65530, 1441792, 131064, 65530, 1441792, 131065, 65530, 1441792, 131066, 65530, 1048581, -65536, 65530, 1048587, -65532, 65530, 1441801, -65531, 65530, 0, -65530, 65530, 0, -65529, 65530, 655360, -11, 65530, 1048577, -10, 65530, 1441792, -9, 65530, 1441792, -8, 65530, 1441792, -1, 65530, 655365, 7, 65531, 1441798, 8, 65531, 1441792, 9, 65531, 1441792, 10, 65531, 1441792, 11, 65531, 1441792, 12, 65531, 1441792, 13, 65531, 1441792, 14, 65531, 1441792, 15, 65531, 1441792, 16, 65531, 1441792, 17, 65531, 1441792, 18, 65531, 1048581, 65528, 65531, 1441797, 65529, 65531, 1441792, 65530, 65531, 1441792, 65531, 65531, 1441792, 65532, 65531, 1441792, 65533, 65531, 1441793, 65534, 65531, 1441792, 65535, 65531, 1048581, 131061, 65531, 1441803, 131062, 65531, 9, 131063, 65531, 10, 131064, 65531, 9, 131065, 65531, 6, 131066, 65531, 7, -65536, 65531, 1048588, -65535, 65531, 1048587, -65533, 65531, 655371, -65532, 65531, 655372, -65531, 65531, 0, -65530, 65531, 0, -65529, 65531, 0, -65518, 65531, 655366, -65517, 65531, 655365, -65516, 65531, 655365, -65515, 65531, 655365, -65514, 65531, 655365, -65513, 65531, 1048583, -14, 65531, 1441803, -13, 65531, 1441804, -12, 65531, 1441792, -11, 65531, 1441792, -10, 65531, 1441792, -9, 65531, 1441792, -8, 65531, 1441792, -1, 65531, 655374, 7, 65532, 1441799, 8, 65532, 5, 9, 65532, 5, 10, 65532, 5, 11, 65532, 5, 12, 65532, 5, 13, 65532, 5, 14, 65532, 5, 15, 65532, 5, 16, 65532, 5, 17, 65532, 5, 18, 65532, 7, 65528, 65532, 1441799, 65529, 65532, 5, 65530, 65532, 5, 65531, 65532, 5, 65532, 65532, 5, 65533, 65532, 5, 65534, 65532, 5, 65535, 65532, 7, -65536, 65532, 0, -65535, 65532, 1048588, -65534, 65532, 655369, -65533, 65532, 655372, -65532, 65532, 0, -65531, 65532, 655374, -65530, 65532, 1048590, -65529, 65532, 0, -65528, 65532, 0, -65527, 65532, 0, -65526, 65532, 0, -65525, 65532, 0, -65524, 65532, 0, -65523, 65532, 0, -65522, 65532, 0, -65521, 65532, 0, -65520, 65532, 0, -65519, 65532, 0, -65518, 65532, 0, -65517, 65532, 1048576, -65516, 65532, 1048576, -65515, 65532, 1048576, -65514, 65532, 1048576, -65513, 65532, 1048584, -65512, 65532, 1048583, -25, 65532, 655365, -24, 65532, 655365, -23, 65532, 655365, -22, 65532, 655365, -21, 65532, 655365, -20, 65532, 655365, -19, 65532, 655365, -18, 65532, 655365, -17, 65532, 655365, -16, 65532, 655365, -15, 65532, 655365, -14, 65532, 1048583, -13, 65532, 1441803, -12, 65532, 1441804, -11, 65532, 0, -10, 65532, 0, -9, 65532, 0, -8, 65532, 0, -7, 65532, 1441792, -6, 65532, 1441792, -5, 65532, 1441792, -4, 65532, 1441792, -3, 65532, 1441792, -2, 65532, 0, -1, 65532, 0, -65536, 65533, 0, -65535, 65533, 0, -65534, 65533, 0, -65533, 65533, 0, -65532, 65533, 0, -65531, 65533, 0, -65530, 65533, 0, -65529, 65533, 0, -65528, 65533, 0, -65527, 65533, 0, -65526, 65533, 0, -65525, 65533, 0, -65524, 65533, 0, -65523, 65533, 0, -65522, 65533, 0, -65521, 65533, 0, -65520, 65533, 0, -65519, 65533, 0, -65518, 65533, 0, -65517, 65533, 1048576, -65516, 65533, 1048576, -65515, 65533, 1048576, -65514, 65533, 1048576, -65513, 65533, 1048576, -65512, 65533, 1048584, -65511, 65533, 655366, -25, 65533, 655360, -24, 65533, 655360, -23, 65533, 655360, -22, 65533, 655360, -21, 65533, 655360, -20, 65533, 0, -19, 65533, 0, -18, 65533, 0, -17, 65533, 0, -16, 65533, 0, -15, 65533, 0, -14, 65533, 1048584, -13, 65533, 1048583, -12, 65533, 1441803, -11, 65533, 1441804, -10, 65533, 0, -9, 65533, 0, -8, 65533, 0, -7, 65533, 0, -6, 65533, 0, -5, 65533, 1441792, -4, 65533, 1441792, -3, 65533, 1441793, -2, 65533, 0, -1, 65533, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 0, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, -65529, 65534, 0, -65528, 65534, 0, -65527, 65534, 0, -65526, 65534, 0, -65525, 65534, 0, -65524, 65534, 0, -65523, 65534, 0, -65522, 65534, 655374, -65521, 65534, 0, -65520, 65534, 0, -65519, 65534, 0, -65518, 65534, 0, -65517, 65534, 0, -65516, 65534, 655360, -65515, 65534, 655360, -65514, 65534, 655360, -65513, 65534, 655360, -65512, 65534, 655360, -65511, 65534, 655360, -25, 65534, 655360, -24, 65534, 655360, -23, 65534, 655360, -22, 65534, 655360, -21, 65534, 655360, -20, 65534, 0, -19, 65534, 0, -18, 65534, 0, -17, 65534, 0, -16, 65534, 0, -15, 65534, 0, -14, 65534, 0, -13, 65534, 1048584, -12, 65534, 655365, -11, 65534, 655368, -10, 65534, 0, -9, 65534, 0, -8, 65534, 0, -7, 65534, 0, -6, 65534, 0, -5, 65534, 0, -4, 65534, 0, -3, 65534, 0, -2, 65534, 0, -1, 65534, 0, 65531, 65535, 655373, 65532, 65535, 655373, 65533, 65535, 655373, 65534, 65535, 655373, -65536, 65535, 0, -65535, 65535, 0, -65534, 65535, 1048590, -65533, 65535, 0, -65532, 65535, 0, -65531, 65535, 0, -65530, 65535, 0, -65529, 65535, 1048590, -65528, 65535, 0, -65527, 65535, 0, -65526, 65535, 0, -65525, 65535, 0, -65524, 65535, 0, -65523, 65535, 0, -65522, 65535, 0, -65521, 65535, 0, -65520, 65535, 0, -65519, 65535, 0, -65518, 65535, 0, -65517, 65535, 0, -65516, 65535, 655360, -65515, 65535, 655360, -65514, 65535, 655360, -65513, 65535, 655360, -65512, 65535, 655360, -65511, 65535, 655360, -25, 65535, 655360, -24, 65535, 655360, -23, 65535, 655360, -22, 65535, 655360, -21, 65535, 655360, -20, 65535, 0, -19, 65535, 0, -18, 65535, 0, -17, 65535, 0, -16, 65535, 0, -15, 65535, 0, -14, 65535, 0, -13, 65535, 0, -12, 65535, 0, -11, 65535, 0, -10, 65535, 0, -9, 65535, 0, -8, 65535, 0, -7, 65535, 1441806, -6, 65535, 0, -5, 65535, 0, -4, 65535, 0, -3, 65535, 0, -2, 65535, 1441793, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="rope 1" parent="arena/deco/plains" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6291, 2.58449, -2.99761 )
+
+[node name="rope 2" parent="arena/deco/plains" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6343, 2.58449, -2.99859 )
+
+[node name="rope 5" parent="arena/deco/plains" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6185, 2.58449, -2.99859 )
+
+[node name="rope torn" parent="arena/deco/plains" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.91255, 0, -2.98614 )
+
+[node name="Lamppost" type="Spatial" parent="arena/deco/plains"]
+transform = Transform( 0.969167, 0.239826, -0.0565708, -0.240211, 0.970721, 0, 0.0549145, 0.0135889, 0.998399, 0.0887502, -0.255979, -0.942399 )
+
+[node name="lamppost_battle2" type="MeshInstance" parent="arena/deco/plains/Lamppost"]
+transform = Transform( 0.125, 0, 0, 0, -2.03651e-08, -0.125, 0, 0.125, -2.03651e-08, 0, 1, 0 )
+mesh = ExtResource( 28 )
+
+[node name="lightbulb_sprite" parent="arena/deco/plains/Lamppost" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8, 0 )
+
+[node name="lightbulb_sprite_lit" parent="arena/deco/plains/Lamppost" instance=ExtResource( 32 )]
+transform = Transform( 1, 5.70435e-09, 3.72529e-09, 7.74162e-09, 1, -9.31323e-10, 3.72529e-09, 9.31323e-10, 1, 1.11759e-07, 5.8, 0.02 )
+
+[node name="Bush 1" parent="arena/deco/plains" instance=ExtResource( 29 )]
+transform = Transform( 0.999999, 0, 0.00120257, 0, 1, 0, -0.00120257, 0, 0.999999, -43.1887, 0.0119613, -16.431 )
+
+[node name="Bush 2" parent="arena/deco/plains" instance=ExtResource( 29 )]
+transform = Transform( 0.999999, 0, 0.00120257, 0, 1, 0, -0.00120257, 0, 0.999999, 23.8169, 0.0119613, -12.9903 )
+
+[node name="Tree 5" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.704, 4, -17.5364 )
+
+[node name="Tree 6" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6158, 4, -26.5364 )
+
+[node name="Tree 7" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6158, 8, -21.5364 )
+
+[node name="Tree 4" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 0.997783, 0, 0.0665525, 0, 1, 0, -0.0665525, 0, 0.997783, -31.6735, 8, -32.3354 )
+
+[node name="Tree 8" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 0.997783, 0, 0.0665525, 0, 1, 0, -0.0665525, 0, 0.997783, 43.3265, 4, -19.3354 )
+
+[node name="Tree 9" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 0.997783, 0, 0.0665525, 0, 1, 0, -0.0665525, 0, 0.997783, 34.3265, 4, -22.3354 )
+
+[node name="Tree 10" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 0.997783, 0, 0.0665525, 0, 1, 0, -0.0665525, 0, 0.997783, 26.3265, 4, -25.3354 )
+
+[node name="Tree 11" parent="arena/deco/plains" instance=ExtResource( 30 )]
+transform = Transform( 0.997783, 0, 0.0665525, 0, 1, 0, -0.0665525, 0, 0.997783, 41.3265, 4, -28.3354 )
+
+[node name="mall" type="Spatial" parent="arena/deco"]
+visible = false
+
+[node name="GridMap" type="GridMap" parent="arena/deco/mall"]
+mesh_library = ExtResource( 41 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 3, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 3, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 3, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -25, 0, 0, -24, 0, 0, -23, 0, 0, -22, 0, 0, -21, 0, 0, -20, 0, 0, -19, 0, 0, -18, 0, 3, -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 3, -10, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 3, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 0, -65535, 1, 0, -65534, 1, 2, -65533, 1, 3, -65532, 1, 2, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 2, -65526, 1, 3, -65525, 1, 2, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 2, -65519, 1, 3, -65518, 1, 2, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -25, 1, 0, -24, 1, 0, -23, 1, 0, -22, 1, 0, -21, 1, 0, -20, 1, 0, -19, 1, 2, -18, 1, 3, -17, 1, 2, -16, 1, 0, -15, 1, 0, -14, 1, 0, -13, 1, 0, -12, 1, 2, -11, 1, 3, -10, 1, 2, -9, 1, 0, -8, 1, 0, -7, 1, 0, -6, 1, 0, -5, 1, 2, -4, 1, 3, -3, 1, 2, -2, 1, 0, -1, 1, 0, -65536, 2, 3, -65535, 2, 3, -65534, 2, 3, -65533, 2, 3, -65532, 2, 3, -65531, 2, 3, -65530, 2, 3, -65529, 2, 3, -65528, 2, 3, -65527, 2, 3, -65526, 2, 3, -65525, 2, 3, -65524, 2, 3, -65523, 2, 3, -65522, 2, 3, -65521, 2, 3, -65520, 2, 3, -65519, 2, 3, -65518, 2, 3, -65517, 2, 3, -65516, 2, 3, -65515, 2, 3, -65514, 2, 3, -65513, 2, 3, -65512, 2, 3, -25, 2, 3, -24, 2, 3, -23, 2, 3, -22, 2, 3, -21, 2, 3, -20, 2, 3, -19, 2, 3, -18, 2, 3, -17, 2, 3, -16, 2, 3, -15, 2, 3, -14, 2, 3, -13, 2, 3, -12, 2, 3, -11, 2, 3, -10, 2, 3, -9, 2, 3, -8, 2, 3, -7, 2, 3, -6, 2, 3, -5, 2, 3, -4, 2, 3, -3, 2, 3, -2, 2, 3, -1, 2, 3, -65536, 3, 1441792, -65535, 3, 0, -65534, 3, 2, -65533, 3, 3, -65532, 3, 2, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 2, -65526, 3, 3, -65525, 3, 2, -65524, 3, 0, -65523, 3, 0, -65522, 3, 0, -65521, 3, 0, -65520, 3, 2, -65519, 3, 3, -65518, 3, 2, -65517, 3, 0, -65516, 3, 0, -65515, 3, 0, -65514, 3, 0, -65513, 3, 0, -65512, 3, 0, -25, 3, 0, -24, 3, 0, -23, 3, 0, -22, 3, 0, -21, 3, 0, -20, 3, 0, -19, 3, 2, -18, 3, 3, -17, 3, 2, -16, 3, 0, -15, 3, 0, -14, 3, 0, -13, 3, 0, -12, 3, 2, -11, 3, 3, -10, 3, 2, -9, 3, 0, -8, 3, 0, -7, 3, 0, -6, 3, 0, -5, 3, 2, -4, 3, 3, -3, 3, 2, -2, 3, 0, -1, 3, 0, -65536, 4, 1441792, -65535, 4, 1441792, -65534, 4, 1441799, -65533, 4, 3, -65532, 4, 0, -65531, 4, 0, -65530, 4, 0, -65529, 4, 0, -65528, 4, 0, -65527, 4, 1441799, -65526, 4, 3, -65525, 4, 0, -65524, 4, 0, -65523, 4, 0, -65522, 4, 0, -65521, 4, 0, -65520, 4, 0, -65519, 4, 3, -65518, 4, 0, -65517, 4, 0, -65516, 4, 0, -65515, 4, 0, -65514, 4, 0, -65513, 4, 0, -65512, 4, 0, -25, 4, 0, -24, 4, 0, -23, 4, 0, -22, 4, 0, -21, 4, 0, -20, 4, 0, -19, 4, 0, -18, 4, 3, -17, 4, 0, -16, 4, 0, -15, 4, 0, -14, 4, 0, -13, 4, 0, -12, 4, 0, -11, 4, 3, -10, 4, 0, -9, 4, 0, -8, 4, 0, -7, 4, 0, -6, 4, 0, -5, 4, 0, -4, 4, 3, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 3, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 5, 3, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 3, -65518, 5, 0, -65517, 5, 0, -65516, 5, 0, -65515, 5, 0, -65514, 5, 0, -65513, 5, 0, -65512, 5, 0, -25, 5, 0, -24, 5, 0, -23, 5, 0, -22, 5, 0, -21, 5, 0, -20, 5, 0, -19, 5, 0, -18, 5, 3, -17, 5, 0, -16, 5, 0, -15, 5, 0, -14, 5, 0, -13, 5, 0, -12, 5, 0, -11, 5, 3, -10, 5, 0, -9, 5, 0, -8, 5, 0, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 3, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 3, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 3, -65525, 6, 0, -65524, 6, 0, -65523, 6, 0, -65522, 6, 0, -65521, 6, 0, -65520, 6, 0, -65519, 6, 3, -65518, 6, 0, -65517, 6, 0, -65516, 6, 0, -65515, 6, 0, -65514, 6, 0, -65513, 6, 0, -65512, 6, 0, -25, 6, 0, -24, 6, 0, -23, 6, 0, -22, 6, 0, -21, 6, 0, -20, 6, 0, -19, 6, 0, -18, 6, 3, -17, 6, 0, -16, 6, 0, -15, 6, 0, -14, 6, 0, -13, 6, 0, -12, 6, 0, -11, 6, 3, -10, 6, 0, -9, 6, 0, -8, 6, 0, -7, 6, 0, -6, 6, 0, -5, 6, 0, -4, 6, 3, -3, 6, 0, -2, 6, 0, -1, 6, 655367, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 3, -65532, 7, 0, -65531, 7, 0, -65530, 7, 0, -65529, 7, 0, -65528, 7, 0, -65527, 7, 0, -65526, 7, 3, -65525, 7, 0, -65524, 7, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 7, 3, -65518, 7, 0, -65517, 7, 0, -65516, 7, 0, -65515, 7, 0, -65514, 7, 0, -65513, 7, 0, -65512, 7, 0, -25, 7, 0, -24, 7, 0, -23, 7, 0, -22, 7, 0, -21, 7, 0, -20, 7, 0, -19, 7, 0, -18, 7, 3, -17, 7, 0, -16, 7, 0, -15, 7, 0, -14, 7, 0, -13, 7, 0, -12, 7, 0, -11, 7, 3, -10, 7, 0, -9, 7, 0, -8, 7, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 3, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 3, -65532, 8, 0, -65531, 8, 0, -65530, 8, 655367, -65529, 8, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 3, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, -65519, 8, 3, -65518, 8, 0, -65517, 8, 0, -65516, 8, 0, -65515, 8, 0, -65514, 8, 0, -65513, 8, 0, -65512, 8, 0, -25, 8, 0, -24, 8, 0, -23, 8, 0, -22, 8, 0, -21, 8, 0, -20, 8, 0, -19, 8, 0, -18, 8, 3, -17, 8, 0, -16, 8, 0, -15, 8, 0, -14, 8, 0, -13, 8, 0, -12, 8, 0, -11, 8, 3, -10, 8, 0, -9, 8, 0, -8, 8, 0, -7, 8, 655367, -6, 8, 0, -5, 8, 0, -4, 8, 3, -3, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 3, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 3, -65525, 9, 0, -65524, 9, 0, -65523, 9, 0, -65522, 9, 0, -65521, 9, 0, -65520, 9, 0, -65519, 9, 3, -65518, 9, 0, -65517, 9, 0, -65516, 9, 0, -65515, 9, 0, -65514, 9, 0, -65513, 9, 0, -65512, 9, 0, -25, 9, 0, -24, 9, 0, -23, 9, 0, -22, 9, 0, -21, 9, 0, -20, 9, 0, -19, 9, 0, -18, 9, 3, -17, 9, 0, -16, 9, 0, -15, 9, 0, -14, 9, 0, -13, 9, 0, -12, 9, 0, -11, 9, 3, -10, 9, 0, -9, 9, 0, -8, 9, 0, -7, 9, 0, -6, 9, 0, -5, 9, 0, -4, 9, 3, -3, 9, 0, -2, 9, 0, -1, 9, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 3, -65532, 10, 0, -65531, 10, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, -65526, 10, 3, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 10, 0, -65519, 10, 3, -65518, 10, 0, -65517, 10, 0, -65516, 10, 0, -65515, 10, 0, -65514, 10, 0, -65513, 10, 0, -65512, 10, 0, -25, 10, 0, -24, 10, 0, -23, 10, 0, -22, 10, 0, -21, 10, 0, -20, 10, 0, -19, 10, 0, -18, 10, 3, -17, 10, 0, -16, 10, 0, -15, 10, 0, -14, 10, 0, -13, 10, 0, -12, 10, 0, -11, 10, 3, -10, 10, 0, -9, 10, 0, -8, 10, 0, -7, 10, 0, -6, 10, 0, -5, 10, 0, -4, 10, 3, -3, 10, 0, -2, 10, 0, -1, 10, 0, -65536, 11, 0, -65535, 11, 0, -65534, 11, 0, -65533, 11, 3, -65532, 11, 0, -65531, 11, 0, -65530, 11, 0, -65529, 11, 0, -65528, 11, 0, -65527, 11, 0, -65526, 11, 3, -65525, 11, 0, -65524, 11, 0, -65523, 11, 0, -65522, 11, 0, -65521, 11, 0, -65520, 11, 0, -65519, 11, 3, -65518, 11, 0, -65517, 11, 0, -65516, 11, 0, -65515, 11, 0, -65514, 11, 0, -65513, 11, 0, -65512, 11, 0, -25, 11, 0, -24, 11, 0, -23, 11, 0, -22, 11, 0, -21, 11, 0, -20, 11, 0, -19, 11, 0, -18, 11, 3, -17, 11, 0, -16, 11, 0, -15, 11, 0, -14, 11, 0, -13, 11, 0, -12, 11, 0, -11, 11, 3, -10, 11, 0, -9, 11, 0, -8, 11, 0, -7, 11, 0, -6, 11, 0, -5, 11, 0, -4, 11, 3, -3, 11, 0, -2, 11, 0, -1, 11, 0, 0, 65532, 1, 1, 65532, 1, 2, 65532, 1, 3, 65532, 4, 4, 65532, 1, 5, 65532, 1, 6, 65532, 1, 7, 65532, 1, 8, 65532, 1, 9, 65532, 1, 10, 65532, 4, 11, 65532, 1, 12, 65532, 1, 13, 65532, 1, 14, 65532, 1, 15, 65532, 1, 16, 65532, 1, 17, 65532, 4, 18, 65532, 1, 19, 65532, 1, 20, 65532, 1, 21, 65532, 1, 22, 65532, 1, 23, 65532, 1, 24, 65532, 1, 65511, 65532, 1, 65512, 65532, 1, 65513, 65532, 1, 65514, 65532, 1, 65515, 65532, 1, 65516, 65532, 1, 65517, 65532, 1, 65518, 65532, 4, 65519, 65532, 1, 65520, 65532, 1, 65521, 65532, 1, 65522, 65532, 1, 65523, 65532, 1, 65524, 65532, 1, 65525, 65532, 4, 65526, 65532, 1, 65527, 65532, 1, 65528, 65532, 1, 65529, 65532, 1, 65530, 65532, 1, 65531, 65532, 1, 65532, 65532, 4, 65533, 65532, 1, 65534, 65532, 1, 65535, 65532, 1, 65538, 65532, 6, 65539, 65532, 5, 65540, 65532, 6, 65541, 65532, 6, 65542, 65532, 6, 65543, 65532, 6, 65544, 65532, 6, 65545, 65532, 6, 65546, 65532, 5, 65547, 65532, 6, 65548, 65532, 6, 65549, 65532, 6, 65550, 65532, 6, 65551, 65532, 6, 65552, 65532, 6, 65553, 65532, 5, 65554, 65532, 6, 131053, 65532, 6, 131054, 65532, 5, 131055, 65532, 6, 131056, 65532, 6, 131057, 65532, 6, 131058, 65532, 6, 131059, 65532, 6, 131060, 65532, 6, 131061, 65532, 5, 131062, 65532, 6, 131063, 65532, 6, 131064, 65532, 6, 131065, 65532, 6, 131066, 65532, 6, 131067, 65532, 6, 131068, 65532, 5, 131075, 65532, 5, 131076, 65532, 6, 131077, 65532, 6, 131078, 65532, 6, 131079, 65532, 6, 131080, 65532, 6, 131081, 65532, 6, 131082, 65532, 5, 131083, 65532, 6, 131084, 65532, 6, 131085, 65532, 6, 131086, 65532, 6, 131087, 65532, 6, 131088, 65532, 6, 131089, 65532, 5, 196589, 65532, 6, 196590, 65532, 5, 196591, 65532, 6, 196595, 65532, 6, 196596, 65532, 6, 196597, 65532, 5, 196598, 65532, 6, 196599, 65532, 6, 196600, 65532, 6, 196603, 65532, 6, 196604, 65532, 5, 196614, 65532, 6, 196615, 65532, 6, 196616, 65532, 6, 196617, 65532, 6, 196618, 65532, 5, 196619, 65532, 6, 196620, 65532, 6, 196621, 65532, 6, 196622, 65532, 6, 262126, 65532, 5, 262127, 65532, 6, 262132, 65532, 6, 262133, 65532, 5, 262134, 65532, 6, 262151, 65532, 6, 262152, 65532, 6, 262153, 65532, 6, 262154, 65532, 5, 262155, 65532, 6, 262156, 65532, 6, 327662, 65532, 5, 327688, 65532, 6, 327689, 65532, 6, 327690, 65532, 5, 327691, 65532, 6, 393225, 65532, 6, 393226, 65532, 5, 393227, 65532, 6, -65536, 65532, 0, -65535, 65532, 0, -65534, 65532, 0, -65533, 65532, 3, -65532, 65532, 0, -65531, 65532, 0, -65530, 65532, 0, -65529, 65532, 0, -65528, 65532, 0, -65527, 65532, 0, -65526, 65532, 3, -65525, 65532, 0, -65524, 65532, 0, -65523, 65532, 0, -65522, 65532, 0, -65521, 65532, 0, -65520, 65532, 0, -65519, 65532, 3, -65518, 65532, 0, -65517, 65532, 0, -65516, 65532, 0, -65515, 65532, 0, -65514, 65532, 0, -65513, 65532, 0, -65512, 65532, 0, -25, 65532, 0, -24, 65532, 0, -23, 65532, 0, -22, 65532, 0, -21, 65532, 0, -20, 65532, 0, -19, 65532, 0, -18, 65532, 3, -17, 65532, 0, -16, 65532, 0, -15, 65532, 0, -14, 65532, 0, -13, 65532, 0, -12, 65532, 0, -11, 65532, 3, -10, 65532, 0, -9, 65532, 0, -8, 65532, 0, -7, 65532, 0, -6, 65532, 0, -5, 65532, 0, -4, 65532, 3, -3, 65532, 0, -2, 65532, 0, -1, 65532, 0, -65536, 65533, 0, -65535, 65533, 0, -65534, 65533, 0, -65533, 65533, 3, -65532, 65533, 0, -65531, 65533, 0, -65530, 65533, 0, -65529, 65533, 0, -65528, 65533, 655367, -65527, 65533, 0, -65526, 65533, 3, -65525, 65533, 0, -65524, 65533, 0, -65523, 65533, 0, -65522, 65533, 0, -65521, 65533, 0, -65520, 65533, 0, -65519, 65533, 3, -65518, 65533, 0, -65517, 65533, 0, -65516, 65533, 0, -65515, 65533, 0, -65514, 65533, 0, -65513, 65533, 0, -65512, 65533, 0, -25, 65533, 0, -24, 65533, 0, -23, 65533, 0, -22, 65533, 0, -21, 65533, 0, -20, 65533, 0, -19, 65533, 0, -18, 65533, 3, -17, 65533, 0, -16, 65533, 0, -15, 65533, 0, -14, 65533, 0, -13, 65533, 0, -12, 65533, 0, -11, 65533, 3, -10, 65533, 0, -9, 65533, 0, -8, 65533, 0, -7, 65533, 0, -6, 65533, 0, -5, 65533, 0, -4, 65533, 3, -3, 65533, 0, -2, 65533, 0, -1, 65533, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 3, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, -65529, 65534, 0, -65528, 65534, 0, -65527, 65534, 0, -65526, 65534, 3, -65525, 65534, 0, -65524, 65534, 0, -65523, 65534, 0, -65522, 65534, 0, -65521, 65534, 0, -65520, 65534, 0, -65519, 65534, 3, -65518, 65534, 0, -65517, 65534, 0, -65516, 65534, 0, -65515, 65534, 0, -65514, 65534, 0, -65513, 65534, 0, -65512, 65534, 0, -25, 65534, 0, -24, 65534, 0, -23, 65534, 0, -22, 65534, 0, -21, 65534, 0, -20, 65534, 0, -19, 65534, 0, -18, 65534, 3, -17, 65534, 0, -16, 65534, 0, -15, 65534, 0, -14, 65534, 655367, -13, 65534, 0, -12, 65534, 0, -11, 65534, 3, -10, 65534, 0, -9, 65534, 0, -8, 65534, 0, -7, 65534, 0, -6, 65534, 0, -5, 65534, 0, -4, 65534, 3, -3, 65534, 0, -2, 65534, 0, -1, 65534, 0, -65536, 65535, 0, -65535, 65535, 0, -65534, 65535, 0, -65533, 65535, 3, -65532, 65535, 0, -65531, 65535, 0, -65530, 65535, 0, -65529, 65535, 0, -65528, 65535, 0, -65527, 65535, 0, -65526, 65535, 3, -65525, 65535, 0, -65524, 65535, 0, -65523, 65535, 0, -65522, 65535, 0, -65521, 65535, 0, -65520, 65535, 0, -65519, 65535, 3, -65518, 65535, 0, -65517, 65535, 0, -65516, 65535, 0, -65515, 65535, 0, -65514, 65535, 0, -65513, 65535, 0, -65512, 65535, 0, -25, 65535, 0, -24, 65535, 0, -23, 65535, 0, -22, 65535, 0, -21, 65535, 0, -20, 65535, 0, -19, 65535, 0, -18, 65535, 3, -17, 65535, 0, -16, 65535, 0, -15, 65535, 0, -14, 65535, 0, -13, 65535, 0, -12, 65535, 0, -11, 65535, 3, -10, 65535, 0, -9, 65535, 0, -8, 65535, 655367, -7, 65535, 0, -6, 65535, 0, -5, 65535, 0, -4, 65535, 3, -3, 65535, 0, -2, 65535, 1441792, -1, 65535, 1441799 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, -3 )
+}
+
+[node name="back" type="GridMap" parent="arena/deco/mall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25 )
+mesh_library = ExtResource( 41 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( 65538, 65531, 655365, 131056, 65531, 655361, 131057, 65531, 655361, 131058, 65531, 655361, 131065, 65531, 655361, 131066, 65531, 655361, 131076, 65531, 655361, 131077, 65531, 655361, 131087, 65531, 655361, 131088, 65531, 655361, 196589, 65531, 655361, 196591, 65531, 655365, 196595, 65531, 655361, 196599, 65531, 655361, 196600, 65531, 655365, 196603, 65531, 655361, 196614, 65531, 655365, 196621, 65531, 655361, 196622, 65531, 655361, 262127, 65531, 655365, 262132, 65531, 655361, 262134, 65531, 655365, 262151, 65531, 655365, 262156, 65531, 655361, 327688, 65531, 655365, 393225, 65531, 655365, 393227, 65531, 655361 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="battle_mall_crate_3" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.92664, 0, -0.375949, 0, 1, 0, 0.375949, 0, 0.92664, -16.1266, 2, -3.60955 )
+mesh = ExtResource( 43 )
+
+[node name="battle_mall_crate_7" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.788901, 0, 0.614519, 0, 1, 0, -0.614519, 0, 0.788901, -5.24613, 2, -3.85963 )
+mesh = ExtResource( 43 )
+
+[node name="battle_mall_crate_8" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.990468, 0, 0.137739, 0, 1, 0, -0.137739, 0, 0.990468, -10.4576, 2, -3.85963 )
+mesh = ExtResource( 43 )
+
+[node name="battle_mall_crate_4" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.776845, -0.595035, 0.206022, 0.622648, 0.677077, -0.39227, 0.0939215, 0.433013, 0.896481, -27.3721, 22, -30.4073 )
+mesh = ExtResource( 43 )
+
+[node name="battle_mall_crate_5" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.776845, -0.595035, 0.206022, 0.622648, 0.677077, -0.39227, 0.0939214, 0.433013, 0.896481, -37.1266, 13, -22.6095 )
+mesh = ExtResource( 43 )
+
+[node name="battle_mall_crate_6" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 0.776845, -0.595035, 0.206022, 0.622648, 0.677077, -0.39227, 0.0939214, 0.433013, 0.896481, 17.4541, 12.2377, -19.0283 )
+mesh = ExtResource( 43 )
+
+[node name="Sprite4" parent="arena/deco/mall" instance=ExtResource( 45 )]
+transform = Transform( 0.99863, -0.052336, 0, 0.052336, 0.99863, 0, 0, 0, 1, 36.0806, 11.6968, -14.7314 )
+
+[node name="Sprite6" parent="arena/deco/mall" instance=ExtResource( 45 )]
+transform = Transform( 0.979149, 0.203146, 0, -0.203146, 0.979149, 0, 0, 0, 1, -47.1824, 11.4715, -14.7314 )
+
+[node name="Sprite3" parent="arena/deco/mall" instance=ExtResource( 44 )]
+transform = Transform( 0.990641, 0.136494, 0, -0.136494, 0.990641, 0, 0, 0, 1, 28.389, 10.738, -14.7089 )
+
+[node name="Sprite5" parent="arena/deco/mall" instance=ExtResource( 44 )]
+transform = Transform( 0.990641, 0.136494, 0, -0.136494, 0.990641, 0, 0, 0, 1, -32.147, 6.01787, -14.7089 )
+
+[node name="battle_mall_bin" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 1.62899, -0.999995, 0.588558, 1.14018, 1.56777, -0.492004, -0.215363, 0.736266, 1.84703, -17.9705, 12, -20.7487 )
+mesh = ExtResource( 42 )
+
+[node name="battle_mall_bin2" type="MeshInstance" parent="arena/deco/mall"]
+transform = Transform( 1.53514, -1.2299, -0.361498, 1.14018, 1.56777, -0.492003, 0.585931, 0.17156, 1.90453, 23.9262, 18.3056, -27.0111 )
+mesh = ExtResource( 42 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arena/deco/mall"]
+anims/loop = SubResource( 16 )
+
+[node name="caves" type="Spatial" parent="arena/deco"]
+visible = false
+
+[node name="caves" type="GridMap" parent="arena/deco/caves"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh_library = ExtResource( 8 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -65536, 0, 30, -65535, 0, 30, -65534, 0, 30, -65533, 0, 30, -65532, 0, 30, -65531, 0, 30, -65530, 0, 30, -65529, 0, 30, -65528, 0, 30, -65527, 0, 30, -65526, 0, 30, -65525, 0, 30, -65524, 0, 30, -65523, 0, 30, -65522, 0, 30, -65521, 0, 30, -65520, 0, 30, -65519, 0, 30, -65518, 0, 30, -65517, 0, 30, -65516, 0, 30, -65515, 0, 30, -65514, 0, 30, -65513, 0, 30, -65512, 0, 30, -65511, 0, 30, -25, 0, 30, -24, 0, 30, -23, 0, 30, -22, 0, 30, -21, 0, 30, -20, 0, 30, -19, 0, 30, -18, 0, 30, -17, 0, 30, -16, 0, 30, -15, 0, 30, -14, 0, 30, -13, 0, 30, -12, 0, 30, -11, 0, 30, -10, 0, 30, -9, 0, 30, -8, 0, 30, -7, 0, 30, -6, 0, 30, -5, 0, 30, -4, 0, 30, -3, 0, 30, -2, 0, 30, -1, 0, 30, -65536, 1, 655393, -65535, 1, 655393, -65534, 1, 655393, -65533, 1, 655393, -65532, 1, 655394, -65531, 1, 655394, -65530, 1, 655393, -65529, 1, 655393, -65528, 1, 655393, -65527, 1, 655393, -65526, 1, 655393, -65525, 1, 655393, -65524, 1, 655393, -65523, 1, 655394, -65522, 1, 655393, -65521, 1, 655393, -65520, 1, 655393, -65519, 1, 655393, -65518, 1, 655393, -65517, 1, 655393, -65516, 1, 655393, -65515, 1, 655393, -65514, 1, 655393, -65513, 1, 655393, -65512, 1, 655393, -65511, 1, 655393, -25, 1, 655393, -24, 1, 655393, -23, 1, 655393, -22, 1, 655393, -21, 1, 655393, -20, 1, 655393, -19, 1, 655393, -18, 1, 655393, -17, 1, 655393, -16, 1, 655393, -15, 1, 655394, -14, 1, 655393, -13, 1, 655393, -12, 1, 655393, -11, 1, 655393, -10, 1, 655393, -9, 1, 655394, -8, 1, 655393, -7, 1, 655393, -6, 1, 655393, -5, 1, 655393, -4, 1, 655393, -3, 1, 655393, -2, 1, 655393, -1, 1, 655393, -65536, 2, 33, -65535, 2, 34, -65534, 2, 34, -65533, 2, 33, -65532, 2, 33, -65531, 2, 33, -65530, 2, 33, -65529, 2, 33, -65528, 2, 33, -65527, 2, 33, -65526, 2, 33, -65525, 2, 33, -65524, 2, 33, -65523, 2, 34, -65522, 2, 34, -65521, 2, 34, -65520, 2, 33, -65519, 2, 33, -65518, 2, 33, -65517, 2, 33, -65516, 2, 33, -65515, 2, 33, -65514, 2, 33, -65513, 2, 33, -65512, 2, 33, -65511, 2, 33, -25, 2, 33, -24, 2, 33, -23, 2, 33, -22, 2, 33, -21, 2, 33, -20, 2, 33, -19, 2, 33, -18, 2, 33, -17, 2, 33, -16, 2, 33, -15, 2, 33, -14, 2, 33, -13, 2, 33, -12, 2, 33, -11, 2, 33, -10, 2, 34, -9, 2, 33, -8, 2, 33, -7, 2, 33, -6, 2, 33, -5, 2, 33, -4, 2, 33, -3, 2, 33, -2, 2, 34, -1, 2, 34, -65536, 3, 30, -65535, 3, 32, -65534, 3, 30, -65533, 3, 30, -65532, 3, 30, -65531, 3, 30, -65530, 3, 30, -65529, 3, 30, -65528, 3, 30, -65527, 3, 30, -65526, 3, 30, -65525, 3, 30, -65524, 3, 30, -65523, 3, 30, -65522, 3, 30, -65521, 3, 30, -65520, 3, 30, -65519, 3, 30, -65518, 3, 30, -65517, 3, 30, -65516, 3, 30, -65515, 3, 30, -65514, 3, 30, -65513, 3, 30, -65512, 3, 30, -65511, 3, 30, -25, 3, 30, -24, 3, 30, -23, 3, 30, -22, 3, 30, -21, 3, 30, -20, 3, 30, -19, 3, 30, -18, 3, 30, -17, 3, 30, -16, 3, 30, -15, 3, 30, -14, 3, 30, -13, 3, 30, -12, 3, 30, -11, 3, 30, -10, 3, 30, -9, 3, 30, -8, 3, 30, -7, 3, 30, -6, 3, 30, -5, 3, 30, -4, 3, 30, -3, 3, 30, -2, 3, 30, -1, 3, 30, -65536, 4, 30, -65535, 4, 30, -65534, 4, 30, -65533, 4, 30, -65532, 4, 30, -65531, 4, 30, -65530, 4, 30, -65529, 4, 30, -65528, 4, 30, -65527, 4, 30, -65526, 4, 30, -65525, 4, 30, -65524, 4, 30, -65523, 4, 30, -65522, 4, 30, -65521, 4, 30, -65520, 4, 30, -65519, 4, 30, -65518, 4, 30, -65517, 4, 30, -65516, 4, 30, -65515, 4, 30, -65514, 4, 30, -65513, 4, 30, -65512, 4, 30, -65511, 4, 30, -25, 4, 30, -24, 4, 30, -23, 4, 30, -22, 4, 30, -21, 4, 30, -20, 4, 30, -19, 4, 30, -18, 4, 30, -17, 4, 30, -16, 4, 30, -15, 4, 30, -14, 4, 30, -13, 4, 30, -12, 4, 30, -11, 4, 30, -10, 4, 30, -9, 4, 30, -8, 4, 30, -7, 4, 30, -6, 4, 30, -5, 4, 30, -4, 4, 31, -3, 4, 30, -2, 4, 30, -1, 4, 30, -65536, 5, 30, -65535, 5, 31, -65534, 5, 30, -65533, 5, 30, -65532, 5, 30, -65531, 5, 30, -65530, 5, 30, -65529, 5, 31, -65528, 5, 30, -65527, 5, 30, -65526, 5, 30, -65525, 5, 30, -65524, 5, 30, -65523, 5, 30, -65522, 5, 30, -65521, 5, 30, -65520, 5, 30, -65519, 5, 30, -65518, 5, 30, -65517, 5, 30, -65516, 5, 30, -65515, 5, 30, -65514, 5, 30, -65513, 5, 30, -65512, 5, 30, -65511, 5, 30, -25, 5, 30, -24, 5, 30, -23, 5, 30, -22, 5, 30, -21, 5, 30, -20, 5, 30, -19, 5, 30, -18, 5, 30, -17, 5, 30, -16, 5, 30, -15, 5, 31, -14, 5, 30, -13, 5, 30, -12, 5, 30, -11, 5, 30, -10, 5, 30, -9, 5, 30, -8, 5, 30, -7, 5, 30, -6, 5, 30, -5, 5, 30, -4, 5, 30, -3, 5, 30, -2, 5, 30, -1, 5, 30, -65536, 6, 30, -65535, 6, 30, -65534, 6, 30, -65533, 6, 30, -65532, 6, 30, -65531, 6, 30, -65530, 6, 30, -65529, 6, 30, -65528, 6, 30, -65527, 6, 30, -65526, 6, 30, -65525, 6, 30, -65524, 6, 30, -65523, 6, 31, -65522, 6, 30, -65521, 6, 30, -65520, 6, 30, -65519, 6, 30, -65518, 6, 30, -65517, 6, 30, -65516, 6, 30, -65515, 6, 30, -65514, 6, 30, -65513, 6, 30, -65512, 6, 30, -65511, 6, 30, -25, 6, 30, -24, 6, 30, -23, 6, 30, -22, 6, 30, -21, 6, 30, -20, 6, 30, -19, 6, 30, -18, 6, 30, -17, 6, 30, -16, 6, 30, -15, 6, 30, -14, 6, 30, -13, 6, 30, -12, 6, 30, -11, 6, 30, -10, 6, 31, -9, 6, 30, -8, 6, 30, -7, 6, 30, -6, 6, 30, -5, 6, 30, -4, 6, 30, -3, 6, 30, -2, 6, 30, -1, 6, 30, -65536, 7, 30, -65535, 7, 30, -65534, 7, 30, -65533, 7, 30, -65532, 7, 30, -65531, 7, 30, -65530, 7, 30, -65529, 7, 30, -65528, 7, 30, -65527, 7, 30, -65526, 7, 30, -65525, 7, 30, -65524, 7, 30, -65523, 7, 30, -65522, 7, 30, -65521, 7, 30, -65520, 7, 30, -65519, 7, 30, -65518, 7, 30, -65517, 7, 30, -65516, 7, 30, -65515, 7, 30, -65514, 7, 30, -65513, 7, 30, -65512, 7, 30, -65511, 7, 30, -25, 7, 30, -24, 7, 30, -23, 7, 30, -22, 7, 30, -21, 7, 30, -20, 7, 30, -19, 7, 30, -18, 7, 30, -17, 7, 30, -16, 7, 30, -15, 7, 30, -14, 7, 30, -13, 7, 30, -12, 7, 30, -11, 7, 30, -10, 7, 30, -9, 7, 30, -8, 7, 30, -7, 7, 30, -6, 7, 30, -5, 7, 30, -4, 7, 30, -3, 7, 30, -2, 7, 30, -1, 7, 30, -65536, 8, 30, -65535, 8, 30, -65534, 8, 30, -65533, 8, 30, -65532, 8, 30, -65531, 8, 30, -65530, 8, 30, -65529, 8, 30, -65528, 8, 30, -65527, 8, 30, -65526, 8, 30, -65525, 8, 30, -65524, 8, 30, -65523, 8, 30, -65522, 8, 30, -65521, 8, 30, -65520, 8, 30, -65519, 8, 30, -65518, 8, 30, -65517, 8, 30, -65516, 8, 30, -65515, 8, 30, -65514, 8, 30, -65513, 8, 30, -65512, 8, 30, -65511, 8, 30, -25, 8, 30, -24, 8, 30, -23, 8, 30, -22, 8, 30, -21, 8, 30, -20, 8, 30, -19, 8, 30, -18, 8, 30, -17, 8, 30, -16, 8, 30, -15, 8, 30, -14, 8, 30, -13, 8, 30, -12, 8, 30, -11, 8, 30, -10, 8, 30, -9, 8, 30, -8, 8, 30, -7, 8, 30, -6, 8, 31, -5, 8, 30, -4, 8, 30, -3, 8, 30, -2, 8, 31, -1, 8, 30, -65536, 9, 30, -65535, 9, 30, -65534, 9, 30, -65533, 9, 30, -65532, 9, 30, -65531, 9, 30, -65530, 9, 31, -65529, 9, 30, -65528, 9, 30, -65527, 9, 30, -65526, 9, 30, -65525, 9, 30, -65524, 9, 30, -65523, 9, 30, -65522, 9, 30, -65521, 9, 30, -65520, 9, 30, -65519, 9, 30, -65518, 9, 30, -65517, 9, 30, -65516, 9, 30, -65515, 9, 30, -65514, 9, 30, -65513, 9, 30, -65512, 9, 30, -65511, 9, 30, -25, 9, 30, -24, 9, 30, -23, 9, 30, -22, 9, 30, -21, 9, 30, -20, 9, 30, -19, 9, 30, -18, 9, 30, -17, 9, 30, -16, 9, 30, -15, 9, 30, -14, 9, 30, -13, 9, 30, -12, 9, 30, -11, 9, 30, -10, 9, 30, -9, 9, 30, -8, 9, 30, -7, 9, 30, -6, 9, 30, -5, 9, 30, -4, 9, 30, -3, 9, 30, -2, 9, 30, -1, 9, 30, -65536, 10, 30, -65535, 10, 30, -65534, 10, 30, -65533, 10, 30, -65532, 10, 30, -65531, 10, 30, -65530, 10, 30, -65529, 10, 30, -65528, 10, 30, -65527, 10, 30, -65526, 10, 30, -65525, 10, 30, -65524, 10, 30, -65523, 10, 30, -65522, 10, 30, -65521, 10, 30, -65520, 10, 30, -65519, 10, 30, -65518, 10, 30, -65517, 10, 30, -65516, 10, 30, -65515, 10, 30, -65514, 10, 30, -65513, 10, 30, -65512, 10, 30, -65511, 10, 30, -25, 10, 30, -24, 10, 30, -23, 10, 30, -22, 10, 30, -21, 10, 30, -20, 10, 30, -19, 10, 30, -18, 10, 30, -17, 10, 30, -16, 10, 30, -15, 10, 30, -14, 10, 30, -13, 10, 30, -12, 10, 30, -11, 10, 30, -10, 10, 30, -9, 10, 30, -8, 10, 30, -7, 10, 30, -6, 10, 30, -5, 10, 30, -4, 10, 30, -3, 10, 30, -2, 10, 30, -1, 10, 30, 131061, 65525, 655400, 131062, 65525, 655398, 131063, 65525, 655398, 131064, 65525, 655398, 131065, 65525, 1048616, 2, 65526, 655400, 3, 65526, 655398, 4, 65526, 655398, 5, 65526, 655398, 6, 65526, 655398, 7, 65526, 655398, 8, 65526, 655398, 9, 65526, 655398, 10, 65526, 655398, 11, 65526, 655398, 12, 65526, 655398, 13, 65526, 655398, 14, 65526, 655398, 15, 65526, 655398, 16, 65526, 655398, 17, 65526, 655398, 18, 65526, 1048616, 131060, 65526, 655400, 131061, 65526, 655401, 131062, 65526, 655390, 131063, 65526, 655398, 131064, 65526, 655390, 131065, 65526, 1048614, -131072, 65526, 655399, -131071, 65526, 655399, -131070, 65526, 655399, -65539, 65526, 655400, -65538, 65526, 655399, -65537, 65526, 655399, 2, 65527, 1441830, 3, 65527, 655390, 4, 65527, 655390, 5, 65527, 655390, 6, 65527, 30, 7, 65527, 655390, 8, 65527, 30, 9, 65527, 30, 10, 65527, 30, 11, 65527, 30, 12, 65527, 30, 13, 65527, 30, 14, 65527, 30, 15, 65527, 30, 16, 65527, 30, 17, 65527, 30, 18, 65527, 1048614, 131060, 65527, 1441830, 131061, 65527, 655392, 131062, 65527, 655390, 131063, 65527, 655390, 131064, 65527, 655390, 131065, 65527, 1048614, -131072, 65527, 655390, -131071, 65527, 655390, -131070, 65527, 655390, -65539, 65527, 1441830, -65538, 65527, 655390, -65537, 65527, 655390, 2, 65528, 1441830, 3, 65528, 655390, 4, 65528, 655390, 5, 65528, 655390, 6, 65528, 655390, 7, 65528, 655390, 8, 65528, 30, 9, 65528, 30, 10, 65528, 30, 11, 65528, 655391, 12, 65528, 30, 13, 65528, 30, 14, 65528, 30, 15, 65528, 30, 16, 65528, 30, 17, 65528, 30, 18, 65528, 1048614, 65527, 65528, 655392, 65529, 65528, 655398, 65530, 65528, 655398, 65531, 65528, 655398, 65532, 65528, 655398, 65533, 65528, 1048616, 131060, 65528, 1441830, 131061, 65528, 655390, 131062, 65528, 655390, 131063, 65528, 655390, 131064, 65528, 655390, 131065, 65528, 1048614, -131072, 65528, 655390, -131071, 65528, 655390, -131070, 65528, 655390, -65539, 65528, 1441830, -65538, 65528, 655390, -65537, 65528, 655390, 2, 65529, 1441832, 3, 65529, 1441833, 4, 65529, 655390, 5, 65529, 655390, 6, 65529, 655390, 7, 65529, 655390, 8, 65529, 30, 9, 65529, 30, 10, 65529, 30, 11, 65529, 30, 12, 65529, 30, 13, 65529, 30, 14, 65529, 30, 15, 65529, 30, 16, 65529, 30, 17, 65529, 30, 18, 65529, 1048614, 65528, 65529, 1441797, 65529, 65529, 1441792, 65530, 65529, 655390, 65531, 65529, 655390, 65532, 65529, 655390, 65533, 65529, 1048617, 65534, 65529, 1048616, 131060, 65529, 1441830, 131061, 65529, 655390, 131062, 65529, 655390, 131063, 65529, 655390, 131064, 65529, 655390, 131065, 65529, 1048617, 131066, 65529, 1048616, -131072, 65529, 655390, -131071, 65529, 655390, -131070, 65529, 655395, -131069, 65529, 655394, -65539, 65529, 1441830, -65538, 65529, 655390, -65537, 65529, 655390, -12, 65529, 30, -11, 65529, 30, -6, 65529, 1441792, 3, 65530, 1441832, 4, 65530, 1441833, 5, 65530, 655390, 6, 65530, 655390, 7, 65530, 655390, 8, 65530, 30, 9, 65530, 655391, 10, 65530, 30, 11, 65530, 30, 12, 65530, 30, 13, 65530, 30, 14, 65530, 30, 15, 65530, 30, 16, 65530, 30, 17, 65530, 30, 18, 65530, 1048614, 65528, 65530, 1441797, 65529, 65530, 655390, 65530, 65530, 655390, 65531, 65530, 655392, 65532, 65530, 655390, 65533, 65530, 655390, 65534, 65530, 1048617, 65535, 65530, 1048616, 131060, 65530, 1441832, 131061, 65530, 1441833, 131062, 65530, 655390, 131063, 65530, 655390, 131064, 65530, 655390, 131065, 65530, 655390, 131066, 65530, 1048614, -131072, 65530, 655395, -131071, 65530, 655393, -131070, 65530, 655396, -131069, 65530, 655397, -131068, 65530, 655397, -65538, 65530, 655390, -65537, 65530, 655390, -65536, 65530, 1048616, -13, 65530, 30, -12, 65530, 30, -11, 65530, 30, -10, 65530, 30, -9, 65530, 1441792, -8, 65530, 1441792, -1, 65530, 655399, 4, 65531, 1441830, 5, 65531, 655390, 6, 65531, 655390, 7, 65531, 655390, 8, 65531, 655390, 9, 65531, 30, 10, 65531, 30, 11, 65531, 30, 12, 65531, 30, 13, 65531, 30, 14, 65531, 30, 15, 65531, 30, 16, 65531, 30, 17, 65531, 30, 18, 65531, 1048614, 65528, 65531, 1441830, 65529, 65531, 655390, 65530, 65531, 655390, 65531, 65531, 655390, 65532, 65531, 655390, 65533, 65531, 655390, 65534, 65531, 655390, 65535, 65531, 1048614, 131061, 65531, 1441832, 131062, 65531, 38, 131063, 65531, 38, 131064, 65531, 38, 131065, 65531, 38, 131066, 65531, 40, -131072, 65531, 655397, -131071, 65531, 655397, -131070, 65531, 655397, -131069, 65531, 655397, -131068, 65531, 655397, -65536, 65531, 1048617, -65535, 65531, 1048616, -65533, 65531, 655400, -65532, 65531, 655398, -65529, 65531, 30, -65528, 65531, 30, -14, 65531, 1441832, -13, 65531, 1441833, -12, 65531, 30, -11, 65531, 30, -10, 65531, 30, -9, 65531, 30, -8, 65531, 30, -7, 65531, 30, -1, 65531, 30, 4, 65532, 1441832, 5, 65532, 38, 6, 65532, 38, 7, 65532, 38, 8, 65532, 38, 9, 65532, 38, 10, 65532, 38, 11, 65532, 38, 12, 65532, 38, 13, 65532, 38, 14, 65532, 38, 15, 65532, 38, 16, 65532, 38, 17, 65532, 38, 18, 65532, 40, 65528, 65532, 1441832, 65529, 65532, 38, 65530, 65532, 38, 65531, 65532, 38, 65532, 65532, 38, 65533, 65532, 38, 65534, 65532, 38, 65535, 65532, 40, -131071, 65532, 655397, -131070, 65532, 655397, -131069, 65532, 655397, -131068, 65532, 655397, -65536, 65532, 30, -65535, 65532, 1048617, -65534, 65532, 655398, -65533, 65532, 655401, -65532, 65532, 30, -65531, 65532, 30, -65530, 65532, 30, -65529, 65532, 30, -65528, 65532, 30, -65527, 65532, 30, -65526, 65532, 30, -65525, 65532, 30, -65524, 65532, 30, -65523, 65532, 30, -65522, 65532, 30, -65521, 65532, 30, -65520, 65532, 30, -65519, 65532, 30, -65518, 65532, 1048614, -25, 65532, 655398, -24, 65532, 655398, -23, 65532, 655398, -22, 65532, 655398, -21, 65532, 655398, -20, 65532, 655398, -19, 65532, 655398, -18, 65532, 655398, -17, 65532, 655398, -16, 65532, 655398, -15, 65532, 655398, -14, 65532, 1048616, -13, 65532, 1441832, -12, 65532, 1441833, -11, 65532, 30, -10, 65532, 30, -9, 65532, 30, -8, 65532, 30, -7, 65532, 30, -6, 65532, 655390, -5, 65532, 655390, -4, 65532, 655390, -3, 65532, 655390, -2, 65532, 655390, -1, 65532, 30, -65536, 65533, 30, -65535, 65533, 655390, -65534, 65533, 655390, -65533, 65533, 655390, -65532, 65533, 655390, -65531, 65533, 30, -65530, 65533, 30, -65529, 65533, 30, -65528, 65533, 30, -65527, 65533, 30, -65526, 65533, 30, -65525, 65533, 30, -65524, 65533, 30, -65523, 65533, 30, -65522, 65533, 30, -65521, 65533, 30, -65520, 65533, 30, -65519, 65533, 30, -65518, 65533, 1048617, -65517, 65533, 655398, -65516, 65533, 655398, -65515, 65533, 655398, -65514, 65533, 655398, -65513, 65533, 655398, -65512, 65533, 655398, -65511, 65533, 655398, -25, 65533, 30, -24, 65533, 30, -23, 65533, 30, -22, 65533, 30, -21, 65533, 30, -20, 65533, 30, -19, 65533, 30, -18, 65533, 30, -17, 65533, 30, -16, 65533, 30, -15, 65533, 30, -14, 65533, 1048617, -13, 65533, 1048616, -12, 65533, 1441832, -11, 65533, 1441833, -10, 65533, 30, -9, 65533, 31, -8, 65533, 30, -7, 65533, 30, -6, 65533, 30, -5, 65533, 655390, -4, 65533, 655390, -3, 65533, 31, -2, 65533, 655390, -1, 65533, 30, -65536, 65534, 655390, -65535, 65534, 655390, -65534, 65534, 655390, -65533, 65534, 655390, -65532, 65534, 30, -65531, 65534, 30, -65530, 65534, 30, -65529, 65534, 30, -65528, 65534, 30, -65527, 65534, 30, -65526, 65534, 30, -65525, 65534, 30, -65524, 65534, 31, -65523, 65534, 30, -65522, 65534, 30, -65521, 65534, 31, -65520, 65534, 30, -65519, 65534, 30, -65518, 65534, 30, -65517, 65534, 30, -65516, 65534, 30, -65515, 65534, 30, -65514, 65534, 30, -65513, 65534, 30, -65512, 65534, 30, -65511, 65534, 30, -25, 65534, 30, -24, 65534, 30, -23, 65534, 30, -22, 65534, 30, -21, 65534, 30, -20, 65534, 30, -19, 65534, 30, -18, 65534, 30, -17, 65534, 30, -16, 65534, 30, -15, 65534, 30, -14, 65534, 30, -13, 65534, 1048617, -12, 65534, 655398, -11, 65534, 655401, -10, 65534, 30, -9, 65534, 30, -8, 65534, 30, -7, 65534, 30, -6, 65534, 30, -5, 65534, 655390, -4, 65534, 655390, -3, 65534, 655390, -2, 65534, 655390, -1, 65534, 655390, -65536, 65535, 30, -65535, 65535, 30, -65534, 65535, 31, -65533, 65535, 655390, -65532, 65535, 30, -65531, 65535, 30, -65530, 65535, 30, -65529, 65535, 31, -65528, 65535, 30, -65527, 65535, 30, -65526, 65535, 30, -65525, 65535, 30, -65524, 65535, 30, -65523, 65535, 30, -65522, 65535, 30, -65521, 65535, 30, -65520, 65535, 30, -65519, 65535, 30, -65518, 65535, 30, -65517, 65535, 30, -65516, 65535, 30, -65515, 65535, 30, -65514, 65535, 30, -65513, 65535, 30, -65512, 65535, 30, -65511, 65535, 30, -25, 65535, 30, -24, 65535, 30, -23, 65535, 30, -22, 65535, 30, -21, 65535, 30, -20, 65535, 30, -19, 65535, 31, -18, 65535, 30, -17, 65535, 30, -16, 65535, 30, -15, 65535, 30, -14, 65535, 30, -13, 65535, 30, -12, 65535, 30, -11, 65535, 30, -10, 65535, 30, -9, 65535, 30, -8, 65535, 30, -7, 65535, 31, -6, 65535, 30, -5, 65535, 30, -4, 65535, 30, -3, 65535, 30, -2, 65535, 32, -1, 65535, 30 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="battle_cave_fence_7" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( -0.990048, 0.122528, -0.0692306, 0.122229, 0.992465, 0.00854706, 0.0697562, 0, -0.997564, -18.5057, 1.79968, -3.18476 )
+mesh = ExtResource( 33 )
+
+[node name="battle_cave_fence_8" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( 0.999117, 0.0162457, -0.0387372, -0.0196361, 0.995855, -0.088814, 0.0371338, 0.0894962, 0.995295, -13.2775, 1.79968, -3.32271 )
+mesh = ExtResource( 33 )
+
+[node name="battle_cave_fence_6" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( 0.999331, 0.0358565, -0.00721413, -0.0360212, 0.999059, -0.0241753, 0.0063405, 0.024419, 0.999682, -16.1797, 1.96076, -3.20742 )
+mesh = ExtResource( 34 )
+
+[node name="battle_cave_fence_10" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( -0.115103, -0.00224184, -0.993351, -0.00951525, 0.999954, -0.00115419, 0.993308, 0.00931914, -0.115119, -7.68, 1.79968, -3.08735 )
+mesh = ExtResource( 33 )
+
+[node name="battle_cave_fence_9" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( -0.993742, -0.106454, 0.0338202, -0.107224, 0.993995, -0.021817, -0.0312947, -0.0253068, -0.99919, -10.6148, 1.96076, -3.20742 )
+mesh = ExtResource( 34 )
+
+[node name="battle_cave_fence_11" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( 0.43627, 0.209432, 0.875104, -0.239491, 0.964483, -0.111428, -0.86736, -0.160967, 0.470932, -4.22798, 1.66596, -3.32271 )
+mesh = ExtResource( 33 )
+
+[node name="GridMap" type="GridMap" parent="arena/deco/caves"]
+mesh_library = ExtResource( 35 )
+data = {
+"cells": PoolIntArray( 131082, 65519, 4, 327664, 65520, 1048580, -65539, 65520, 1048580, 131078, 65521, 655364, 262125, 65522, 1048580, 131089, 65526, 1441796, 196602, 65526, 1048580, -65556, 65527, 655364, -22, 65527, 655364, -65557, 65528, 655364 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}
+
+[node name="battle_cave_light_1" type="MeshInstance" parent="arena/deco/caves"]
+transform = Transform( 0.993752, 0.0625516, -0.0924355, -0.0701327, 0.994229, -0.0811802, 0.0868241, 0.0871557, 0.992404, 1.47467, -0.227043, -2.08716 )
+mesh = ExtResource( 36 )
+
+[node name="lake" type="Spatial" parent="arena/deco"]
+visible = false
+
+[node name="lake" type="MeshInstance" parent="arena/deco/lake"]
+transform = Transform( -1.99578e-07, 0, 1, 0, 1, 0, -1.225, 0, -1.62921e-07, 0, 0, 9 )
+mesh = ExtResource( 40 )
+
+[node name="lake2" type="MeshInstance" parent="arena/deco/lake"]
+transform = Transform( -1.99578e-07, 0, 1, 0, 1, 0, -1.225, 0, -1.62921e-07, 17, 0, 9 )
+mesh = ExtResource( 40 )
+
+[node name="SeaWater" parent="arena/deco/lake" instance=ExtResource( 39 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.75, -0.5 )
+size = Vector2( 196, 96 )
+mesh = SubResource( 17 )
+
+[node name="Lamppost" type="Spatial" parent="arena/deco/lake"]
+transform = Transform( 0.969167, 0.239826, -0.0565708, -0.240211, 0.970721, 0, 0.0549145, 0.0135889, 0.998399, 0.0887502, -0.343835, -0.942399 )
+
+[node name="lamppost_battle2" type="MeshInstance" parent="arena/deco/lake/Lamppost"]
+transform = Transform( 0.125, 0, 0, 0, -2.03651e-08, -0.125, 0, 0.125, -2.03651e-08, 0, 1, 0 )
+mesh = ExtResource( 28 )
+
+[node name="lightbulb_sprite" parent="arena/deco/lake/Lamppost" instance=ExtResource( 31 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8, 0 )
+
+[node name="lightbulb_sprite_lit" parent="arena/deco/lake/Lamppost" instance=ExtResource( 32 )]
+transform = Transform( 1, 5.70435e-09, 3.72529e-09, 7.74162e-09, 1, -9.31323e-10, 3.72529e-09, 9.31323e-10, 1, 1.11759e-07, 5.8, 0.02 )
+
+[node name="graves" type="Spatial" parent="arena/deco"]
+visible = false
+
+[node name="graves" type="GridMap" parent="arena/deco/graves"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+mesh_library = ExtResource( 8 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 655360, -65515, 0, 655360, -65514, 0, 655360, -65513, 0, 655360, -65512, 0, 655360, -65511, 0, 655360, -25, 0, 655360, -24, 0, 655360, -23, 0, 655360, -22, 0, 655360, -21, 0, 655360, -20, 0, 0, -19, 0, 0, -18, 0, 0, -17, 0, 0, -16, 0, 0, -15, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 1, 655362, -65535, 1, 655362, -65534, 1, 655362, -65533, 1, 655362, -65532, 1, 655363, -65531, 1, 655364, -65530, 1, 655362, -65529, 1, 655362, -65528, 1, 655362, -65527, 1, 655362, -65526, 1, 655362, -65525, 1, 655362, -65524, 1, 655362, -65523, 1, 655364, -65522, 1, 655362, -65521, 1, 655362, -65520, 1, 655362, -65519, 1, 655362, -65518, 1, 655362, -65517, 1, 655362, -65516, 1, 655362, -65515, 1, 655362, -65514, 1, 655362, -65513, 1, 655362, -65512, 1, 655362, -65511, 1, 655362, -25, 1, 655362, -24, 1, 655362, -23, 1, 655362, -22, 1, 655362, -21, 1, 655362, -20, 1, 655362, -19, 1, 655362, -18, 1, 655362, -17, 1, 655362, -16, 1, 655362, -15, 1, 655362, -14, 1, 655362, -13, 1, 655362, -12, 1, 655362, -11, 1, 655362, -10, 1, 655362, -9, 1, 655362, -8, 1, 655362, -7, 1, 655362, -6, 1, 655362, -5, 1, 655362, -4, 1, 655362, -3, 1, 655362, -2, 1, 655364, -1, 1, 655362, -65536, 2, 2, -65535, 2, 3, -65534, 2, 4, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -65530, 2, 2, -65529, 2, 2, -65528, 2, 2, -65527, 2, 2, -65526, 2, 2, -65525, 2, 2, -65524, 2, 2, -65523, 2, 3, -65522, 2, 4, -65521, 2, 2, -65520, 2, 2, -65519, 2, 2, -65518, 2, 2, -65517, 2, 2, -65516, 2, 2, -65515, 2, 2, -65514, 2, 2, -65513, 2, 2, -65512, 2, 2, -65511, 2, 2, -65510, 2, 2, -25, 2, 2, -24, 2, 2, -23, 2, 2, -22, 2, 2, -21, 2, 2, -20, 2, 2, -19, 2, 2, -18, 2, 2, -17, 2, 2, -16, 2, 2, -15, 2, 2, -14, 2, 2, -13, 2, 2, -12, 2, 2, -11, 2, 2, -10, 2, 2, -9, 2, 2, -8, 2, 2, -7, 2, 2, -6, 2, 2, -5, 2, 2, -4, 2, 2, -3, 2, 2, -2, 2, 2, -1, 2, 3, -65536, 3, 0, -65535, 3, 1, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0, -65526, 3, 0, -65525, 3, 0, -65524, 3, 0, -65523, 3, 0, -65522, 3, 0, -65521, 3, 0, -65520, 3, 0, -65519, 3, 0, -65518, 3, 0, -65517, 3, 0, -65516, 3, 655360, -65515, 3, 655360, -65514, 3, 655360, -65513, 3, 655360, -65512, 3, 655360, -65511, 3, 655360, -25, 3, 655360, -24, 3, 655360, -23, 3, 655360, -22, 3, 655360, -21, 3, 655360, -20, 3, 0, -19, 3, 0, -18, 3, 0, -17, 3, 0, -16, 3, 0, -15, 3, 0, -14, 3, 0, -13, 3, 0, -12, 3, 0, -11, 3, 0, -10, 3, 0, -9, 3, 0, -8, 3, 0, -7, 3, 0, -6, 3, 0, -5, 3, 0, -4, 3, 0, -3, 3, 0, -2, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 4, 0, -65534, 4, 0, -65533, 4, 0, -65532, 4, 0, -65531, 4, 0, -65530, 4, 0, -65529, 4, 0, -65528, 4, 0, -65527, 4, 0, -65526, 4, 0, -65525, 4, 0, -65524, 4, 0, -65523, 4, 0, -65522, 4, 0, -65521, 4, 0, -65520, 4, 0, -65519, 4, 0, -65518, 4, 0, -65517, 4, 0, -65516, 4, 655360, -65515, 4, 655360, -65514, 4, 655360, -65513, 4, 655360, -65512, 4, 655360, -65511, 4, 655360, -25, 4, 655360, -24, 4, 655360, -23, 4, 655360, -22, 4, 655360, -21, 4, 655360, -20, 4, 0, -19, 4, 0, -18, 4, 0, -17, 4, 0, -16, 4, 0, -15, 4, 0, -14, 4, 0, -13, 4, 0, -12, 4, 0, -11, 4, 0, -10, 4, 0, -9, 4, 0, -8, 4, 0, -7, 4, 0, -6, 4, 0, -5, 4, 0, -4, 4, 14, -3, 4, 0, -2, 4, 0, -1, 4, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 1441806, -65528, 5, 0, -65527, 5, 0, -65526, 5, 0, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, -65521, 5, 0, -65520, 5, 0, -65519, 5, 0, -65518, 5, 0, -65517, 5, 0, -65516, 5, 655360, -65515, 5, 655360, -65514, 5, 655360, -65513, 5, 655360, -65512, 5, 655360, -65511, 5, 655360, -25, 5, 655360, -24, 5, 655360, -23, 5, 655360, -22, 5, 655360, -21, 5, 655360, -20, 5, 0, -19, 5, 0, -18, 5, 0, -17, 5, 0, -16, 5, 0, -15, 5, 0, -14, 5, 0, -13, 5, 0, -12, 5, 0, -11, 5, 0, -10, 5, 0, -9, 5, 0, -8, 5, 0, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 6, 0, -65535, 6, 0, -65534, 6, 0, -65533, 6, 0, -65532, 6, 0, -65531, 6, 0, -65530, 6, 0, -65529, 6, 0, -65528, 6, 0, -65527, 6, 0, -65526, 6, 0, -65525, 6, 0, -65524, 6, 0, -65523, 6, 0, -65522, 6, 0, -65521, 6, 0, -65520, 6, 0, -65519, 6, 0, -65518, 6, 0, -65517, 6, 0, -65516, 6, 655360, -65515, 6, 655360, -65514, 6, 655360, -65513, 6, 655360, -65512, 6, 655360, -65511, 6, 655360, -25, 6, 655360, -24, 6, 655360, -23, 6, 655360, -22, 6, 655360, -21, 6, 655360, -20, 6, 0, -19, 6, 0, -18, 6, 0, -17, 6, 0, -16, 6, 0, -15, 6, 0, -14, 6, 0, -13, 6, 0, -12, 6, 0, -11, 6, 0, -10, 6, 0, -9, 6, 0, -8, 6, 0, -7, 6, 0, -6, 6, 0, -5, 6, 0, -4, 6, 0, -3, 6, 0, -2, 6, 0, -1, 6, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, -65532, 7, 0, -65531, 7, 0, -65530, 7, 0, -65529, 7, 0, -65528, 7, 0, -65527, 7, 0, -65526, 7, 0, -65525, 7, 0, -65524, 7, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 7, 0, -65518, 7, 0, -65517, 7, 0, -65516, 7, 655360, -65515, 7, 655360, -65514, 7, 655360, -65513, 7, 655360, -65512, 7, 655360, -65511, 7, 655360, -25, 7, 655360, -24, 7, 655360, -23, 7, 655360, -22, 7, 655360, -21, 7, 655360, -20, 7, 0, -19, 7, 0, -18, 7, 0, -17, 7, 0, -16, 7, 0, -15, 7, 0, -14, 7, 0, -13, 7, 0, -12, 7, 0, -11, 7, 0, -10, 7, 0, -9, 7, 0, -8, 7, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, -65530, 8, 0, -65529, 8, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 0, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, -65519, 8, 0, -65518, 8, 0, -65517, 8, 0, -65516, 8, 655360, -65515, 8, 655360, -65514, 8, 655360, -65513, 8, 655360, -65512, 8, 655360, -65511, 8, 655360, -25, 8, 655360, -24, 8, 655360, -23, 8, 655360, -22, 8, 655360, -21, 8, 655360, -20, 8, 0, -19, 8, 0, -18, 8, 0, -17, 8, 0, -16, 8, 0, -15, 8, 0, -14, 8, 0, -13, 8, 0, -12, 8, 0, -11, 8, 0, -10, 8, 0, -9, 8, 0, -8, 8, 0, -7, 8, 0, -6, 8, 0, -5, 8, 0, -4, 8, 0, -3, 8, 0, -2, 8, 0, -1, 8, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 9, 0, -65524, 9, 0, -65523, 9, 0, -65522, 9, 0, -65521, 9, 0, -65520, 9, 0, -65519, 9, 0, -65518, 9, 0, -65517, 9, 0, -65516, 9, 655360, -65515, 9, 655360, -65514, 9, 655360, -65513, 9, 655360, -65512, 9, 655360, -65511, 9, 655360, -25, 9, 655360, -24, 9, 655360, -23, 9, 655360, -22, 9, 655360, -21, 9, 655360, -20, 9, 0, -19, 9, 0, -18, 9, 0, -17, 9, 0, -16, 9, 0, -15, 9, 0, -14, 9, 0, -13, 9, 0, -12, 9, 0, -11, 9, 0, -10, 9, 0, -9, 9, 0, -8, 9, 0, -7, 9, 0, -6, 9, 0, -5, 9, 0, -4, 9, 0, -3, 9, 0, -2, 9, 0, -1, 9, 0, -65536, 10, 0, -65535, 10, 0, -65534, 10, 0, -65533, 10, 0, -65532, 10, 0, -65531, 10, 0, -65530, 10, 0, -65529, 10, 0, -65528, 10, 0, -65527, 10, 0, -65526, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 10, 0, -65519, 10, 0, -65518, 10, 0, -65517, 10, 0, -65516, 10, 655360, -65515, 10, 655360, -65514, 10, 655360, -65513, 10, 655360, -65512, 10, 655360, -65511, 10, 655360, -25, 10, 655360, -24, 10, 655360, -23, 10, 655360, -22, 10, 655360, -21, 10, 655360, -20, 10, 0, -19, 10, 0, -18, 10, 0, -17, 10, 0, -16, 10, 0, -15, 10, 0, -14, 10, 0, -13, 10, 0, -12, 10, 0, -11, 10, 0, -10, 10, 0, -9, 10, 0, -8, 10, 0, -7, 10, 0, -6, 10, 0, -5, 10, 0, -4, 10, 0, -3, 10, 0, -2, 10, 0, -1, 10, 0, 65524, 65525, 655365, 65525, 65525, 655365, 131061, 65525, 655371, 131062, 65525, 655369, 131063, 65525, 655369, 131064, 65525, 655369, 131065, 65525, 655369, 131066, 65525, 655369, 131067, 65525, 1048587, 3, 65526, 655367, 4, 65526, 655365, 5, 65526, 655365, 6, 65526, 655365, 7, 65526, 655365, 8, 65526, 655365, 9, 65526, 655365, 10, 65526, 655365, 11, 65526, 655365, 12, 65526, 655365, 13, 65526, 655365, 14, 65526, 655365, 15, 65526, 655365, 16, 65526, 655365, 17, 65526, 655365, 18, 65526, 1048587, 65522, 65526, 1441797, 65523, 65526, 655360, 65524, 65526, 655360, 65525, 65526, 655360, 131061, 65526, 1441801, 131062, 65526, 655360, 131063, 65526, 655360, 131064, 65526, 655360, 131065, 65526, 655360, 131066, 65526, 655360, 131067, 65526, 1048585, -65536, 65526, 655365, -65535, 65526, 655365, -65534, 65526, 655365, -65533, 65526, 655365, -65532, 65526, 655365, -65531, 65526, 655365, -65530, 65526, 655365, -65529, 65526, 655365, -19, 65526, 655371, -18, 65526, 655369, -17, 65526, 655369, -16, 65526, 655369, -15, 65526, 655369, -14, 65526, 655369, -13, 65526, 655369, -12, 65526, 655369, -11, 65526, 655369, -10, 65526, 655369, -9, 65526, 655369, -8, 65526, 655369, -7, 65526, 655369, -6, 65526, 655369, -5, 65526, 655369, -4, 65526, 655369, -3, 65526, 655365, -2, 65526, 655365, -1, 65526, 655365, 2, 65527, 655367, 3, 65527, 655368, 4, 65527, 655374, 5, 65527, 655360, 6, 65527, 1441792, 7, 65527, 1441792, 8, 65527, 1441792, 9, 65527, 1441792, 10, 65527, 1441792, 11, 65527, 1441792, 12, 65527, 1441792, 13, 65527, 1441792, 14, 65527, 1441792, 15, 65527, 1441792, 16, 65527, 1441792, 65522, 65527, 1441797, 65523, 65527, 655360, 65524, 65527, 655360, 65525, 65527, 655360, 65544, 65527, 655369, 65545, 65527, 655369, 65546, 65527, 655369, 65547, 65527, 655369, 65548, 65527, 655369, 65549, 65527, 655369, 65550, 65527, 655369, 65551, 65527, 655369, 65552, 65527, 655369, 65553, 65527, 655369, 65554, 65527, 1048587, 131061, 65527, 1441801, 131062, 65527, 655360, 131063, 65527, 655360, 131064, 65527, 655360, 131065, 65527, 655360, 131066, 65527, 655360, 131067, 65527, 1048585, -65536, 65527, 655360, -65535, 65527, 655360, -65534, 65527, 655360, -65533, 65527, 655360, -65532, 65527, 655360, -65531, 65527, 655360, -19, 65527, 1441801, -18, 65527, 1048576, -17, 65527, 1048576, -16, 65527, 1048576, -15, 65527, 1048576, -14, 65527, 1048576, -13, 65527, 1048576, -12, 65527, 1048576, -11, 65527, 1048576, -10, 65527, 1048576, -9, 65527, 1048576, -8, 65527, 1048576, -7, 65527, 1048576, -6, 65527, 1048576, -5, 65527, 1048576, -4, 65527, 1048576, -3, 65527, 655360, -2, 65527, 655360, -1, 65527, 655360, 2, 65528, 1441797, 3, 65528, 655360, 4, 65528, 655360, 5, 65528, 655360, 6, 65528, 1441792, 7, 65528, 1441792, 8, 65528, 1441792, 9, 65528, 1441792, 10, 65528, 1441792, 11, 65528, 1441792, 12, 65528, 1441792, 13, 65528, 1441792, 14, 65528, 1441792, 15, 65528, 1441792, 16, 65528, 1441792, 17, 65528, 1441792, 65522, 65528, 1441797, 65523, 65528, 655360, 65524, 65528, 655360, 65525, 65528, 655360, 65526, 65528, 655360, 65527, 65528, 655360, 65543, 65528, 1441801, 65544, 65528, 655360, 65545, 65528, 655360, 65546, 65528, 655360, 65547, 65528, 655360, 65548, 65528, 655360, 65549, 65528, 655360, 65550, 65528, 655360, 65551, 65528, 655360, 65552, 65528, 655360, 65553, 65528, 655360, 65554, 65528, 1048585, 131061, 65528, 1441801, 131062, 65528, 655360, 131063, 65528, 655360, 131064, 65528, 655360, 131065, 65528, 655374, 131066, 65528, 12, 131067, 65528, 11, -65536, 65528, 655360, -65535, 65528, 655360, -65534, 65528, 655360, -65533, 65528, 655360, -65532, 65528, 655360, -65531, 65528, 655360, -19, 65528, 1441801, -18, 65528, 1048576, -17, 65528, 1048576, -16, 65528, 1048576, -15, 65528, 1048576, -14, 65528, 1048576, -13, 65528, 1048576, -12, 65528, 1048576, -11, 65528, 1048576, -10, 65528, 1048576, -9, 65528, 1048576, -8, 65528, 1048576, -7, 65528, 1048576, -6, 65528, 1048576, -5, 65528, 1048576, -4, 65528, 1048576, -3, 65528, 655360, -2, 65528, 655360, -1, 65528, 655360, 2, 65529, 1441799, 3, 65529, 1441800, 4, 65529, 655360, 5, 65529, 655360, 6, 65529, 655374, 7, 65529, 1441792, 8, 65529, 1441792, 9, 65529, 1441792, 10, 65529, 1441792, 11, 65529, 1441792, 12, 65529, 1441792, 13, 65529, 1441792, 14, 65529, 1441792, 15, 65529, 1441792, 16, 65529, 1441792, 17, 65529, 1441792, 65523, 65529, 655360, 65524, 65529, 655360, 65525, 65529, 655360, 65526, 65529, 655360, 65527, 65529, 655360, 65528, 65529, 1048581, 65543, 65529, 1441801, 65544, 65529, 655360, 65545, 65529, 655360, 65546, 65529, 655360, 65547, 65529, 655360, 65548, 65529, 655360, 65549, 65529, 655360, 65550, 65529, 655360, 65551, 65529, 655360, 65552, 65529, 655360, 65553, 65529, 655360, 65554, 65529, 1048585, 131061, 65529, 1441803, 131062, 65529, 9, 131063, 65529, 9, 131064, 65529, 9, 131065, 65529, 9, 131066, 65529, 11, -65536, 65529, 655360, -65535, 65529, 655360, -65534, 65529, 655360, -65533, 65529, 655360, -65532, 65529, 655360, -65531, 65529, 655360, -65518, 65529, 1048584, -65517, 65529, 1048583, -19, 65529, 1441801, -18, 65529, 1048576, -17, 65529, 1048576, -16, 65529, 1048576, -12, 65529, 1048576, -11, 65529, 1048576, -10, 65529, 1048576, -9, 65529, 1048576, -8, 65529, 1048576, -7, 65529, 1048576, -6, 65529, 1048576, -5, 65529, 1048576, -4, 65529, 1048576, -3, 65529, 655360, -2, 65529, 655360, -1, 65529, 655360, 3, 65530, 1441799, 4, 65530, 5, 5, 65530, 5, 6, 65530, 5, 7, 65530, 1441800, 8, 65530, 1441792, 9, 65530, 655374, 10, 65530, 1441792, 11, 65530, 1441792, 12, 65530, 1441792, 13, 65530, 1441792, 14, 65530, 1441792, 15, 65530, 1441792, 18, 65530, 7, 65523, 65530, 1441797, 65524, 65530, 655360, 65525, 65530, 655360, 65526, 65530, 655360, 65527, 65530, 655360, 65528, 65530, 1048581, 65543, 65530, 1441801, 65544, 65530, 655360, 65545, 65530, 655360, 65546, 65530, 655360, 65547, 65530, 655360, 65548, 65530, 655360, 65549, 65530, 655360, 65550, 65530, 655360, 65551, 65530, 655360, 65552, 65530, 655360, 65553, 65530, 655360, 65554, 65530, 1048585, -65536, 65530, 655360, -65535, 65530, 655360, -65534, 65530, 655360, -65533, 65530, 655360, -65532, 65530, 655360, -65531, 65530, 0, -65530, 65530, 0, -65529, 65530, 655360, -65518, 65530, 655360, -65517, 65530, 1048584, -65516, 65530, 1048583, -19, 65530, 1441801, -18, 65530, 1048576, -17, 65530, 1048576, -16, 65530, 1048576, -14, 65530, 1048576, -13, 65530, 1048576, -12, 65530, 1048576, -11, 65530, 1048576, -10, 65530, 1048576, -9, 65530, 1048576, -8, 65530, 1048576, -7, 65530, 1048576, -6, 65530, 1048576, -5, 65530, 1048576, -4, 65530, 1048576, -3, 65530, 655360, -2, 65530, 655360, -1, 65530, 655360, 65523, 65531, 1441799, 65524, 65531, 5, 65525, 65531, 5, 65526, 65531, 5, 65527, 65531, 5, 65528, 65531, 7, 65543, 65531, 1441803, 65544, 65531, 9, 65545, 65531, 9, 65546, 65531, 9, 65547, 65531, 9, 65548, 65531, 9, 65549, 65531, 9, 65550, 65531, 9, 65551, 65531, 9, 65552, 65531, 9, 65553, 65531, 9, 65554, 65531, 11, -65536, 65531, 655360, -65535, 65531, 655360, -65534, 65531, 655360, -65533, 65531, 655360, -65532, 65531, 655360, -65531, 65531, 655360, -65530, 65531, 0, -65529, 65531, 0, -65528, 65531, 655360, -65527, 65531, 655360, -65526, 65531, 655360, -65525, 65531, 655360, -65524, 65531, 655360, -65523, 65531, 655360, -65522, 65531, 655360, -65521, 65531, 655360, -65520, 65531, 655360, -65519, 65531, 655360, -65518, 65531, 655360, -65517, 65531, 655360, -65516, 65531, 1048584, -65515, 65531, 655365, -65514, 65531, 655365, -65513, 65531, 655365, -65512, 65531, 655365, -65511, 65531, 655365, -20, 65531, 655371, -19, 65531, 655368, -18, 65531, 1048576, -17, 65531, 1048576, -16, 65531, 1048576, -15, 65531, 1048576, -14, 65531, 1048576, -13, 65531, 1048576, -12, 65531, 1048576, -11, 65531, 1048576, -10, 65531, 1048576, -9, 65531, 1048576, -8, 65531, 1048576, -7, 65531, 1048576, -6, 65531, 1048576, -5, 65531, 1048576, -4, 65531, 1048576, -3, 65531, 655360, -2, 65531, 655360, -1, 65531, 655360, 2, 65532, 43, 3, 65532, 42, 4, 65532, 42, 5, 65532, 42, 6, 65532, 42, 7, 65532, 42, 8, 65532, 42, 9, 65532, 42, 10, 65532, 42, 11, 65532, 42, 12, 65532, 42, 13, 65532, 42, 14, 65532, 42, 15, 65532, 42, 16, 65532, 42, 17, 65532, 42, 18, 65532, 655403, 65519, 65532, 43, 65520, 65532, 42, 65521, 65532, 42, 65522, 65532, 42, 65523, 65532, 42, 65524, 65532, 42, 65525, 65532, 42, 65526, 65532, 42, 65527, 65532, 42, 65528, 65532, 42, 65529, 65532, 42, 65530, 65532, 42, 65531, 65532, 42, 65532, 65532, 655403, -65536, 65532, 655360, -65535, 65532, 655360, -65534, 65532, 655360, -65533, 65532, 655360, -65532, 65532, 655360, -65531, 65532, 655374, -65530, 65532, 1048590, -65529, 65532, 0, -65528, 65532, 0, -65527, 65532, 0, -65526, 65532, 0, -65525, 65532, 0, -65524, 65532, 0, -65523, 65532, 0, -65522, 65532, 0, -65521, 65532, 0, -65520, 65532, 0, -65519, 65532, 0, -65518, 65532, 0, -65517, 65532, 655360, -65516, 65532, 655360, -65515, 65532, 655360, -65514, 65532, 655360, -65513, 65532, 655360, -65512, 65532, 655360, -65511, 65532, 655360, -25, 65532, 655365, -24, 65532, 655365, -23, 65532, 655365, -22, 65532, 655365, -21, 65532, 655365, -20, 65532, 655368, -19, 65532, 1048576, -18, 65532, 1048576, -17, 65532, 1048576, -16, 65532, 1048576, -15, 65532, 1048576, -14, 65532, 1048576, -13, 65532, 1048576, -12, 65532, 1048576, -11, 65532, 1048576, -10, 65532, 1048576, -9, 65532, 0, -8, 65532, 0, -7, 65532, 1441792, -6, 65532, 1441792, -5, 65532, 1441792, -4, 65532, 1441792, -3, 65532, 1441792, -2, 65532, 0, -1, 65532, 655360, -65536, 65533, 0, -65535, 65533, 0, -65534, 65533, 0, -65533, 65533, 0, -65532, 65533, 0, -65531, 65533, 0, -65530, 65533, 0, -65529, 65533, 0, -65528, 65533, 0, -65527, 65533, 0, -65526, 65533, 0, -65525, 65533, 0, -65524, 65533, 0, -65523, 65533, 0, -65522, 65533, 0, -65521, 65533, 0, -65520, 65533, 0, -65519, 65533, 0, -65518, 65533, 0, -65517, 65533, 655360, -65516, 65533, 655360, -65515, 65533, 655360, -65514, 65533, 655360, -65513, 65533, 655360, -65512, 65533, 655360, -65511, 65533, 655360, -25, 65533, 655360, -24, 65533, 655360, -23, 65533, 655360, -22, 65533, 655360, -21, 65533, 655360, -20, 65533, 0, -19, 65533, 0, -18, 65533, 0, -17, 65533, 1048576, -16, 65533, 1048576, -15, 65533, 1048576, -14, 65533, 1048576, -13, 65533, 1048576, -12, 65533, 1048576, -11, 65533, 1048576, -10, 65533, 1048576, -9, 65533, 0, -8, 65533, 0, -7, 65533, 0, -6, 65533, 0, -5, 65533, 1441792, -4, 65533, 1441792, -3, 65533, 1441793, -2, 65533, 0, -1, 65533, 0, -65536, 65534, 0, -65535, 65534, 0, -65534, 65534, 0, -65533, 65534, 0, -65532, 65534, 0, -65531, 65534, 0, -65530, 65534, 0, -65529, 65534, 0, -65528, 65534, 0, -65527, 65534, 0, -65526, 65534, 0, -65525, 65534, 0, -65524, 65534, 0, -65523, 65534, 0, -65522, 65534, 655374, -65521, 65534, 0, -65520, 65534, 0, -65519, 65534, 0, -65518, 65534, 0, -65517, 65534, 0, -65516, 65534, 655360, -65515, 65534, 655360, -65514, 65534, 655360, -65513, 65534, 655360, -65512, 65534, 655360, -65511, 65534, 655360, -25, 65534, 655360, -24, 65534, 655360, -23, 65534, 655360, -22, 65534, 655360, -21, 65534, 655360, -20, 65534, 0, -19, 65534, 0, -18, 65534, 0, -17, 65534, 0, -16, 65534, 0, -15, 65534, 0, -14, 65534, 0, -13, 65534, 1048576, -12, 65534, 1048576, -11, 65534, 1048576, -10, 65534, 0, -9, 65534, 0, -8, 65534, 0, -7, 65534, 0, -6, 65534, 0, -5, 65534, 0, -4, 65534, 0, -3, 65534, 0, -2, 65534, 0, -1, 65534, 0, -65536, 65535, 0, -65535, 65535, 0, -65534, 65535, 1048590, -65533, 65535, 0, -65532, 65535, 0, -65531, 65535, 0, -65530, 65535, 0, -65529, 65535, 1048590, -65528, 65535, 0, -65527, 65535, 0, -65526, 65535, 0, -65525, 65535, 0, -65524, 65535, 0, -65523, 65535, 0, -65522, 65535, 0, -65521, 65535, 0, -65520, 65535, 0, -65519, 65535, 0, -65518, 65535, 0, -65517, 65535, 0, -65516, 65535, 655360, -65515, 65535, 655360, -65514, 65535, 655360, -65513, 65535, 655360, -65512, 65535, 655360, -65511, 65535, 655360, -25, 65535, 655360, -24, 65535, 655360, -23, 65535, 655360, -22, 65535, 655360, -21, 65535, 655360, -20, 65535, 0, -19, 65535, 0, -18, 65535, 0, -17, 65535, 0, -16, 65535, 0, -15, 65535, 0, -14, 65535, 0, -13, 65535, 1048576, -12, 65535, 1048576, -11, 65535, 0, -10, 65535, 0, -9, 65535, 0, -8, 65535, 0, -7, 65535, 1441806, -6, 65535, 0, -5, 65535, 0, -4, 65535, 0, -3, 65535, 0, -2, 65535, 1441793, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="DeadTree2" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9986, 3.8944, -32.7627 )
+
+[node name="DeadTree3" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.999814, 0.0193021, 0, -0.0193021, 0.999814, 0, 0, 0, 1, 37.9738, 7.59816, -21.6354 )
+
+[node name="DeadTree4" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.999814, 0.0193021, 0, -0.0193021, 0.999814, 0, 0, 0, 1, 23.9738, 3.55104, -26.265 )
+
+[node name="DeadTree5" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.998563, 0.019278, 0.0500003, -0.0193021, 0.999814, 0, -0.049991, -0.000965113, 0.998749, -35.6269, 3.35843, -21.3727 )
+
+[node name="DeadTree6" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.998563, 0.019278, 0.0500003, -0.0193021, 0.999814, 0, -0.049991, -0.000965113, 0.998749, -21.6269, -0.224945, -23.736 )
+
+[node name="DeadTree10" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.998563, 0.019278, 0.0500003, -0.0193021, 0.999814, 0, -0.049991, -0.000965113, 0.998749, -12.6269, -0.538781, -28.736 )
+
+[node name="DeadTree7" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.984701, 0.167089, 0.0494493, -0.166928, 0.985941, -0.00740259, -0.049991, -0.000965113, 0.998749, -21.6269, 7.16326, -34.8019 )
+
+[node name="DeadTree8" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.992805, -0.108995, 0.0495881, 0.108811, 0.994042, 0.00640693, -0.049991, -0.000965113, 0.998749, -31.6269, 3.43553, -31.8056 )
+
+[node name="DeadTree9" parent="arena/deco/graves" instance=ExtResource( 37 )]
+transform = Transform( 0.886725, 0.0171189, 0.461981, -0.0193021, 0.999814, 0, -0.461895, -0.00891722, 0.88689, -28.0379, 7.7242, -37.8056 )
+
+[node name="battle_gravestone_1" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.998079, 0, 0.0619544, 0, 1, 0, -0.0619544, 0, 0.998079, 6, 0, -20.9566 )
+mesh = ExtResource( 38 )
+
+[node name="battle_gravestone_2" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.998079, 0, 0.0619544, 0, 1, 0, -0.0619544, 0, 0.998079, -19, 0, -20.9566 )
+mesh = ExtResource( 38 )
+
+[node name="battle_gravestone_3" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.931818, 0, 0.362926, 0, 1, 0, -0.362926, 0, 0.931818, -40, 3, -24.9566 )
+mesh = ExtResource( 38 )
+
+[node name="battle_gravestone_4" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.931818, 0, 0.362926, 0, 1, 0, -0.362926, 0, 0.931818, -26.599, 7.18172, -31.2979 )
+mesh = ExtResource( 38 )
+
+[node name="battle_gravestone_5" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.843523, 0, -0.537093, 0, 1, 0, 0.537093, 0, 0.843523, 20.4597, 2.46642, -31.2979 )
+mesh = ExtResource( 38 )
+
+[node name="battle_gravestone_6" type="MeshInstance" parent="arena/deco/graves"]
+transform = Transform( 0.734263, 0, 0.678865, 0, 1, 0, -0.678865, 0, 0.734263, -9.57908, -1.05872, -25.8825 )
+mesh = ExtResource( 38 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "animation_1"
+anims/animation_1 = SubResource( 2 )
+
+[node name="BattleAnalogueHorror" parent="." instance=ExtResource( 1 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.772034, -0.353925, 0.305209, -0.0863952, 0.471131, 0.764869, -0.459295, -0.683539, 0.369155, 0.0496836, 6.40028, 24.7494 )
+light_energy = 0.75
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0
+directional_shadow_blend_splits = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
+script = ExtResource( 10 )
+
+[node name="TerraformSpritesPreloader" type="Node" parent="."]
+script = ExtResource( 46 )
+preload_audio = [ ExtResource( 48 ) ]
+
+[node name="HammerAnim" parent="TerraformSpritesPreloader" instance=ExtResource( 47 )]
+
+[node name="HackySpriteCache" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51, -1, -35 )
+__meta__ = {
+"_editor_description_": "For some reason, toggling visibility of these sprites lags the game, so we have some visible ones always on screen to work around the issue"
+}
+
+[node name="rope 1" parent="HackySpriteCache" instance=ExtResource( 23 )]
+
+[node name="rope torn" parent="HackySpriteCache" instance=ExtResource( 27 )]
+
+[node name="lightbulb_sprite" parent="HackySpriteCache" instance=ExtResource( 31 )]
+
+[node name="lightbulb_sprite_lit" parent="HackySpriteCache" instance=ExtResource( 32 )]
+transform = Transform( 1, -7.74162e-09, 0, 7.74162e-09, 1, -9.31323e-10, 7.20995e-18, 9.31323e-10, 1, 0, 0, 0 )
+
+[node name="Bush 1" parent="HackySpriteCache" instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Tree 5" parent="HackySpriteCache" instance=ExtResource( 30 )]
+
+[node name="Sprite4" parent="HackySpriteCache" instance=ExtResource( 45 )]
+transform = Transform( 0.99863, -0.052336, 0, 0.052336, 0.99863, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Sprite3" parent="HackySpriteCache" instance=ExtResource( 44 )]
+transform = Transform( 0.990641, 0.136494, 0, -0.136494, 0.990641, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="DeadTree2" parent="HackySpriteCache" instance=ExtResource( 37 )]

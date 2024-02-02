@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/objects/static_physics/mall_props/MallTree.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 0, 65532, 1441796, 1, 65532, 655364, 0, 65533, 1441797, 1, 65533, 1048581, 0, 65534, 1441797, 1, 65534, 1048581, 0, 65535, 4, 1, 65535, 1048580 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="MallTree" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.964495, 0.105631, -0.242055, -0.0507417, 0.973571, 0.222675, 0.259179, -0.202487, 0.944365, 1.72466, -0.0639551, -4.36722 )

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://data/items/wheat.tres" type="Resource" id=1]
+[ext_resource path="res://data/exchange_scripts/InflatingExchange.gd" type="Script" id=2]
+[ext_resource path="res://data/items/full_english.tres" type="Resource" id=3]
+[ext_resource path="res://sprites/items/full_english.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 2 )
+item = ExtResource( 3 )
+max_amount = 1000
+only_sold_if_unowned = false
+name = "ITEM_FULL_ENGLISH_NAME"
+description = "ITEM_FULL_ENGLISH_DESCRIPTION"
+icon = ExtResource( 4 )
+rarity = 0
+amount = 1
+service = ""
+currency = ExtResource( 1 )
+price_initial = 5000
+price_step = 0.0
+stat_key = "ap7_dungeon_campsite_breakfast"
+max_allowed_initial = 1
+max_allowed_per_captain = 0.0
+max_allowed_limit = 1
+description_num_multiplier = 1

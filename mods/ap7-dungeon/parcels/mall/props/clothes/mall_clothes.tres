@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=9 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_6.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_7.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_5.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes_1.tscn" type="PackedScene" id=8]
+
+[resource]
+script = ExtResource( 1 )
+zones = [  ]
+target_zones = [  ]
+
+parcels = [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 3 ) ]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_ceiling_3.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_ceiling_1A.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=3]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_1A.mesh" type="ArrayMesh" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 5, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="world_station_wall_ceiling_1A" type="MeshInstance" parent="."]
+transform = Transform( 1.85774e-07, 4.37114e-10, 1, 4.25, -4.37114e-10, -4.37115e-08, 1.85773e-07, 0.01, -4.37114e-08, 2.5, 4.25, 2 )
+mesh = ExtResource( 2 )
+
+[node name="world_station_wall_ceiling_1A2" type="MeshInstance" parent="."]
+transform = Transform( -1.85774e-07, -1.94707e-07, -1, 4.25, -4.37114e-08, -4.37115e-08, -1.85773e-07, -1, 1.94707e-07, 1, 4.25, 1 )
+mesh = ExtResource( 2 )
+
+[node name="top" type="MeshInstance" parent="."]
+transform = Transform( 4.37114e-08, 4.37114e-10, 1, 1.19209e-07, 0.01, -4.37114e-08, -1, 1.19209e-09, 4.37114e-08, 2.5, 8.505, 2.5 )
+mesh = ExtResource( 1 )
+
+[node name="bottom1" type="MeshInstance" parent="."]
+transform = Transform( -0.75, 2.50139e-14, 1.50996e-07, -1.0403e-15, 1, -1.74846e-07, -1.13247e-07, -1.74846e-07, -1, 0.75, 1, 1 )
+mesh = ExtResource( 2 )
+
+[node name="bottom2" type="MeshInstance" parent="."]
+transform = Transform( -5.96046e-08, -1.74846e-07, -1, -1.0403e-15, 1, -1.74846e-07, 0.75, -1.42109e-14, -8.9407e-08, 1, 1, 0.75 )
+mesh = ExtResource( 2 )
+
+[node name="collider" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0 )
+shape = SubResource( 1 )
+
+[node name="vis1" type="Spatial" parent="."]
+script = ExtResource( 3 )
+
+[node name="wall" type="MeshInstance" parent="vis1"]
+transform = Transform( 0.8, 0, -1.06581e-14, 0, 4, 0, 8.52651e-15, 0, 1, 0.8, 4.25, 2.25 )
+mesh = ExtResource( 4 )
+
+[node name="top1" type="MeshInstance" parent="vis1"]
+transform = Transform( -0.75, 2.50139e-14, 1.50996e-07, -1.0403e-15, 1, -1.74846e-07, -1.13247e-07, -1.74846e-07, -1, 0.75, 9, 1 )
+mesh = ExtResource( 2 )
+
+[node name="vis2" type="Spatial" parent="."]
+script = ExtResource( 3 )
+north = Vector3( -1, 0, 0 )
+
+[node name="top2" type="MeshInstance" parent="vis2"]
+transform = Transform( -5.96046e-08, -1.74846e-07, -1, -1.0403e-15, 1, -1.74846e-07, 0.75, -1.42109e-14, -8.9407e-08, 1, 9, 0.75 )
+mesh = ExtResource( 2 )
+
+[node name="wall2" type="MeshInstance" parent="vis2"]
+transform = Transform( -3.49691e-08, 0, 1, 0, 4, 0, -0.8, 0, -4.37114e-08, 2.25, 4.25, 0.8 )
+mesh = ExtResource( 4 )

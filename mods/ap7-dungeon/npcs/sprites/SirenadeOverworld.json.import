@@ -1,0 +1,29 @@
+[remap]
+
+importer="eska.aseprite_importer"
+type="PackedScene"
+path="res://.import/SirenadeOverworld.json-2439c1ca8b6dc83ad1cbbf844db8e423.scn"
+
+[deps]
+
+source_file="res://mods/ap7-dungeon/npcs/sprites/SirenadeOverworld.json"
+dest_files=[ "res://.import/SirenadeOverworld.json-2439c1ca8b6dc83ad1cbbf844db8e423.scn" ]
+
+[params]
+
+sheet_image=""
+post_script=""
+root_node_name="Sprite"
+autoplay_animation=""
+loop=true
+as_3d=true
+custom_material=""
+billboard=0
+pixel_size=0.125
+origin_x=0.5
+origin_y=0.0
+offset=Vector2( 0, 0 )
+cast_shadow=true
+unshaded=false
+use_alpha_scissor=true
+cull_mode=0

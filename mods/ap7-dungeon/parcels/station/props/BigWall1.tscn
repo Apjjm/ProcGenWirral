@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://world/objects/wired/door/wired_door_2.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/final_station_doorwall_2A.mesh" type="ArrayMesh" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 7, 3, 0.4 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 1, 0.4 )
+
+[node name="BigWall1" type="Spatial"]
+
+[node name="bigwall" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 2.25 )
+mesh = ExtResource( 2 )
+
+[node name="wired_door_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0002, 1.08099, 1.6331 )
+mesh = ExtResource( 1 )
+
+[node name="wired_door_3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0002, 1.08099, 1.6331 )
+mesh = ExtResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1, 3, 1.576 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9929, 1, 1.57635 )
+shape = SubResource( 2 )

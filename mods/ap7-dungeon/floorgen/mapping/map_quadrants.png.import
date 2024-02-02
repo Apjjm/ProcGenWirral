@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/map_quadrants.png-37cf454491b3e6a714f6acfb1010a89e.image"
+
+[deps]
+
+source_file="res://mods/ap7-dungeon/floorgen/mapping/map_quadrants.png"
+dest_files=[ "res://.import/map_quadrants.png-37cf454491b3e6a714f6acfb1010a89e.image" ]
+
+[params]
+

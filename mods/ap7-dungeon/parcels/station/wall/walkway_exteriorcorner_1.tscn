@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap2" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( -131069, 0, 1441807, -65533, 0, 1441805, -131069, 1, 1441807, -65533, 1, 1441805, -131069, 2, 1441807, -65533, 2, 1441805, -131072, 3, 15, -131071, 3, 15, -131070, 3, 15, -131069, 3, 1441811, -65536, 3, 655373, -65535, 3, 655373, -65534, 3, 655373, -65533, 3, 1441810 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}

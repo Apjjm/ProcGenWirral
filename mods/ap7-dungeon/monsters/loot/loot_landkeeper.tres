@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/LootTable.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_sacredwater_sigil.tres" type="Resource" id=2]
+
+[resource]
+script = ExtResource( 1 )
+items = [  ]
+guaranteed_items = [ ExtResource( 2 ) ]
+guaranteed_item_amounts = [ 1 ]
+rare_items = [  ]
+rare_item_chance = 0.1
+max_stickers = 2
+sticker_tags = [  ]
+allow_unsellable_stickers = false
+upgrade_sticker_rarity = true
+upgrade_sticker_rarity_chance = 100
+fixed_max_value = 0
+fixed_max_num = 0

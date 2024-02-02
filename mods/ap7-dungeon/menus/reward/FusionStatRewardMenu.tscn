@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuItemActionStatUpgrade.gd" type="Script" id=2]
+[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sprites/ranger_trader/fusion_meter.png" type="Texture" id=4]
+
+[node name="Rewards" type="Node"]
+script = ExtResource( 1 )
+menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
+menu_open_sound = ExtResource( 3 )
+
+[node name="CritUp" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "SERVICE_FUSION_METER_CRITICAL_NAME"
+description = "AP7_DUNGEON_MENU_REWARD_FUSION_CRIT_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat_key = "fusion_meter_critical"
+
+[node name="FillUp" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "SERVICE_FUSION_METER_FILL_RATE_NAME"
+description = "AP7_DUNGEON_MENU_REWARD_FUSION_FILL_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat_key = "fusion_meter_fill_rate"
+boost = 2
+
+[node name="RecordingBoost" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "SERVICE_FUSION_METER_RECORDING_NAME"
+description = "AP7_DUNGEON_MENU_REWARD_FUSION_RECORD_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat_key = "fusion_meter_recording"
+
+[node name="TypeAdvantage" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "SERVICE_FUSION_METER_TYPE_ADVANTAGE_NAME"
+description = "AP7_DUNGEON_MENU_REWARD_FUSION_TYPEADV_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat_key = "fusion_meter_type_advantage"
+
+[node name="Victory" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "SERVICE_FUSION_METER_VICTORY_NAME"
+description = "AP7_DUNGEON_MENU_REWARD_FUSION_VICTORY_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat_key = "fusion_meter_victory"

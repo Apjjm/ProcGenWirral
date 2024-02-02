@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/WalkAction.gd" type="Script" id=3]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/SetNPCControlsAction.gd" type="Script" id=5]
+
+[node name="DashAtPlayer" type="Node"]
+script = ExtResource( 4 )
+
+[node name="FaceTowardsAction" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"action_tree": true
+}
+snap_to_cardinal = true
+
+[node name="GetPlayer" type="Node" parent="FaceTowardsAction"]
+script = ExtResource( 2 )
+
+[node name="StartDash" type="Node" parent="."]
+script = ExtResource( 5 )
+dash = true
+set_values = 8
+
+[node name="WalkAction" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"action_tree": true
+}
+
+[node name="StopDash" type="Node" parent="."]
+script = ExtResource( 5 )
+set_values = 8

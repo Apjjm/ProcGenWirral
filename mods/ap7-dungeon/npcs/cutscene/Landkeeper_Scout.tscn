@@ -1,0 +1,107 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://sprites/portraits/eugene_angry.png" type="Texture" id=1]
+[ext_resource path="res://sprites/portraits/dog_shocked.png" type="Texture" id=2]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=4]
+[ext_resource path="res://sprites/portraits/kayleigh.png" type="Texture" id=5]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/PartnerDialog.gd" type="Script" id=6]
+[ext_resource path="res://sprites/portraits/meredith.png" type="Texture" id=7]
+[ext_resource path="res://sprites/portraits/viola_thinking.png" type="Texture" id=8]
+[ext_resource path="res://sprites/portraits/felix_thinking.png" type="Texture" id=9]
+[ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/SetWireStateAction.gd" type="Script" id=11]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/TakeRandomStickerAction.gd" type="Script" id=12]
+[ext_resource path="res://nodes/actions/MenuDialogAction.gd" type="Script" id=13]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=14]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=15]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=16]
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Selector" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="NotOpened" type="Node" parent="Selector"]
+script = ExtResource( 14 )
+deny_flags = [ "AP7_DUNGEON_LK_INTRO2" ]
+
+[node name="Intro" type="Node" parent="Selector/NotOpened"]
+script = ExtResource( 14 )
+always_succeed = true
+deny_flags = [ "AP7_DUNGEON_LK_INTRO1" ]
+
+[node name="Intro" type="Node" parent="Selector/NotOpened/Intro"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_1" ]
+
+[node name="Partner" type="Node" parent="Selector/NotOpened/Intro"]
+script = ExtResource( 6 )
+kayleigh_messages = [ "AP7_DUNGEON_LK_SCOUT_1_KAYLEIGH" ]
+meredith_messages = [ "AP7_DUNGEON_LK_SCOUT_1_MEREDITH" ]
+felix_messages = [ "AP7_DUNGEON_LK_SCOUT_1_FELIX" ]
+eugene_messages = [ "AP7_DUNGEON_LK_SCOUT_1_EUGENE" ]
+viola_messages = [ "AP7_DUNGEON_LK_SCOUT_1_VIOLA" ]
+dog_messages = [ "AP7_DUNGEON_LK_SCOUT_1_DOG" ]
+kayleigh_portrait = ExtResource( 5 )
+meredith_portrait = ExtResource( 7 )
+felix_portrait = ExtResource( 9 )
+eugene_portrait = ExtResource( 1 )
+viola_portrait = ExtResource( 8 )
+dog_portrait = ExtResource( 2 )
+
+[node name="Intro2" type="Node" parent="Selector/NotOpened/Intro"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_2", "AP7_DUNGEON_LK_SCOUT_3", "AP7_DUNGEON_LK_SCOUT_4" ]
+
+[node name="SetFlagAction" type="Node" parent="Selector/NotOpened/Intro"]
+script = ExtResource( 15 )
+flag = "AP7_DUNGEON_LK_INTRO1"
+
+[node name="AskForSticker" type="Node" parent="Selector/NotOpened"]
+script = ExtResource( 16 )
+
+[node name="Message" type="Node" parent="Selector/NotOpened/AskForSticker"]
+script = ExtResource( 3 )
+messages = [ "AP7_DUNGEON_LK_SCOUT_CHOICE_RARE" ]
+wait_for_confirm = false
+close_after = false
+
+[node name="Option" type="Node" parent="Selector/NotOpened/AskForSticker"]
+script = ExtResource( 13 )
+menu_options = [ "AP7_DUNGEON_LK_SCOUT_OPTION_1", "AP7_DUNGEON_LK_SCOUT_OPTION_2" ]
+
+[node name="TradeSelector" type="Node" parent="Selector/NotOpened/AskForSticker/Option"]
+script = ExtResource( 10 )
+
+[node name="TakeSticker" type="Node" parent="Selector/NotOpened/AskForSticker/Option/TradeSelector"]
+script = ExtResource( 12 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_4_TRADE" ]
+rarity = 1
+
+[node name="OpenDoor" type="Node" parent="Selector/NotOpened/AskForSticker/Option/TradeSelector/TakeSticker"]
+script = ExtResource( 11 )
+state = true
+
+[node name="SetFlagAction" type="Node" parent="Selector/NotOpened/AskForSticker/Option/TradeSelector/TakeSticker"]
+script = ExtResource( 15 )
+flag = "AP7_DUNGEON_LK_INTRO2"
+
+[node name="NoSticker" type="Node" parent="Selector/NotOpened/AskForSticker/Option/TradeSelector"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_4_NOTRADE" ]
+
+[node name="Exit" type="Node" parent="Selector/NotOpened/AskForSticker/Option"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_4_EXIT" ]
+
+[node name="Exit" type="Node" parent="Selector"]
+script = ExtResource( 3 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_LK_SCOUT_4_OPENED" ]

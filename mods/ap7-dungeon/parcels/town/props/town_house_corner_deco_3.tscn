@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/rug/rug_small.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://world/objects/interior_props/Sofa1.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Sofa1" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1.67917, 0, 1.41703 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.043, 0.01, 2.539 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )

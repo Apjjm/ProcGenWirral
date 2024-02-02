@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/rug/rug_small.tres" type="Resource" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/bed/bed.tres" type="Resource" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.75 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 4 )
+
+[node name="rot" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.19209e-07, 0, 2 )
+script = ExtResource( 1 )
+y_min = 0.0
+y_max = 180.0
+
+[node name="RandomParcelNode2" type="Spatial" parent="rot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -2.522 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 3 )

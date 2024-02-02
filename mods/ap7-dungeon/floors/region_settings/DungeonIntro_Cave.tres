@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://data/RegionSettings.gd" type="Script" id=1]
+[ext_resource path="res://music/demo/plains_day_outskirts.ogg" type="AudioStream" id=2]
+[ext_resource path="res://music/demo/plains_night_outskirts.ogg" type="AudioStream" id=3]
+
+[resource]
+script = ExtResource( 1 )
+region_name = "AP7_DUNGEON_FLOOR_INTRO_CAVE"
+music_day = ExtResource( 2 )
+music_night = ExtResource( 3 )
+music_no_vox = ExtResource( 2 )
+weather_kinds = [  ]
+battle_level = 1
+warn_about_level = true

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=12 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor1c.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor2b.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor1b.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor1d.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor3b.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/doors/BrokenGlassDoor4b.tscn" type="PackedScene" id=11]
+
+[resource]
+script = ExtResource( 1 )
+zones = [  ]
+target_zones = [  ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+parcels = [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 11 ) ]

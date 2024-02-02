@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://data/battle_vfx_scripts/ParallelVfx.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformCamShake1.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformCamShake2.tres" type="Resource" id=3]
+[ext_resource path="res://mods/ap7-dungeon/sfx/terraform_impact.wav" type="AudioStream" id=4]
+
+[resource]
+script = ExtResource( 1 )
+initial_delay = 0.0
+sound = ExtResource( 4 )
+sound_pitch_scale = 1.0
+sound_random_pitch = 1.1
+background_lighting = 1.0
+background_lighting_ease_duration = 0.5
+origin_anchor_name = "attack"
+target_anchor_name = "hit"
+origin_anchor_on_ground = false
+target_anchor_on_ground = false
+play_form_sound = ""
+vfx = [ ExtResource( 2 ), ExtResource( 3 ) ]

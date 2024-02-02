@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=13 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_5.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_4.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_10.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_7.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_3.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_0.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_6.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_9.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_8.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/stands/stand_clothes_1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=12]
+
+[resource]
+script = ExtResource( 12 )
+zones = [ "shop", "shop_clothes" ]
+
+parcels = [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 3 ) ]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/floors/mall_shop_crack_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/floors/mall_shop_crack_3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/floors/mall_shop_crack_2.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+zones = [  ]
+target_zones = [  ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+parcels = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]

@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/final_station_clockhand_2.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://world/objects/kinematic_physics/elevator/elevator_pole_1.mesh" type="ArrayMesh" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 30, 6 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.587312, 4.31779, 0.25 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "animation_1"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("final_station_clockhand_2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -360 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "animation_2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("final_station_clockhand_2:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="GridMap3" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 4, 655375, -131071, 4, 655375, -131070, 4, 655375, -131069, 4, 655375, -131064, 4, 655375, -131063, 4, 655375, -131062, 4, 655375, -131061, 4, 655375, -65536, 4, 655373, -65535, 4, 655373, -65534, 4, 655373, -65533, 4, 655373, -65528, 4, 655373, -65527, 4, 655373, -65526, 4, 655373, -65525, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
+
+[node name="Wall_L" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="GridMap2" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 4, 655375, -131071, 4, 655375, -131070, 4, 655375, -131069, 4, 655375, -65536, 4, 655373, -65535, 4, 655373, -65534, 4, 655373, -65533, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_R" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="GridMap2" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131064, 4, 655375, -131063, 4, 15, -131062, 4, 15, -131061, 4, 15, -65528, 4, 655373, -65527, 4, 655373, -65526, 4, 655373, -65525, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Shared" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131068, 3, 655376, -131067, 3, 15, -131066, 3, 15, -131065, 3, 1048592, -65532, 3, 655374, -65531, 3, 655373, -65530, 3, 655373, -65529, 3, 1048590, -131068, 4, 1441811, -131065, 4, 655379, -65532, 4, 1441810, -65531, 4, 1, -65530, 4, 1, -65529, 4, 655378 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="EnemyBlocker" type="StaticBody" parent="."]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyBlocker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1 )
+shape = SubResource( 1 )
+
+[node name="Clock1" type="Spatial" parent="."]
+transform = Transform( -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 4.37114e-08, 1, 4.37114e-08, 12, 0.5, 0 )
+
+[node name="final_station_clockhand_2" type="MeshInstance" parent="Clock1"]
+transform = Transform( 1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 9.9472e-09, -0.227566 )
+mesh = ExtResource( 2 )
+
+[node name="StaticBody2" type="StaticBody" parent="Clock1/final_station_clockhand_2"]
+constant_angular_velocity = Vector3( 0, -0.628, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Clock1/final_station_clockhand_2/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20725, 0 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clock1"]
+autoplay = "animation_1"
+anims/animation_1 = SubResource( 6 )
+anims/animation_2 = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -6.3602, 0 )
+mesh = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -19.3602, 0 )
+mesh = ExtResource( 3 )

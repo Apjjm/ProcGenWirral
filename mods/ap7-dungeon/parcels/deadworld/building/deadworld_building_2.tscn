@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/objects/static_physics/house_wreckage/HouseWreckage4.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/objects/static_physics/house_wreckage/HouseWreckage3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/objects/static_physics/house_wreckage/HouseWreckage5.tscn" type="PackedScene" id=3]
+
+[node name="Building" type="Spatial"]
+
+[node name="HouseWreckage3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
+
+[node name="HouseWreckage4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0, 0 )
+
+[node name="HouseWreckage5" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0, 0 )

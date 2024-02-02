@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomFloatyNode.gd" type="Script" id=1]
+[ext_resource path="res://sprites/environment/world/final_station_light_1.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_do_not_receive_shadows = true
+params_cull_mode = 2
+params_depth_draw_mode = 3
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_texture = ExtResource( 2 )
+emission_enabled = true
+emission = Color( 0.458824, 0.686275, 0.980392, 1 )
+emission_energy = 1.5
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="FloatyWisp" type="Spatial"]
+script = ExtResource( 1 )
+speed = 0.25
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+material_override = SubResource( 1 )
+cast_shadow = 0
+centered = false
+offset = Vector2( -3, -3 )
+pixel_size = 0.125
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 6, 6 )
+__meta__ = {
+"_ase_imported": true
+}

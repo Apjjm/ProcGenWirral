@@ -1,0 +1,46 @@
+{ "frames": {
+   "Sprite-0002 0.": {
+    "frame": { "x": 1, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 100
+   },
+   "Sprite-0002 1.": {
+    "frame": { "x": 34, "y": 1, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 100
+   },
+   "Sprite-0002 2.": {
+    "frame": { "x": 1, "y": 50, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 100
+   },
+   "Sprite-0002 3.": {
+    "frame": { "x": 34, "y": 50, "w": 32, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
+    "sourceSize": { "w": 32, "h": 48 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "DjinnOverworld.png",
+  "format": "RGBA8888",
+  "size": { "w": 67, "h": 99 },
+  "scale": "1",
+  "frameTags": [
+    { "name": "idle", "from": 0, "to": 3, "direction": "forward" }
+   ]
+ }
+}

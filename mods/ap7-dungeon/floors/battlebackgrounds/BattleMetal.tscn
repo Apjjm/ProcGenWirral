@@ -1,0 +1,197 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://nodes/battle_slot/BattleSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/sky_pier.png" type="Texture" id=2]
+[ext_resource path="res://battle/backgrounds/battle_house.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://nodes/camera/BattleCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://nodes/environment/ConfigurableEnvironment.gd" type="Script" id=5]
+[ext_resource path="res://battle/backgrounds/BattleBackground.gd" type="Script" id=6]
+[ext_resource path="res://battle/backgrounds/archangel/noise1.png" type="Texture" id=7]
+[ext_resource path="res://nodes/misc_shaders/swirling_color_noise.gdshader" type="Shader" id=8]
+[ext_resource path="res://world/objects/wired/gear/gear_1.mesh" type="ArrayMesh" id=9]
+[ext_resource path="res://models/battle_scenes/battle_archangel_4/clouds_1.png" type="Texture" id=10]
+[ext_resource path="res://nodes/day_night_cycle/battle_background_clouds_mat.tres" type="Material" id=11]
+[ext_resource path="res://world/objects/static_physics/metal_fence/metal_fence_pole_1.mesh" type="ArrayMesh" id=12]
+[ext_resource path="res://world/maps/HouseMeshlib.meshlib" type="MeshLibrary" id=13]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=4]
+resource_local_to_scene = true
+background_mode = 3
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 88.0
+background_color = Color( 0.235294, 0.231373, 0.329412, 1 )
+background_energy = 0.2
+ambient_light_color = Color( 0.619608, 0.564706, 0.443137, 1 )
+ambient_light_energy = 0.5
+ambient_light_sky_contribution = 0.0
+fog_enabled = true
+fog_color = Color( 1, 0.905882, 0.701961, 1 )
+fog_sun_color = Color( 1, 0.956863, 0.87451, 1 )
+fog_depth_begin = 60.0
+fog_depth_end = 140.0
+fog_transmit_enabled = true
+ssao_color = Color( 0.2, 0.172549, 0.25098, 1 )
+dof_blur_far_enabled = true
+dof_blur_far_distance = 40.0
+dof_blur_far_transition = 30.0
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+dof_blur_near_distance = 22.0
+dof_blur_near_transition = 10.0
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 8 )
+shader_param/uv_offset = Vector2( -0.1, 0.1 )
+shader_param/uv_speed = Vector2( 0.01, 0.03 )
+shader_param/uv_rot_speed = 0.2
+shader_param/swirl_center = Vector2( 0.5, -0.25 )
+shader_param/swirl_magnitude = 3.0
+shader_param/swirl_power = 1.0
+shader_param/noise_thresholds = Vector2( 0.42, 0.58 )
+shader_param/color_a = Color( 1, 0.956863, 0.87451, 1 )
+shader_param/color_b = Color( 1, 0.866667, 0.768627, 1 )
+shader_param/tex_noise = ExtResource( 7 )
+
+[node name="BattleMetal" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.999848, -0.0174524, 1.9048e-08, 0.0119025, 0.681894, 0.731354, -0.0127639, -0.731242, 0.681998, 0.05, 6.4, 9.503 )
+light_color = Color( 1, 0.956863, 0.87451, 1 )
+light_energy = 0.85
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0
+
+[node name="BattleSlotPlayer1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer2")
+focus_neighbour_right = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotPlayer2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 10 )
+focus_neighbour_bottom = NodePath("../BattleSlotPlayer3")
+focus_neighbour_left = NodePath("../BattleSlotPlayer3")
+focus_neighbour_right = NodePath("../BattleSlotPlayer1")
+focus_neighbour_top = NodePath("../BattleSlotPlayer1")
+
+[node name="BattleSlotPlayer3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 15 )
+focus_neighbour_right = NodePath("../BattleSlotPlayer2")
+focus_neighbour_top = NodePath("../BattleSlotPlayer2")
+
+[node name="BattleSlotEnemy1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 5 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy2")
+focus_neighbour_left = NodePath("../BattleSlotPlayer1")
+focus_neighbour_right = NodePath("../BattleSlotEnemy2")
+
+[node name="BattleSlotEnemy2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 10 )
+direction = -1
+team = 1
+focus_neighbour_bottom = NodePath("../BattleSlotEnemy3")
+focus_neighbour_left = NodePath("../BattleSlotEnemy1")
+focus_neighbour_right = NodePath("../BattleSlotEnemy3")
+focus_neighbour_top = NodePath("../BattleSlotEnemy1")
+
+[node name="BattleSlotEnemy3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 15 )
+direction = -1
+team = 1
+focus_neighbour_left = NodePath("../BattleSlotEnemy2")
+focus_neighbour_top = NodePath("../BattleSlotEnemy2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+script = ExtResource( 5 )
+
+[node name="BattleCamera" parent="." instance=ExtResource( 4 )]
+
+[node name="Clouds" type="Sprite3D" parent="."]
+transform = Transform( 0.998571, -0.00905918, 0.0526606, -0.00465709, 0.967018, 0.254665, -0.0532308, -0.254547, 0.965594, 0, -4.958, -22 )
+material_override = ExtResource( 11 )
+cast_shadow = 0
+modulate = Color( 1, 0.956863, 0.87451, 1 )
+pixel_size = 0.275
+texture = ExtResource( 10 )
+
+[node name="Background" type="CSGBox" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 9.4981, -37.2812 )
+material_override = SubResource( 3 )
+width = 209.382
+height = 78.891
+depth = 0.002
+
+[node name="Props" type="Spatial" parent="."]
+
+[node name="metal_fence_pole_1" type="MeshInstance" parent="Props"]
+transform = Transform( 3.5, 0, 0, 0, 20, 0, 0, 0, 3.5, -28.6252, -18.9455, 24.6179 )
+mesh = ExtResource( 12 )
+
+[node name="metal_fence_pole_4" type="MeshInstance" parent="Props"]
+transform = Transform( 3.5, 0, 0, 0, 20, 0, 0, 0, 3.5, 28.625, -18.946, 24.618 )
+mesh = ExtResource( 12 )
+
+[node name="metal_fence_pole_2" type="MeshInstance" parent="Props"]
+transform = Transform( 3.5, 0, 0, 0, 20, 0, 0, 0, 3.5, -28.625, -18.946, -8.618 )
+mesh = ExtResource( 12 )
+
+[node name="metal_fence_pole_3" type="MeshInstance" parent="Props"]
+transform = Transform( 3.5, 0, 0, 0, 20, 0, 0, 0, 3.5, 28.625, -18.946, -8.618 )
+mesh = ExtResource( 12 )
+
+[node name="GridMap" type="GridMap" parent="Props"]
+mesh_library = ExtResource( 3 )
+cell_size = Vector3( 4, 4, 4 )
+data = {
+"cells": PoolIntArray( -262137, 0, 1048588, -196616, 0, 1441804, -196601, 0, 1048588, -131080, 0, 1441804, -131065, 0, 1048588, -65544, 0, 1441804, -65529, 0, 1048596, -8, 0, 1441812, -262137, 1, 1048588, -196616, 1, 1441804, -196601, 1, 1048588, -131080, 1, 1441804, -131065, 1, 1048588, -65544, 1, 1441804, -65529, 1, 1048596, -8, 1, 1441812, -262137, 2, 1048588, -196616, 2, 1441804, -196601, 2, 1048588, -131080, 2, 1441804, -131065, 2, 1048588, -65544, 2, 1441804, -65529, 2, 1048596, -8, 2, 1441812, -262137, 3, 1048588, -196616, 3, 1441804, -196601, 3, 1048588, -131080, 3, 1441804, -131065, 3, 1048588, -65544, 3, 1441804, -65529, 3, 1048596, -8, 3, 1441812, -262137, 4, 1048588, -196616, 4, 1441804, -196601, 4, 1048588, -131080, 4, 1441804, -131065, 4, 1048588, -65544, 4, 1441804, -65529, 4, 1048596, -8, 4, 1441812, -262137, 5, 1048588, -196616, 5, 1441804, -196601, 5, 1048588, -131080, 5, 1441804, -131065, 5, 1048588, -65544, 5, 1441804, -65529, 5, 1048596, -8, 5, 1441812, -262144, 6, 12, -262143, 6, 12, -262142, 6, 12, -262141, 6, 12, -262140, 6, 12, -262139, 6, 12, -262138, 6, 12, -196615, 6, 12, -196614, 6, 12, -196613, 6, 12, -196612, 6, 12, -196611, 6, 12, -196610, 6, 12, -196609, 6, 12, -196608, 6, 12, -196607, 6, 12, -196606, 6, 12, -196605, 6, 12, -196604, 6, 12, -196603, 6, 12, -196602, 6, 12, -131079, 6, 12, -131078, 6, 12, -131077, 6, 12, -131076, 6, 12, -131075, 6, 12, -131074, 6, 12, -131073, 6, 12, -131072, 6, 12, -131071, 6, 12, -131070, 6, 12, -131069, 6, 12, -131068, 6, 12, -131067, 6, 12, -131066, 6, 12, -65543, 6, 12, -65542, 6, 12, -65541, 6, 12, -65540, 6, 12, -65539, 6, 12, -65538, 6, 12, -65537, 6, 12, -65536, 6, 20, -65535, 6, 20, -65534, 6, 20, -65533, 6, 20, -65532, 6, 20, -65531, 6, 20, -65530, 6, 20, -7, 6, 20, -6, 6, 20, -5, 6, 20, -4, 6, 20, -3, 6, 20, -2, 6, 20, -1, 6, 20, -65536, 65533, 655380, -65535, 65533, 655380, -65534, 65533, 655380, -65533, 65533, 655380, -65532, 65533, 655380, -65531, 65533, 655380, -65530, 65533, 655380, -7, 65533, 655380, -6, 65533, 655380, -5, 65533, 655380, -4, 65533, 655380, -3, 65533, 655380, -2, 65533, 655380, -1, 65533, 655380, -262137, 65534, 1048588, -196616, 65534, 1441804, -196601, 65534, 1048588, -131080, 65534, 1441804, -131065, 65534, 1048588, -65544, 65534, 1441804, -65529, 65534, 1048596, -8, 65534, 1441812, -262137, 65535, 1048588, -196616, 65535, 1441804, -196601, 65535, 1048588, -131080, 65535, 1441804, -131065, 65535, 1048588, -65544, 65535, 1441804, -65529, 65535, 1048596, -8, 65535, 1441812 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="GridMap2" type="GridMap" parent="Props"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+mesh_library = ExtResource( 13 )
+data = {
+"cells": PoolIntArray( -65536, 0, 94, -65535, 0, 94, -65534, 0, 94, -65533, 0, 94, -65532, 0, 94, -65531, 0, 94, -65530, 0, 94, -7, 0, 94, -6, 0, 94, -5, 0, 94, -4, 0, 94, -3, 0, 94, -2, 0, 94, -1, 0, 94, -65538, 1, 655454, -65537, 1, 655454, -65536, 1, 94, -65535, 1, 94, -65534, 1, 94, -65533, 1, 94, -65532, 1, 94, -65531, 1, 94, -65530, 1, 94, -7, 1, 94, -6, 1, 96, -5, 1, 94, -4, 1, 94, -3, 1, 94, -2, 1, 94, -1, 1, 94, -131072, 2, 655454, -131071, 2, 655454, -65538, 2, 655454, -65537, 2, 655454, -65536, 2, 94, -65535, 2, 1441886, -65534, 2, 94, -65533, 2, 94, -65532, 2, 94, -65531, 2, 94, -65530, 2, 94, -7, 2, 94, -6, 2, 94, -5, 2, 94, -4, 2, 94, -3, 2, 94, -2, 2, 94, -1, 2, 94, -131072, 3, 655454, -131071, 3, 655454, -131070, 3, 655454, -65537, 3, 655454, -65536, 3, 94, -65535, 3, 655454, -65534, 3, 94, -65533, 3, 94, -65532, 3, 94, -65531, 3, 94, -65530, 3, 94, -7, 3, 94, -6, 3, 94, -5, 3, 94, -4, 3, 94, -3, 3, 94, -2, 3, 94, -1, 3, 94, -131072, 4, 655454, -131071, 4, 655454, -131070, 4, 655454, -131068, 4, 655454, -65536, 4, 94, -65535, 4, 655454, -65534, 4, 94, -65533, 4, 94, -65532, 4, 94, -65531, 4, 94, -65530, 4, 94, -7, 4, 94, -6, 4, 94, -5, 4, 94, -4, 4, 94, -3, 4, 94, -2, 4, 94, -1, 4, 1441886, -65536, 5, 94, -65535, 5, 94, -65534, 5, 94, -65533, 5, 1441886, -65532, 5, 94, -65531, 5, 94, -65530, 5, 94, -7, 5, 94, -6, 5, 655457, -5, 5, 94, -4, 5, 94, -3, 5, 94, -2, 5, 94, -1, 5, 94, -65536, 65534, 94, -65535, 65534, 97, -65534, 65534, 94, -65533, 65534, 94, -65532, 65534, 94, -65531, 65534, 94, -65530, 65534, 1048672, -7, 65534, 94, -6, 65534, 94, -5, 65534, 94, -4, 65534, 94, -3, 65534, 94, -2, 65534, 94, -1, 65534, 94, -65536, 65535, 94, -65535, 65535, 94, -65534, 65535, 94, -65533, 65535, 94, -65532, 65535, 94, -65531, 65535, 94, -65530, 65535, 94, -7, 65535, 94, -6, 65535, 94, -5, 65535, 94, -4, 65535, 94, -3, 65535, 94, -2, 65535, 94, -1, 65535, 94 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="gear" type="MeshInstance" parent="Props"]
+transform = Transform( 2.80587, -3.2953e-07, 1.06165, 1.06165, 4.1618e-07, -2.80587, 1.60927e-07, 3, 5.05864e-07, -35.8458, -1.74705, -33.7201 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("")
+
+[node name="gear2" type="MeshInstance" parent="Props"]
+transform = Transform( -1.53095, 5.1716e-07, -2.57996, -2.57996, -1.19757e-07, 1.53095, 1.60927e-07, 3, 5.05864e-07, 25.1543, 3.70211, -34.0208 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("")
+
+[node name="gear3" type="MeshInstance" parent="Props"]
+transform = Transform( -0.595179, 5.27735e-07, -2.94037, -2.94037, 5.73679e-08, 0.595179, 1.60927e-07, 3, 5.05864e-07, 84.7541, -5.52292, -34.3836 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("")
+
+[node name="gear4" type="MeshInstance" parent="Props"]
+transform = Transform( -2.99343, 1.2711e-07, 0.198456, 0.198456, -5.15402e-07, 2.99343, 1.60927e-07, 3, 5.05864e-07, -96.5309, 2.50693, -33.9942 )
+mesh = ExtResource( 9 )
+skeleton = NodePath("")

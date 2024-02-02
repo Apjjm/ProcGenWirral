@@ -1,0 +1,530 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://world/objects/static_physics/gramophone_props/gramophone_counter/gramophone_counter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world/maps/InteriorMeshlib.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/hanging_lamp_1/hanging_lamp_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_stool_1/coffee_stool_1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_light_2.json" type="PackedScene" id=5]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_light_1.json" type="PackedScene" id=6]
+[ext_resource path="res://world/objects/rigid_physics/ChalkboardMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://world/objects/interior_props/KitchenCounter1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/objects/interior_props/SimpleBookcase2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://data/battle_moves/echolocation.tres" type="Resource" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelRngRoot.gd" type="Script" id=11]
+[ext_resource path="res://mods/ap7-dungeon/floors/region_settings/DungeonFloor_InnMetadata.tres" type="Resource" id=12]
+[ext_resource path="res://world/objects/static_physics/wooden_shelf_1/wooden_shelf_1.tscn" type="PackedScene" id=13]
+[ext_resource path="res://mods/ap7-dungeon/floors/region_settings/DungeonFloor_Inn.tres" type="Resource" id=14]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/plate_1/plate_1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://nodes/camera/LaggingTracker.gd" type="Script" id=16]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=17]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=18]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/NextFloorWarpArea.gd" type="Script" id=19]
+[ext_resource path="res://world/objects/static_physics/amber_lodge/MicStand.tscn" type="PackedScene" id=20]
+[ext_resource path="res://mods/ap7-dungeon/npcs/HecklingBinvader.tscn" type="PackedScene" id=21]
+[ext_resource path="res://sprites/sky_battle_grasslands_night.png" type="Texture" id=22]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/AllieInn_StageDialog.tscn" type="PackedScene" id=23]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/PartnerDialog_Inn.tscn" type="PackedScene" id=24]
+[ext_resource path="res://mods/ap7-dungeon/npcs/BarDjinn.tscn" type="PackedScene" id=25]
+[ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=26]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/AllieInn_AllieInteraction.tscn" type="PackedScene" id=27]
+[ext_resource path="res://mods/ap7-dungeon/monsters/loot/loot_innBattle.tres" type="Resource" id=28]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SetLastWarp.gd" type="Script" id=29]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/mall_posters_generic.tres" type="Resource" id=30]
+[ext_resource path="res://nodes/camera/WorldCamera.tscn" type="PackedScene" id=40]
+[ext_resource path="res://world/objects/rigid_physics/LiftableBarrel.tscn" type="PackedScene" id=45]
+[ext_resource path="res://nodes/warp_region/WarpTarget.gd" type="Script" id=47]
+[ext_resource path="res://data/battle_moves/metal_wall.tres" type="Resource" id=49]
+[ext_resource path="res://world/core/LevelMap.gd" type="Script" id=50]
+[ext_resource path="res://data/battle_moves/raise_arms.tres" type="Resource" id=51]
+[ext_resource path="res://data/battle_moves/energy_shot.tres" type="Resource" id=52]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterCharacterConfig.gd" type="Script" id=53]
+[ext_resource path="res://mods/ap7-dungeon/monsters/FixedEncounterNode.gd" type="Script" id=54]
+[ext_resource path="res://battle/backgrounds/BattleCabin.tscn" type="PackedScene" id=55]
+[ext_resource path="res://data/battle_moves/bottle_volley.tres" type="Resource" id=56]
+[ext_resource path="res://data/MonsterTape.gd" type="Script" id=57]
+[ext_resource path="res://data/battle_moves/binvitation.tres" type="Resource" id=58]
+[ext_resource path="res://data/battle_moves/incinerate.tres" type="Resource" id=59]
+[ext_resource path="res://data/battle_moves/binvasion.tres" type="Resource" id=60]
+[ext_resource path="res://data/monster_forms/binterloper.tres" type="Resource" id=61]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_table_1/coffee_table.tscn" type="PackedScene" id=62]
+[ext_resource path="res://data/battle_moves/shooting_star.tres" type="Resource" id=63]
+[ext_resource path="res://data/monster_forms/binvader.tres" type="Resource" id=64]
+[ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=67]
+
+[sub_resource type="Resource" id=35]
+resource_name = "binvader Gr0"
+script = ExtResource( 57 )
+name_override = ""
+form = ExtResource( 64 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [ ExtResource( 51 ), ExtResource( 49 ), ExtResource( 58 ), ExtResource( 52 ), ExtResource( 60 ) ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="Resource" id=34]
+resource_name = "binterloper Gr0"
+script = ExtResource( 57 )
+name_override = ""
+form = ExtResource( 61 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [ ExtResource( 10 ), ExtResource( 63 ), ExtResource( 59 ), ExtResource( 56 ), ExtResource( 60 ), ExtResource( 49 ) ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 3, 3, 3 )
+
+[sub_resource type="BoxShape" id=27]
+extents = Vector3( 30, 10, 1 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 4, 10, 4 )
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 22 )
+
+[sub_resource type="Environment" id=2]
+resource_local_to_scene = true
+background_mode = 3
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 88.0
+background_energy = 0.2
+ambient_light_color = Color( 0.42, 0.42, 0.42, 1 )
+ambient_light_energy = 0.5
+ambient_light_sky_contribution = 0.25
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_sun_color = Color( 1, 0.956863, 0.87451, 1 )
+fog_depth_begin = 40.0
+fog_depth_end = 90.0
+fog_transmit_enabled = true
+ssao_color = Color( 0.2, 0.172549, 0.25098, 1 )
+dof_blur_far_enabled = true
+dof_blur_far_distance = 51.0
+dof_blur_far_transition = 20.0
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+dof_blur_near_distance = 37.0
+dof_blur_near_transition = 5.0
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 6, 10, 1.5 )
+
+[node name="Level" type="Spatial"]
+script = ExtResource( 50 )
+map_metadata = ExtResource( 12 )
+kill_depth = -5.0
+default_region_settings = ExtResource( 14 )
+
+[node name="Interior" type="Spatial" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Interior"]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 0, 0, 6, 1, 0, 6, 2, 0, 6, 3, 0, 6, 4, 0, 6, 5, 0, 6, 6, 0, 6, 7, 0, 6, 8, 0, 6, 9, 0, 6, 10, 0, 6, 11, 0, 6, 12, 0, 6, 13, 0, 6, 14, 0, 1441818, 15, 0, 1441792, 16, 0, 1441792, 17, 0, 1441792, 18, 0, 1441792, 65529, 0, 7, 65530, 0, 6, 65531, 0, 6, 65532, 0, 6, 65533, 0, 6, 65534, 0, 6, 65535, 0, 6, 65536, 0, 1, 65537, 0, 1, 65538, 0, 2, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 1, 65543, 0, 1, 65544, 0, 1, 65545, 0, 1, 65546, 0, 1, 65547, 0, 1, 65548, 0, 1, 65549, 0, 1, 65550, 0, 1, 65551, 0, 6, 65552, 0, 6, 65553, 0, 6, 65554, 0, 1441799, 131065, 0, 5, 131066, 0, 1, 131067, 0, 1, 131068, 0, 1, 131069, 0, 1, 131070, 0, 1, 131071, 0, 1, 131072, 0, 1, 131073, 0, 1, 131074, 0, 1, 131075, 0, 1, 131076, 0, 1, 131077, 0, 1, 131078, 0, 1, 131079, 0, 1, 131080, 0, 1, 131081, 0, 1, 131082, 0, 1, 131083, 0, 1, 131084, 0, 1, 131085, 0, 1, 131086, 0, 2, 131087, 0, 1, 131088, 0, 1, 131089, 0, 1, 131090, 0, 1441797, 196601, 0, 5, 196602, 0, 1, 196603, 0, 1, 196604, 0, 2, 196605, 0, 1, 196606, 0, 1, 196607, 0, 1, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 2, 196617, 0, 1, 196618, 0, 1, 196619, 0, 1, 196620, 0, 1, 196621, 0, 1, 196622, 0, 1, 196623, 0, 1, 196624, 0, 1, 196625, 0, 1, 196626, 0, 1441797, 262137, 0, 5, 262138, 0, 1, 262139, 0, 1, 262140, 0, 1, 262141, 0, 1, 262142, 0, 1, 262143, 0, 1, 262144, 0, 3, 262145, 0, 3, 262146, 0, 3, 262147, 0, 3, 262148, 0, 3, 262149, 0, 3, 262150, 0, 3, 262151, 0, 3, 262152, 0, 3, 262153, 0, 3, 262154, 0, 3, 262155, 0, 3, 262156, 0, 3, 262157, 0, 3, 262158, 0, 3, 262159, 0, 3, 262160, 0, 3, 262161, 0, 3, 262162, 0, 1441796, 327673, 0, 4, 327674, 0, 3, 327675, 0, 3, 327676, 0, 3, 327677, 0, 3, 327678, 0, 3, 327679, 0, 3, -65536, 0, 0, -65535, 0, 1048596, -65534, 0, 19, -65533, 0, 19, -65532, 0, 19, -65531, 0, 19, -65530, 0, 19, -65529, 0, 19, -65528, 0, 19, -65527, 0, 19, -65526, 0, 19, -65525, 0, 19, -65524, 0, 19, -65523, 0, 1441812, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, 14, 1, 1441798, 15, 1, 1441792, 16, 1, 1441792, 17, 1, 1441792, 18, 1, 1441792, 65529, 1, 1048582, 65554, 1, 1441798, 131065, 1, 1048577, 131090, 1, 1441793, 196601, 1, 1048577, 196626, 1, 1441793, 262137, 1, 1048577, 262162, 1, 1441795, 327673, 1, 1048579, -65536, 1, 0, -65535, 1, 1048596, -65534, 1, 19, -65533, 1, 19, -65532, 1, 19, -65531, 1, 19, -65530, 1, 19, -65529, 1, 19, -65528, 1, 19, -65527, 1, 19, -65526, 1, 21, -65525, 1, 19, -65524, 1, 19, -65523, 1, 1441812, -65522, 1, 1048596, -7, 1, 0, -6, 1, 0, -5, 1, 0, -4, 1, 0, -3, 1, 0, -2, 1, 0, -1, 1, 0, 14, 2, 1441798, 15, 2, 1441792, 16, 2, 1048594, 17, 2, 1441792, 18, 2, 1441792, 65529, 2, 1048582, 65554, 2, 1441798, 131065, 2, 1048577, 131090, 2, 1441793, 196601, 2, 1048577, 196626, 2, 1441794, 262137, 2, 1048577, 262162, 2, 1441795, 327673, 2, 1048579, -65536, 2, 0, -65535, 2, 1048596, -65534, 2, 19, -65533, 2, 19, -65532, 2, 19, -65531, 2, 19, -65530, 2, 19, -65529, 2, 19, -65528, 2, 19, -65527, 2, 19, -65526, 2, 19, -65525, 2, 19, -65524, 2, 19, -65523, 2, 1441812, -65522, 2, 1048596, -7, 2, 0, -6, 2, 0, -5, 2, 0, -4, 2, 0, -3, 2, 0, -2, 2, 0, -1, 2, 0, 14, 3, 1441798, 15, 3, 1441792, 16, 3, 1441792, 17, 3, 1441792, 18, 3, 1441792, 65529, 3, 1048582, 65554, 3, 1441798, 131065, 3, 1048577, 131090, 3, 1441793, 196601, 3, 1048577, 196626, 3, 1441793, 262137, 3, 1048578, 262162, 3, 1441795, 327673, 3, 1048579, -65536, 3, 0, -65535, 3, 1048596, -65534, 3, 19, -65533, 3, 19, -65532, 3, 19, -65531, 3, 19, -65530, 3, 19, -65529, 3, 19, -65528, 3, 19, -65527, 3, 19, -65526, 3, 19, -65525, 3, 19, -65524, 3, 19, -65523, 3, 1441812, -65522, 3, 1048596, -7, 3, 0, -6, 3, 0, -5, 3, 0, -4, 3, 0, -3, 3, 0, -2, 3, 0, -1, 3, 0, 14, 4, 1441798, 15, 4, 1441792, 16, 4, 1441792, 17, 4, 1441792, 18, 4, 1441792, 65529, 4, 1048582, 65554, 4, 1441798, 131065, 4, 1048577, 131090, 4, 1441793, 196601, 4, 1048577, 196626, 4, 1441793, 262137, 4, 1048577, 262162, 4, 1441795, 327673, 4, 1048579, -65536, 4, 0, -65535, 4, 1048596, -65534, 4, 19, -65533, 4, 19, -65532, 4, 19, -65531, 4, 19, -65530, 4, 19, -65529, 4, 19, -65528, 4, 19, -65527, 4, 19, -65526, 4, 19, -65525, 4, 19, -65524, 4, 19, -65523, 4, 1441812, -65522, 4, 1048596, -7, 4, 0, -6, 4, 0, -5, 4, 0, -4, 4, 0, -3, 4, 0, -2, 4, 0, -1, 4, 0, 14, 5, 1441798, 15, 5, 1441792, 16, 5, 1441792, 17, 5, 1441792, 18, 5, 1441792, 65529, 5, 1048582, 65554, 5, 1441798, 131065, 5, 1048577, 131090, 5, 1441793, 196601, 5, 1048577, 196626, 5, 1441793, 262137, 5, 1048577, 262162, 5, 1441795, 327673, 5, 1048579, -65536, 5, 0, -65535, 5, 1048596, -65534, 5, 19, -65533, 5, 19, -65532, 5, 19, -65531, 5, 21, -65530, 5, 19, -65529, 5, 19, -65528, 5, 19, -65527, 5, 19, -65526, 5, 19, -65525, 5, 19, -65524, 5, 19, -65523, 5, 1441812, -65522, 5, 1048596, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, 14, 6, 1441798, 15, 6, 1441792, 16, 6, 1441792, 17, 6, 1441792, 18, 6, 1441792, 65529, 6, 1048582, 65554, 6, 1441798, 131065, 6, 1048577, 131090, 6, 1441793, 196601, 6, 1048577, 196626, 6, 1441793, 262137, 6, 1048577, 262162, 6, 1441795, 327673, 6, 1048579, -65536, 6, 20, -65535, 6, 28, -65534, 6, 19, -65533, 6, 19, -65532, 6, 19, -65531, 6, 19, -65530, 6, 19, -65529, 6, 19, -65528, 6, 19, -65527, 6, 19, -65526, 6, 22, -65525, 6, 19, -65524, 6, 19, -65523, 6, 1441812, -65522, 6, 1048596, -7, 6, 20, -6, 6, 20, -5, 6, 20, -4, 6, 20, -3, 6, 20, -2, 6, 20, -1, 6, 20, 14, 7, 1441798, 15, 7, 1441792, 16, 7, 1441810, 17, 7, 1441792, 18, 7, 1441792, 65529, 7, 1048582, 65554, 7, 1441798, 131065, 7, 1048577, 131090, 7, 1441793, 196601, 7, 1048577, 196626, 7, 1441793, 262137, 7, 1048577, 262162, 7, 1441795, 327673, 7, 1048579, -65536, 7, 19, -65535, 7, 19, -65534, 7, 19, -65533, 7, 19, -65532, 7, 19, -65531, 7, 19, -65530, 7, 19, -65529, 7, 19, -65528, 7, 19, -65527, 7, 19, -65526, 7, 19, -65525, 7, 19, -65524, 7, 19, -65523, 7, 1441812, -65522, 7, 1048596, -7, 7, 19, -6, 7, 22, -5, 7, 19, -4, 7, 19, -3, 7, 19, -2, 7, 19, -1, 7, 19, 14, 8, 1441798, 15, 8, 1441792, 16, 8, 1441792, 17, 8, 1441792, 18, 8, 1441792, 65529, 8, 1048582, 65554, 8, 1441798, 131065, 8, 1048577, 131090, 8, 1441793, 196601, 8, 1048577, 196626, 8, 1441793, 262137, 8, 1048577, 262162, 8, 1441795, 327673, 8, 1048579, -65536, 8, 19, -65535, 8, 19, -65534, 8, 19, -65533, 8, 19, -65532, 8, 19, -65531, 8, 19, -65530, 8, 19, -65529, 8, 19, -65528, 8, 19, -65527, 8, 19, -65526, 8, 19, -65525, 8, 19, -65524, 8, 19, -65523, 8, 1441812, -65522, 8, 1048596, -7, 8, 19, -6, 8, 19, -5, 8, 19, -4, 8, 19, -3, 8, 19, -2, 8, 19, -1, 8, 19, 14, 9, 1441798, 15, 9, 1441792, 16, 9, 1441792, 17, 9, 1441792, 18, 9, 1441792, 65529, 9, 1048582, 65554, 9, 1441798, 131065, 9, 1048577, 131090, 9, 1441793, 196601, 9, 1048578, 196626, 9, 1441793, 262137, 9, 1048577, 262162, 9, 1441795, 327673, 9, 1048579, -65536, 9, 19, -65535, 9, 22, -65534, 9, 19, -65533, 9, 19, -65532, 9, 19, -65531, 9, 19, -65530, 9, 19, -65529, 9, 19, -65528, 9, 21, -65527, 9, 19, -65526, 9, 19, -65525, 9, 19, -65524, 9, 19, -65523, 9, 1441812, -65522, 9, 1048596, -7, 9, 19, -6, 9, 19, -5, 9, 19, -4, 9, 19, -3, 9, 19, -2, 9, 22, -1, 9, 19, 14, 10, 1441798, 15, 10, 1441792, 16, 10, 1441792, 17, 10, 1441810, 18, 10, 1441792, 65529, 10, 1048582, 65554, 10, 1441798, 131065, 10, 1048577, 131090, 10, 1441794, 196601, 10, 1048577, 196626, 10, 1441793, 262137, 10, 1048577, 262162, 10, 1441795, 327673, 10, 1048579, -65536, 10, 19, -65535, 10, 19, -65534, 10, 19, -65533, 10, 19, -65532, 10, 19, -65531, 10, 19, -65530, 10, 19, -65529, 10, 19, -65528, 10, 19, -65527, 10, 19, -65526, 10, 19, -65525, 10, 19, -65524, 10, 19, -65523, 10, 1441812, -65522, 10, 1048596, -7, 10, 19, -6, 10, 19, -5, 10, 19, -4, 10, 19, -3, 10, 21, -2, 10, 19, -1, 10, 19, 14, 11, 1441798, 15, 11, 1441792, 16, 11, 1441792, 17, 11, 1441792, 18, 11, 1441792, 65529, 11, 1048582, 65554, 11, 1441798, 131065, 11, 1048577, 131090, 11, 1441793, 196601, 11, 1048577, 196626, 11, 1441793, 262137, 11, 1048577, 262162, 11, 1441795, 327673, 11, 1048579, -65536, 11, 19, -65535, 11, 19, -65534, 11, 19, -65533, 11, 19, -65532, 11, 21, -65531, 11, 19, -65530, 11, 19, -65529, 11, 19, -65528, 11, 19, -65527, 11, 19, -65526, 11, 19, -65525, 11, 22, -65524, 11, 19, -65523, 11, 1441812, -65522, 11, 1048596, -7, 11, 19, -6, 11, 19, -5, 11, 19, -4, 11, 19, -3, 11, 19, -2, 11, 19, -1, 11, 19, 0, 12, 655368, 1, 12, 655368, 2, 12, 655368, 3, 12, 655368, 4, 12, 655368, 5, 12, 655368, 6, 12, 655368, 7, 12, 655368, 8, 12, 655368, 9, 12, 655368, 10, 12, 655368, 11, 12, 655368, 12, 12, 655368, 13, 12, 655368, 14, 12, 1441817, 15, 12, 1441792, 16, 12, 1441792, 17, 12, 1441792, 18, 12, 1441792, 65529, 12, 9, 65530, 12, 655368, 65531, 12, 655368, 65534, 12, 655368, 65535, 12, 655368, 65551, 12, 655368, 65552, 12, 655368, 65553, 12, 655368, 65554, 12, 10, 131065, 12, 13, 131090, 12, 14, 196601, 12, 13, 196626, 12, 14, 262137, 12, 13, 262162, 12, 16, 327673, 12, 15, -65536, 12, 19, -65535, 12, 19, -65534, 12, 19, -65533, 12, 19, -65532, 12, 19, -65531, 12, 19, -65530, 12, 19, -65529, 12, 19, -65528, 12, 19, -65527, 12, 19, -65526, 12, 19, -65525, 12, 19, -65524, 12, 22, -65523, 12, 1441812, -65522, 12, 1048596, -7, 12, 19, -6, 12, 19, -5, 12, 19, -4, 12, 19, -3, 12, 19, -2, 12, 19, -1, 12, 19, 65531, 13, 1441800, 65534, 13, 1048584, -4, 13, 20, -3, 13, 20, 65531, 14, 1441800, 65534, 14, 1048584, -4, 14, 19, -3, 14, 19, 65531, 15, 1441800, 65534, 15, 1048584, -4, 15, 19, -3, 15, 19 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="lamps" type="Spatial" parent="Interior"]
+
+[node name="hanging_lamp_1" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, -5.66561, 14.3501, 6.93684 )
+
+[node name="hanging_lamp_2" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, 0.0335822, 13.7886, 12.8612 )
+
+[node name="hanging_lamp_3" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, 4.86048, 15.8025, 7.5675 )
+
+[node name="hanging_lamp_4" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, 11.3756, 14.854, 9.38577 )
+
+[node name="hanging_lamp_5" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, 20.0081, 14.3992, 13.2639 )
+
+[node name="hanging_lamp_6" parent="Interior/lamps" instance=ExtResource( 3 )]
+transform = Transform( 0.999999, 0.000902934, -0.000859426, -0.000903225, 1, -0.00033752, 0.00085912, 0.000338297, 1, 25.2334, 14.827, 6.94063 )
+
+[node name="bar" type="Spatial" parent="Interior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+
+[node name="gramophone_counter" parent="Interior/bar" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59083, 0.874222, 4.49392 )
+
+[node name="coffee_stool_2" parent="Interior/bar" instance=ExtResource( 4 )]
+transform = Transform( -2.38419e-07, 0, 1, 0, 1, 0, -1, 0, -2.38419e-07, 1, 0, 2 )
+
+[node name="coffee_stool_3" parent="Interior/bar" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.94707e-07, 0, 1, 0, -1.94707e-07, 0, 1, -8, 0, 10 )
+
+[node name="coffee_stool_4" parent="Interior/bar" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 1.94707e-07, 0, 1, 0, -1.94707e-07, 0, 1, -5, 0, 10 )
+
+[node name="Sprite" parent="Interior/bar" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.8743, 4.9192, 11.1457 )
+
+[node name="Sprite" parent="Interior/bar/Sprite" instance=ExtResource( 5 )]
+
+[node name="ChalkboardMenu" parent="Interior/bar" instance=ExtResource( 7 )]
+transform = Transform( 0.999236, 0.0390634, -0.00087168, -0.0390636, 0.999237, -0.000304477, 0.00085912, 0.000338297, 1, -1.55003, 5.66063, 0.35416 )
+
+[node name="KitchenCounter1" parent="Interior/bar" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.434, 0, 1.3329 )
+
+[node name="SimpleBookcase3" parent="Interior/bar" instance=ExtResource( 9 )]
+transform = Transform( 4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, -10.7577, -4.76837e-07, 18.2225 )
+
+[node name="SimpleBookcase4" parent="Interior/bar" instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.7577, -4.76837e-07, 22.2225 )
+
+[node name="wooden_shelf_4" parent="Interior/bar" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 5, 0.0896957 )
+
+[node name="plate_1" parent="Interior/bar" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 0.936544, 0.350551, 0, -0.350551, 0.936544, -7.34095, 6.09317, 0.431986 )
+
+[node name="plate_2" parent="Interior/bar" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 0.936544, 0.350551, 0, -0.350551, 0.936544, -9.18186, 6.09317, 0.431986 )
+
+[node name="wooden_shelf_5" parent="Interior/bar" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.8496, 5, 4.24944 )
+
+[node name="plate_3" parent="Interior/bar" instance=ExtResource( 15 )]
+transform = Transform( -4.37114e-08, -0.350551, 0.936544, 0, 0.936544, 0.350551, -1, 1.53231e-08, -4.09376e-08, -11.5073, 6.09317, 3.34039 )
+
+[node name="plate_4" parent="Interior/bar" instance=ExtResource( 15 )]
+transform = Transform( -4.37114e-08, -0.350551, 0.936544, 0, 0.936544, 0.350551, -1, 1.53231e-08, -4.09376e-08, -11.5073, 6.09317, 5.1813 )
+
+[node name="OmniLight" type="OmniLight" parent="Interior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 13.2, 11.153 )
+light_color = Color( 0.972549, 0.901961, 0.545098, 1 )
+light_energy = 0.75
+light_specular = 0.2
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+omni_range = 25.0
+
+[node name="OmniLight3" type="OmniLight" parent="Interior"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 13.2, 11.153 )
+light_color = Color( 0.972549, 0.901961, 0.545098, 1 )
+light_energy = 0.75
+light_specular = 0.2
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+omni_range = 25.0
+
+[node name="OmniLight2" type="OmniLight" parent="Interior"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -11.3631, 9.2575, 11.8456 )
+light_color = Color( 0.72549, 0.870588, 0.290196, 1 )
+light_indirect_energy = 5.0
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="RandomRoot" type="Spatial" parent="."]
+script = ExtResource( 11 )
+
+[node name="Allie" type="Spatial" parent="RandomRoot"]
+script = ExtResource( 54 )
+battle_background = ExtResource( 55 )
+can_flee = true
+encounter_exp = 200
+loot_table_override = ExtResource( 28 )
+floor_level_offset = -1
+
+[node name="Bin1" type="Node" parent="RandomRoot/Allie"]
+script = ExtResource( 53 )
+tapes = [ SubResource( 35 ) ]
+
+[node name="Bin2" type="Node" parent="RandomRoot/Allie"]
+script = ExtResource( 53 )
+tapes = [ SubResource( 35 ) ]
+
+[node name="Bin3" type="Node" parent="RandomRoot/Allie"]
+script = ExtResource( 53 )
+tapes = [ SubResource( 35 ) ]
+
+[node name="BinFusion" type="Node" parent="RandomRoot/Allie"]
+script = ExtResource( 53 )
+level_scale_override_key = "monster_miniboss"
+tapes = [ SubResource( 34 ), SubResource( 35 ) ]
+
+[node name="Allie" parent="RandomRoot/Allie" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 6 )
+npc_name = "AP7_DUNGEON_INN_BARKEEP_NAME"
+pronouns = 1
+sprite_colors = {
+"body_color_1": 13,
+"body_color_2": 5,
+"eye_color": 7,
+"face_accessory_color": 5,
+"favorite_color": 5,
+"hair_accessory_color": 5,
+"hair_color": 7,
+"legs_color": 13,
+"shoe_color": 3,
+"skin_color": 23
+}
+sprite_part_names = {
+"arms": "dress1",
+"body": "dress1",
+"hair": "bun3",
+"head": "makeup1",
+"legs": "generic",
+"wings": "generic"
+}
+sprite_body = null
+character = null
+human_colors/body_color_1 = 13
+human_colors/body_color_2 = 5
+human_colors/eye_color = 7
+human_colors/face_accessory_color = 5
+human_colors/favorite_color = 5
+human_colors/hair_accessory_color = 5
+human_colors/hair_color = 7
+human_colors/legs_color = 13
+human_colors/shoe_color = 3
+human_colors/skin_color = 23
+
+[node name="Sprite" parent="RandomRoot/Allie/Allie" index="2"]
+aabb = AABB( -2, 0, -2, 4, 3.4641, 2 )
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="HumanSprite" parent="RandomRoot/Allie/Allie/Sprite" index="0"]
+part_names = {
+"arms": "dress1",
+"body": "dress1",
+"hair": "bun3",
+"head": "makeup1",
+"legs": "generic",
+"wings": "generic"
+}
+colors = {
+"body_color_1": 13,
+"body_color_2": 5,
+"eye_color": 7,
+"face_accessory_color": 5,
+"favorite_color": 5,
+"hair_accessory_color": 5,
+"hair_color": 7,
+"legs_color": 13,
+"shoe_color": 3,
+"skin_color": 23
+}
+
+[node name="CollisionShape" parent="RandomRoot/Allie/Allie/Interaction" index="0"]
+shape = SubResource( 30 )
+
+[node name="InteractionBehavior" parent="RandomRoot/Allie/Allie" instance=ExtResource( 27 )]
+
+[node name="Poster" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4908, 4.99791, 0.235986 )
+script = ExtResource( 18 )
+y_min = -10.0
+y_max = 10.0
+axis = 2
+
+[node name="Poster" type="Spatial" parent="RandomRoot/Poster"]
+script = ExtResource( 17 )
+parcel_set = ExtResource( 30 )
+
+[node name="Poster2" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4908, 5.99791, 0.235986 )
+script = ExtResource( 18 )
+y_min = -10.0
+y_max = 10.0
+axis = 2
+
+[node name="Poster" type="Spatial" parent="RandomRoot/Poster2"]
+script = ExtResource( 17 )
+parcel_set = ExtResource( 30 )
+
+[node name="Poster3" type="Spatial" parent="RandomRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4908, 4.99791, 0.235986 )
+script = ExtResource( 18 )
+y_min = -10.0
+y_max = 10.0
+axis = 2
+
+[node name="Poster" type="Spatial" parent="RandomRoot/Poster3"]
+script = ExtResource( 17 )
+parcel_set = ExtResource( 30 )
+
+[node name="LiftableBarrel" parent="RandomRoot" instance=ExtResource( 45 )]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -6.51764, 1, 2.06815 )
+
+[node name="coffee_table1" parent="RandomRoot" instance=ExtResource( 62 )]
+transform = Transform( -0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 13.198, 0.6, 7.27 )
+
+[node name="coffee_stool_2" parent="RandomRoot/coffee_table1" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -1.6383, -0.6, -1.14715 )
+
+[node name="coffee_stool_3" parent="RandomRoot/coffee_table1" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 2.01633, -0.6, 1.41184 )
+
+[node name="coffee_table2" parent="RandomRoot" instance=ExtResource( 62 )]
+transform = Transform( -0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 21.198, 0.6, 7.27 )
+
+[node name="coffee_stool_2" parent="RandomRoot/coffee_table2" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -1.6383, -0.6, -1.14715 )
+
+[node name="coffee_table3" parent="RandomRoot" instance=ExtResource( 62 )]
+transform = Transform( -0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 21.198, 0.6, 21.27 )
+
+[node name="coffee_stool_2" parent="RandomRoot/coffee_table3" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -1.6383, -0.6, -1.14715 )
+
+[node name="coffee_stool_3" parent="RandomRoot/coffee_table3" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 2.01633, -0.6, 1.41184 )
+
+[node name="coffee_table4" parent="RandomRoot" instance=ExtResource( 62 )]
+transform = Transform( -0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, -0.573576, 13.198, 0.6, 21.27 )
+
+[node name="coffee_stool_2" parent="RandomRoot/coffee_table4" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -1.6383, -0.6, -1.14715 )
+
+[node name="coffee_stool_3" parent="RandomRoot/coffee_table4" instance=ExtResource( 4 )]
+transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 2.01633, -0.6, 1.41184 )
+
+[node name="MicStand" parent="RandomRoot" instance=ExtResource( 20 )]
+transform = Transform( 0.245787, -0.000297475, 0.969324, -0.000691028, 1, 0.000482083, -0.969324, -0.000788309, 0.245787, 31, 2, 14.0933 )
+
+[node name="Comedjinn" parent="RandomRoot" instance=ExtResource( 25 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 32, 1.88512, 13 )
+
+[node name="Sprite" parent="RandomRoot/Comedjinn/NPC" index="2"]
+aabb = AABB( -2, 0, 0, 4, 6, 0 )
+
+[node name="CollisionShape" parent="RandomRoot/Comedjinn/NPC/Interaction" index="0"]
+transform = Transform( 0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 0.783278, 2, 2.04258 )
+
+[node name="InteractionBehavior" parent="RandomRoot/Comedjinn/NPC" index="8" instance=ExtResource( 23 )]
+
+[node name="Crowd" type="Spatial" parent="RandomRoot"]
+
+[node name="Binvader1" parent="RandomRoot/Crowd" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 7.5 )
+
+[node name="Binvader2" parent="RandomRoot/Crowd" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 21.5 )
+
+[node name="Binvader3" parent="RandomRoot/Crowd" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 21.5 )
+
+[node name="Binvader4" parent="RandomRoot/Crowd" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 7.5 )
+
+[node name="Binvader5" parent="RandomRoot/Crowd" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 4.5 )
+
+[node name="Start" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.061, 0, 17 )
+script = ExtResource( 47 )
+direction = "up"
+
+[node name="PlayerTarget" type="Position3D" parent="Start"]
+
+[node name="ResetCombat" type="Node" parent="Start/PlayerTarget"]
+script = ExtResource( 67 )
+flag = "AP7_DUNGEON_INN_COMBAT"
+value = false
+
+[node name="PartnerTarget" type="Position3D" parent="Start"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="SetLastWarp" type="Node" parent="Start"]
+script = ExtResource( 29 )
+scene = "res://mods/ap7-dungeon/floors/special/Special_AllieInn.tscn"
+target = "InRoom"
+
+[node name="OneTimeDialog" parent="Start" instance=ExtResource( 24 )]
+
+[node name="InRoom" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.122, 0, 34 )
+script = ExtResource( 47 )
+direction = "up"
+
+[node name="PlayerTarget" type="Position3D" parent="InRoom"]
+
+[node name="PartnerTarget" type="Position3D" parent="InRoom"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="TargetCutscene" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.939, 0, 17 )
+script = ExtResource( 47 )
+direction = "up"
+
+[node name="Tracker" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 20 )
+script = ExtResource( 16 )
+limits = AABB( -9, 0, 15, 25, 0, 0 )
+limit_x = true
+limit_z = true
+
+[node name="WorldCamera" parent="Tracker" instance=ExtResource( 40 )]
+clouds_enabled = false
+
+[node name="Walls" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 26, 0, 25.9107 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Walls"]
+transform = Transform( 8.9407e-08, 0, -1, 0, 1, 0, 1, 0, 8.9407e-08, 1.90735e-06, 0, 28.9107 )
+shape = SubResource( 28 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Walls"]
+transform = Transform( 8.9407e-08, 0, -1, 0, 1, 0, 1, 0, 8.9407e-08, -12, 0, 28.9107 )
+shape = SubResource( 28 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Walls"]
+transform = Transform( 8.9407e-08, 0, -1, 0, 1, 0, 1, 0, 8.9407e-08, -6, 0, 36.9107 )
+shape = SubResource( 28 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, -5.96046e-08, -4.37114e-08, 1, 2.6054e-15, -1, -4.37114e-08, 12, 11, 27.5 )
+shape = SubResource( 27 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Walls"]
+transform = Transform( 1, 0, 5.96046e-08, -5.96046e-08, -4.37114e-08, 1, 2.6054e-15, -1, -4.37114e-08, 12, 11, 7.5 )
+shape = SubResource( 27 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 2, 14.1913, 26.3961 )
+light_color = Color( 1, 0.956863, 0.87451, 1 )
+light_energy = 0.25
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="ExitArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 6, 29 )
+script = ExtResource( 19 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ExitArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000562668, -4, -0.49519 )
+shape = SubResource( 29 )
+
+[editable path="RandomRoot/Allie/Allie"]
+[editable path="RandomRoot/Comedjinn"]
+[editable path="RandomRoot/Comedjinn/NPC"]

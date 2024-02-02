@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/grime/mall_floor_grime.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=4]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=5]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 5 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 5 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 5 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 5 )
+possible_types = 5
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 3 )
+y_min = -25.0
+y_max = 25.0
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+script = ExtResource( 5 )
+possible_types = 9
+
+[node name="RandomRotCentre" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 4 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="RandomParcelNode3" type="Spatial" parent="RandomRotCentre"]
+transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 0, 0.01, 2 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )

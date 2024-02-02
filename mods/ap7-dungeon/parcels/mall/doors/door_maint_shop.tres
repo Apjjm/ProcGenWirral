@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_6.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/doors/door_maint_shop_5.tscn" type="PackedScene" id=7]
+
+[resource]
+script = ExtResource( 1 )
+zones = [ "maint" ]
+target_zones = [ "shop", "shop_vinyl", "shop_book", "shop_clothes" ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+offset = Vector3( 0, 0, 0 )
+parcels = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ) ]

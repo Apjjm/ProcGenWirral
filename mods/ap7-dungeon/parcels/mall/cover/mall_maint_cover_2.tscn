@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/objects/destructible/crate/DestructibleCrate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RandomRot3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3358, 0, 13 )
+script = ExtResource( 2 )
+y_min = -20.0
+y_max = 20.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="RandomRot3"]
+script = ExtResource( 4 )
+possible_types = 9
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 4 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 4 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 4 )
+possible_types = 5
+
+[node name="RandomRot" type="Spatial" parent="."]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 11.3358, 0, 9 )
+script = ExtResource( 2 )
+
+[node name="DestructibleCrate" parent="RandomRot" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="RandomRot2" type="Spatial" parent="."]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 18.3358, 0, 12 )
+script = ExtResource( 2 )
+
+[node name="DestructibleCrate" parent="RandomRot2" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.866025, 2, -0.5 )

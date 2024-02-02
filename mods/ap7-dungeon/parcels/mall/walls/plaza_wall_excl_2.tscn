@@ -1,0 +1,242 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_ceiling_1A.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_wall_1A.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/signs/mall_shop_signs_borded.tres" type="Resource" id=3]
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/signs/mall_sign_7.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/signs/sign_closed.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/mall_posters_big.tres" type="Resource" id=9]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 5, 0.5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Connector" type="Spatial" parent="."]
+
+[node name="Floor" type="GridMap" parent="Connector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 1, 0, 655382, 9, 0, 1441814, 65537, 0, 655371, 65545, 0, 1441803, 131073, 0, 655371, 131081, 0, 1441803, 196609, 0, 655371, 196617, 0, 1441803, 262145, 0, 655382, 262153, 0, 1441814, 327681, 0, 655371, 327689, 0, 1441803, 393217, 0, 655370, 393225, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="border_2" type="MeshInstance" parent="Connector"]
+transform = Transform( 8.25, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="top" type="Spatial" parent="Connector"]
+script = ExtResource( 6 )
+
+[node name="border_2" type="MeshInstance" parent="Connector/top"]
+transform = Transform( 8.25, 0, 0, 0, 1, 0, 0, 0, 1, 12, 13, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="Sign" type="Spatial" parent="Connector/top"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10.3, 1.838 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+preview_index = 2
+
+[node name="Sprite3D2" parent="Connector/top" instance=ExtResource( 7 )]
+transform = Transform( 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, 12, 4.58276, 1.91717 )
+
+[node name="Sprite3D3" parent="Connector/top" instance=ExtResource( 7 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 12, 6.58276, 1.94806 )
+
+[node name="Sign3" type="Spatial" parent="Connector/top"]
+transform = Transform( -1, 9.61651e-08, 0, -8.74228e-08, -1.1, 0, 0, 0, 1, 12, 2.2989, 1.80218 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+preview_index = -1
+
+[node name="Sprite3D" parent="Connector/top" instance=ExtResource( 8 )]
+transform = Transform( 0.998926, -0.0463394, 0, 0.0463394, 0.998926, 0, 0, 0, 1, 11.9304, 10.1628, 1.86911 )
+
+[node name="border_1" type="MeshInstance" parent="Connector/top"]
+transform = Transform( 8.25, 0, 0, 0, 1, 0, 0, 0, 1, 12, 9, 2.25 )
+mesh = ExtResource( 1 )
+
+
+[node name="RandomParcelNode" type="Spatial" parent="Connector/top"]
+transform = Transform( 0.99854, 0.0540091, 0, -0.0540091, 0.99854, 0, 0, 0, 1, 7.83726, 4.23005, 2.03153 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 9 )
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_LR"]
+script = ExtResource( 6 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 9, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( -1.5, 0, -1.50996e-07, 0, 1, 0, 2.26494e-07, 0, -1, 22.5, 9, 1 )
+mesh = ExtResource( 1 )
+
+[node name="wall_1" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 1.5, 0, 2.68616e-07, 0, 4, 0, -4.02924e-07, 0, 1, 1.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_1b" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( 1.5, 0, 0, 0, -4, 1.50996e-07, 0, -6.03983e-07, -1, 1.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( -1.5, 0, -3.89414e-07, 0, 4, 0, 5.84122e-07, 0, -1, 22.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2b" type="MeshInstance" parent="Wall_LR/VIZ"]
+transform = Transform( -1.5, 6.03983e-07, 8.74229e-08, -2.26494e-07, -4, 1.50996e-07, 1.31134e-07, 6.03983e-07, 1, 22.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_LR"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_LR"]
+transform = Transform( -1.5, 0, -1.50996e-07, 0, 1, 0, 2.26494e-07, 0, -1, 22.5, 1, 1 )
+mesh = ExtResource( 1 )
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_L"]
+script = ExtResource( 6 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 9, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="wall_1" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 1.5, 0, 2.68616e-07, 0, 4, 0, -4.02924e-07, 0, 1, 1.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_1b" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( 1.5, 0, 0, 0, -4, 1.50996e-07, 0, -6.03983e-07, -1, 1.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( -0.5, 0, -1.50996e-07, 0, 1, 0, 7.54979e-08, 0, -1, 21.5, 9, 1 )
+mesh = ExtResource( 1 )
+
+[node name="wall_2" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( -0.5, 0, -3.89414e-07, 0, 4, 0, 1.94707e-07, 0, -1, 21.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2b" type="MeshInstance" parent="Wall_L/VIZ"]
+transform = Transform( -0.5, 6.03983e-07, 8.74226e-08, -7.54979e-08, -4, 1.50996e-07, 4.37113e-08, 6.03983e-07, 1, 21.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_L"]
+transform = Transform( 1.5, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_L"]
+transform = Transform( -0.5, 0, -1.50996e-07, 0, 1, 0, 7.54979e-08, 0, -1, 21.5, 1, 1 )
+mesh = ExtResource( 1 )
+
+[node name="Wall_R" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_R"]
+script = ExtResource( 6 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( -1.5, 0, -1.50996e-07, 0, 1, 0, 2.26494e-07, 0, -1, 22.5, 9, 1 )
+mesh = ExtResource( 1 )
+
+[node name="wall_2" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( -1.5, 0, -3.89414e-07, 0, 4, 0, 5.84122e-07, 0, -1, 22.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2b" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( -1.5, 6.03983e-07, 8.74229e-08, -2.26494e-07, -4, 1.50996e-07, 1.31134e-07, 6.03983e-07, 1, 22.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 9, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="wall_1" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 0.5, 0, 2.68616e-07, 0, 4, 0, -1.34308e-07, 0, 1, 2.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_1b" type="MeshInstance" parent="Wall_R/VIZ"]
+transform = Transform( 0.5, 0, 0, 0, -4, 1.50996e-07, 0, -6.03983e-07, -1, 2.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_R"]
+transform = Transform( -1.5, 0, -1.50996e-07, 0, 1, 0, 2.26494e-07, 0, -1, 22.5, 1, 1 )
+mesh = ExtResource( 1 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_R"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="Wall_S" type="Spatial" parent="."]
+
+[node name="VIZ" type="Spatial" parent="Wall_S"]
+script = ExtResource( 6 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 9, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( -0.5, 0, -1.50996e-07, 0, 1, 0, 7.54979e-08, 0, -1, 21.5, 9, 1 )
+mesh = ExtResource( 1 )
+
+[node name="wall_1" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 0.5, 0, 2.68616e-07, 0, 4, 0, -1.34308e-07, 0, 1, 2.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_1b" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( 0.5, 0, 0, 0, -4, 1.50996e-07, 0, -6.03983e-07, -1, 2.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( -0.5, 0, -3.89414e-07, 0, 4, 0, 1.94707e-07, 0, -1, 21.5, 4, 2.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="wall_2b" type="MeshInstance" parent="Wall_S/VIZ"]
+transform = Transform( -0.5, 6.03983e-07, 8.74226e-08, -7.54979e-08, -4, 1.50996e-07, 4.37113e-08, 6.03983e-07, 1, 21.5, 4, 1.125 )
+layers = 2147483649
+mesh = ExtResource( 2 )
+
+[node name="border_1" type="MeshInstance" parent="Wall_S"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.25 )
+mesh = ExtResource( 1 )
+
+[node name="border_2" type="MeshInstance" parent="Wall_S"]
+transform = Transform( -0.5, 0, -1.50996e-07, 0, 1, 0, 7.54979e-08, 0, -1, 21.5, 1, 1 )
+mesh = ExtResource( 1 )
+
+[node name="collider" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 1.5 )
+shape = SubResource( 1 )

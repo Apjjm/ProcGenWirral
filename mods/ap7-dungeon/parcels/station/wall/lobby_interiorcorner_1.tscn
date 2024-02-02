@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/StationLamppost2A.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -720896, 0, 655376, -720895, 0, 15, -720894, 0, 15, -655360, 0, 655376, -655359, 0, 15, -655358, 0, 15, -589824, 0, 655376, -589823, 0, 15, -589822, 0, 15, -524288, 0, 655376, -524287, 0, 15, -524286, 0, 15, -458752, 0, 655376, -458751, 0, 15, -458750, 0, 15, -393216, 0, 655376, -393215, 0, 15, -393214, 0, 15, -327680, 0, 655376, -327679, 0, 15, -327678, 0, 15, -262144, 0, 655376, -262143, 0, 15, -262142, 0, 15, -196608, 0, 655376, -196607, 0, 15, -196606, 0, 15, -131072, 0, 655376, -131071, 0, 15, -131070, 0, 15, -65536, 0, 655374, -65535, 0, 655373, -65534, 0, 655373, -720896, 1, 1048591, -655360, 1, 1048591, -589824, 1, 1048591, -524288, 1, 1048591, -458752, 1, 1048591, -393216, 1, 1048591, -327680, 1, 1048591, -262144, 1, 1048591, -196608, 1, 1048591, -131072, 1, 1048591, -65536, 1, 1441805, -65535, 1, 655361, -65534, 1, 655361, -720896, 2, 1048591, -655360, 2, 1048591, -589824, 2, 1048591, -524288, 2, 1048591, -458752, 2, 1048591, -393216, 2, 1048591, -327680, 2, 1048591, -262144, 2, 1048591, -196608, 2, 1048591, -131072, 2, 1048591, -65536, 2, 1441805, -65535, 2, 655361, -65534, 2, 655360 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5 )
+script = ExtResource( 3 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="StationLampost2A" parent="Spatial" instance=ExtResource( 2 )]

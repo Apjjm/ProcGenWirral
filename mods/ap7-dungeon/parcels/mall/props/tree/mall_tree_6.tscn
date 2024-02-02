@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/grass/GrassParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/objects/grass/grass_emitter.shader" type="Shader" id=3]
+[ext_resource path="res://sprites/environment/world/mall_grime_2.json" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/random_seed = -54144
+shader_param/offset = Vector3( 0, 1, 0 )
+shader_param/rows = 2
+shader_param/spacing = 1.25
+shader_param/rand_theta_max = 0.5
+shader_param/rand_flip = true
+shader_param/aabb_min = Vector3( -2, 0, -2 )
+shader_param/aabb_max = Vector3( 0.5, 4, 2 )
+shader_param/num_frames = 20
+shader_param/frame_odds_curve = 3.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 65532, 1441796, 1, 65532, 655364, 0, 65533, 1441797, 1, 65533, 1048581, 0, 65534, 1441797, 1, 65534, 1048581, 0, 65535, 4, 1, 65535, 1048580 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Sprite2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.99839, 0.52884, -1.93608 )
+
+[node name="GrassParticles2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66303, 0.247356, -5.38785 )
+amount = 6
+visibility_aabb = AABB( -2, 0, -2, 2.5, 4, 4 )
+process_material = SubResource( 1 )

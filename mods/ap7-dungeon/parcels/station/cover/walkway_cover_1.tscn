@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=2]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/StationLamppost2A.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_N" type="Spatial" parent="."]
+
+[node name="Lamp" type="Spatial" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4 )
+
+[node name="GridMap" type="GridMap" parent="Patch_N/Lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -1, 0, 0, -65536, 65535, 0, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="StationLampost2A" parent="Patch_N/Lamp" instance=ExtResource( 4 )]
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6 )
+script = ExtResource( 2 )
+possible_types = 8
+
+[node name="Patch_W" type="Spatial" parent="."]
+
+[node name="Lamp" type="Spatial" parent="Patch_W"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12 )
+
+[node name="GridMap" type="GridMap" parent="Patch_W/Lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -1, 0, 0, -65536, 65535, 0, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="StationLampost2A" parent="Patch_W/Lamp" instance=ExtResource( 4 )]
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_W"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14 )
+script = ExtResource( 2 )
+possible_types = 8
+
+[node name="Patch_S" type="Spatial" parent="."]
+
+[node name="Lamp" type="Spatial" parent="Patch_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 20 )
+
+[node name="GridMap" type="GridMap" parent="Patch_S/Lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -1, 0, 0, -65536, 65535, 0, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="StationLampost2A" parent="Patch_S/Lamp" instance=ExtResource( 4 )]
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 22 )
+script = ExtResource( 2 )
+possible_types = 8
+
+[node name="Patch_E" type="Spatial" parent="."]
+
+[node name="Lamp" type="Spatial" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 12 )
+
+[node name="GridMap" type="GridMap" parent="Patch_E/Lamp"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 0, -1, 0, 0, -65536, 65535, 0, -1, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="StationLampost2A" parent="Patch_E/Lamp" instance=ExtResource( 4 )]
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 14 )
+script = ExtResource( 2 )
+possible_types = 8
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12 )
+script = ExtResource( 2 )
+possible_types = 4
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 12 )
+script = ExtResource( 2 )
+possible_types = 4
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 14 )
+script = ExtResource( 2 )
+possible_types = 4
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 10 )
+script = ExtResource( 2 )
+possible_types = 4

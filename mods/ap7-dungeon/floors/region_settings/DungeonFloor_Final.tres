@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/RegionSettings.gd" type="Script" id=1]
+[ext_resource path="res://music/demo/station_1.ogg" type="AudioStream" id=2]
+
+[resource]
+script = ExtResource( 1 )
+region_name = "AP7_DUNGEON_FLOOR_AREA_FINAL"
+music_day = ExtResource( 2 )
+music_night = ExtResource( 2 )
+weather_kinds = [  ]
+battle_level = 1
+warn_about_level = true

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+[ext_resource path="res://world/maps/CaveMeshlib.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://models/world_scenes/props/wooden_light_beam_1.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="RandomTreasureRot2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 2.539 )
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="Patch_C" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 5, 3, 655389, 6, 3, 29, 5, 4, 655389, 6, 4, 29, 5, 5, 655389, 6, 5, 29, 5, 6, 655389, 6, 6, 30 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 5, 0, 655389, 6, 0, 29, 5, 1, 655389, 6, 1, 29, 5, 2, 655389, 6, 2, 29 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 5, 7, 655389, 6, 7, 29, 5, 8, 655389, 6, 8, 29 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="wooden_light_beam_7" parent="Patch_S" instance=ExtResource( 4 )]
+transform = Transform( 0.963351, 0, -0.268247, 0, 1, 0, 0.268247, 0, 0.96335, 11.8222, -0.101271, 18.3317 )

@@ -1,0 +1,56 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://data/attack_vfx/mountain_smash.tres" type="Resource" id=1]
+[ext_resource path="res://data/hit_vfx/hit.tres" type="Resource" id=2]
+[ext_resource path="res://data/elemental_types/earth.tres" type="Resource" id=3]
+[ext_resource path="res://data/status_effects/stat_mdef_down.tres" type="Resource" id=4]
+[ext_resource path="res://data/status_effects/stat_rdef_down.tres" type="Resource" id=5]
+[ext_resource path="res://data/status_effects/petrified.tres" type="Resource" id=6]
+[ext_resource path="res://data/battle_move_scripts/RemoveStatusAttack.gd" type="Script" id=7]
+
+[resource]
+script = ExtResource( 7 )
+name = "AP7_DUNGEON_MOVE_NAME_SCULPT"
+category_name = "MOVE_CATEGORY_RANGED"
+description = "AP7_DUNGEON_MOVE_DESC_SCULPT"
+title_override = ""
+tags = [  ]
+priority = 0
+cost = 4
+is_debug = false
+is_passive_only = false
+power = 100
+physicality = 0
+target_type = 6
+default_target = 3
+elemental_types = [ ExtResource( 3 ) ]
+accuracy = 100
+unavoidable = true
+crit_rate_numerator = 1
+crit_rate_denominator = 16
+crit_damage_percent = 150
+play_attack_animation = true
+fade_lights_during_attack = false
+windup_animation = "windup"
+attack_animation = "attack"
+windup_sfx_override = [  ]
+attack_vfx = [ ExtResource( 1 ) ]
+play_attack_vfx_against_allies = false
+attack_duration = 0.8
+hit_vfx = [ ExtResource( 2 ) ]
+hit_delay = 0.0
+disable_melee_movement = false
+can_be_copied = false
+camera_state_override = ""
+min_hits = 1
+max_hits = 1
+target_status_effects = [ ExtResource( 4 ), ExtResource( 5 ) ]
+user_status_effects = [  ]
+status_effects_to_apply = 0
+status_effect_amount = 3
+status_effect_chance = 100
+status_effect_only_for_target_types = [  ]
+target_status_only_if_not_had_turn = false
+destroys_walls = false
+require_target_tag = ""
+status_to_remove = ExtResource( 6 )

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_table_1/coffee_table.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/objects/static_physics/gramophone_props/coffee_stool_1/coffee_stool_1.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CoffeeTable" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0.6, 2 )
+
+[node name="coffee_stool_1" parent="CoffeeTable" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -0.6, 2 )
+
+[node name="coffee_stool_2" parent="CoffeeTable" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, 1, 0, -0.6, -2 )
+
+[node name="PointOfInterest" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71573, 2 )
+script = ExtResource( 1 )
+possible_types = 8

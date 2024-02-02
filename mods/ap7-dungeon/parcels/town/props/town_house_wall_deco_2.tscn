@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/book/book_case_contents.tres" type="Resource" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/book/book_case.tres" type="Resource" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=8]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="bookshelf" type="Spatial" parent="."]
+script = ExtResource( 8 )
+parcel_set = ExtResource( 7 )
+
+[node name="books" type="Spatial" parent="."]
+script = ExtResource( 8 )
+parcel_set = ExtResource( 6 )

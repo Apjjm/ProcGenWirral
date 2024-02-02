@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://world/objects/static_physics/mall_props/MallTable1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/objects/static_physics/office_props/OfficeStool1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/grime/mall_floor_grime.tres" type="Resource" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=5]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="MallTable4" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.674847, -0.231349, -0.700756, -0.357769, 0.933097, 0.0364868, 0.645432, 0.275332, -0.712467, 8.35653, -0.74, 11.4205 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 0.844244, 0, 0.535959, 0, 1, 0, -0.535959, 0, 0.844244, 9.57266, 0.01, 13.0464 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 4 )
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 0.844244, 0, 0.535959, 0, 1, 0, -0.535959, 0, 0.844244, 6.33039, 0.01, 11.6754 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 4 )
+
+[node name="MallTable2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.49012e-07, 0, 1, 0, 1, 0, -1, 0, 1.49012e-07, 16, 0, 12 )
+
+[node name="OfficeStool1" parent="MallTable2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5 )
+
+[node name="OfficeStool2" parent="MallTable2" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.5 )

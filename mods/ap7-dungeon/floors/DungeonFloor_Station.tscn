@@ -1,0 +1,206 @@
+[gd_scene load_steps=83 format=2]
+
+[ext_resource path="res://nodes/warp_region/WarpTarget.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_1x2.tres" type="Resource" id=2]
+[ext_resource path="res://battle/backgrounds/BattleStationFinal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/floor/walkway_floor.tres" type="Resource" id=4]
+[ext_resource path="res://mods/ap7-dungeon/treasure/TreasureChest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/walkway_wall.tres" type="Resource" id=6]
+[ext_resource path="res://music/release/final_station_theme.ogg" type="AudioStream" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/cover/walkway_cover.tres" type="Resource" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/walkway_exteriorcorner.tres" type="Resource" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/walkway_interiorcorner.tres" type="Resource" id=10]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_walkway_door_ne.tres" type="Resource" id=11]
+[ext_resource path="res://nodes/weather/cave_depth_fade/cave_double_depth_fade.shader" type="Shader" id=12]
+[ext_resource path="res://sprites/sky_battle_grasslands_night.png" type="Texture" id=13]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_cross.tres" type="Resource" id=14]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/floor/lobby_floor.tres" type="Resource" id=15]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/lobby_wall.tres" type="Resource" id=16]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/lobby_interiorcorner.tres" type="Resource" id=17]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/lobby_exteriorcorner.tres" type="Resource" id=18]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/lobby_walkway_door.tres" type="Resource" id=19]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_lobby_door.tres" type="Resource" id=20]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/lobby_lobby_door.tres" type="Resource" id=21]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/corridoor_wall.tres" type="Resource" id=22]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_1x1.tres" type="Resource" id=23]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/corridoor_interiorcorner.tres" type="Resource" id=24]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/floor/corridoor_floor.tres" type="Resource" id=25]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/corridoor_exteriorcorner.tres" type="Resource" id=26]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/corridoor_corridoor_door_ne.tres" type="Resource" id=27]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/corridoor_corridoor_door_sw.tres" type="Resource" id=28]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/corridoor_lobby_door.tres" type="Resource" id=29]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/lobby_corridoor_door.tres" type="Resource" id=30]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_corridoor_swe.tres" type="Resource" id=31]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_2x2.tres" type="Resource" id=32]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/zoning/ZoningPassStation.gd" type="Script" id=33]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/plotting/PlottingPass.gd" type="Script" id=34]
+[ext_resource path="res://nodes/camera/LaggingTracker.gd" type="Script" id=35]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/parcelling/ParcellingPass.gd" type="Script" id=36]
+[ext_resource path="res://mods/ap7-dungeon/floors/WallFadeTracker.gd" type="Script" id=37]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/FloorLevelNode.gd" type="Script" id=38]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_corridoor_nswe.tres" type="Resource" id=39]
+[ext_resource path="res://music/release/battle_captain_instr.ogg" type="AudioStream" id=40]
+[ext_resource path="res://music/release/battle_captain_vox.ogg" type="AudioStream" id=41]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_donut.tres" type="Resource" id=42]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/corridoor_walkway_door.tres" type="Resource" id=43]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wall/exit_wall.tres" type="Resource" id=44]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_left.tres" type="Resource" id=45]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_l_right.tres" type="Resource" id=46]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_down.tres" type="Resource" id=47]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/cover/corridoor_cover.tres" type="Resource" id=48]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x3.tres" type="Resource" id=49]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_r_left.tres" type="Resource" id=50]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/cover/corridoor_cover_nsew.tres" type="Resource" id=51]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/cover/lobby_cover.tres" type="Resource" id=52]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x2.tres" type="Resource" id=53]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_walkway_door_sw.tres" type="Resource" id=54]
+[ext_resource path="res://nodes/weather/dust/BlueDustParticles.tscn" type="PackedScene" id=55]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/floor/exit_floor.tres" type="Resource" id=56]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_2x1.tres" type="Resource" id=57]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/exit_corridoor.tres" type="Resource" id=58]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_3x1.tres" type="Resource" id=59]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/exit_upper_door.tres" type="Resource" id=60]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/lobby_exit_door.tres" type="Resource" id=61]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_right.tres" type="Resource" id=62]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/walkway_exit_door.tres" type="Resource" id=63]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/door/corridoor_exit_door.tres" type="Resource" id=64]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/cover/special_covers.tres" type="Resource" id=65]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_box_1x3.tres" type="Resource" id=66]
+[ext_resource path="res://mods/ap7-dungeon/npcs/cutscene/PartnerDialog_Station.tscn" type="PackedScene" id=67]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_l_left.tres" type="Resource" id=70]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_r_right.tres" type="Resource" id=72]
+[ext_resource path="res://mods/ap7-dungeon/plots/plot_t_up.tres" type="Resource" id=73]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/zoning/ZoneInfo.gd" type="Script" id=75]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/treasure/TreasurePass.gd" type="Script" id=76]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/FloorGenerator.gd" type="Script" id=77]
+[ext_resource path="res://mods/ap7-dungeon/floors/FloorMusicTracker.gd" type="Script" id=78]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/mapping/MappingPass.gd" type="Script" id=79]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/encounters/EncountersPass.gd" type="Script" id=80]
+[ext_resource path="res://nodes/camera/WorldCamera.tscn" type="PackedScene" id=82]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/mapping/map_quadrants.png" type="Image" id=83]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 75 )
+zones = [ "walkway", "lobby", "corridoor", "exit" ]
+battle_background = ExtResource( 3 )
+music_vox = ExtResource( 7 )
+music_novox = ExtResource( 7 )
+boss_vox = ExtResource( 41 )
+boss_novox = ExtResource( 40 )
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 13 )
+
+[sub_resource type="Environment" id=4]
+resource_local_to_scene = true
+background_mode = 3
+background_sky = SubResource( 1 )
+background_sky_custom_fov = 88.0
+background_energy = 0.2
+ambient_light_color = Color( 0.34902, 0.32549, 0.419608, 1 )
+ambient_light_energy = 0.75
+ambient_light_sky_contribution = 0.25
+fog_enabled = true
+fog_color = Color( 0, 0, 0, 1 )
+fog_sun_color = Color( 1, 0.956863, 0.87451, 1 )
+fog_depth_begin = 50.0
+fog_transmit_enabled = true
+ssao_color = Color( 0.2, 0.172549, 0.25098, 1 )
+dof_blur_far_enabled = true
+dof_blur_far_distance = 51.0
+dof_blur_far_transition = 20.0
+dof_blur_far_quality = 2
+dof_blur_near_enabled = true
+dof_blur_near_distance = 37.0
+dof_blur_near_transition = 5.0
+dof_blur_near_quality = 2
+glow_enabled = true
+glow_intensity = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.16
+adjustment_saturation = 1.16
+
+[sub_resource type="ShaderMaterial" id=3]
+render_priority = 30
+shader = ExtResource( 12 )
+shader_param/draw_distance = 100.0
+shader_param/a_top_y = 28.0
+shader_param/a_bottom_y = 32.0
+shader_param/b_top_y = -1.0
+shader_param/b_bottom_y = -10.0
+shader_param/color = Color( 0, 0, 0, 1 )
+
+[node name="FloorLevel" type="Spatial"]
+script = ExtResource( 38 )
+kill_depth = -8.0
+
+[node name="FloorGenerator" type="Node" parent="."]
+script = ExtResource( 77 )
+world_cell_size = Vector2( 24, 24 )
+world_interior_cell_size = Vector2( 16, 16 )
+
+[node name="Plotting" type="Node" parent="FloorGenerator"]
+script = ExtResource( 34 )
+edge_rooms = 0
+seed_plots = [ ExtResource( 32 ), ExtResource( 53 ), ExtResource( 49 ) ]
+standard_plots = [ ExtResource( 2 ), ExtResource( 66 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 70 ), ExtResource( 46 ), ExtResource( 50 ), ExtResource( 72 ), ExtResource( 47 ), ExtResource( 73 ), ExtResource( 45 ), ExtResource( 62 ), ExtResource( 14 ), ExtResource( 42 ), ExtResource( 32 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 57 ), ExtResource( 57 ), ExtResource( 14 ), ExtResource( 42 ), ExtResource( 59 ), ExtResource( 66 ) ]
+edge_plots = [ ExtResource( 23 ) ]
+exit_plots = [ ExtResource( 23 ) ]
+
+[node name="Zoning" type="Node" parent="FloorGenerator"]
+script = ExtResource( 33 )
+zone_resources = [ SubResource( 2 ) ]
+
+[node name="Parcelling" type="Node" parent="FloorGenerator"]
+script = ExtResource( 36 )
+floor_parcels = [ ExtResource( 4 ), ExtResource( 15 ), ExtResource( 25 ), ExtResource( 56 ) ]
+wall_parcels = [ ExtResource( 6 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 44 ) ]
+interior_corner_parcels = [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 24 ) ]
+exterior_corner_parcels = [ ExtResource( 9 ), ExtResource( 18 ), ExtResource( 26 ) ]
+door_parcels = [ ExtResource( 11 ), ExtResource( 54 ), ExtResource( 20 ), ExtResource( 31 ), ExtResource( 39 ), ExtResource( 63 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 61 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 43 ), ExtResource( 64 ), ExtResource( 58 ), ExtResource( 60 ) ]
+cover_parcels = [ ExtResource( 51 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 8 ) ]
+special_parcels = ExtResource( 65 )
+
+[node name="Mapping" type="Node" parent="FloorGenerator"]
+script = ExtResource( 79 )
+wall_atlas = ExtResource( 83 )
+floor_name = "AP7_DUNGEON_FLOOR_AREA_STATION"
+
+[node name="Encounters" type="Node" parent="FloorGenerator"]
+script = ExtResource( 80 )
+
+[node name="Treasure" type="Node" parent="FloorGenerator"]
+script = ExtResource( 76 )
+treasure_chest = ExtResource( 5 )
+
+[node name="MusicTracker" type="Node" parent="."]
+script = ExtResource( 78 )
+
+[node name="WallFadeTracker" type="Node" parent="."]
+script = ExtResource( 37 )
+
+[node name="Start" type="Position3D" parent="."]
+script = ExtResource( 1 )
+
+[node name="OneTimeDialog" parent="Start" instance=ExtResource( 67 )]
+
+[node name="Tracker" type="Spatial" parent="."]
+script = ExtResource( 35 )
+limits = AABB( -1000, -4, -1000, 2000, 1000, 2000 )
+
+[node name="WorldCamera" parent="Tracker" instance=ExtResource( 82 )]
+environment = SubResource( 4 )
+cloud_material_override = SubResource( 3 )
+
+[node name="DustParticles2" parent="Tracker" instance=ExtResource( 55 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
+amount = 90
+visibility_aabb = AABB( -52, -23, -40, 104, 46, 80 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5655, 0.824749, 0, -0.824749, 0.5655, 0, 9.19128, 11.3961 )
+light_color = Color( 0.784314, 0.772549, 0.815686, 1 )
+light_specular = 0.0
+shadow_enabled = true
+shadow_color = Color( 0.239216, 0.235294, 0.372549, 1 )
+directional_shadow_mode = 0

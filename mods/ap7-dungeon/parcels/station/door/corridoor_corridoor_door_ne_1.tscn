@@ -1,0 +1,289 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wallsegments/station_pillarstrip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wallsegments/station_plainstrip.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/wallsegments/station_plainstrip.tres" type="Resource" id=3]
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=6]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_1A.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://models/world_scenes/world_station/world_station_wall_ceiling_3.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://sprites/environment/world/station_clock_1.png" type="Texture" id=9]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 3, 12, 0.5 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 30, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="Wall_LR" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 0, 1, 655366, 1, 1, 655366, 2, 1, 655366, 9, 1, 655366, 10, 1, 655366, 11, 1, 655366, -655360, 1, 655372, -655359, 1, 655372, -655358, 1, 655372, -655351, 1, 655372, -655350, 1, 655372, -655349, 1, 655372, -589824, 1, 655372, -589823, 1, 655372, -589822, 1, 655372, -589815, 1, 655372, -589814, 1, 655372, -589813, 1, 655372, -524288, 1, 655372, -524287, 1, 655372, -524286, 1, 655372, -524279, 1, 655372, -524278, 1, 655372, -524277, 1, 655372, -458752, 1, 655372, -458751, 1, 655372, -458750, 1, 655372, -458743, 1, 655372, -458742, 1, 655372, -458741, 1, 655372, -393216, 1, 655372, -393215, 1, 655372, -393214, 1, 655372, -393207, 1, 655372, -393206, 1, 655372, -393205, 1, 655372, -327680, 1, 655372, -327679, 1, 655372, -327678, 1, 655372, -327671, 1, 655372, -327670, 1, 655372, -327669, 1, 655372, -262144, 1, 655372, -262143, 1, 655372, -262142, 1, 655372, -262135, 1, 655372, -262134, 1, 655372, -262133, 1, 655372, -196608, 1, 655372, -196607, 1, 655372, -196606, 1, 655372, -196599, 1, 655372, -196598, 1, 655372, -196597, 1, 655372, -131072, 1, 655372, -131071, 1, 655372, -131070, 1, 655372, -131063, 1, 655372, -131062, 1, 655372, -131061, 1, 655372, -65536, 1, 655372, -65535, 1, 655372, -65534, 1, 655372, -65527, 1, 655372, -65526, 1, 655372, -65525, 1, 655372, 0, 2, 6, 1, 2, 6, 2, 2, 6, 9, 2, 6, 10, 2, 6, 11, 2, 6, -65536, 2, 3, -65535, 2, 3, -65534, 2, 3, -65527, 2, 655363, -65526, 2, 655363, -65525, 2, 655363 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="viz_z" type="Spatial" parent="Wall_LR"]
+script = ExtResource( 6 )
+force_backface_cull = true
+
+[node name="strip_l1" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_l2" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_l3" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_r1" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_r2" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_r3" type="Spatial" parent="Wall_LR/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Wall_LR"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Wall_LR/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Wall_LR/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="viz_z" type="Spatial" parent="Wall_L"]
+script = ExtResource( 6 )
+force_backface_cull = true
+
+[node name="strip_l1" type="Spatial" parent="Wall_L/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_l2" type="Spatial" parent="Wall_L/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_l3" type="Spatial" parent="Wall_L/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="Wall_L" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 0, 1, 655366, 1, 1, 655366, 2, 1, 655366, -655360, 1, 655372, -655359, 1, 655372, -655358, 1, 655372, -589824, 1, 655372, -589823, 1, 655372, -589822, 1, 655372, -524288, 1, 655372, -524287, 1, 655372, -524286, 1, 655372, -458752, 1, 655372, -458751, 1, 655372, -458750, 1, 655372, -393216, 1, 655372, -393215, 1, 655372, -393214, 1, 655372, -327680, 1, 655372, -327679, 1, 655372, -327678, 1, 655372, -262144, 1, 655372, -262143, 1, 655372, -262142, 1, 655372, -196608, 1, 655372, -196607, 1, 655372, -196606, 1, 655372, -131072, 1, 655372, -131071, 1, 655372, -131070, 1, 655372, -65536, 1, 655372, -65535, 1, 655372, -65534, 1, 655372, 0, 2, 6, 1, 2, 6, 2, 2, 6, -65536, 2, 3, -65535, 2, 3, -65534, 2, 3 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="StaticBody2" type="StaticBody" parent="Wall_L"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_L/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="Wall_R" type="Spatial" parent="."]
+
+[node name="viz_z" type="Spatial" parent="Wall_R"]
+script = ExtResource( 6 )
+force_backface_cull = true
+
+[node name="strip_r1" type="Spatial" parent="Wall_R/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_r2" type="Spatial" parent="Wall_R/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="strip_r3" type="Spatial" parent="Wall_R/viz_z"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2, 4 )
+script = ExtResource( 5 )
+parcel_set = ExtResource( 3 )
+
+[node name="Wall_LR" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 9, 1, 655366, 10, 1, 655366, 11, 1, 655366, -655351, 1, 655372, -655350, 1, 655372, -655349, 1, 655372, -589815, 1, 655372, -589814, 1, 655372, -589813, 1, 655372, -524279, 1, 655372, -524278, 1, 655372, -524277, 1, 655372, -458743, 1, 655372, -458742, 1, 655372, -458741, 1, 655372, -393207, 1, 655372, -393206, 1, 655372, -393205, 1, 655372, -327671, 1, 655372, -327670, 1, 655372, -327669, 1, 655372, -262135, 1, 655372, -262134, 1, 655372, -262133, 1, 655372, -196599, 1, 655372, -196598, 1, 655372, -196597, 1, 655372, -131063, 1, 655372, -131062, 1, 655372, -131061, 1, 655372, -65527, 1, 655372, -65526, 1, 655372, -65525, 1, 655372, 9, 2, 6, 10, 2, 6, 11, 2, 6, -65527, 2, 655363, -65526, 2, 655363, -65525, 2, 655363 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="StaticBody" type="StaticBody" parent="Wall_R"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall_R/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="viz_z" type="Spatial" parent="."]
+script = ExtResource( 6 )
+force_backface_cull = true
+
+[node name="inner1" parent="viz_z" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 4 )
+
+[node name="inner2" parent="viz_z" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, 4 )
+
+[node name="cornercap" type="MeshInstance" parent="viz_z"]
+transform = Transform( -2.18557e-08, 0, 1, 0, 3, 0, -0.5, 0, -4.37114e-08, 8.5, 5, 4 )
+mesh = ExtResource( 7 )
+
+[node name="cornercap2" type="MeshInstance" parent="viz_z"]
+transform = Transform( -2.98023e-08, 0, -1, 0, 3, 0, 0.5, 0, -5.96046e-08, 15.5, 5, 4 )
+mesh = ExtResource( 7 )
+
+[node name="viz_x1" type="Spatial" parent="."]
+script = ExtResource( 6 )
+north = Vector3( -1, 0, 0 )
+force_backface_cull = true
+
+[node name="inner1" parent="viz_x1" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 8, 2, 4 )
+
+[node name="inner2" parent="viz_x1" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 8, 2, -1 )
+
+[node name="pillar1" parent="viz_x1" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 2, 1 )
+
+[node name="cornercap" type="MeshInstance" parent="viz_x1"]
+transform = Transform( 0.5, 0, 0, 0, 3, 0, 0, 0, 1, 8, 5, 4.5 )
+mesh = ExtResource( 7 )
+
+[node name="cornercap2" type="MeshInstance" parent="viz_x1"]
+transform = Transform( -0.5, 0, 2.98023e-08, 0, 3, 0, -1.49012e-08, 0, -1, 8, 5, -4.5 )
+mesh = ExtResource( 7 )
+
+[node name="viz_x2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0 )
+script = ExtResource( 6 )
+north = Vector3( 1, 0, 0 )
+force_backface_cull = true
+
+[node name="inner1" parent="viz_x2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 8, 2, 4 )
+
+[node name="inner2" parent="viz_x2" instance=ExtResource( 2 )]
+transform = Transform( -6.55671e-08, 0, 1, 0, 1, 0, -1.5, 0, -4.37114e-08, 8, 2, -1 )
+
+[node name="pillar1" parent="viz_x2" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 2, 1 )
+
+[node name="cornercap" type="MeshInstance" parent="viz_x2"]
+transform = Transform( 0.5, 0, 0, 0, 3, 0, 0, 0, 1, 8, 5, 4.5 )
+mesh = ExtResource( 7 )
+
+[node name="cornercap2" type="MeshInstance" parent="viz_x2"]
+transform = Transform( -0.5, 0, 2.98023e-08, 0, 3, 0, -1.49012e-08, 0, -1, 8, 5, -4.5 )
+mesh = ExtResource( 7 )
+
+[node name="Shared" type="GridMap" parent="."]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( 3, 0, 1441798, 4, 0, 1048582, 7, 0, 1441798, 8, 0, 1048582, -589821, 0, 1441804, -589816, 0, 1048588, -524285, 0, 1441804, -524280, 0, 1048588, -458749, 0, 1441804, -458744, 0, 1048588, -393213, 0, 1441804, -393208, 0, 1048588, -327677, 0, 1441804, -327672, 0, 1048588, -262141, 0, 1441804, -262136, 0, 1048588, -196605, 0, 1441804, -196600, 0, 1048588, -131069, 0, 1441804, -131064, 0, 1048588, -65533, 0, 1441804, -65532, 0, 1048579, -65531, 0, 1048576, -65530, 0, 1048576, -65529, 0, 1048579, -65528, 0, 1048588, 3, 1, 1441801, 4, 1, 1048582, 7, 1, 1441798, 8, 1, 655369, -655357, 1, 655372, -655352, 1, 655372, -589821, 1, 1441809, -589816, 1, 655377, -524285, 1, 1441809, -524280, 1, 655377, -458749, 1, 1441809, -458744, 1, 655377, -393213, 1, 1441809, -393208, 1, 655377, -327677, 1, 1441809, -327672, 1, 655377, -262141, 1, 1441809, -262136, 1, 655377, -196605, 1, 1441809, -196600, 1, 655377, -131069, 1, 1441809, -131064, 1, 655377, -65533, 1, 1441809, -65532, 1, 1048579, -65531, 1, 1048576, -65530, 1, 1048576, -65529, 1, 1048579, -65528, 1, 655377, 3, 2, 6, 4, 2, 1048584, 7, 2, 8, 8, 2, 6, 65540, 2, 1048602, 65543, 2, 26, 131076, 2, 1048602, 131079, 2, 26, 196612, 2, 1048602, 196615, 2, 26, 262147, 2, 30, 262148, 2, 27, 262149, 2, 27, 262150, 2, 27, 262151, 2, 27, 262152, 2, 1048606, -65533, 2, 3, -65532, 2, 3, -65531, 2, 1048576, -65530, 2, 1048576, -65529, 2, 3, -65528, 2, 3, 3, 65533, 655367, 4, 65533, 655368, 7, 65533, 1441800, 8, 65533, 655367, 65540, 65533, 655386, 65543, 65533, 1441818, 131076, 65533, 655386, 131079, 65533, 1441818, 196612, 65533, 655386, 196615, 65533, 1441818, 262147, 65533, 1441822, 262148, 65533, 655387, 262149, 65533, 655387, 262150, 65533, 655387, 262151, 65533, 655387, 262152, 65533, 655390, -65533, 65533, 1441795, -65532, 65533, 1441795, -65531, 65533, 1441792, -65530, 65533, 1441792, -65529, 65533, 1441795, -65528, 65533, 1441795, 3, 65534, 9, 4, 65534, 1048583, 7, 65534, 1441799, 8, 65534, 1048585, -589821, 65534, 17, -589816, 65534, 1048593, -524285, 65534, 17, -524280, 65534, 1048593, -458749, 65534, 17, -458744, 65534, 1048593, -393213, 65534, 17, -393208, 65534, 1048593, -327677, 65534, 17, -327672, 65534, 1048593, -262141, 65534, 17, -262136, 65534, 1048593, -196605, 65534, 17, -196600, 65534, 1048593, -131069, 65534, 17, -131064, 65534, 1048593, -65533, 65534, 17, -65532, 65534, 1441795, -65531, 65534, 1441792, -65530, 65534, 1441792, -65529, 65534, 1441795, -65528, 65534, 1048593, 3, 65535, 1441798, 4, 65535, 1048582, 7, 65535, 1441798, 8, 65535, 1048582, -589821, 65535, 1441804, -589816, 65535, 1048588, -524285, 65535, 1441804, -524280, 65535, 1048588, -458749, 65535, 1441804, -458744, 65535, 1048588, -393213, 65535, 1441804, -393208, 65535, 1048588, -327677, 65535, 1441804, -327672, 65535, 1048588, -262141, 65535, 1441804, -262136, 65535, 1048588, -196605, 65535, 1441804, -196600, 65535, 1048588, -131069, 65535, 1441804, -131064, 65535, 1048588, -65533, 65535, 1441804, -65532, 65535, 1441795, -65531, 65535, 1441792, -65530, 65535, 1441792, -65529, 65535, 1441795, -65528, 65535, 1048588 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 4, 0 )
+}
+
+[node name="EnemyBlocker" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.20794 )
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyBlocker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 1 )
+shape = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -3.27835e-08, 0, 1, 0, 1, 0, -0.75, 0, -4.37114e-08, -4, 12, 2.25 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.25, 0, 0, 0, 1, 0, 0, 0, 1, -5.25, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody"]
+transform = Transform( -3.27835e-08, 0, 1, 0, 1, 0, -0.75, 0, -4.37114e-08, 4, 12, 2.25 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0.25, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 12, 4 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1.25, 0, 0, 0, 0.725, 0, 0, 0, 1, 0, 15.4, 4 )
+shape = SubResource( 2 )
+
+[node name="edgecap2" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-12, 0, 1, 0, 1, 0, -0.0001, 0, -4.37114e-08, 8.5, 9, 4 )
+mesh = ExtResource( 8 )
+
+[node name="edgecap3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-12, 0, 1, 0, 1, 0, -0.0001, 0, -4.37114e-08, 17, 9, -4 )
+mesh = ExtResource( 8 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 0.925, 0, 2.13163e-14, 0, 1, 0, 0, 0, 1, 12, 7, 4.25 )
+centered = false
+offset = Vector2( -32, -8 )
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+pixel_size = 0.125
+alpha_cut = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( 0.925, 0, 2.13163e-14, 0, 1, 0, 0, 0, 1, 12, 7, -4.25 )
+centered = false
+offset = Vector2( -32, -8 )
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+pixel_size = 0.125
+alpha_cut = 2
+texture = ExtResource( 9 )
+__meta__ = {
+"_ase_imported": true
+}

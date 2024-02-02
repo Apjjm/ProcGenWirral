@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MoveTowardsPlayerAction.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWaitAction.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/RandomSelectorAction.gd" type="Script" id=4]
+
+[node name="random_selector" type="Node"]
+script = ExtResource( 4 )
+
+[node name="wait" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"action_tree": true
+}
+ticks = 2
+
+[node name="player_step" type="Node" parent="."]
+script = ExtResource( 1 )
+max_ticks = 4
+motion_type = 2
+allow_block = true

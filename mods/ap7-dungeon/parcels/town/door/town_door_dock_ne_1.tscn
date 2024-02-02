@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://models/world_scenes/props/mesh_1.json" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 11, 12, 1 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2, 0.25, 2 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="floor" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 0, 1441871, -65531, 0, 1048655, -65532, 1, 1441853, -65531, 1, 1048637, -65532, 2, 1441853, -65531, 2, 1048637, -65532, 3, 1441853, -65531, 3, 1048637, -65532, 65531, 1441853, -65531, 65531, 1048637, -65532, 65532, 1441853, -65531, 65532, 1048637, -65532, 65533, 1441853, -65531, 65533, 1048637, -65532, 65534, 1441853, -65531, 65534, 1048637, -65532, 65535, 1441871, -65531, 65535, 1048655 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="monster" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3, 0 )
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="wall" type="CollisionShape" parent="monster"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 11, -4.363, 1 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -4.58144, 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )

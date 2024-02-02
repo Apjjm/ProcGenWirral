@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/monster_forms/robindam.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterConfig.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+form = ExtResource( 1 )
+overworld = ""
+buddy_tags = [ "starter", "plastic" ]
+force_solo = false
+starter_stickers = [  ]
+floor_tier = 3
+overlevel_max = 1
+underlevel_max = 1
+smartness = "monster_miniboss"

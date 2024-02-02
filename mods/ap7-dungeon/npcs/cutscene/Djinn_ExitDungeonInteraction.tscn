@@ -1,0 +1,145 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/SetNPCStateAction.gd" type="Script" id=3]
+[ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=4]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/CheckDungeonResult.gd" type="Script" id=5]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=6]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/GiveDungeonLoot.gd" type="Script" id=7]
+[ext_resource path="res://sfx/cries/djinn_entonic_cry.wav" type="AudioStream" id=8]
+[ext_resource path="res://nodes/actions/CounterIndexedSequence.gd" type="Script" id=9]
+[ext_resource path="res://nodes/actions/WaitForSceneChangeEndingAction.gd" type="Script" id=10]
+[ext_resource path="res://nodes/actions/AdvanceTimeAction.gd" type="Script" id=11]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=12]
+
+[node name="Cutscene" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="SitPlayer" type="Node" parent="."]
+script = ExtResource( 3 )
+state = "Sitting"
+
+[node name="GetPlayer" type="Node" parent="SitPlayer"]
+script = ExtResource( 1 )
+
+[node name="SitPartner" type="Node" parent="."]
+script = ExtResource( 3 )
+state = "Sitting"
+
+[node name="GetPlayer" type="Node" parent="SitPartner"]
+script = ExtResource( 1 )
+which = 2
+
+[node name="WaitForSceneChangeEndingAction" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="AdvanceTimeAction" type="Node" parent="."]
+script = ExtResource( 11 )
+advance_by = 3.0
+
+[node name="IntroMessage" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Flee" type="Node" parent="IntroMessage"]
+script = ExtResource( 5 )
+exit_type = 3
+
+[node name="CounterIndexedSequence" type="Node" parent="IntroMessage/Flee"]
+script = ExtResource( 9 )
+increment_after = true
+index_counter = "AP7_DUNGEON_EXIT_FLEE"
+
+[node name="M1" type="Node" parent="IntroMessage/Flee/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_LEAVE_1" ]
+
+[node name="M2" type="Node" parent="IntroMessage/Flee/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_LEAVE_2" ]
+
+[node name="Defeated" type="Node" parent="IntroMessage"]
+script = ExtResource( 5 )
+exit_type = 2
+
+[node name="CounterIndexedSequence" type="Node" parent="IntroMessage/Defeated"]
+script = ExtResource( 9 )
+increment_after = true
+index_counter = "AP7_DUNGEON_EXIT_DEFEATED"
+
+[node name="M1" type="Node" parent="IntroMessage/Defeated/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_DEFEAT_1" ]
+
+[node name="M2" type="Node" parent="IntroMessage/Defeated/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_DEFEAT_2" ]
+
+[node name="M3" type="Node" parent="IntroMessage/Defeated/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_DEFEAT_3" ]
+
+[node name="Victory" type="Node" parent="IntroMessage"]
+script = ExtResource( 5 )
+exit_type = 1
+
+[node name="CounterIndexedSequence" type="Node" parent="IntroMessage/Victory"]
+script = ExtResource( 9 )
+increment_after = true
+index_counter = "AP7_DUNGEON_EXIT_VICTORY"
+
+[node name="M1" type="Node" parent="IntroMessage/Victory/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_1a", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_1b", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_1c" ]
+
+[node name="M2" type="Node" parent="IntroMessage/Victory/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_2a", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_2b", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_2c" ]
+
+[node name="M3" type="Node" parent="IntroMessage/Victory/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_3a", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_3b", "AP7_DUNGEON_DJINNTERLUDE_DJINN_VICTORY_3c" ]
+
+[node name="Succeeder" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="GiveItems" type="Node" parent="Succeeder"]
+script = ExtResource( 5 )
+require_item_found = true
+
+[node name="CounterIndexedSequence" type="Node" parent="Succeeder/GiveItems"]
+script = ExtResource( 9 )
+increment_after = true
+index_counter = "AP7_DUNGEON_EXIT_LOOT"
+
+[node name="M1" type="Node" parent="Succeeder/GiveItems/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_LOOT_1" ]
+
+[node name="M2" type="Node" parent="Succeeder/GiveItems/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_LOOT_2" ]
+
+[node name="M3" type="Node" parent="Succeeder/GiveItems/CounterIndexedSequence"]
+script = ExtResource( 6 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_LOOT_3" ]
+
+[node name="GiveLoot" type="Node" parent="Succeeder/GiveItems"]
+script = ExtResource( 7 )
+
+[node name="Farewell" type="Node" parent="."]
+script = ExtResource( 6 )
+audio = ExtResource( 8 )
+title = "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_NAME"
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_DONE" ]

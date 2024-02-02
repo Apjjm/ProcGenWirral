@@ -1,0 +1,439 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehavior.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/behaviors/WaitWalkPattern1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/core/PlayerDetector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sfx/world/footsteps/land_2.wav" type="AudioStream" id=6]
+[ext_resource path="res://nodes/sprite_container/alpha_scissor.shader" type="Shader" id=7]
+[ext_resource path="res://addons/misc_utils/ExtendedAnimationPlayerFallback.gd" type="Script" id=8]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://sprites/monsters/world/faucetear.png" type="Texture" id=10]
+[ext_resource path="res://world/monsters/MonsterPalette.gd" type="Script" id=11]
+[ext_resource path="res://data/monster_forms/faucetear.tres" type="Resource" id=12]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonNPC.gd" type="Script" id=13]
+[ext_resource path="res://mods/ap7-dungeon/monsters/behaviors/StepPlayerRelativeOpposite.tscn" type="PackedScene" id=14]
+[ext_resource path="res://mods/ap7-dungeon/monsters/behaviors/ShortChase.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = ExtResource( 7 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0.435294, 0.0862745, 0.145098, 1 )
+shader_param/emission_color_1 = Color( 0.694118, 0.12549, 0.192157, 1 )
+shader_param/emission_color_2 = Color( 0.913725, 0.258824, 0.247059, 1 )
+shader_param/emission_color_3 = Color( 1, 1, 1, 1 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 1
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 10 )
+
+[sub_resource type="ShaderMaterial" id=23]
+next_pass = SubResource( 22 )
+shader = ExtResource( 7 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0.435294, 0.0862745, 0.145098, 1 )
+shader_param/emission_color_1 = Color( 0.694118, 0.12549, 0.192157, 1 )
+shader_param/emission_color_2 = Color( 0.913725, 0.258824, 0.247059, 1 )
+shader_param/emission_color_3 = Color( 1, 1, 1, 1 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 1
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 10 )
+
+[sub_resource type="Animation" id=14]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 1, 1, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 30, 1, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 88, 1, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 59, 1, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 1, 1, 28, 28 ), Rect2( 117, 1, 28, 28 ), Rect2( 1, 30, 28, 28 ), Rect2( 30, 30, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 59, 30, 28, 28 ), Rect2( 88, 30, 28, 28 ), Rect2( 117, 30, 28, 28 ), Rect2( 1, 59, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 1, 88, 28, 28 ), Rect2( 30, 88, 28, 28 ), Rect2( 59, 88, 28, 28 ), Rect2( 88, 88, 28, 28 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 30, 59, 28, 28 ), Rect2( 59, 59, 28, 28 ), Rect2( 88, 59, 28, 28 ), Rect2( 117, 59, 28, 28 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=11]
+height = 1.1
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 4, 1, 4 )
+
+[node name="Faucetear" instance=ExtResource( 5 )]
+collision_layer = 16528
+collision_mask = 40977
+script = ExtResource( 13 )
+can_swim = false
+
+[node name="Sprite" parent="." index="2"]
+idle = "idle_"
+emission_palette = [ Color( 0.435294, 0.0862745, 0.145098, 1 ), Color( 0.694118, 0.12549, 0.192157, 1 ), Color( 0.913725, 0.258824, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
+emission = Color( 0, 0, 0, 1 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="Sprite" type="Spatial" parent="Sprite" index="0"]
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite/Sprite" index="0"]
+material_override = SubResource( 23 )
+centered = false
+offset = Vector2( -14, 0 )
+pixel_size = 0.125
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 1, 1, 28, 28 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Sprite" index="1"]
+anims/idle_down = SubResource( 14 )
+anims/idle_left = SubResource( 15 )
+anims/idle_right = SubResource( 16 )
+anims/idle_up = SubResource( 17 )
+anims/run_down = SubResource( 18 )
+anims/run_left = SubResource( 19 )
+anims/run_right = SubResource( 20 )
+anims/run_up = SubResource( 21 )
+script = ExtResource( 8 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Interaction" parent="." index="4"]
+display_marker = false
+
+[node name="Footsteps" parent="." index="5"]
+footsteps_disabled = true
+land_audio = ExtResource( 6 )
+
+[node name="StateMachine" parent="." index="8" instance=ExtResource( 9 )]
+
+[node name="PlayerTouchDetector" parent="." index="9" instance=ExtResource( 4 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerTouchDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.325, 0 )
+shape = SubResource( 11 )
+
+[node name="PlayerSightDetector" parent="." index="10" instance=ExtResource( 4 )]
+sneak_immunity = false
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerSightDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="MonsterBehavior" parent="." index="11" instance=ExtResource( 1 )]
+
+[node name="seq" parent="MonsterBehavior/Idle" index="0" instance=ExtResource( 2 )]
+
+[node name="seq2" parent="MonsterBehavior/Idle" index="1" instance=ExtResource( 14 )]
+
+[node name="AggroAction" parent="MonsterBehavior/Pursue" index="0"]
+wait_for_intro = true
+
+[node name="Sequence" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="0" instance=ExtResource( 15 )]
+
+[node name="MonsterPalette" type="Node" parent="." index="12"]
+script = ExtResource( 11 )
+species = ExtResource( 12 )
+
+[connection signal="interacted" from="Interaction" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerTouchDetector" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerSightDetector" to="MonsterBehavior" method="pursue"]
+
+[editable path="StateMachine"]
+[editable path="MonsterBehavior"]

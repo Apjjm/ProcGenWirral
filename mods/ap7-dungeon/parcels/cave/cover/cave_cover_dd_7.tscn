@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+[ext_resource path="res://models/world_scenes/props/glowshroom_large_1.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 0.716558, 0, 0.697528, 0, 1, 0, -0.697528, 0, 0.716558, 0, 0, 0 )
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="RandomTreasureRot2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="RandomTreasureRot" type="Spatial" parent="RandomTreasureRot2"]
+transform = Transform( 1, 0, 0, -2.23517e-08, 1, -1.49012e-08, -2.98023e-08, -1.49012e-08, 1, -2.32088, -0.021564, -1.08553 )
+script = ExtResource( 2 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="glowshroom_large_4" parent="RandomTreasureRot2/RandomTreasureRot" instance=ExtResource( 3 )]
+transform = Transform( 0.755543, 0.39702, 0.521085, -0.545271, 0.821995, 0.164326, -0.36309, -0.408288, 0.837536, 0, 0, 0 )
+
+[node name="RandomTreasureRot2" type="Spatial" parent="RandomTreasureRot2"]
+transform = Transform( 0.788349, -0.614787, 0.0232996, 0.504264, 0.624001, -0.596942, 0.352453, 0.482348, 0.801946, -0.320881, -0.0215645, 1.91447 )
+script = ExtResource( 2 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="glowshroom_large_4" parent="RandomTreasureRot2/RandomTreasureRot2" instance=ExtResource( 3 )]
+transform = Transform( 0.755543, 0.39702, 0.521085, -0.545271, 0.821995, 0.164326, -0.36309, -0.408288, 0.837536, 0, 0, 0 )

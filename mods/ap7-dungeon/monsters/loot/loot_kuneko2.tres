@@ -1,0 +1,44 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://data/LootTable.gd" type="Script" id=1]
+[ext_resource path="res://data/item_scripts/StickerItem.gd" type="Script" id=2]
+[ext_resource path="res://data/items/fused_material.tres" type="Resource" id=3]
+[ext_resource path="res://data/items/wood.tres" type="Resource" id=4]
+[ext_resource path="res://data/items/wheat.tres" type="Resource" id=5]
+[ext_resource path="res://data/items/metal.tres" type="Resource" id=6]
+[ext_resource path="res://data/items/plastic.tres" type="Resource" id=7]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_alpha_sigil.tres" type="Resource" id=8]
+[ext_resource path="res://data/items/pulp.tres" type="Resource" id=9]
+
+[sub_resource type="Resource" id=59]
+script = ExtResource( 2 )
+name = ""
+aux_name = ""
+description = ""
+category = "stickers"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+value = 1
+usable_contexts = 0
+battle_usage = 0
+sort_order = 0
+battle_move = ExtResource( 8 )
+rarity = 0
+attributes = [  ]
+
+[resource]
+script = ExtResource( 1 )
+items = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 9 ) ]
+guaranteed_items = [ SubResource( 59 ), ExtResource( 3 ) ]
+guaranteed_item_amounts = [ 1, 1 ]
+rare_items = [  ]
+rare_item_chance = 1.0
+max_stickers = 0
+sticker_tags = [  ]
+allow_unsellable_stickers = false
+upgrade_sticker_rarity = false
+upgrade_sticker_rarity_chance = 100
+fixed_max_value = 0
+fixed_max_num = 0

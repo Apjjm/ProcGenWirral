@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/lamppost/df_lamppost_town_1.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 11, 1, 11 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 4, 51, -65531, 4, 51, -65530, 4, 51, -65532, 5, 51, -65531, 5, 51, -65530, 5, 51, -65532, 6, 51, -65531, 6, 51, -65530, 6, 51 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 0, 51, -65531, 0, 51, -65530, 0, 51, -65532, 1, 51, -65531, 1, 51, -65530, 1, 51, -65532, 2, 51, -65531, 2, 51, -65530, 2, 51, -65532, 3, 51, -65531, 3, 51, -65530, 3, 51 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_E" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65529, 4, 51, -65528, 4, 51, -65527, 4, 51, -65526, 4, 51, -65529, 5, 51, -65528, 5, 51, -65527, 5, 51, -65526, 5, 51, -65529, 6, 51, -65528, 6, 51, -65527, 6, 51, -65526, 6, 51 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 7, 51, -65531, 7, 51, -65530, 7, 51, -65532, 8, 51, -65531, 8, 51, -65530, 8, 51, -65532, 9, 51, -65531, 9, 51, -65530, 9, 51, -65532, 10, 51, -65531, 10, 51, -65530, 10, 51 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_W" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 4, 51, -65535, 4, 51, -65534, 4, 51, -65533, 4, 51, -65536, 5, 51, -65535, 5, 51, -65534, 5, 51, -65533, 5, 51, -65536, 6, 51, -65535, 6, 51, -65534, 6, 51, -65533, 6, 51 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_NE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65529, 0, 1441841, -65528, 0, 48, -65527, 0, 48, -65526, 0, 48, -65529, 1, 1441841, -65528, 1, 48, -65527, 1, 48, -65526, 1, 48, -65529, 2, 1441841, -65528, 2, 48, -65527, 2, 48, -65526, 2, 48, -65529, 3, 50, -65528, 3, 49, -65527, 3, 49, -65526, 3, 49 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="lamppost" parent="Patch_NE" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 6 )
+
+[node name="Patch_SE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65529, 7, 1441842, -65528, 7, 655409, -65527, 7, 655409, -65526, 7, 655409, -65529, 8, 1441841, -65528, 8, 1441840, -65527, 8, 1441840, -65526, 8, 1441840, -65529, 9, 1441841, -65528, 9, 1441840, -65527, 9, 1441840, -65526, 9, 1441840, -65529, 10, 1441841, -65528, 10, 1441840, -65527, 10, 1441840, -65526, 10, 1441840 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="lamppost" parent="Patch_SE" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+
+[node name="Patch_SW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 7, 655409, -65535, 7, 655409, -65534, 7, 655409, -65533, 7, 655410, -65536, 8, 1048624, -65535, 8, 1048624, -65534, 8, 1048624, -65533, 8, 1048625, -65536, 9, 1048624, -65535, 9, 1048624, -65534, 9, 1048624, -65533, 9, 1048625, -65536, 10, 1048624, -65535, 10, 1048624, -65534, 10, 1048624, -65533, 10, 1048625 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="lamppost" parent="Patch_SW" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 16 )
+
+[node name="Patch_NW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 0, 48, -65535, 0, 48, -65534, 0, 48, -65533, 0, 1048625, -65536, 1, 48, -65535, 1, 48, -65534, 1, 48, -65533, 1, 1048625, -65536, 2, 48, -65535, 2, 48, -65534, 2, 48, -65533, 2, 1048625, -65536, 3, 49, -65535, 3, 49, -65534, 3, 49, -65533, 3, 1048626 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="lamppost" parent="Patch_NW" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6 )
+
+[node name="roof" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 10, 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="roof"]
+shape = SubResource( 1 )

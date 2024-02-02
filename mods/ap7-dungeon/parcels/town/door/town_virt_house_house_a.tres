@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/town/door/town_virt_house_house_a_1.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+zones = [ "housea" ]
+target_zones = [ "housea", "houseb", "exit" ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+offset = Vector3( 0, 0, 0 )
+parcels = [ ExtResource( 2 ) ]

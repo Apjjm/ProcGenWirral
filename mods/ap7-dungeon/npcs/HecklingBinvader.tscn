@@ -1,0 +1,286 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogAction.gd" type="Script" id=2]
+[ext_resource path="res://nodes/sprite_container/alpha_scissor.shader" type="Shader" id=3]
+[ext_resource path="res://addons/misc_utils/ExtendedAnimationPlayerFallback.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=5]
+[ext_resource path="res://sprites/monsters/binvader.png" type="Texture" id=6]
+[ext_resource path="res://sfx/cries/binvader_cry.wav" type="AudioStream" id=7]
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 0 )
+shader_param/emission_energy = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_1 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_2 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_3 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 0
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=11]
+next_pass = SubResource( 10 )
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 0 )
+shader_param/emission_energy = 1.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_1 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_2 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_3 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 2
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 6 )
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 19, 7, 58, 58 ), Rect2( 100, 7, 58, 58 ), Rect2( 181, 7, 58, 58 ), Rect2( 262, 7, 58, 58 ), Rect2( 343, 7, 58, 58 ), Rect2( 424, 7, 58, 58 ) ]
+}
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 1, 2, 1 )
+
+[node name="Binvader" type="Spatial"]
+
+[node name="NPC" parent="." instance=ExtResource( 1 )]
+npc_name = "AP7_DUNGEON_BARZONE_BINVADER_NAME"
+
+[node name="CollisionShape" parent="NPC" index="1"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.4, 0 )
+
+[node name="Sprite" parent="NPC" index="2"]
+emission = Color( 0, 0, 0, 0 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="Sprite" type="Spatial" parent="NPC/Sprite" index="0"]
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC/Sprite/Sprite"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.208928, 0, 0 )
+material_override = SubResource( 11 )
+centered = false
+offset = Vector2( -22, 0 )
+pixel_size = 0.05
+billboard = 1
+shaded = true
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 181, 7, 58, 58 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NPC/Sprite/Sprite"]
+anims/idle = SubResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_ase_imported": true
+}
+
+[node name="CollisionShape" parent="NPC/Interaction" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.124, 0 )
+shape = SubResource( 9 )
+
+[node name="InteractionBehavior" type="Node" parent="NPC"]
+script = ExtResource( 5 )
+
+[node name="Dialog" type="Node" parent="NPC/InteractionBehavior"]
+script = ExtResource( 2 )
+audio = ExtResource( 7 )
+message_loc_key = "AP7_DUNGEON_INN_BINVADER_"
+counter_key = "AP7_DUNGEON_INN_BINVADER"
+message_count = 8
+advance_counter = true
+
+[editable path="NPC"]

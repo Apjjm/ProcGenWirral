@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.25, 8, 0.25 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="hitcheck" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 1.75 )
+
+[node name="wall" type="CollisionShape" parent="hitcheck"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+shape = SubResource( 5 )
+
+[node name="floor" type="GridMap" parent="."]
+mesh_library = ExtResource( 4 )
+data = {
+"cells": PoolIntArray( -393216, 0, 655432, -327680, 0, 655432, -262144, 0, 655432, -196608, 0, 655432, -131072, 0, 655432, -65536, 0, 1441842 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="post" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0.01, 0.01 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 1441818, 65536, 0, 1441818, 131072, 0, 1441818, 196608, 0, 1441822, 1, 1, 1048660 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}

@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://nodes/actions/FaceTowardsAction.gd" type="Script" id=1]
+[ext_resource path="res://nodes/actions/values/GetPlayer.gd" type="Script" id=2]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=3]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=4]
+[ext_resource path="res://sprites/portraits/magikrab.png" type="Texture" id=5]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Failer.gd" type="Script" id=6]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Repeater.gd" type="Script" id=7]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/ExitDungeonAction.gd" type="Script" id=8]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/ConfirmExitDungeonAction.gd" type="Script" id=9]
+[ext_resource path="res://nodes/actions/MenuDialogAction.gd" type="Script" id=12]
+[ext_resource path="res://addons/misc_utils/actions/composites/Sequence.gd" type="Script" id=15]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=16]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SetBlackboardFloorAction.gd" type="Script" id=17]
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 3 )
+
+[node name="FaceTowardsAction" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="GetPlayer" type="Node" parent="FaceTowardsAction"]
+script = ExtResource( 2 )
+which = 3
+
+[node name="SetBB" type="Node" parent="."]
+script = ExtResource( 17 )
+bb_key = "dungeon_floor"
+
+[node name="Repeater" type="Node" parent="."]
+script = ExtResource( 7 )
+stop_on_failure = true
+
+[node name="Intro" type="Node" parent="Repeater"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPSITE_TRAFFIKRAB_1" ]
+wait_for_confirm = false
+close_after = false
+
+[node name="MenuDialogAction" type="Node" parent="Repeater"]
+script = ExtResource( 12 )
+menu_options = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_4", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_1", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_2", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_3" ]
+
+[node name="PreBoss" type="Node" parent="Repeater/MenuDialogAction"]
+script = ExtResource( 16 )
+require_blackboard_values = {
+"dungeon_floor": "final"
+}
+
+[node name="Dialog" type="Node" parent="Repeater/MenuDialogAction/PreBoss"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_4_1", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_4_2" ]
+
+[node name="AskWhere" type="Node" parent="Repeater/MenuDialogAction"]
+script = ExtResource( 15 )
+
+[node name="Dialog" type="Node" parent="Repeater/MenuDialogAction/AskWhere"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_1_1", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_1_2" ]
+
+[node name="AskLeave" type="Node" parent="Repeater/MenuDialogAction"]
+script = ExtResource( 15 )
+
+[node name="Dialog" type="Node" parent="Repeater/MenuDialogAction/AskLeave"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_2_1", "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_2_2" ]
+
+[node name="ConfirmExitAction" type="Node" parent="Repeater/MenuDialogAction/AskLeave"]
+script = ExtResource( 9 )
+message = "AP7_DUNGEON_EXIT_NO_MEMORY_CONFIRM"
+message_no_memory_sigils = "AP7_DUNGEON_EXIT_NO_MEMORY_CONFIRM"
+message_used_memory_sigils = "AP7_DUNGEON_EXIT_USED_MEMORY_CONFIRM"
+message_unused_memory_sigils = "AP7_DUNGEON_EXIT_UNUSED_MEMORY_CONFIRM"
+
+[node name="Dialog2" type="Node" parent="Repeater/MenuDialogAction/AskLeave"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_2_2_YES" ]
+
+[node name="ExitDungeon" type="Node" parent="Repeater/MenuDialogAction/AskLeave"]
+script = ExtResource( 8 )
+
+[node name="Failer" type="Node" parent="Repeater/MenuDialogAction/AskLeave"]
+script = ExtResource( 6 )
+
+[node name="Nothing" type="Node" parent="Repeater/MenuDialogAction"]
+script = ExtResource( 15 )
+
+[node name="Dialog" type="Node" parent="Repeater/MenuDialogAction/Nothing"]
+script = ExtResource( 4 )
+portrait = ExtResource( 5 )
+title = "{pawn}"
+messages = [ "AP7_DUNGEON_CAMPFIRE_TRAFFIKRAB_OPTION_3_1" ]
+
+[node name="Failer" type="Node" parent="Repeater/MenuDialogAction/Nothing"]
+script = ExtResource( 6 )

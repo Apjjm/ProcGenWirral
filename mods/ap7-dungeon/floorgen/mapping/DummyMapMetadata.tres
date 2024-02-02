@@ -1,0 +1,27 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://data/map_metadata/MapMetadata.gd" type="Script" id=1]
+[ext_resource path="res://data/map_metadata/overworld_obscured.png" type="Texture" id=2]
+[ext_resource path="res://data/map_metadata/overworld.png" type="Texture" id=3]
+[ext_resource path="res://data/map_metadata/overworld_bg.png" type="Texture" id=4]
+[ext_resource path="res://data/map_metadata/MapChunkMetadata.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 5 )
+title = "AP7_DUNGEON_DJINNTERLUDE_AREA_NAME"
+chunk_index = Vector2( 0, 0 )
+features = [  ]
+always_revealed = false
+
+[resource]
+script = ExtResource( 1 )
+title = "AP7_DUNGEON_DJINNTERLUDE_AREA_NAME"
+map_texture = ExtResource( 3 )
+map_obscure = ExtResource( 2 )
+map_background = ExtResource( 4 )
+chunk_layout = Rect2( -7, -7, 16, 16 )
+texels_per_world_unit = Vector2( 0.5, 0.5 )
+chunk_metadata_path = ""
+minimap_scale = Vector2( 3, 3 )
+default_chunk_metadata = SubResource( 1 )
+visual_effect = 1

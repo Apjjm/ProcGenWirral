@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_5.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_6.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_7.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_0.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_8.tscn" type="PackedScene" id=8]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/shelves/shelf_book_4.tscn" type="PackedScene" id=10]
+
+[resource]
+script = ExtResource( 1 )
+zones = [ "shop", "shop_book" ]
+
+parcels = [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ) ]

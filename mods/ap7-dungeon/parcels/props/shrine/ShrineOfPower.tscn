@@ -1,0 +1,446 @@
+[gd_scene load_steps=86 format=2]
+
+[ext_resource path="res://world/objects/static_physics/elemental_altar/ElementalAltarAltar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/items/tape_chrome.tres" type="Resource" id=2]
+[ext_resource path="res://world/core/Interaction.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/misc_utils/actions/decorators/Inverter.gd" type="Script" id=4]
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=5]
+[ext_resource path="res://sfx/ui/recorded.wav" type="AudioStream" id=6]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/MakeShrineOfferingAction.gd" type="Script" id=7]
+[ext_resource path="res://nodes/actions/ConfirmDialogAction.gd" type="Script" id=8]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=9]
+[ext_resource path="res://data/elemental_types/air.tres" type="Resource" id=10]
+[ext_resource path="res://data/elemental_types/astral.tres" type="Resource" id=11]
+[ext_resource path="res://ui/icons/status_effects/coating_air.png" type="Texture" id=12]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardElementAction.gd" type="Script" id=13]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineDestroyTapeUnlessSigilsActions.gd" type="Script" id=14]
+[ext_resource path="res://ui/icons/status_effects/coating_astral.png" type="Texture" id=15]
+[ext_resource path="res://ui/icons/status_effects/coating_beast.png" type="Texture" id=16]
+[ext_resource path="res://data/elemental_types/beast.tres" type="Resource" id=17]
+[ext_resource path="res://data/elemental_types/earth.tres" type="Resource" id=18]
+[ext_resource path="res://data/elemental_types/fire.tres" type="Resource" id=19]
+[ext_resource path="res://data/elemental_types/glass.tres" type="Resource" id=20]
+[ext_resource path="res://data/elemental_types/ice.tres" type="Resource" id=21]
+[ext_resource path="res://data/elemental_types/glitter.tres" type="Resource" id=22]
+[ext_resource path="res://data/elemental_types/lightning.tres" type="Resource" id=23]
+[ext_resource path="res://data/elemental_types/metal.tres" type="Resource" id=24]
+[ext_resource path="res://data/elemental_types/plant.tres" type="Resource" id=25]
+[ext_resource path="res://data/elemental_types/plastic.tres" type="Resource" id=26]
+[ext_resource path="res://data/elemental_types/water.tres" type="Resource" id=27]
+[ext_resource path="res://data/elemental_types/poison.tres" type="Resource" id=28]
+[ext_resource path="res://ui/icons/status_effects/cottoned_on.png" type="Texture" id=29]
+[ext_resource path="res://ui/icons/status_effects/health_up_plant.png" type="Texture" id=30]
+[ext_resource path="res://ui/icons/status_effects/confused.png" type="Texture" id=31]
+[ext_resource path="res://data/items/tape_air.tres" type="Resource" id=32]
+[ext_resource path="res://ui/icons/status_effects/coating_water.png" type="Texture" id=33]
+[ext_resource path="res://ui/icons/status_effects/coating_plastic.png" type="Texture" id=34]
+[ext_resource path="res://ui/icons/status_effects/coating_metal.png" type="Texture" id=35]
+[ext_resource path="res://ui/icons/status_effects/coating_plant.png" type="Texture" id=36]
+[ext_resource path="res://ui/icons/status_effects/coating_fire.png" type="Texture" id=37]
+[ext_resource path="res://ui/icons/status_effects/coating_earth.png" type="Texture" id=38]
+[ext_resource path="res://ui/icons/status_effects/coating_glass.png" type="Texture" id=39]
+[ext_resource path="res://ui/icons/status_effects/coating_lightning.png" type="Texture" id=40]
+[ext_resource path="res://ui/icons/status_effects/coating_ice.png" type="Texture" id=41]
+[ext_resource path="res://ui/icons/status_effects/coating_poison.png" type="Texture" id=42]
+[ext_resource path="res://ui/icons/status_effects/coating_glitter.png" type="Texture" id=43]
+[ext_resource path="res://data/items/tape_astral.tres" type="Resource" id=44]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardSwapTapeAction.gd" type="Script" id=45]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardHealTapeAction.gd" type="Script" id=46]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardStatChangeAction.gd" type="Script" id=47]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardTapeLevelAction.gd" type="Script" id=48]
+[ext_resource path="res://data/items/tape_poison.tres" type="Resource" id=49]
+[ext_resource path="res://ui/icons/status_effects/defense_melee_up.png" type="Texture" id=50]
+[ext_resource path="res://ui/icons/status_effects/attack_ranged_up.png" type="Texture" id=51]
+[ext_resource path="res://ui/icons/status_effects/speed_up.png" type="Texture" id=52]
+[ext_resource path="res://ui/icons/status_effects/attack_melee_up.png" type="Texture" id=53]
+[ext_resource path="res://ui/icons/status_effects/defense_ranged_up.png" type="Texture" id=54]
+[ext_resource path="res://data/items/tape_ice.tres" type="Resource" id=55]
+[ext_resource path="res://data/items/tape_metal.tres" type="Resource" id=56]
+[ext_resource path="res://data/items/tape_lightning.tres" type="Resource" id=57]
+[ext_resource path="res://data/items/tape_plant.tres" type="Resource" id=58]
+[ext_resource path="res://data/items/tape_fire.tres" type="Resource" id=59]
+[ext_resource path="res://data/items/tape_plastic.tres" type="Resource" id=60]
+[ext_resource path="res://ui/icons/status_effects/health_up.png" type="Texture" id=61]
+[ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=62]
+[ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=63]
+[ext_resource path="res://data/items/tape_earth.tres" type="Resource" id=64]
+[ext_resource path="res://data/items/tape_water.tres" type="Resource" id=65]
+[ext_resource path="res://data/items/tape_beast.tres" type="Resource" id=66]
+[ext_resource path="res://data/items/respool.tres" type="Resource" id=67]
+[ext_resource path="res://data/items/tape_optical_laser.tres" type="Resource" id=68]
+[ext_resource path="res://data/items/rewind.tres" type="Resource" id=69]
+[ext_resource path="res://data/items/cure_all.tres" type="Resource" id=70]
+[ext_resource path="res://data/items/full_english.tres" type="Resource" id=71]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineRewardItemsAction.gd" type="Script" id=72]
+[ext_resource path="res://data/items/fused_material.tres" type="Resource" id=73]
+[ext_resource path="res://sprites/items/fused_material.png" type="Texture" id=74]
+[ext_resource path="res://sprites/items/tape_air.png" type="Texture" id=75]
+[ext_resource path="res://sprites/items/rewind.png" type="Texture" id=76]
+[ext_resource path="res://ui/icons/position_markers/quest_icon_world.png" type="Texture" id=77]
+[ext_resource path="res://mods/ap7-dungeon/menus/shrine/ShrineKunekoQuestAction.gd" type="Script" id=78]
+[ext_resource path="res://sprites/items/sticker.png" type="Texture" id=79]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_power_sigil.tres" type="Resource" id=80]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_memory_sigil.tres" type="Resource" id=81]
+[ext_resource path="res://data/item_scripts/StickerItem.gd" type="Script" id=82]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2.25, 1.125, 1.25 )
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 82 )
+name = ""
+aux_name = ""
+description = ""
+category = "misc"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+value = 1
+usable_contexts = 0
+battle_usage = 0
+sort_order = 0
+battle_move = ExtResource( 81 )
+rarity = 2
+attributes = [  ]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 82 )
+name = ""
+aux_name = ""
+description = ""
+category = "misc"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+value = 1
+usable_contexts = 0
+battle_usage = 0
+sort_order = 0
+battle_move = ExtResource( 80 )
+rarity = 2
+attributes = [  ]
+
+[node name="Shrine" type="Spatial"]
+
+[node name="ElementalAltar" parent="." instance=ExtResource( 1 )]
+
+[node name="Interaction" parent="." instance=ExtResource( 3 )]
+pawn_path = NodePath("..")
+
+[node name="CollisionShape" type="CollisionShape" parent="Interaction"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="InteractionBehavior" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="CheckAlreadyOffered" type="Node" parent="InteractionBehavior"]
+script = ExtResource( 4 )
+
+[node name="TapeOffered" type="Node" parent="InteractionBehavior/CheckAlreadyOffered"]
+script = ExtResource( 62 )
+require_blackboard_keys = [ "shrine_tape" ]
+
+[node name="MessageDialogAction" type="Node" parent="InteractionBehavior/CheckAlreadyOffered"]
+script = ExtResource( 63 )
+messages = [ "AP7_DUNGEON_MENU_SHRINE_DRAINED" ]
+
+[node name="CofirmInteract" type="Node" parent="InteractionBehavior"]
+script = ExtResource( 8 )
+message = "AP7_DUNGEON_MENU_SHRINE_PREPROMPT"
+
+[node name="MakeOffering" type="Node" parent="InteractionBehavior"]
+script = ExtResource( 7 )
+
+[node name="ShrineMenu" type="Node" parent="InteractionBehavior"]
+script = ExtResource( 9 )
+menu_title = "AP7_DUNGEON_MENU_SHRINE_TITLE"
+menu_open_sound = ExtResource( 6 )
+
+[node name="BlessingAir" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_AIR"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_AIR_DESC"
+icon = ExtResource( 12 )
+element_type = ExtResource( 10 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingAir"]
+script = ExtResource( 14 )
+
+[node name="BlessingAstral" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_ASTRAL"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_ASTRAL_DESC"
+icon = ExtResource( 15 )
+element_type = ExtResource( 11 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingAstral"]
+script = ExtResource( 14 )
+
+[node name="BlessingBeast" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_BEAST"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_BEAST_DESC"
+icon = ExtResource( 16 )
+element_type = ExtResource( 17 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingBeast"]
+script = ExtResource( 14 )
+
+[node name="BlessingEarth" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_EARTH"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_EARTH_DESC"
+icon = ExtResource( 38 )
+element_type = ExtResource( 18 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingEarth"]
+script = ExtResource( 14 )
+
+[node name="BlessingFire" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_FIRE"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_FIRE_DESC"
+icon = ExtResource( 37 )
+element_type = ExtResource( 19 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingFire"]
+script = ExtResource( 14 )
+
+[node name="BlessingGlass" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_GLASS"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_GLASS_DESC"
+icon = ExtResource( 39 )
+element_type = ExtResource( 20 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingGlass"]
+script = ExtResource( 14 )
+
+[node name="BlessingGlitter" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_GLITTER"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_GLITTER_DESC"
+icon = ExtResource( 43 )
+element_type = ExtResource( 22 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingGlitter"]
+script = ExtResource( 14 )
+
+[node name="BlessingIce" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_ICE"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_ICE_DESC"
+icon = ExtResource( 41 )
+element_type = ExtResource( 21 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingIce"]
+script = ExtResource( 14 )
+
+[node name="BlessingLightning" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_LIGHTNING"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_LIGHTNING_DESC"
+icon = ExtResource( 40 )
+element_type = ExtResource( 23 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingLightning"]
+script = ExtResource( 14 )
+
+[node name="BlessingMetal" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_METAL"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_METAL_DESC"
+icon = ExtResource( 35 )
+element_type = ExtResource( 24 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingMetal"]
+script = ExtResource( 14 )
+
+[node name="BlessingPlant" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_PLANT"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_PLANT_DESC"
+icon = ExtResource( 36 )
+element_type = ExtResource( 25 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingPlant"]
+script = ExtResource( 14 )
+
+[node name="BlessingPlastic" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_PLASTIC"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_PLASTIC_DESC"
+icon = ExtResource( 34 )
+element_type = ExtResource( 26 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingPlastic"]
+script = ExtResource( 14 )
+
+[node name="BlessingPoison" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_POISON"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_POISON_DESC"
+icon = ExtResource( 42 )
+element_type = ExtResource( 28 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingPoison"]
+script = ExtResource( 14 )
+
+[node name="BlessingWater" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 13 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_WATER"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_WATER_DESC"
+icon = ExtResource( 33 )
+element_type = ExtResource( 27 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/BlessingWater"]
+script = ExtResource( 14 )
+
+[node name="TapeExp" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 48 )
+title = "AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_EXP"
+description = "AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_EXP_DESC"
+icon = ExtResource( 29 )
+
+[node name="Kuneko" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 78 )
+title = "AP7_DUNGEON_MENU_SHRINE_BLESSING_KUNEKO"
+description = "AP7_DUNGEON_MENU_SHRINE_BLESSING_KUNEKO_DESC"
+quality = 1
+icon = ExtResource( 77 )
+
+[node name="HealTape" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 46 )
+title = "AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP"
+description = "AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP_DESC"
+icon = ExtResource( 30 )
+
+[node name="HealParty" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 46 )
+title = "AP7_DUNGEON_MENU_SHRINE_GIVE_PARTY_HP"
+description = "AP7_DUNGEON_MENU_SHRINE_GIVE_TAPE_HP_DESC"
+quality = 1
+icon = ExtResource( 30 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/HealParty"]
+script = ExtResource( 14 )
+
+[node name="TapeSwap" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 45 )
+title = "AP7_DUNGEON_MENU_SHRINE_TAPE_SWAP"
+description = "AP7_DUNGEON_MENU_SHRINE_TAPE_SWAP_DESC"
+icon = ExtResource( 31 )
+
+[node name="StatUpHP" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP_DESC"
+quality = 1
+icon = ExtResource( 61 )
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpHP"]
+script = ExtResource( 14 )
+
+[node name="StatUpMDEF" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP_DESC"
+quality = 1
+icon = ExtResource( 50 )
+stat = 1
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpMDEF"]
+script = ExtResource( 14 )
+
+[node name="StatUpRDEF" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP_DESC"
+quality = 1
+icon = ExtResource( 54 )
+stat = 3
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpRDEF"]
+script = ExtResource( 14 )
+
+[node name="StatUpMATK" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP_DESC"
+quality = 1
+icon = ExtResource( 53 )
+stat = 2
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpMATK"]
+script = ExtResource( 14 )
+
+[node name="StatUpRATK" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP_DESC"
+quality = 1
+icon = ExtResource( 51 )
+stat = 4
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpRATK"]
+script = ExtResource( 14 )
+
+[node name="StatUpSPD" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 47 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP_DESC"
+quality = 1
+icon = ExtResource( 52 )
+stat = 5
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/StatUpSPD"]
+script = ExtResource( 14 )
+
+[node name="ItemPackHeal" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 72 )
+title = "AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL"
+description = "AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL_DESC"
+icon = ExtResource( 76 )
+items = [ ExtResource( 69 ), ExtResource( 67 ), ExtResource( 70 ), ExtResource( 71 ) ]
+quantity = 3
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/ItemPackHeal"]
+script = ExtResource( 14 )
+
+[node name="ItemPackRareSigil" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 72 )
+title = "AP7_DUNGEON_MENU_SHRINE_ITEMS_SIGIL"
+description = "AP7_DUNGEON_MENU_SHRINE_ITEMS_SIGIL_DESC"
+quality = 1
+icon = ExtResource( 79 )
+items = [ SubResource( 2 ), SubResource( 3 ) ]
+quantity = 1
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/ItemPackRareSigil"]
+script = ExtResource( 14 )
+
+[node name="ItemPackFused" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 72 )
+title = "AP7_DUNGEON_MENU_SHRINE_ITEMS_FUSED"
+description = "AP7_DUNGEON_MENU_SHRINE_ITEMS_FUSED_DESC"
+quality = 1
+icon = ExtResource( 74 )
+items = [ ExtResource( 73 ) ]
+quantity = 5
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/ItemPackFused"]
+script = ExtResource( 14 )
+
+[node name="ItemPackTape" type="Node" parent="InteractionBehavior/ShrineMenu"]
+script = ExtResource( 72 )
+title = "AP7_DUNGEON_MENU_SHRINE_ITEMS_TAPE"
+description = "AP7_DUNGEON_MENU_SHRINE_ITEMS_TAPE_DESC"
+icon = ExtResource( 75 )
+items = [ ExtResource( 68 ), ExtResource( 2 ), ExtResource( 32 ), ExtResource( 44 ), ExtResource( 66 ), ExtResource( 64 ), ExtResource( 59 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 56 ), ExtResource( 58 ), ExtResource( 60 ), ExtResource( 49 ), ExtResource( 65 ) ]
+quantity = 3
+
+[node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/ItemPackTape"]
+script = ExtResource( 14 )

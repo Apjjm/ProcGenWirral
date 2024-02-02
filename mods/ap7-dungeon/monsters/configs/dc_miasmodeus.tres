@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/monster_forms/miasmodeus.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterConfig.gd" type="Script" id=2]
+[ext_resource path="res://data/battle_moves/ap_starter.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 2 )
+form = ExtResource( 1 )
+overworld = ""
+buddy_tags = [ "starter", "poison" ]
+force_solo = false
+starter_stickers = [ ExtResource( 3 ) ]
+floor_tier = 4
+overlevel_max = 1
+underlevel_max = 1
+smartness = "monster_miniboss"

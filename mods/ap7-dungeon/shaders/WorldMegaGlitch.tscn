@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menus/background.png" type="Texture" id=1]
+[ext_resource path="res://mods/ap7-dungeon/shaders/WorldMegaGlitch.gdshader" type="Shader" id=2]
+
+[sub_resource type="Animation" id=4]
+resource_name = "glitch"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MegaGlitch:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MegaGlitch/Container/TextureRect:material:shader_param/xmax")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.35 )
+}
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/slices = 16.0
+shader_param/yphase = 6.0
+shader_param/xmax = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+root_node = NodePath(".")
+anims/glitch = SubResource( 4 )
+
+[node name="MegaGlitch" type="CanvasLayer" parent="."]
+layer = 63
+visible = false
+
+[node name="Container" type="PanelContainer" parent="MegaGlitch"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="MegaGlitch/Container"]
+material = SubResource( 3 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

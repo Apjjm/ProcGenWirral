@@ -1,0 +1,110 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/items/status/VolatileStatus.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/testbench/AddEffect.gd" type="Script" id=2]
+[ext_resource path="res://data/MonsterTape.gd" type="Script" id=3]
+[ext_resource path="res://music/demo/battle_archangel_instr.ogg" type="AudioStream" id=4]
+[ext_resource path="res://music/demo/battle_archangel_vox.ogg" type="AudioStream" id=5]
+[ext_resource path="res://battle/fighter/PlayerFighterController.gd" type="Script" id=6]
+[ext_resource path="res://battle/fighter/CharacterNode.gd" type="Script" id=7]
+[ext_resource path="res://battle/fighter/FighterNode.gd" type="Script" id=8]
+[ext_resource path="res://battle/ai/BalancedAI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://data/archangel_forms/ap7_dungeon_aahand.tres" type="Resource" id=10]
+[ext_resource path="res://data/characters/player.tres" type="Resource" id=11]
+[ext_resource path="res://data/characters/kayleigh.tres" type="Resource" id=12]
+[ext_resource path="res://battle/Battle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://mods/ap7-dungeon/floors/battlebackgrounds/BattleBackgroundFinal.tscn" type="PackedScene" id=14]
+[ext_resource path="res://data/characters/blank_monster_lv100.tres" type="Resource" id=15]
+[ext_resource path="res://tools/custom_battle/CustomBattle.gd" type="Script" id=16]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_aa_dungeon_terraform.tres" type="Resource" id=17]
+
+[sub_resource type="Resource" id=1]
+resource_name = "ap7_dungeon_aahand Gr0"
+script = ExtResource( 3 )
+name_override = ""
+form = ExtResource( 10 )
+grade = 0
+seed_value = 0
+type_override = [  ]
+type_native = [  ]
+stickers = [ ExtResource( 17 ) ]
+stat_increments = {
+}
+exp_points = 0
+favorite = false
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CustomBattle" type="Spatial" parent="."]
+script = ExtResource( 16 )
+
+[node name="Battle" parent="CustomBattle" instance=ExtResource( 13 )]
+autostart = false
+game_over_on_lose = false
+battle_music = ExtResource( 4 )
+battle_music_vox = ExtResource( 5 )
+enable_tutorials = false
+
+[node name="StatusBubbleLeft" parent="CustomBattle/Battle/CanvasLayer/Control/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer/StatusBubblesLeft" index="0"]
+margin_right = 436.0
+margin_bottom = 148.0
+
+[node name="StatusBubbleLeft2" parent="CustomBattle/Battle/CanvasLayer/Control/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer/StatusBubblesLeft" index="1"]
+margin_top = 156.0
+margin_right = 436.0
+margin_bottom = 304.0
+
+[node name="StatusBubbleRight" parent="CustomBattle/Battle/CanvasLayer/Control/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer/StatusBubblesRight" index="0"]
+margin_left = 34.0
+margin_bottom = 148.0
+
+[node name="StatusBubbleRight2" parent="CustomBattle/Battle/CanvasLayer/Control/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer/StatusBubblesRight" index="1"]
+margin_left = 34.0
+margin_top = 156.0
+margin_bottom = 304.0
+
+[node name="OpposingTeamPreviewDotList" parent="CustomBattle/Battle/CanvasLayer/Control/OverscanMarginContainer/MarginContainer/VBoxContainer/HBoxContainer/StatusBubblesRight" index="2"]
+margin_top = 312.0
+margin_bottom = 386.0
+
+[node name="Background" parent="CustomBattle/Battle" instance=ExtResource( 14 )]
+
+[node name="Player1" type="Node" parent="CustomBattle/Battle"]
+script = ExtResource( 8 )
+
+[node name="CharacterNode" type="Node" parent="CustomBattle/Battle/Player1"]
+script = ExtResource( 7 )
+character = ExtResource( 11 )
+
+[node name="PlayerFighterController" type="Node" parent="CustomBattle/Battle/Player1"]
+script = ExtResource( 6 )
+player_index = 0
+
+[node name="Player2" type="Node" parent="CustomBattle/Battle"]
+script = ExtResource( 8 )
+
+[node name="CharacterNode" type="Node" parent="CustomBattle/Battle/Player2"]
+script = ExtResource( 7 )
+character = ExtResource( 12 )
+
+[node name="PlayerFighterController" type="Node" parent="CustomBattle/Battle/Player2"]
+script = ExtResource( 6 )
+player_index = 1
+
+[node name="Enemy1" type="Node" parent="CustomBattle/Battle"]
+script = ExtResource( 8 )
+team = 1
+
+[node name="CharacterNode" type="Node" parent="CustomBattle/Battle/Enemy1"]
+script = ExtResource( 7 )
+character = ExtResource( 15 )
+active_tape = SubResource( 1 )
+
+[node name="BalancedAI" parent="CustomBattle/Battle/Enemy1" instance=ExtResource( 9 )]
+
+[node name="AddEffect" type="Spatial" parent="CustomBattle/Battle"]
+visible = false
+script = ExtResource( 2 )
+status_effect = ExtResource( 1 )
+
+[editable path="CustomBattle/Battle"]

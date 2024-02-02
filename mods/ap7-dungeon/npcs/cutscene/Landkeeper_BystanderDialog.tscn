@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/npcs/actions/SelectDialogAction.gd" type="Script" id=2]
+
+[node name="InteractionBehavior" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Dialog" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_LK_NPC_NAME"
+message_loc_key = "AP7_DUNGEON_LK_NPC_"
+counter_key = "AP7_DUNGEON_LK_NPC"
+message_count = 9
+advance_counter = true

@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 4, 1048639, -65531, 4, 1048638, -65532, 5, 1441854, -65531, 5, 1441855 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 0, 1441853, -65531, 0, 1048637, -65532, 1, 1441853, -65531, 1, 1048637, -65532, 2, 1441853, -65531, 2, 1048637, -65532, 3, 1441853, -65531, 3, 1048637, -65532, 65535, 1441853, -65531, 65535, 1048637 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_E" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65530, 4, 655421, -65529, 4, 655421, -65528, 4, 655421, -65527, 4, 655421, -65526, 4, 655421, -65530, 5, 61, -65529, 5, 61, -65528, 5, 61, -65527, 5, 61, -65526, 5, 61 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65532, 6, 1441853, -65531, 6, 1048637, -65532, 7, 1441853, -65531, 7, 1048637, -65532, 8, 1441853, -65531, 8, 1048637, -65532, 9, 1441853, -65531, 9, 1048637 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_W" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -4, 1 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 4, 655421, -65535, 4, 655421, -65534, 4, 655421, -65533, 4, 655421, -65536, 5, 61, -65535, 5, 61, -65534, 5, 61, -65533, 5, 61 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}

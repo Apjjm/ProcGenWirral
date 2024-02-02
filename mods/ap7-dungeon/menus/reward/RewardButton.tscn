@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://ui/battle_theme.tres" type="Theme" id=1]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardButton.gd" type="Script" id=2]
+[ext_resource path="res://ui/fonts/regular/regular_40.tres" type="DynamicFont" id=3]
+[ext_resource path="res://ui/icons/status_effects/attack_melee_up.png" type="Texture" id=4]
+[ext_resource path="res://ui/fonts/regular/regular_30.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/fonts/regular/regular_30_italic.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/fonts/regular/regular_30_bold.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 16.0
+content_margin_right = 16.0
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -16, 16 )
+
+[node name="RewardButton" type="PanelContainer"]
+anchor_right = 1.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 2 )
+regular_scale = Vector2( 1, 1 )
+focused_scale = Vector2( 1.05, 1.05 )
+pressed_scale = Vector2( 1, 1 )
+regular_mod = Color( 0.784314, 0.784314, 0.784314, 1 )
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1904.0
+margin_bottom = 144.0
+custom_constants/separation = 12
+
+[node name="IconTexture" type="TextureRect" parent="Hbox"]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="VBox" type="VBoxContainer" parent="Hbox"]
+margin_left = 140.0
+margin_right = 1888.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+custom_constants/separation = -8
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Hbox/VBox"]
+margin_right = 1748.0
+margin_bottom = 60.0
+custom_colors/font_color = Color( 0.470588, 0.109804, 0.0588235, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Attack Up"
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Hbox/VBox"]
+margin_top = 52.0
+margin_right = 1748.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = ExtResource( 6 )
+custom_fonts/bold_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 5 )
+bbcode_enabled = true
+bbcode_text = "Example text
+Example text"
+text = "Example text
+Example text"
+scroll_active = false

@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="Spatial" parent="."]
+
+[node name="Player" type="Position3D" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 1 )
+possible_types = 1
+
+[node name="RandomRot" type="Spatial" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_C/RandomRot"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="RandomRot2" type="Spatial" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_C/RandomRot2"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="RandomRot3" type="Spatial" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_C/RandomRot3"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="RandomRot4" type="Spatial" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_C/RandomRot4"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="Patch_N" type="Spatial" parent="."]
+
+[node name="RandomRot" type="Spatial" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_N/RandomRot"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="Patch_E" type="Spatial" parent="."]
+
+[node name="RandomRot" type="Spatial" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 12 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_E/RandomRot"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="Patch_S" type="Spatial" parent="."]
+
+[node name="RandomRot" type="Spatial" parent="Patch_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 20 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_S/RandomRot"]
+script = ExtResource( 1 )
+possible_types = 12
+
+[node name="Patch_W" type="Spatial" parent="."]
+
+[node name="RandomRot" type="Spatial" parent="Patch_W"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 12 )
+script = ExtResource( 2 )
+y_min = -30.0
+y_max = 30.0
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_W/RandomRot"]
+script = ExtResource( 1 )
+possible_types = 12

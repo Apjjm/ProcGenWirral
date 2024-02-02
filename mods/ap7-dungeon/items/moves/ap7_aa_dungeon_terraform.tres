@@ -1,0 +1,52 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/items/stickers/Terraform.gd" type="Script" id=1]
+[ext_resource path="res://data/hit_vfx/hit.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformVfx.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "AP7_DUNGEON_MOVE_NAME_TERRAFORM"
+category_name = "MOVE_CATEGORY_RANGED"
+description = "AP7_DUNGEON_MOVE_DESC_TERRAFORM"
+title_override = ""
+tags = [  ]
+priority = 0
+cost = 10
+is_debug = false
+is_passive_only = false
+power = 300
+physicality = 1
+target_type = 2
+default_target = 3
+elemental_types = [  ]
+accuracy = 100
+unavoidable = true
+crit_rate_numerator = 1
+crit_rate_denominator = 16
+crit_damage_percent = 150
+play_attack_animation = true
+fade_lights_during_attack = false
+windup_animation = "disappear"
+attack_animation = "attack"
+windup_sfx_override = [  ]
+attack_vfx = [ ExtResource( 3 ) ]
+play_attack_vfx_against_allies = true
+attack_duration = 0.0
+hit_vfx = [ ExtResource( 2 ) ]
+hit_delay = 0.0
+disable_melee_movement = false
+can_be_copied = false
+camera_state_override = ""
+min_hits = 1
+max_hits = 1
+target_status_effects = [  ]
+user_status_effects = [  ]
+status_effects_to_apply = 0
+status_effect_amount = 3
+status_effect_chance = 0
+status_effect_only_for_target_types = [  ]
+target_status_only_if_not_had_turn = false
+destroys_walls = true
+require_target_tag = ""
+winddown_anim = "appear"

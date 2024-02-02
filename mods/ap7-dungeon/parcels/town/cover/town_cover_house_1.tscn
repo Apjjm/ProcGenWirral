@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="PointOfInterest_2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 7 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="PointOfInterest_3" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 15 )
+script = ExtResource( 1 )
+possible_types = 7
+
+[node name="PointOfInterest_4" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 15 )
+script = ExtResource( 1 )
+possible_types = 7

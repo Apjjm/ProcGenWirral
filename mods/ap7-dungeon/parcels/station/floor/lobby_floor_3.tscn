@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/sword_off_mat_B.tres" type="Material" id=2]
+[ext_resource path="res://world/objects/static_physics/dungeon_final_props/world_final_floor_sword_1B.mesh" type="ArrayMesh" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.50147, 0.58735, 0.261965 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.43723, 2.66529, 0.13467 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65533, 3, 1, -65532, 3, 1, -65531, 3, 655362, -65530, 3, 655362, -65529, 3, 1, -65528, 3, 1, -65533, 4, 1, -65532, 4, 655362, -65531, 4, 655362, -65530, 4, 655362, -65529, 4, 655362, -65528, 4, 1, -65533, 5, 655362, -65532, 5, 655362, -65531, 5, 655360, -65530, 5, 655360, -65529, 5, 655362, -65528, 5, 655362, -65533, 6, 655362, -65532, 6, 655362, -65531, 6, 655360, -65530, 6, 655360, -65529, 6, 655362, -65528, 6, 655362, -65533, 7, 1, -65532, 7, 655362, -65531, 7, 655362, -65530, 7, 655362, -65529, 7, 655362, -65528, 7, 655361, -65533, 8, 1, -65532, 8, 1, -65531, 8, 655362, -65530, 8, 655362, -65529, 8, 1, -65528, 8, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65533, 0, 1, -65532, 0, 655361, -65531, 0, 1441794, -65530, 0, 1441794, -65529, 0, 655361, -65528, 0, 1, -65533, 1, 1, -65532, 1, 1, -65531, 1, 1441794, -65530, 1, 1441794, -65529, 1, 1, -65528, 1, 1, -65533, 2, 1, -65532, 2, 1, -65531, 2, 1441794, -65530, 2, 1441794, -65529, 2, 1, -65528, 2, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_E" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65527, 3, 1, -65526, 3, 1, -65525, 3, 1, -65527, 4, 1, -65526, 4, 1, -65525, 4, 655361, -65527, 5, 1441794, -65526, 5, 1441794, -65525, 5, 1441794, -65527, 6, 1441794, -65526, 6, 1441794, -65525, 6, 1441794, -65527, 7, 1, -65526, 7, 1, -65525, 7, 655361, -65527, 8, 1, -65526, 8, 1, -65525, 8, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65533, 9, 1, -65532, 9, 1, -65531, 9, 1441794, -65530, 9, 1441794, -65529, 9, 1, -65528, 9, 1, -65533, 10, 1, -65532, 10, 1, -65531, 10, 1441794, -65530, 10, 1441794, -65529, 10, 1, -65528, 10, 1, -65533, 11, 1, -65532, 11, 655361, -65531, 11, 1441794, -65530, 11, 1441794, -65529, 11, 655361, -65528, 11, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_W" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65536, 3, 1, -65535, 3, 1, -65534, 3, 1, -65536, 4, 655361, -65535, 4, 1, -65534, 4, 1, -65536, 5, 1441794, -65535, 5, 1441794, -65534, 5, 1441794, -65536, 6, 1441794, -65535, 6, 1441794, -65534, 6, 1441794, -65536, 7, 655361, -65535, 7, 1, -65534, 7, 1, -65536, 8, 1, -65535, 8, 1, -65534, 8, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_NW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 1048577, 1, 0, 1, 2, 0, 1048580, 65536, 0, 1, 65537, 0, 1048580, -65534, 0, 1048577, 0, 1, 1, 1, 1, 1, 2, 1, 1048580, 65536, 1, 4, 65537, 1, 5, -65534, 1, 1, 0, 2, 4, 1, 2, 4, 2, 2, 5, -65536, 2, 1048577, -65535, 2, 1, -65534, 2, 1, -65536, 3, 1048577 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="Patch_NE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 9, 0, 1441796, 10, 0, 1, 11, 0, 1, 65546, 0, 1441796, 65547, 0, 1441793, -65527, 0, 1, 9, 1, 1441796, 10, 1, 1, 11, 1, 1, 65546, 1, 1441797, 65547, 1, 4, -65527, 1, 1, 9, 2, 1441797, 10, 2, 4, 11, 2, 4, -65527, 2, 1, -65526, 2, 1, -65525, 2, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="Sword" type="Spatial" parent="Patch_NE"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2, 0 )
+script = ExtResource( 4 )
+
+[node name="world_final_floor_sword_1B" type="MeshInstance" parent="Patch_NE/Sword"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+material_override = ExtResource( 2 )
+mesh = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Patch_NE/Sword/world_final_floor_sword_1B"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Patch_NE/Sword/world_final_floor_sword_1B/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.517866, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Patch_NE/Sword/world_final_floor_sword_1B/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57899, 0 )
+shape = SubResource( 2 )
+
+[node name="Patch_SE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 9, 9, 655365, 10, 9, 655364, 11, 9, 655364, -65527, 9, 1, -65526, 9, 1, -65525, 9, 1, 9, 10, 1441796, 10, 10, 655361, 11, 10, 655361, 65546, 10, 655365, 65547, 10, 655364, -65527, 10, 1, 9, 11, 1441796, 10, 11, 655361, 11, 11, 655361, 65546, 11, 1441796, 65547, 11, 1441793, -65527, 11, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="Patch_SW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 9, 655364, 1, 9, 655364, 2, 9, 1048581, -65536, 9, 1, -65535, 9, 1, -65534, 9, 1, 0, 10, 1048577, 1, 10, 1048577, 2, 10, 1048580, 65536, 10, 655364, 65537, 10, 1048581, -65534, 10, 1, 0, 11, 1048577, 1, 11, 1048577, 2, 11, 1048580, 65536, 11, 1048577, 65537, 11, 1048580, -65534, 11, 1 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}

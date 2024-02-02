@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/objects/static_physics/house_wreckage/HouseWreckage2.tscn" type="PackedScene" id=2]
+
+[node name="Building" type="Spatial"]
+
+[node name="HouseWreckage2" parent="." instance=ExtResource( 2 )]

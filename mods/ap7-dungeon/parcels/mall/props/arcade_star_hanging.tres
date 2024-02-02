@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/arcade_star/arcade_star2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/arcade_star/arcade_star1.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+parcels = [ ExtResource( 3 ), ExtResource( 2 ) ]

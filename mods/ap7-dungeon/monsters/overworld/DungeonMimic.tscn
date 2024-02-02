@@ -1,0 +1,586 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://addons/misc_utils/actions/decorators/Repeater.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MoveTowardsPlayerAction.gd" type="Script" id=2]
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=3]
+[ext_resource path="res://world/core/PlayerDetector.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWaitAction.gd" type="Script" id=5]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehavior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/misc_utils/ExtendedAnimationPlayerFallback.gd" type="Script" id=7]
+[ext_resource path="res://world/npc/HumanStateMachine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonNPC.gd" type="Script" id=11]
+[ext_resource path="res://world/monsters/MonsterPalette.gd" type="Script" id=12]
+[ext_resource path="res://world/objects/chests/chest_lid_1.mesh" type="ArrayMesh" id=13]
+[ext_resource path="res://data/monster_forms/traffikrab.tres" type="Resource" id=14]
+[ext_resource path="res://world/objects/chests/chest_lock_1.mesh" type="ArrayMesh" id=16]
+[ext_resource path="res://world/objects/chests/chest_base_1.mesh" type="ArrayMesh" id=17]
+[ext_resource path="res://world/objects/chests/chest_latch_1.mesh" type="ArrayMesh" id=18]
+[ext_resource path="res://sprites/archangels/finalgante/black_unshaded_mat.tres" type="Material" id=20]
+[ext_resource path="res://world/objects/chests/chest_lock_locked.tres" type="Material" id=21]
+[ext_resource path="res://mods/ap7-dungeon/monsters/behaviors/DoNothing.tscn" type="PackedScene" id=22]
+[ext_resource path="res://nodes/sprite_container/alpha_scissor.shader" type="Shader" id=23]
+[ext_resource path="res://ui/monster_stickers/miss_mimic.png" type="Texture" id=24]
+
+[sub_resource type="BoxShape" id=25]
+extents = Vector3( 0.7, 0.75, 0.6 )
+
+[sub_resource type="ShaderMaterial" id=26]
+shader = ExtResource( 23 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = null
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 0.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_1 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_2 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_3 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 0
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 24 )
+
+[sub_resource type="ShaderMaterial" id=27]
+next_pass = SubResource( 26 )
+shader = ExtResource( 23 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/flags_albedo_tex_force_srgb = false
+shader_param/alpha_scissor_threshold = 0.98
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = null
+shader_param/metallic_texture_channel = null
+shader_param/roughness_texture_channel = null
+shader_param/emission = Color( 0, 0, 0, 1 )
+shader_param/emission_energy = 0.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/rotation = Vector3( 0, 0, 0 )
+shader_param/overlay_scroll_rate = Vector2( 0, 0 )
+shader_param/overlay_opacity = 0.0
+shader_param/swap_blend = 0.0
+shader_param/swap_from_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_from_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_default_14 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_0 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_1 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_2 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_3 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_4 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_5 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_6 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_7 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_8 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_9 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_10 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_11 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_12 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_13 = Color( 0, 0, 0, 0 )
+shader_param/swap_to_14 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_0 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_1 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_2 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_3 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_4 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_5 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_6 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_7 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_8 = Color( 0, 0, 0, 0 )
+shader_param/emission_color_9 = Color( 0, 0, 0, 0 )
+shader_param/wave_amplitude = 0.0
+shader_param/wave_v_frequency = 0.0
+shader_param/wave_t_frequency = 5.0
+shader_param/wave_min_u = 0.0
+shader_param/wave_max_u = 1.0
+shader_param/wave_min_v = 0.0
+shader_param/wave_max_v = 1.0
+shader_param/glow = 0.0
+shader_param/billboard_mode = 0
+shader_param/billboard_depth_hack = true
+shader_param/static_offset = 0.0
+shader_param/static_amount = 0.0
+shader_param/static_border = 0.125
+shader_param/static_speed = 0.0
+shader_param/sparkle = false
+shader_param/sparkle_period = 20.0
+shader_param/sparkle_falloff = 100.0
+shader_param/sparkle_amplitude = 5.0
+shader_param/sparkliness = 2.0
+shader_param/texture_albedo = ExtResource( 24 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("chest:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("chest/Lid:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("chest:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "run_down"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("chest:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("chest:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.249991, 0.614491, 0.05, -0.122902, 5, -0.05, 1.40531, 0.05, -0.0839281, -10.2008, -0.15, -0.138792, 0.05, -0.138792, 0, -0.0486122, 0.0709043, 0.0513877, -0.0749525 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("chest:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0.0483818, 0.05, -0.00967637, 0, -0.05, 0, 0.0502185, 0, 0.75, -0.0499997, 0.186956, 0.06249, -0.23366, 0, -0.05, 0.00967637, 0.05, -0.00967637 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.45 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("chest/Lid:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.246057, -0.240498, 0.05, 0.0488704, 0, -0.05, 0.232568, 0.0555231, -0.258258, -20, -0.05, 0, 0.0508047, 0, 0, -0.10002, 0.282975, 0.0846545, -0.239504 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 )
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "run_left"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("chest:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("chest:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.249991, 0.614491, 0.05, -0.122902, 5, -0.05, 1.40531, 0.05, -0.0839281, -10.2008, -0.15, -0.138792, 0.05, -0.138792, 0, -0.0486122, 0.0709043, 0.0513877, -0.0749525 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("chest:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0.0483818, 0.05, -0.00967637, 0, -0.05, 0, 0.0502185, 0, 0.75, -0.0499997, 0.186956, 0.06249, -0.23366, 0, -0.05, 0.00967637, 0.05, -0.00967637 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.45 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("chest/Lid:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.246057, -0.240498, 0.05, 0.0488704, 0, -0.05, 0.232568, 0.0555231, -0.258258, -20, -0.05, 0, 0.0508047, 0, 0, -0.10002, 0.282975, 0.0846545, -0.239504 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 )
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "run_right"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("chest:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("chest:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.249991, 0.614491, 0.05, -0.122902, 5, -0.05, 1.40531, 0.05, -0.0839281, -10.2008, -0.15, -0.138792, 0.05, -0.138792, 0, -0.0486122, 0.0709043, 0.0513877, -0.0749525 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("chest:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0.0483818, 0.05, -0.00967637, 0, -0.05, 0, 0.0502185, 0, 0.75, -0.0499997, 0.186956, 0.06249, -0.23366, 0, -0.05, 0.00967637, 0.05, -0.00967637 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.45 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("chest/Lid:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.246057, -0.240498, 0.05, 0.0488704, 0, -0.05, 0.232568, 0.0555231, -0.258258, -20, -0.05, 0, 0.0508047, 0, 0, -0.10002, 0.282975, 0.0846545, -0.239504 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 )
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "run_up"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("chest:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("chest:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.249991, 0.614491, 0.05, -0.122902, 5, -0.05, 1.40531, 0.05, -0.0839281, -10.2008, -0.15, -0.138792, 0.05, -0.138792, 0, -0.0486122, 0.0709043, 0.0513877, -0.0749525 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("chest:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0.0483818, 0.05, -0.00967637, 0, -0.05, 0, 0.0502185, 0, 0.75, -0.0499997, 0.186956, 0.06249, -0.23366, 0, -0.05, 0.00967637, 0.05, -0.00967637 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.45 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("chest/Lid:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.246057, -0.240498, 0.05, 0.0488704, 0, -0.05, 0.232568, 0.0555231, -0.258258, -20, -0.05, 0, 0.0508047, 0, 0, -0.10002, 0.282975, 0.0846545, -0.239504 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 )
+}
+
+[sub_resource type="CubeMesh" id=12]
+material = ExtResource( 20 )
+size = Vector3( 1.5, 0.5, 0.8 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 1.1, 0.8, 0.9 )
+
+[sub_resource type="CylinderShape" id=28]
+radius = 6.0
+
+[node name="Mimic" instance=ExtResource( 3 )]
+collision_layer = 16528
+collision_mask = 40977
+script = ExtResource( 11 )
+can_swim = false
+can_dash = false
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1.4, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
+shape = SubResource( 25 )
+
+[node name="Sprite" parent="." index="2"]
+idle = "idle"
+direction = "none"
+emission = Color( 0, 0, 0, 1 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="Sprite" index="0"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite/Spatial" index="0"]
+visible = false
+material_override = SubResource( 27 )
+texture = ExtResource( 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Spatial" index="1"]
+anims/idle = SubResource( 7 )
+anims/run_down = SubResource( 8 )
+anims/run_left = SubResource( 20 )
+anims/run_right = SubResource( 21 )
+anims/run_up = SubResource( 22 )
+script = ExtResource( 7 )
+
+[node name="chest" type="Spatial" parent="Sprite/Spatial" index="2"]
+transform = Transform( 1, 0, 0, 0, 0.997726, 0.0674067, 0, -0.0674067, 0.997726, 0, 0, 0 )
+
+[node name="chest_base" type="MeshInstance" parent="Sprite/Spatial/chest" index="0"]
+mesh = ExtResource( 17 )
+
+[node name="chest_lock_1" type="MeshInstance" parent="Sprite/Spatial/chest" index="1"]
+transform = Transform( 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0, 1, 0, 0.811169, 0.685 )
+material_override = ExtResource( 21 )
+mesh = ExtResource( 16 )
+
+[node name="chest_innards" type="MeshInstance" parent="Sprite/Spatial/chest" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621073, 0 )
+mesh = SubResource( 12 )
+
+[node name="Lid" type="Spatial" parent="Sprite/Spatial/chest" index="3"]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 1, -0.625 )
+
+[node name="chest_latch_1" type="MeshInstance" parent="Sprite/Spatial/chest/Lid" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.013, 0.437, 0.51 )
+mesh = ExtResource( 18 )
+
+[node name="chest_lid_1" type="MeshInstance" parent="Sprite/Spatial/chest/Lid" index="1"]
+mesh = ExtResource( 13 )
+
+[node name="EmotePlayer" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2066, 0 )
+
+[node name="Interaction" parent="." index="4"]
+display_marker = false
+
+[node name="CollisionShape" parent="Interaction" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.1 )
+shape = SubResource( 14 )
+
+[node name="Footsteps" parent="." index="5"]
+footsteps_disabled = true
+
+[node name="StateMachine" parent="." index="8" instance=ExtResource( 10 )]
+
+[node name="Walking" parent="StateMachine" index="0"]
+max_walk_speed = 12.0
+footstep_duration = 0.5
+let_animations_finish = true
+
+[node name="PlayerTouchDetector" parent="." index="9" instance=ExtResource( 4 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerTouchDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
+shape = SubResource( 14 )
+
+[node name="PlayerSightDetector" parent="." index="10" instance=ExtResource( 4 )]
+
+[node name="CollisionShape2" type="CollisionShape" parent="PlayerSightDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 28 )
+
+[node name="MonsterPalette" type="Node" parent="." index="11"]
+script = ExtResource( 12 )
+species = ExtResource( 14 )
+
+[node name="MonsterBehavior" parent="." index="12" instance=ExtResource( 6 )]
+
+[node name="Action" parent="MonsterBehavior/Idle" index="0" instance=ExtResource( 22 )]
+
+[node name="wait1" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="0"]
+script = ExtResource( 5 )
+
+[node name="Repeater" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="1"]
+script = ExtResource( 1 )
+max_repeats = 8
+
+[node name="player_step" type="Node" parent="MonsterBehavior/Pursue/AggroAction/Failer/Repeater" index="0"]
+script = ExtResource( 2 )
+max_ticks = 2
+motion_type = 3
+allow_block = true
+
+[connection signal="interacted" from="Interaction" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerTouchDetector" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerSightDetector" to="MonsterBehavior" method="pursue"]
+
+[editable path="StateMachine"]
+[editable path="MonsterBehavior"]

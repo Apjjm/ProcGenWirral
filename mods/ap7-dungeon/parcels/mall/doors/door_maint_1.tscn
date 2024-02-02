@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://world/core/KillArea.gd" type="Script" id=2]
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=3]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 12, 8, 1 )
+
+[sub_resource type="BoxShape" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.5, 5, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+
+[node name="floor" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 4, 0, 1441802, 7, 0, 655370, -65536, 0, 655372, -65535, 0, 655373, -65534, 0, 655372, -65533, 0, 655373, -65532, 0, 1048591, -65531, 0, 1048607, -65530, 0, 1048607, -65529, 0, 15, -65528, 0, 655373, -65527, 0, 655373, -65526, 0, 655372, -65525, 0, 655372 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="fence" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 0, 0, 655396, 1, 0, 655393, 2, 0, 655393, 3, 0, 655394, 4, 0, 1441829, 7, 0, 655397, 8, 0, 655393, 9, 0, 655394, 10, 0, 655393, 11, 0, 655395 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="pillars" type="GridMap" parent="Wall_LR"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 655371, 11, 0, 1441803, 65536, 0, 655371, 65547, 0, 1441803, 131072, 0, 655371, 131083, 0, 1441803, 196608, 0, 655371, 196619, 0, 1441803, 262144, 0, 655370, 262155, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_L" type="Spatial" parent="."]
+
+[node name="floor" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 4, 0, 1441802, 7, 0, 655370, -65536, 0, 655372, -65535, 0, 655373, -65534, 0, 655372, -65533, 0, 655373, -65532, 0, 1048591, -65531, 0, 1048607, -65530, 0, 1048607, -65529, 0, 15, -65528, 0, 655373, -65527, 0, 655373, -65526, 0, 655372 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="fence" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 0, 0, 655396, 1, 0, 655393, 2, 0, 655393, 3, 0, 655394, 4, 0, 1441829, 7, 0, 655397, 8, 0, 655393, 9, 0, 655394, 10, 0, 655395 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="pillars" type="GridMap" parent="Wall_L"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 655371, 10, 0, 1441803, 65536, 0, 655371, 65546, 0, 1441803, 131072, 0, 655371, 131082, 0, 1441803, 196608, 0, 655371, 196618, 0, 1441803, 262144, 0, 655370, 262154, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_R" type="Spatial" parent="."]
+
+[node name="floor" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 4, 0, 1441802, 7, 0, 655370, -65535, 0, 655373, -65534, 0, 655372, -65533, 0, 655373, -65532, 0, 1048591, -65531, 0, 1048607, -65530, 0, 1048607, -65529, 0, 15, -65528, 0, 655373, -65527, 0, 655373, -65526, 0, 655372, -65525, 0, 655372 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="fence" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 1, 0, 655396, 2, 0, 655393, 3, 0, 655394, 4, 0, 1441829, 7, 0, 655397, 8, 0, 655393, 9, 0, 655394, 10, 0, 655393, 11, 0, 655395 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="pillars" type="GridMap" parent="Wall_R"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 1, 0, 655371, 11, 0, 1441803, 65537, 0, 655371, 65547, 0, 1441803, 131073, 0, 655371, 131083, 0, 1441803, 196609, 0, 655371, 196619, 0, 1441803, 262145, 0, 655370, 262155, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_S" type="Spatial" parent="."]
+
+[node name="floor" type="GridMap" parent="Wall_S"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 4, 0, 1441802, 7, 0, 655370, -65535, 0, 655373, -65534, 0, 655372, -65533, 0, 655373, -65532, 0, 1048591, -65531, 0, 1048607, -65530, 0, 1048607, -65529, 0, 15, -65528, 0, 655373, -65527, 0, 655373, -65526, 0, 655372 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="fence" type="GridMap" parent="Wall_S"]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 1, 0, 655396, 2, 0, 655393, 3, 0, 655394, 4, 0, 1441829, 7, 0, 655397, 8, 0, 655393, 9, 0, 655394, 10, 0, 655395 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="pillars" type="GridMap" parent="Wall_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 1, 0, 655371, 10, 0, 1441803, 65537, 0, 655371, 65546, 0, 1441803, 131073, 0, 655371, 131082, 0, 1441803, 196609, 0, 655371, 196618, 0, 1441803, 262145, 0, 655370, 262154, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="EnemyBlocker" type="StaticBody" parent="."]
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyBlocker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 1 )
+shape = SubResource( 3 )
+
+[node name="KillArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KillArea"]
+transform = Transform( 12, 0, 0, 0, 2, 0, 0, 0, 1, 0, -3, 1 )
+shape = SubResource( 4 )
+
+[node name="collider" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 3.5, 1 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="collider"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3.5, 1 )
+shape = SubResource( 5 )

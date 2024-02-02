@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/VisibilityBatchNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/vinyl/mall_vinyl.tres" type="Resource" id=4]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=5]
+
+[node name="deco" type="Spatial"]
+
+[node name="walls" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+script = ExtResource( 2 )
+never_south = true
+
+[node name="Spatial" type="Spatial" parent="walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.875, 2.5 )
+script = ExtResource( 5 )
+y_min = -5.0
+y_max = 5.0
+axis = 2
+
+[node name="w1" type="Spatial" parent="walls/Spatial"]
+script = ExtResource( 3 )
+parcel_set = ExtResource( 4 )
+preview_index = 1
+
+[node name="Spatial2" type="Spatial" parent="walls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.558, 4.288, 2.501 )
+script = ExtResource( 5 )
+y_min = -5.0
+y_max = 5.0
+axis = 2
+
+[node name="w1" type="Spatial" parent="walls/Spatial2"]
+script = ExtResource( 3 )
+parcel_set = ExtResource( 4 )
+preview_index = 1
+
+[node name="PointOfInterest" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 4 )
+script = ExtResource( 1 )
+possible_types = 8

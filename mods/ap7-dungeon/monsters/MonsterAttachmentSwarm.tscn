@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://world/objects/forces/gust_region/gust.shader" type="Shader" id=1]
+[ext_resource path="res://world/objects/forces/gust_region/ShadowGustParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/environment/world/ShadowCloudSwirl.mesh" type="ArrayMesh" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/initial_speed = 4.8
+shader_param/linear_accel = Vector3( 0, 20, 0 )
+shader_param/radius = 3.0
+shader_param/height = 7.0
+shader_param/angular_vel = 6.28
+shader_param/fade_rate = 10.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:mesh:surface_1/material:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.1, 0, 0 ), Vector3( 0.2, 0, 0 ), Vector3( 0.3, 0, 0 ), Vector3( 0.4, 0, 0 ), Vector3( 0.5, 0, 0 ), Vector3( 0.6, 0, 0 ), Vector3( 0.7, 0, 0 ), Vector3( 0.8, 0, 0 ), Vector3( 0.9, 0, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0.1, 0.5, 0 ), Vector3( 0.2, 0.5, 0 ), Vector3( 0.3, 0.5, 0 ), Vector3( 0.4, 0.5, 0 ), Vector3( 0.5, 0.5, 0 ), Vector3( 0.6, 0.5, 0 ), Vector3( 0.7, 0.5, 0 ), Vector3( 0.8, 0.5, 0 ), Vector3( 0.9, 0.5, 0 ) ]
+}
+
+[node name="Swarm" type="Spatial"]
+
+[node name="ShadowGustParticles" parent="." instance=ExtResource( 2 )]
+emitting = true
+amount = 35
+lifetime = 0.7
+visibility_aabb = AABB( -3, 0, -3, 6, 7, 6 )
+process_material = SubResource( 1 )
+height = 7.0
+radius = 3.0
+
+[node name="AudioPlayer" parent="ShadowGustParticles" index="0"]
+max_db = 0.8
+max_distance = 10.0
+
+[node name="ShadowCloudSwirl" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.75029, 0 )
+mesh = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShadowCloudSwirl"]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+
+[editable path="ShadowGustParticles"]

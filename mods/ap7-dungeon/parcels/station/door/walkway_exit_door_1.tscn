@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/maps/FinalDungeonMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/station/props/StationElevator.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12, 30, 3.5 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Wall_LR" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+
+[node name="GridMap2" type="GridMap" parent="Wall_LR"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 4, 15, -131071, 4, 15, -131070, 4, 15, -131069, 4, 655375, -131064, 4, 655375, -131063, 4, 15, -131062, 4, 15, -131061, 4, 15, -65536, 4, 655373, -65535, 4, 655373, -65534, 4, 655373, -65533, 4, 655373, -65528, 4, 655373, -65527, 4, 655373, -65526, 4, 655373, -65525, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_L" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="GridMap2" type="GridMap" parent="Wall_L"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131072, 4, 15, -131071, 4, 15, -131070, 4, 15, -131069, 4, 655375, -65536, 4, 655373, -65535, 4, 655373, -65534, 4, 655373, -65533, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Wall_R" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+visible = false
+
+[node name="GridMap2" type="GridMap" parent="Wall_R"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131064, 4, 655375, -131063, 4, 15, -131062, 4, 15, -131061, 4, 15, -65528, 4, 655373, -65527, 4, 655373, -65526, 4, 655373, -65525, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -2, 0 )
+}
+
+[node name="Shared" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -131068, 4, 655375, -131067, 4, 655375, -131066, 4, 655375, -131065, 4, 655375, -65532, 4, 655373, -65531, 4, 655373, -65530, 4, 655373, -65529, 4, 655373 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -3, 0 )
+}
+
+[node name="EnemyBlocker" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+collision_layer = 8192
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="EnemyBlocker"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2 )
+shape = SubResource( 1 )
+
+[node name="Elevator" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -8, 3 )
+movement_offset = Vector3( 0, 8, 0 )

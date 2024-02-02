@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/environment/battle/grasslands_vine_1.json" type="PackedScene" id=1]
+[ext_resource path="res://world/objects/static_physics/mall_props/MallTree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource( 3 )
+data = {
+"cells": PoolIntArray( 0, 65532, 1441796, 1, 65532, 655364, 0, 65533, 1441797, 1, 65533, 1048581, 0, 65534, 1441797, 1, 65534, 1048581, 0, 65535, 4, 1, 65535, 1048580 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="MallTree" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.874042, 0.00688978, 0.485802, 0.0141281, 0.999116, -0.0395887, -0.485645, 0.0414657, 0.873172, 1.72466, 0.37763, -3.95318 )
+
+[node name="Sprite" parent="MallTree" instance=ExtResource( 1 )]
+transform = Transform( 0.809456, -0.0582338, 0.584287, 0.020313, 0.997252, 0.0712515, -0.58683, -0.0458063, 0.808414, 0.792951, -0.415319, 0.349307 )

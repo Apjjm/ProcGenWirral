@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/ParcelSet.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/cave/floor/exit/cave_floor_exit_1.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+zones = [ "exitl" ]
+target_zones = [  ]
+target_direction_only = 0
+require_occupied_wall_flags = 0
+require_free_wall_flags = 0
+offset = Vector3( 0, -6, 0 )
+parcels = [ ExtResource( 2 ) ]

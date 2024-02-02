@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=1]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuItemActionPlayerStatUpgrade.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=3]
+[ext_resource path="res://ui/icons/status_effects/speed_up.png" type="Texture" id=4]
+[ext_resource path="res://ui/icons/status_effects/attack_melee_up.png" type="Texture" id=5]
+[ext_resource path="res://ui/icons/status_effects/defense_melee_up.png" type="Texture" id=6]
+[ext_resource path="res://ui/icons/status_effects/attack_ranged_up.png" type="Texture" id=7]
+[ext_resource path="res://ui/icons/status_effects/defense_ranged_up.png" type="Texture" id=8]
+[ext_resource path="res://ui/icons/status_effects/health_up.png" type="Texture" id=9]
+
+[node name="Rewards" type="Node"]
+script = ExtResource( 3 )
+menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
+menu_open_sound = ExtResource( 1 )
+
+[node name="StatUpHP" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_HP_UP_DESC"
+quality = 1
+icon = ExtResource( 9 )
+
+[node name="StatUpMDEF" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_MDEF_UP_DESC"
+quality = 1
+icon = ExtResource( 6 )
+stat = 1
+
+[node name="StatUpRDEF" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_RDEF_UP_DESC"
+quality = 1
+icon = ExtResource( 8 )
+stat = 3
+
+[node name="StatUpMATK" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_MATK_UP_DESC"
+quality = 1
+icon = ExtResource( 5 )
+stat = 2
+
+[node name="StatUpRATK" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_RATK_UP_DESC"
+quality = 1
+icon = ExtResource( 7 )
+stat = 4
+
+[node name="StatUpSPD" type="Node" parent="."]
+script = ExtResource( 2 )
+title = "AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP"
+description = "AP7_DUNGEON_MENU_SHRINE_STAT_SPD_UP_DESC"
+quality = 1
+icon = ExtResource( 4 )
+stat = 5

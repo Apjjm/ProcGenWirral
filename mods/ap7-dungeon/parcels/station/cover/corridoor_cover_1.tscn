@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Patch_C" type="Spatial" parent="."]
+
+[node name="Treasure" type="Spatial" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 1 )
+
+[node name="Treasure_y1_x3" type="Position3D" parent="Patch_C/Treasure"]
+script = ExtResource( 3 )
+possible_types = 8
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="Patch_C"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="Patch_N" type="Spatial" parent="."]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="Patch_E" type="Spatial" parent="."]
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 12 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="Patch_S" type="Spatial" parent="."]
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="Patch_S"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 20 )
+script = ExtResource( 3 )
+possible_types = 4
+
+[node name="Patch_W" type="Spatial" parent="."]
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="Patch_W"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 12 )
+script = ExtResource( 3 )
+possible_types = 4

@@ -1,0 +1,188 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://world/maps/StationMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://mods/ap7-dungeon/floorgen/NextFloorWarpArea.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2, 2, 0.25 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.25, 2, 0.25 )
+
+[sub_resource type="QuadMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1.5, 4, 1.5 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 12, 1, 12 )
+
+[node name="Floor" type="Spatial"]
+
+[node name="Patch_C" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( -65535, 1, 1441792, -65534, 1, 1441792, -65533, 1, 1441792, -65532, 1, 1441795, -65531, 1, 1441795, -65530, 1, 1441795, -65529, 1, 1441795, -65528, 1, 1441792, -65527, 1, 1441792, -65526, 1, 1441792, -65535, 2, 1441792, -65534, 2, 1441792, -65533, 2, 1441792, -65532, 2, 1441795, -65531, 2, 1441795, -65530, 2, 1441795, -65529, 2, 1441795, -65528, 2, 1441792, -65527, 2, 1441792, -65526, 2, 1441792, -65535, 3, 1441792, -65534, 3, 1441792, -65533, 3, 1441792, -65532, 3, 1441795, -65531, 3, 1441795, -65530, 3, 1441795, -65529, 3, 1441795, -65528, 3, 1441792, -65527, 3, 1441792, -65526, 3, 1441792, -65535, 4, 1441795, -65534, 4, 1441795, -65533, 4, 1441795, -65532, 4, 1441795, -65531, 4, 1441795, -65530, 4, 1441795, -65529, 4, 1441795, -65528, 4, 1441795, -65527, 4, 1441795, -65526, 4, 1441795, 5, 5, 1048605, 6, 5, 29, -65535, 5, 1441795, -65534, 5, 1441795, -65533, 5, 1441795, -65532, 5, 1441795, -65531, 5, 131101, -65530, 5, 1179677, -65529, 5, 1441795, -65528, 5, 1441795, -65527, 5, 1441795, -65526, 5, 1441795, 5, 6, 655389, 6, 6, 1441821, -65535, 6, 1441795, -65534, 6, 1441795, -65533, 6, 1441795, -65532, 6, 1441795, -65531, 6, 1310749, -65530, 6, 524317, -65529, 6, 1441795, -65528, 6, 1441795, -65527, 6, 1441795, -65526, 6, 1441795, -65535, 7, 1441795, -65534, 7, 1441795, -65533, 7, 1441795, -65532, 7, 1441795, -65531, 7, 1441795, -65530, 7, 1441795, -65529, 7, 1441795, -65528, 7, 1441795, -65527, 7, 1441795, -65526, 7, 1441795, -65535, 8, 1441792, -65534, 8, 1441792, -65533, 8, 1441792, -65532, 8, 1441795, -65531, 8, 1441795, -65530, 8, 1441795, -65529, 8, 1441795, -65528, 8, 1441792, -65527, 8, 1441792, -65526, 8, 1441792, -65535, 9, 1441792, -65534, 9, 1441792, -65533, 9, 1441792, -65532, 9, 1441795, -65531, 9, 1441795, -65530, 9, 1441795, -65529, 9, 1441795, -65528, 9, 1441792, -65527, 9, 1441792, -65526, 9, 1441792, -65535, 10, 1441792, -65534, 10, 1441792, -65533, 10, 1441792, -65532, 10, 1441795, -65531, 10, 1441795, -65530, 10, 1441795, -65529, 10, 1441795, -65528, 10, 1441792, -65527, 10, 1441792, -65526, 10, 1441792 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 1, 0, 131072, 2, 0, 131072, 3, 0, 131072, 4, 0, 131075, 5, 0, 131075, 6, 0, 131075, 7, 0, 131075, 8, 0, 131072, 9, 0, 131072, 10, 0, 131072 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_E" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 11, 1, 131072, 11, 2, 131072, 11, 3, 131072, 11, 4, 131075, 11, 5, 131075, 11, 6, 131075, 11, 7, 131075, 11, 8, 131072, 11, 9, 131072, 11, 10, 131072 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 1, 11, 131072, 2, 11, 131072, 3, 11, 131072, 4, 11, 131075, 5, 11, 131075, 6, 11, 131075, 7, 11, 131075, 8, 11, 131072, 9, 11, 131072, 10, 11, 131072 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_W" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 1, 131072, 0, 2, 131072, 0, 3, 131072, 0, 4, 131075, 0, 5, 131075, 0, 6, 131075, 0, 7, 131075, 0, 8, 131072, 0, 9, 131072, 0, 10, 131072 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_NW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 131073 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_NE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 11, 0, 131073 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_SE" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 11, 11, 131073 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="Patch_SW" type="GridMap" parent="."]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 11, 131073 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="hole" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="hole"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.5, 4.25 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="hole"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -1.5, 7.74381 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.75369, -1.5, 6.01249 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.24506, -1.5, 6.01249 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.24506, -5.5, 6.01249 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.6961, -5.5, 6.01249 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="hole"]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 5.98724, -5.5, 4.17469 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="hole"]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 5.98724, -5.5, 7.80359 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.62885, -1.5, 4.62842 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.36702, -1.5, 4.62723 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.37095, -1.5, 7.38387 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="hole"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.60964, -1.5, 7.38387 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="hole"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.00215, -8.13877, 5.97839 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, -1.31134e-07, 1, 0, -3, -4.37114e-08, 12, -0.4, 12 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -2, 12 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.18619, 0 )
+shape = SubResource( 5 )
+
+[node name="Roof" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 10, 12 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Roof"]
+shape = SubResource( 6 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://world/objects/static_physics/mall_props/MallWallClothesRack1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/clothes/mall_clothes.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="MallWallClothesRack1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( -0.0831387, 0, 0.996538, 0, 1, 0, -0.996538, 0, -0.0831387, 0.868681, 2.30344, 1.05037 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 2 )
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 0.35972, 0, 0.93306, 0, 1, 0, -0.93306, 0, 0.35972, 0.886157, 2.30344, -0.567922 )
+script = ExtResource( 3 )
+parcel_set = ExtResource( 2 )

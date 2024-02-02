@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=2]
+[ext_resource path="res://models/world_scenes/props/glowshroom_large_1.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="RandomTreasureRot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+
+[node name="PointOfInterest" type="Position3D" parent="RandomTreasureRot"]
+transform = Transform( 0.716558, 0, 0.697528, 0, 1, 0, -0.697528, 0, 0.716558, 0, 0, 0 )
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="RandomTreasureRot2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12 )
+script = ExtResource( 2 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="RandomTreasureRot" type="Spatial" parent="RandomTreasureRot2"]
+transform = Transform( 1, 0, 0, -2.23517e-08, 1, -1.49012e-08, -2.98023e-08, -1.49012e-08, 1, -2.32088, -0.021564, -4.08553 )
+script = ExtResource( 2 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="glowshroom_large_4" parent="RandomTreasureRot2/RandomTreasureRot" instance=ExtResource( 3 )]
+transform = Transform( 0.876672, 0.37484, -0.301565, -0.416481, 0.905093, -0.0857255, 0.24081, 0.20075, 0.949584, 0, 0.384164, 0.410309 )

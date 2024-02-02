@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/mall/props/vinyl/mall_vinyl.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://world/objects/static_physics/mall_props/MallShelf1.tscn" type="PackedScene" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="wooden_shelf_1" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, 0 )
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( -4.33883e-08, -0.121367, 0.992608, -5.30512e-09, 0.992608, 0.121367, -1, 0, -4.37114e-08, 0.154153, 3.76198, -0.630408 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 0.0402713, -0.184693, 0.981971, -8.07976e-09, 0.982768, 0.184843, -0.999189, -0.00744388, 0.0395773, 0.232491, 3.76198, 0.774997 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="RandomParcelNode3" type="Spatial" parent="."]
+transform = Transform( -4.00933e-08, -0.398365, 0.917227, -1.74131e-08, 0.917227, 0.398365, -1, 0, -4.37114e-08, 0.501562, 3.76198, 0.169123 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )

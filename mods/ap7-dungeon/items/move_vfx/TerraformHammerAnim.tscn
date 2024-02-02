@@ -1,0 +1,464 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/shaders/WorldGrid.gdshader" type="Shader" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/move_vfx/TerraformRootNode.gd" type="Script" id=2]
+[ext_resource path="res://sprites/archangels/oldgante/OldganteWhite.tres" type="Material" id=3]
+[ext_resource path="res://mods/ap7-dungeon/models/BasicChisel_chisel.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://mods/ap7-dungeon/models/hammer.glb" type="PackedScene" id=5]
+[ext_resource path="res://mods/ap7-dungeon/models/hammer_mat_fade.tres" type="Material" id=6]
+
+[sub_resource type="CubeMesh" id=13]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 1 )
+shader_param/grid_scale = Vector3( 8, 8, 8 )
+shader_param/grid_line = Vector3( 0.04, 0.04, 0.04 )
+shader_param/grid_cell_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+shader_param/grid_line_color = Color( 0.815686, 0.870588, 0.894118, 1 )
+shader_param/grid_line_emission = Color( 0.74902, 0.921569, 1, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+shader_param/fade_origin = Vector3( 0, 0, 0 )
+shader_param/fade_oiio = Plane( 0, 0, 0, 0 )
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("tfmain:material/0:shader_param/fade_oiio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Plane( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tfmain:material/0:shader_param/fade_oiio:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tfmain:material/0:shader_param/fade_oiio:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tfmain:material/0:shader_param/fade_oiio:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("tfmain:material/0:shader_param/fade_oiio:d")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("chisel:translation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 13.976, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("chisel:translation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 70, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("chisel:translation:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("shockwaves:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("shockwaves:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("shockwaves:scale:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("shockwaves/shockwave3:material/0:albedo_color")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("hammer:translation:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("hammer:translation:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 200, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("hammer:rotation_degrees:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:x")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "bezier"
+tracks/16/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:y")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/17/type = "bezier"
+tracks/17/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:z")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/18/type = "bezier"
+tracks/18/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:d")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "tf_in"
+length = 4.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("tfmain:material/0:shader_param/fade_oiio:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 33.0936, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.45, 3.05, 3.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("tfmain:material/0:shader_param/fade_oiio:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 2.23253e-08, -0.25, 0, 0.25, 0, 33.1846, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 2.35, 2.95, 3.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("tfmain:material/0:shader_param/fade_oiio:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 30.7322, -0.2, -21.7678, 0.2, 21.7678, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 1.2, 1.8 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("tfmain:material/0:shader_param/fade_oiio:d")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.001, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 32.4659, -0.0999999, -9.51898, 0.0999999, 9.51898, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 1.2, 1.7 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("chisel:translation:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 13.976, -0.25, 0, 0.1, -0.435833, -0.368942, -0.2, 13.9091, 0.25, 0, -0.368942, -0.25, 0, 0.25, 0, -4.29324, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 2.35, 2.75 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("chisel:translation:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 60, -0.25, 0, 0.3, -34.6252, -2.54024, -0.1, 27.3723, 0.25, 0, -2.54024, -0.25, 0, 0.25, 0, -22.3848, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 2.35, 2.75 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("shockwaves:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.35, 2.95 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("shockwaves:scale:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0.1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.35, 2.95 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("shockwaves/shockwave3:material/0:albedo_color:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2, 2.35, 2.55, 2.85 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("hammer:translation:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 53.4719, -0.25, 0, 0.25, 0, 53.4719, -0.25, 0, 0.25, 0, 2.65838, -0.25, 0, 0.120189, 1.32665, 7, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.1, 2.5, 3 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("hammer:translation:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 150, -0.25, 0, 0.25, 0, 150, -0.25, 0, 0.25, 0, 9.31828, -0.25, 0, 0.105067, 5.7092, 9.318, -0.25, 0, 0.25, 0, 30, -0.144933, -6.1369, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.1, 2.55, 2.6, 3 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("hammer:rotation_degrees:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 180, -0.25, 0, 0.25, 0, 180, -0.25, 0, 0.25, 0, 265, -0.25, 0, 0.0646838, 9.83145, 280, -0.135316, -8.47873, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.15, 2.5, 2.8 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.6, 3.25 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2.55, 3.15 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 80, -0.25, 0, 0.25, 0, 80, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("hammer/Cube:material/0:shader_param/fade_oiio:d")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0, 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_do_transform"
+} ]
+}
+
+[sub_resource type="ArrayMesh" id=18]
+resource_name = "finalgante_ring_beam"
+surfaces/0 = {
+"aabb": AABB( 0, -1.96585, -1.96585, 1e-05, 3.9317, 3.9317 ),
+"array_data": PoolByteArray( 0, 0, 0, 0, 180, 56, 209, 63, 33, 204, 139, 63, 127, 0, 0, 0, 0, 129, 0, 127, 100, 45, 56, 58, 0, 0, 0, 0, 166, 237, 177, 63, 166, 237, 177, 63, 127, 0, 0, 0, 0, 129, 0, 127, 175, 48, 212, 58, 0, 0, 0, 0, 21, 200, 158, 63, 21, 200, 158, 63, 127, 0, 0, 0, 0, 129, 0, 127, 231, 49, 134, 58, 0, 0, 0, 0, 19, 181, 186, 63, 5, 130, 121, 63, 127, 0, 0, 0, 0, 130, 0, 127, 32, 48, 251, 57, 0, 0, 0, 0, 232, 160, 251, 191, 0, 0, 0, 128, 127, 0, 0, 0, 0, 129, 0, 127, 0, 60, 0, 56, 0, 0, 0, 0, 41, 203, 246, 191, 121, 92, 196, 190, 127, 0, 0, 0, 0, 130, 0, 127, 236, 59, 112, 54, 0, 0, 0, 0, 134, 60, 220, 191, 33, 59, 175, 190, 127, 0, 0, 0, 0, 130, 0, 127, 128, 59, 155, 54, 0, 0, 0, 0, 17, 141, 224, 191, 0, 0, 0, 128, 127, 0, 0, 0, 0, 129, 0, 127, 145, 59, 0, 56, 0, 0, 0, 0, 121, 121, 232, 63, 151, 150, 64, 63, 127, 0, 0, 0, 0, 129, 0, 127, 223, 40, 135, 57, 0, 0, 0, 0, 75, 117, 207, 63, 48, 221, 43, 63, 127, 0, 0, 0, 0, 129, 0, 127, 158, 45, 93, 57, 0, 0, 0, 0, 41, 203, 246, 191, 117, 92, 196, 62, 127, 0, 0, 0, 0, 129, 0, 127, 236, 59, 199, 56, 0, 0, 0, 0, 134, 60, 220, 191, 33, 59, 175, 62, 127, 0, 0, 0, 0, 129, 0, 127, 128, 59, 178, 56, 0, 0, 0, 0, 41, 203, 246, 63, 121, 92, 196, 62, 127, 0, 0, 0, 0, 130, 0, 127, 235, 32, 199, 56, 0, 0, 0, 0, 134, 60, 220, 63, 33, 59, 175, 62, 127, 0, 0, 0, 0, 129, 0, 127, 252, 43, 178, 56, 0, 0, 0, 0, 121, 121, 232, 191, 146, 150, 64, 63, 127, 0, 0, 0, 0, 130, 0, 127, 178, 59, 135, 57, 0, 0, 0, 0, 75, 117, 207, 191, 43, 221, 43, 63, 127, 0, 0, 0, 0, 129, 0, 127, 76, 59, 93, 57, 0, 0, 0, 0, 232, 160, 251, 63, 0, 0, 0, 128, 127, 0, 0, 0, 0, 129, 0, 127, 0, 0, 0, 56, 0, 0, 0, 0, 17, 141, 224, 63, 0, 0, 0, 128, 127, 0, 0, 0, 0, 130, 0, 127, 227, 42, 0, 56, 0, 0, 0, 0, 180, 56, 209, 191, 33, 204, 139, 63, 127, 0, 0, 0, 0, 129, 0, 127, 83, 59, 56, 58, 0, 0, 0, 0, 28, 181, 186, 191, 254, 129, 121, 63, 127, 0, 0, 0, 0, 129, 0, 127, 247, 58, 251, 57, 0, 0, 0, 0, 41, 203, 246, 63, 127, 92, 196, 190, 127, 0, 0, 0, 0, 129, 0, 127, 235, 32, 112, 54, 0, 0, 0, 0, 134, 60, 220, 63, 40, 59, 175, 190, 127, 0, 0, 0, 0, 130, 0, 127, 252, 43, 155, 54, 0, 0, 0, 0, 166, 237, 177, 191, 166, 237, 177, 63, 127, 0, 0, 0, 0, 129, 0, 127, 212, 58, 212, 58, 0, 0, 0, 0, 21, 200, 158, 191, 21, 200, 158, 63, 127, 0, 0, 0, 0, 129, 0, 127, 134, 58, 134, 58, 0, 0, 0, 0, 121, 121, 232, 63, 154, 150, 64, 191, 127, 0, 0, 0, 0, 129, 0, 127, 223, 40, 240, 52, 0, 0, 0, 0, 75, 117, 207, 63, 50, 221, 43, 191, 127, 0, 0, 0, 0, 130, 0, 127, 158, 45, 68, 53, 0, 0, 0, 0, 33, 204, 139, 191, 180, 56, 209, 63, 127, 0, 0, 0, 0, 129, 0, 127, 56, 58, 83, 59, 0, 0, 0, 0, 253, 129, 121, 191, 28, 181, 186, 63, 127, 0, 0, 0, 0, 129, 0, 127, 251, 57, 247, 58, 0, 0, 0, 0, 180, 56, 209, 63, 33, 204, 139, 191, 127, 0, 0, 0, 0, 129, 0, 127, 100, 45, 28, 51, 0, 0, 0, 0, 28, 181, 186, 63, 249, 129, 121, 191, 127, 0, 0, 0, 0, 129, 0, 127, 32, 48, 8, 52, 0, 0, 0, 0, 149, 150, 64, 191, 121, 121, 232, 63, 127, 0, 0, 0, 0, 129, 0, 127, 135, 57, 178, 59, 0, 0, 0, 0, 46, 221, 43, 191, 75, 117, 207, 63, 127, 0, 0, 0, 0, 129, 0, 127, 93, 57, 76, 59, 0, 0, 0, 0, 117, 92, 196, 190, 41, 203, 246, 191, 127, 0, 0, 0, 0, 129, 0, 127, 199, 56, 235, 32, 0, 0, 0, 0, 0, 0, 0, 0, 232, 160, 251, 191, 127, 0, 0, 0, 0, 129, 0, 127, 0, 56, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 141, 224, 191, 127, 0, 0, 0, 0, 130, 0, 127, 0, 56, 227, 42, 0, 0, 0, 0, 33, 59, 175, 190, 134, 60, 220, 191, 127, 0, 0, 0, 0, 129, 0, 127, 178, 56, 252, 43, 0, 0, 0, 0, 166, 237, 177, 63, 166, 237, 177, 191, 127, 0, 0, 0, 0, 129, 0, 127, 175, 48, 175, 48, 0, 0, 0, 0, 21, 200, 158, 63, 21, 200, 158, 191, 127, 0, 0, 0, 0, 129, 0, 127, 231, 49, 231, 49, 0, 0, 0, 0, 117, 92, 196, 190, 41, 203, 246, 63, 127, 0, 0, 0, 0, 129, 0, 127, 199, 56, 236, 59, 0, 0, 0, 0, 30, 59, 175, 190, 134, 60, 220, 63, 127, 0, 0, 0, 0, 130, 0, 127, 178, 56, 128, 59, 0, 0, 0, 0, 147, 150, 64, 191, 121, 121, 232, 191, 127, 0, 0, 0, 0, 129, 0, 127, 135, 57, 223, 40, 0, 0, 0, 0, 45, 221, 43, 191, 75, 117, 207, 191, 127, 0, 0, 0, 0, 129, 0, 127, 93, 57, 158, 45, 0, 0, 0, 0, 33, 204, 139, 63, 180, 56, 209, 191, 127, 0, 0, 0, 0, 129, 0, 127, 28, 51, 100, 45, 0, 0, 0, 0, 2, 130, 121, 63, 19, 181, 186, 191, 127, 0, 0, 0, 0, 129, 0, 127, 8, 52, 32, 48, 0, 0, 0, 0, 55, 5, 86, 52, 232, 160, 251, 63, 127, 0, 0, 0, 0, 129, 0, 127, 0, 56, 0, 60, 0, 0, 0, 0, 78, 236, 59, 52, 17, 141, 224, 63, 127, 0, 0, 0, 0, 130, 0, 127, 0, 56, 145, 59, 0, 0, 0, 0, 33, 204, 139, 191, 180, 56, 209, 191, 127, 0, 0, 0, 0, 129, 0, 127, 56, 58, 100, 45, 0, 0, 0, 0, 254, 129, 121, 191, 19, 181, 186, 191, 127, 0, 0, 0, 0, 130, 0, 127, 251, 57, 32, 48, 0, 0, 0, 0, 147, 150, 64, 63, 121, 121, 232, 191, 127, 0, 0, 0, 0, 129, 0, 127, 240, 52, 223, 40, 0, 0, 0, 0, 45, 221, 43, 63, 75, 117, 207, 191, 127, 0, 0, 0, 0, 129, 0, 127, 68, 53, 158, 45, 0, 0, 0, 0, 117, 92, 196, 62, 41, 203, 246, 63, 127, 0, 0, 0, 0, 130, 0, 127, 112, 54, 236, 59, 0, 0, 0, 0, 30, 59, 175, 62, 134, 60, 220, 63, 127, 0, 0, 0, 0, 129, 0, 127, 155, 54, 128, 59, 0, 0, 0, 0, 166, 237, 177, 191, 166, 237, 177, 191, 127, 0, 0, 0, 0, 129, 0, 127, 212, 58, 175, 48, 0, 0, 0, 0, 21, 200, 158, 191, 21, 200, 158, 191, 127, 0, 0, 0, 0, 129, 0, 127, 134, 58, 231, 49, 0, 0, 0, 0, 114, 92, 196, 62, 41, 203, 246, 191, 127, 0, 0, 0, 0, 129, 0, 127, 112, 54, 235, 32, 0, 0, 0, 0, 30, 59, 175, 62, 134, 60, 220, 191, 127, 0, 0, 0, 0, 129, 0, 127, 155, 54, 252, 43, 0, 0, 0, 0, 147, 150, 64, 63, 121, 121, 232, 63, 127, 0, 0, 0, 0, 129, 0, 127, 240, 52, 178, 59, 0, 0, 0, 0, 45, 221, 43, 63, 75, 117, 207, 63, 127, 0, 0, 0, 0, 129, 0, 127, 68, 53, 76, 59, 0, 0, 0, 0, 180, 56, 209, 191, 33, 204, 139, 191, 127, 0, 0, 0, 0, 129, 0, 127, 83, 59, 28, 51, 0, 0, 0, 0, 19, 181, 186, 191, 254, 129, 121, 191, 127, 0, 0, 0, 0, 129, 0, 127, 247, 58, 8, 52, 0, 0, 0, 0, 33, 204, 139, 63, 180, 56, 209, 63, 127, 0, 0, 0, 0, 129, 0, 127, 28, 51, 83, 59, 0, 0, 0, 0, 2, 130, 121, 63, 19, 181, 186, 63, 127, 0, 0, 0, 0, 129, 0, 127, 8, 52, 247, 58, 0, 0, 0, 0, 121, 121, 232, 191, 147, 150, 64, 191, 127, 0, 0, 0, 0, 129, 0, 127, 178, 59, 240, 52, 0, 0, 0, 0, 75, 117, 207, 191, 45, 221, 43, 191, 127, 0, 0, 0, 0, 129, 0, 127, 76, 59, 68, 53 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 3, 0, 0, 0, 8, 0, 9, 0, 3, 0, 10, 0, 7, 0, 4, 0, 10, 0, 11, 0, 7, 0, 12, 0, 9, 0, 8, 0, 12, 0, 13, 0, 9, 0, 14, 0, 11, 0, 10, 0, 14, 0, 15, 0, 11, 0, 16, 0, 13, 0, 12, 0, 16, 0, 17, 0, 13, 0, 18, 0, 15, 0, 14, 0, 18, 0, 19, 0, 15, 0, 20, 0, 17, 0, 16, 0, 20, 0, 21, 0, 17, 0, 22, 0, 19, 0, 18, 0, 22, 0, 23, 0, 19, 0, 24, 0, 21, 0, 20, 0, 24, 0, 25, 0, 21, 0, 26, 0, 23, 0, 22, 0, 26, 0, 27, 0, 23, 0, 28, 0, 25, 0, 24, 0, 28, 0, 29, 0, 25, 0, 30, 0, 27, 0, 26, 0, 30, 0, 31, 0, 27, 0, 32, 0, 34, 0, 33, 0, 32, 0, 35, 0, 34, 0, 36, 0, 29, 0, 28, 0, 36, 0, 37, 0, 29, 0, 38, 0, 31, 0, 30, 0, 38, 0, 39, 0, 31, 0, 40, 0, 35, 0, 32, 0, 40, 0, 41, 0, 35, 0, 42, 0, 37, 0, 36, 0, 42, 0, 43, 0, 37, 0, 44, 0, 39, 0, 38, 0, 44, 0, 45, 0, 39, 0, 46, 0, 41, 0, 40, 0, 46, 0, 47, 0, 41, 0, 48, 0, 43, 0, 42, 0, 48, 0, 49, 0, 43, 0, 50, 0, 45, 0, 44, 0, 50, 0, 51, 0, 45, 0, 52, 0, 47, 0, 46, 0, 52, 0, 53, 0, 47, 0, 54, 0, 49, 0, 48, 0, 54, 0, 55, 0, 49, 0, 56, 0, 51, 0, 50, 0, 56, 0, 57, 0, 51, 0, 58, 0, 53, 0, 52, 0, 58, 0, 59, 0, 53, 0, 33, 0, 55, 0, 54, 0, 33, 0, 34, 0, 55, 0, 60, 0, 57, 0, 56, 0, 60, 0, 61, 0, 57, 0, 62, 0, 59, 0, 58, 0, 62, 0, 63, 0, 59, 0, 1, 0, 61, 0, 60, 0, 1, 0, 2, 0, 61, 0, 5, 0, 63, 0, 62, 0, 5, 0, 6, 0, 63, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 192,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 64
+}
+
+[sub_resource type="SpatialMaterial" id=19]
+flags_transparent = true
+flags_unshaded = true
+params_depth_draw_mode = 2
+albedo_color = Color( 1, 1, 1, 0 )
+
+[node name="TfRoot" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
+script = ExtResource( 2 )
+
+[node name="tfmain" type="MeshInstance" parent="."]
+transform = Transform( 200, 0, 0, 0, 4, 0, 0, 0, 100, 0, -1.6, 7 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 14 )
+
+[node name="tfanim" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 15 )
+anims/tf_in = SubResource( 16 )
+
+[node name="chisel" type="MeshInstance" parent="."]
+transform = Transform( 2.94301, 0.77598, 0, -0.581985, 3.92401, 0, 0, 0, 3, 13.976, 70, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )
+
+[node name="hammer" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3, 0, 0, 0, 4, 0, 0, 0, 3, 0, 200, 0 )
+
+[node name="Cube" parent="hammer" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="shockwaves" type="Spatial" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="shockwave1" type="MeshInstance" parent="shockwaves"]
+transform = Transform( 4.37114e-08, 1, 8.74228e-08, 1, -4.37114e-08, 2.68751e-16, 4.09012e-15, 8.74228e-08, -1, 0, 1, 0 )
+mesh = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="shockwave2" type="MeshInstance" parent="shockwaves"]
+transform = Transform( 4.37114e-08, 0.5, 7.54979e-08, 1, -2.18557e-08, 1.34375e-16, 6.86899e-15, 7.54979e-08, -0.5, 0, 1, 0 )
+mesh = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[node name="shockwave3" type="MeshInstance" parent="shockwaves"]
+transform = Transform( 2.62268e-08, 0.6, 9.05975e-08, 0.6, -2.62268e-08, 1.61249e-16, 4.12139e-15, 9.05975e-08, -0.6, 1.31134e-07, 4, 0 )
+mesh = SubResource( 18 )
+material/0 = SubResource( 19 )
+
+[editable path="hammer"]

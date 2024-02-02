@@ -1,0 +1,174 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://menus/BackButtonPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://mods/ap7-dungeon/menus/TapeRerecordMenu.gd" type="Script" id=2]
+[ext_resource path="res://nodes/menus/RowFocusIndicator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://nodes/menus/AutoFocusConnector.gd" type="Script" id=4]
+[ext_resource path="res://menus/menu_bg_fade.shader" type="Shader" id=5]
+[ext_resource path="res://ui/fonts/regular/regular_70.tres" type="DynamicFont" id=6]
+[ext_resource path="res://menus/BaseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://nodes/menus/AutoScrollContainer.gd" type="Script" id=8]
+[ext_resource path="res://nodes/menus/ScrollIndicator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menus/tape_storage/StorageTapeUI.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+render_priority = 127
+shader = ExtResource( 5 )
+shader_param/progress = 1.0
+shader_param/max_alpha = 1.0
+shader_param/base_color = Color( 0.1686, 0.1098, 0.2235, 1 )
+shader_param/hi_color = Color( 0.6706, 0.4588, 0.9098, 0.0625 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+expand_margin_left = 200.0
+expand_margin_right = 200.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( 0, 20 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 20
+border_width_right = 20
+border_color = Color( 0.670588, 0.458824, 0.909804, 1 )
+expand_margin_bottom = 97.0
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_size = 1
+shadow_offset = Vector2( -20, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.733333, 0.623529, 1 )
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+content_margin_bottom = 97.0
+
+[node name="TapeStorageMenu" instance=ExtResource( 7 )]
+script = ExtResource( 2 )
+
+[node name="Blur" parent="." index="0"]
+material = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Scroller/OverscanMarginContainer" index="0"]
+margin_left = 172.0
+margin_top = 97.0
+margin_right = 1748.0
+margin_bottom = 983.0
+custom_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer" index="0"]
+margin_right = 1576.0
+margin_bottom = 90.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 1576.0
+margin_bottom = 90.0
+
+[node name="TitleLabel" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/PanelContainer/HBoxContainer" index="0"]
+margin_left = 722.0
+margin_right = 853.0
+margin_bottom = 90.0
+size_flags_horizontal = 6
+custom_fonts/font = ExtResource( 6 )
+text = "TODO"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer" index="1"]
+margin_top = 90.0
+margin_right = 1576.0
+margin_bottom = 886.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="TapeSelection" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 470.0
+margin_bottom = 796.0
+custom_constants/margin_bottom = -97
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection" index="0"]
+margin_right = 470.0
+margin_bottom = 893.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer" index="0"]
+margin_left = 20.0
+margin_right = 450.0
+margin_bottom = 893.0
+rect_clip_content = true
+custom_constants/margin_right = 15
+custom_constants/margin_top = 8
+custom_constants/margin_left = 15
+custom_constants/margin_bottom = 0
+
+[node name="Control" type="Control" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2" index="0"]
+margin_left = 15.0
+margin_top = 8.0
+margin_right = 415.0
+margin_bottom = 893.0
+
+[node name="RowFocusIndicator" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2/Control" index="0" instance=ExtResource( 3 )]
+custom_styles/panel = SubResource( 4 )
+container_path = NodePath("../../TapeButtonScroll/PanelContainer/TapeButtons")
+hide_when_focus_lost = false
+
+[node name="TapeButtonScroll" type="ScrollContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2" index="1"]
+margin_left = 15.0
+margin_top = 8.0
+margin_right = 415.0
+margin_bottom = 893.0
+rect_min_size = Vector2( 400, 0 )
+rect_clip_content = false
+scroll_horizontal_enabled = false
+script = ExtResource( 8 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2/TapeButtonScroll" index="0"]
+margin_right = 400.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 5 )
+
+[node name="EmptyLabel" type="Label" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2/TapeButtonScroll/PanelContainer" index="0"]
+margin_right = 400.0
+margin_bottom = 115.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UI_TAPE_COLLECTION_EMPTY"
+align = 1
+autowrap = true
+
+[node name="TapeButtons" type="VBoxContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer2/TapeButtonScroll/PanelContainer" index="1"]
+margin_right = 400.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+script = ExtResource( 4 )
+assign_left_right = false
+preserve_focus_index = true
+focus_on_hover = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer" index="1"]
+margin_left = 20.0
+margin_right = 450.0
+margin_bottom = 893.0
+mouse_filter = 2
+custom_constants/margin_bottom = 5
+
+[node name="ScrollIndicator" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer/TapeSelection/PanelContainer/MarginContainer" index="0" instance=ExtResource( 9 )]
+margin_right = 430.0
+margin_bottom = 888.0
+scroll_container = NodePath("../../MarginContainer2/TapeButtonScroll")
+
+[node name="TapeUI" parent="Scroller/OverscanMarginContainer/VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 11 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 470.0
+margin_right = 1576.0
+margin_bottom = 796.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackButtonPanel" parent="." index="3" instance=ExtResource( 1 )]

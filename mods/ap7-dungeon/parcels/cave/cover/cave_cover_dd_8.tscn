@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/floorgen/PointOfInterestNode.gd" type="Script" id=1]
+[ext_resource path="res://world/maps/CaveMeshlib.meshlib" type="MeshLibrary" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="PointOfInterest_y1_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y1_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x1" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="PointOfInterest_y2_x2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16 )
+script = ExtResource( 1 )
+possible_types = 5
+
+[node name="Patch_N" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 4, 1, 1048603 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="RandomTreasureRot" type="Spatial" parent="Patch_N"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4 )
+script = ExtResource( 3 )
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_N/RandomTreasureRot"]
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="Patch_E" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 10, 5, 1048603 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="RandomTreasureRot" type="Spatial" parent="Patch_E"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 11 )
+script = ExtResource( 3 )
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_E/RandomTreasureRot"]
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="Patch_S" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 7, 11, 1048604 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="RandomTreasureRot" type="Spatial" parent="Patch_S"]
+transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 15, 0, 20.3785 )
+script = ExtResource( 3 )
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_S/RandomTreasureRot"]
+script = ExtResource( 1 )
+possible_types = 9
+
+[node name="Patch_W" type="GridMap" parent="."]
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 3, 7, 27 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="RandomTreasureRot2" type="Spatial" parent="Patch_W"]
+transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 0, 13.3785 )
+script = ExtResource( 3 )
+
+[node name="PointOfInterest" type="Position3D" parent="Patch_W/RandomTreasureRot2"]
+script = ExtResource( 1 )
+possible_types = 9

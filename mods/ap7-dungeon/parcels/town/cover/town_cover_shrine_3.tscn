@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/rug/rug_small.tres" type="Resource" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomRotNode.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/shrine/ShrineOfPower.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Shrine" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 11 )
+
+[node name="rot" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14, 0, 11 )
+script = ExtResource( 3 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="RandomParcelNode" type="Spatial" parent="rot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )
+
+[node name="rot2" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 11 )
+script = ExtResource( 3 )
+y_min = -180.0
+y_max = 180.0
+
+[node name="RandomParcelNode" type="Spatial" parent="rot2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0 )
+script = ExtResource( 2 )
+parcel_set = ExtResource( 1 )

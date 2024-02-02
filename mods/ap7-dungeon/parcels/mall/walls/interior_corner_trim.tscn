@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world/maps/MallMeshlib.meshlib" type="MeshLibrary" id=1]
+[ext_resource path="res://models/world_scenes/world_mall/world_mall_trim_2A.mesh" type="ArrayMesh" id=2]
+
+[node name="GridMap" type="GridMap"]
+mesh_library = ExtResource( 1 )
+data = {
+"cells": PoolIntArray( 0, 0, 1441814, 65536, 0, 1441803, 131072, 0, 1441803, 196608, 0, 1441803, 262144, 0, 1441802 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, -1, 0 )
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875, -1, 0.875 )
+mesh = ExtResource( 2 )

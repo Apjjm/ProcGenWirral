@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/shaders/aahand.gdshader" type="Shader" id=1]
+[ext_resource path="res://mods/ap7-dungeon/shaders/GlitchEffect.gdshader" type="Shader" id=3]
+[ext_resource path="res://mods/ap7-dungeon/shaders/HammerFade.gdshader" type="Shader" id=4]
+[ext_resource path="res://mods/ap7-dungeon/shaders/GlitchEffectOverworld.gdshader" type="Shader" id=5]
+[ext_resource path="res://mods/ap7-dungeon/shaders/WorldGrid.gdshader" type="Shader" id=6]
+[ext_resource path="res://mods/ap7-dungeon/shaders/WorldGridOpaque.gdshader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/grid_scale = Vector3( 1, 1, 1 )
+shader_param/grid_line = Vector3( 0.1, 0.1, 0.1 )
+shader_param/grid_cell_color = Color( 0, 0, 0, 1 )
+shader_param/grid_line_color = Color( 0.2, 0.1, 0.1, 1 )
+shader_param/cull_y = 0.0
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 4 )
+shader_param/fade_origin = Vector3( 0, 0, 0 )
+shader_param/fade_oiio = Plane( 0, 30, 70, 100 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/scale = Vector3( 1, 1, 1 )
+shader_param/thresholds = Vector2( 0.1, 0.2 )
+shader_param/power = 0.1
+shader_param/ngonality = 1.0
+shader_param/speed = 4.0
+shader_param/clip_depth = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+shader_param/scale = Vector3( 1, 1, 1 )
+shader_param/thresholds = Vector2( 0.1, 0.2 )
+shader_param/power = 0.1
+shader_param/ngonality = 1.0
+shader_param/speed = 4.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 6 )
+shader_param/grid_scale = Vector3( 2, 2, 2 )
+shader_param/grid_line = Vector3( 0.1, 0.1, 0.1 )
+shader_param/grid_cell_color = Color( 0, 0, 0, 1 )
+shader_param/grid_line_color = Color( 1, 1, 1, 1 )
+shader_param/grid_line_emission = Color( 1, 1, 1, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+shader_param/fade_origin = Vector3( 0, 0, 0 )
+shader_param/fade_oiio = Plane( 0, 30, 70, 100 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 7 )
+shader_param/grid_scale = Vector3( 2, 2, 2 )
+shader_param/grid_line = Vector3( 0.1, 0.1, 0.1 )
+shader_param/grid_cell_color = Color( 0, 0, 0, 1 )
+shader_param/grid_line_color = Color( 1, 1, 1, 1 )
+shader_param/grid_line_emission = Color( 1, 1, 1, 1 )
+shader_param/grid_glow_yfactor = -0.02
+shader_param/grid_glow_tfactor = 1.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="AAHand" type="MeshInstance" parent="."]
+material_override = SubResource( 1 )
+
+[node name="Hammer" type="MeshInstance" parent="."]
+material_override = SubResource( 8 )
+
+[node name="GlitchEffect" type="MeshInstance" parent="."]
+material_override = SubResource( 4 )
+
+[node name="GlitchEffect2" type="MeshInstance" parent="."]
+material_override = SubResource( 5 )
+
+[node name="Grid1" type="MeshInstance" parent="."]
+material_override = SubResource( 6 )
+
+[node name="Grid2" type="MeshInstance" parent="."]
+material_override = SubResource( 7 )

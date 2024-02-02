@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://mods/ap7-dungeon/mod_text_ui.en.translation" ]
+
+source_file="res://mods/ap7-dungeon/mod_text_ui.csv"
+dest_files=[ "res://mods/ap7-dungeon/mod_text_ui.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

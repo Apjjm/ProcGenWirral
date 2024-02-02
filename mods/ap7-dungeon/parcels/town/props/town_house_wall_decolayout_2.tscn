@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelNode.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/parcels/town/props/town_house_wall_deco.tres" type="Resource" id=2]
+
+[node name="deco" type="Spatial"]
+
+[node name="RandomParcelNode" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 3.25 )
+script = ExtResource( 1 )
+parcel_set = ExtResource( 2 )
+preview_index = 18
+
+[node name="RandomParcelNode2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 3.25 )
+script = ExtResource( 1 )
+parcel_set = ExtResource( 2 )
+preview_index = 18
