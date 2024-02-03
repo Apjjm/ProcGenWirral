@@ -404,8 +404,7 @@ script = ExtResource( 72 )
 title = "AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL"
 description = "AP7_DUNGEON_MENU_SHRINE_ITEMS_HEAL_DESC"
 icon = ExtResource( 76 )
-items = [ ExtResource( 69 ), ExtResource( 67 ), ExtResource( 70 ), ExtResource( 71 ) ]
-quantity = 3
+items = [ ExtResource( 69 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 70 ), ExtResource( 71 ) ]
 
 [node name="DestroySigilOrTape" type="Node" parent="InteractionBehavior/ShrineMenu/ItemPackHeal"]
 script = ExtResource( 14 )
