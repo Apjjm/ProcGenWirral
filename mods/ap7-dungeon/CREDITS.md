@@ -1,24 +1,16 @@
------------
-Mod
------------
-Ap7
+## Mod
+- Ap7
 
------------
-Sprites
------------
-Bananathema (Djinn & Sirenade overworld sprites for the Djinnterlude)
+## Sprites
+- Bananathema (Djinn & Sirenade overworld sprites for the Djinnterlude)
 
------------
-Testing
------------
-NCrafters (Lots of testing & feedback! Huge thanks!)
-Derek
-Chrono
-Mox
+## Testing
+- NCrafters (Lots of testing & feedback! Huge thanks!)
+- Derek
+- Chrono
+- Mox
 
------------
-MODIFIED BASE GAME FILES
------------
+## MODIFIED BASE GAME FILES
 The below are modified copies of files from the base game
 These are distributed within the rules described on the wiki https://wiki.cassettebeasts.com/wiki/Modding:Mod_Developer_Guide#Publishing_your_mod
 
