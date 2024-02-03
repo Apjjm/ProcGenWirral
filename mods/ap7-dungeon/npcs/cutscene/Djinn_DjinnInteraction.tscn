@@ -107,7 +107,7 @@ script = ExtResource( 6 )
 [node name="Leave" type="Node" parent="FirstTime/MenuDialogAction/No"]
 script = ExtResource( 3 )
 title = "{pawn}"
-messages = [ "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_1", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_2", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_3", "AP7_DUNGEON_DJINNTERLUDE_NPC_DJINN_MESSAGE_2_4" ]
+messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_3_OPTION_B_1", "AP7_DUNGEON_DJINNTERLUDE_DJINN_INTRO_3_OPTION_B_2" ]
 
 [node name="Failer" type="Node" parent="FirstTime/MenuDialogAction/No"]
 script = ExtResource( 5 )

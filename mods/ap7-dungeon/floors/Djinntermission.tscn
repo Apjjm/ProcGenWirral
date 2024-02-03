@@ -101,9 +101,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4 )
 [node name="Djinn" parent="OverlayController/Outside/npcs" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2 )
 
-[node name="Sprite" parent="OverlayController/Outside/npcs/Djinn/NPC" index="2"]
-aabb = AABB( -2, 0, 0, 4, 6, 0 )
-
 [node name="InteractionBehavior" parent="OverlayController/Outside/npcs/Djinn/NPC" index="8" instance=ExtResource( 32 )]
 
 [node name="Sirenade" parent="OverlayController/Outside/npcs" instance=ExtResource( 26 )]
