@@ -34,8 +34,12 @@ func _enter_tree():
 	refresh_encounters()
 
 func refresh_encounters():
-	var rng = get_rng()
 	var pawn = get_pawn()
+	if pawn == null:
+		print("[FixedEncounterNode] no pawn found for fixed encounter, skipping")
+		return
+	
+	var rng = get_rng()
 	var dd = DungeonData.get_global() # Workaround for init from editor
 	var fi = dd.get_current_floor_or_default() if dd != null else FloorInfo.new({})
 	var exp_mul = EncountersUtil.calc_exp_multiplier(fi.floor_number())
@@ -80,7 +84,6 @@ func refresh_encounters():
 		if encounter_config.loot_table_override == null && config.has_method("get_loot_table_override"):
 			encounter_config.loot_table_override = config.get_loot_table_override()
 
-
 func get_pawn() -> NPC:
 	for n in get_children():
 		if n is NPC:
@@ -107,7 +110,6 @@ func get_configs(rng: Random) -> Array:
 			result.push_back(copy)
 
 	return result
-
 
 func get_tape_copies(tapes: Array) -> Array:
 	var result = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/misc_utils/actions/values/GetPawn.gd" type="Script" id=1]
 [ext_resource path="res://nodes/actions/BattleAction.gd" type="Script" id=2]
@@ -7,13 +7,11 @@
 [ext_resource path="res://nodes/actions/Cutscene.gd" type="Script" id=5]
 [ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=6]
 [ext_resource path="res://nodes/actions/CheckConditionAction.gd" type="Script" id=7]
-[ext_resource path="res://sfx/ui/item_get.ogg" type="AudioStream" id=8]
 [ext_resource path="res://addons/misc_utils/actions/decorators/Succeeder.gd" type="Script" id=9]
 [ext_resource path="res://addons/misc_utils/actions/composites/Selector.gd" type="Script" id=10]
 [ext_resource path="res://mods/ap7-dungeon/menus/reward/StatRewardMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://mods/ap7-dungeon/menus/reward/FusionStatRewardMenu.tscn" type="PackedScene" id=12]
 [ext_resource path="res://nodes/actions/SetFlagAction.gd" type="Script" id=13]
-[ext_resource path="res://mods/ap7-dungeon/menus/reward/RewardMenuAction.gd" type="Script" id=14]
 [ext_resource path="res://nodes/actions/ConfirmDialogAction.gd" type="Script" id=15]
 [ext_resource path="res://sprites/portraits/kuneko.png" type="Texture" id=16]
 [ext_resource path="res://sprites/portraits/kuneko_angry.png" type="Texture" id=17]
@@ -105,10 +103,7 @@ portrait = ExtResource( 16 )
 title = "{pawn}"
 messages = [ "AP7_DUNGEON_DOJO_KUNEKO_A_4" ]
 
-[node name="Rewards" type="Node" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction" instance=ExtResource( 11 )]
-script = ExtResource( 14 )
-menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
-menu_open_sound = ExtResource( 8 )
+[node name="Rewards" parent="CheckFlags/Battle1/Selector/ConfirmDialogAction" instance=ExtResource( 11 )]
 
 [node name="No" type="Node" parent="CheckFlags/Battle1/Selector"]
 script = ExtResource( 6 )
@@ -171,10 +166,7 @@ audio = ExtResource( 19 )
 title = "{pawn}"
 messages = [ "AP7_DUNGEON_DOJO_KUNEKO_B_4" ]
 
-[node name="Rewards" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction" instance=ExtResource( 12 )]
-script = ExtResource( 14 )
-menu_title = "AP7_DUNGEON_MENU_REWARD_TITLE"
-menu_open_sound = ExtResource( 8 )
+[node name="Rewards" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction" instance=ExtResource( 12 )]
 
 [node name="felix" type="Node" parent="CheckFlags/Battle2/Selector/ConfirmDialogAction"]
 script = ExtResource( 9 )

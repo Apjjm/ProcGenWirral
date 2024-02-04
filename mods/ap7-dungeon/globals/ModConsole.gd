@@ -36,6 +36,11 @@ func _ready():
 		"args":[],
 		"target":[self, "_console_df_last"]
 	})
+	Console.register("dflog", {
+		"description":"Print out the spoiler log", 
+		"args":[], 
+		"target":[self, "_console_df_log"]
+	})
 	Console.register("dfexit", {
 		"description":"Exit the dungeon, and restore all player state. No loot is given.", 
 		"args":[], 
@@ -163,6 +168,14 @@ func _console_df_exit():
 		"warp_target": { "name": "ExitDungeon", "chunk": null }
 	} 
 	SceneManager.change_scene("res://mods/ap7-dungeon/floors/Djinntermission.tscn", args)
+
+func _console_df_log():
+	var di = DungeonData.get_global().get_current_dungeon()
+	if di != null:
+		di.print_spoilers()
+		Console.writeLine("spoiler log printed")
+	else:
+		Console.writeLine("no dungeon info available")
 
 func _console_df_moncheck():
 	Console.writeLine("Enumerating unreachable monsters:")
