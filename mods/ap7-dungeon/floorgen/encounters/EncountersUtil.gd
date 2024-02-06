@@ -34,8 +34,8 @@ static func calc_bootleg(floor_number: int, element_tag: String, is_fusion: bool
 		return [] if rng.rand_float() > (0.10+chance) else [ get_element_for_tag(element_tag, rng) ]
 
 static func calc_level(floor_number: int, offset: int, underlevel: int, overlevel: int, rng: Random):
-	var lvl = rng.rand_range_int(-underlevel,overlevel) + (floor_number+offset) * 2.0
-	return 2 + int(max(0, lvl))
+	var lvl = rng.rand_range_int(-underlevel,overlevel) + (floor_number+offset) * 1.5
+	return 3 + int(max(0, lvl))
 
 static func calc_fusion(floor_number: int, rng: Random) -> bool:
 	return rng.rand_float() < clamp(floor_number*0.003, 0.01, 0.15)

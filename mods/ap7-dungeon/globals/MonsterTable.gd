@@ -1,9 +1,10 @@
 extends Node
 
+var backup_all = []
+var overworld_all = []
 var monsters_by_tier = [[], [], [], [], [], []]
 var backup_by_tier = [[], [], [], [], [], []]
 var overworld_by_tier = [[], [], [], [], [], []]
-var overworld_subset = []
 var _setup = false
 
 static func get_global() -> Node:
@@ -27,9 +28,11 @@ func setup():
 
 		if !monster.force_solo: 
 			backup_by_tier[monster.floor_tier].push_back(monster);
+			backup_all.push_back(monster)
 		
 		if monster.overworld != "": 
 			overworld_by_tier[monster.floor_tier].push_back(monster)
+			overworld_all.push_back(monster)
 
 func get_monsters(tier: int) -> Array:
 	return monsters_by_tier[tier]
@@ -37,11 +40,22 @@ func get_monsters(tier: int) -> Array:
 func get_backup(tier: int) -> Array:
 	return backup_by_tier[tier]
 
+func get_backup_untiered() -> Array:
+	return backup_all
+
 func get_overworld(tier: int) -> Array:
 	return overworld_by_tier[tier]
 
 func get_overworld_subset(tier: int, size: int, rng: Random) -> Array:
 	var all = overworld_by_tier[tier].duplicate()
+	if all.size() > size:
+		rng.shuffle(all)
+		all.resize(size)
+	
+	return all
+
+func get_overworld_subset_untiered(size: int, rng: Random) -> Array:
+	var all = overworld_all.duplicate()
 	if all.size() > size:
 		rng.shuffle(all)
 		all.resize(size)

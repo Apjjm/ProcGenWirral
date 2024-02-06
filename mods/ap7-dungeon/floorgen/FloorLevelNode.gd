@@ -152,7 +152,7 @@ func _rebuild_loot_nodes() -> Array:
 	if self.floor_data.treasure != null:
 		for treasure in self.floor_data.treasure.get_treasures():
 			var node = TreasureRootNode.new()
-			node.name = "DF_TREASURE_ROOT_"
+			node.name = "DF_TREASURE_ROOT_t" + str(treasure.id)
 			node.treasure_id = treasure.id
 			node.floor_data = self.floor_data
 			result.push_back(node)
@@ -165,7 +165,7 @@ func _rebuild_key_item_nodes() -> Array:
 	if self.floor_data.treasure != null:
 		for treasure in self.floor_data.treasure.get_key_items():
 			var node = TreasureRootNode.new()
-			node.name = "DF_TREASURE_ROOT_"
+			node.name = "DF_TREASURE_ROOT_k" + str(treasure.id)
 			node.key_item_id = treasure.id
 			node.floor_data = self.floor_data
 			result.push_back(node)

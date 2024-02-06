@@ -51,6 +51,7 @@ func push_dungeon_player(initial_seed: int):
 	SaveState.flags["AP7_DUNGEON_LK_INTRO1"] = false
 	SaveState.flags["AP7_DUNGEON_LK_INTRO2"] = false
 	SaveState.flags["AP7_VOLATILE_RANGER_DEFEATED"] = false
+	SaveState.flags["AP7_DUNGEON_MIDPOINT_SIGIL"] = false
 	SaveState.stats.get_stat("exchange_purchased").clear()
 
 	player.set_level(5)
@@ -90,7 +91,7 @@ func pop_dungeon_player():
 		push_error("[PlayerData] A dungeon player state is not pushed. Not restoring player state.")
 		return
 
-	print("[PlayerData] Apply outer player state (restoring floor start player)")
+	print("[PlayerData] Apply outer player state (restoring dungeon start player)")
 	restore_snapshot(SAVE_KEY_NAME_OUTER_PLAYER)
 	SaveState.other_data.erase(SAVE_KEY_NAME_OUTER_PLAYER)
 	SaveState.other_data.erase(SAVE_KEY_NAME_INNER_PLAYER)
@@ -145,7 +146,7 @@ func restore_snapshot(key: String):
 		push_error("[PlayerData] Incompatibility restoring exchanges purchased")
 
 	SaveState.flags["encounter_aa_oldgante"] = snap.flags.get("encounter_aa_oldgante", false)
-	SaveState.abilities["train_travel"] = snap.flags.get("train_travel", false)
+	SaveState.abilities["train_travel"] = snap.abilities.get("train_travel", false)
 	
 	SaveState.flags["AP7_DUNGEON_KUNEKO_QUEST_SHRINE"] = snap.flags.get("AP7_DUNGEON_KUNEKO_QUEST_SHRINE", false)
 	SaveState.flags["AP7_DUNGEON_KUNEKO_QUEST_KO"] = snap.flags.get("AP7_DUNGEON_KUNEKO_QUEST_KO", false)
@@ -154,6 +155,7 @@ func restore_snapshot(key: String):
 	SaveState.flags["AP7_DUNGEON_LK_INTRO1"] = snap.flags.get("AP7_DUNGEON_LK_INTRO1", false)
 	SaveState.flags["AP7_DUNGEON_LK_INTRO2"] = snap.flags.get("AP7_DUNGEON_LK_INTRO2", false)
 	SaveState.flags["AP7_VOLATILE_RANGER_DEFEATED"] = snap.flags.get("AP7_VOLATILE_RANGER_DEFEATED", false)
+	SaveState.flags["AP7_DUNGEON_MIDPOINT_SIGIL"] = snap.flags.get("AP7_DUNGEON_MIDPOINT_SIGIL", false)
 	
 	set_char_snapshot(player, snap.player, snap.game_version)
 	set_char_snapshot(partner, snap.partner, snap.game_version)

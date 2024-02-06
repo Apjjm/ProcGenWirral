@@ -17,11 +17,13 @@ func _run():
 	var target_scene = FloorTags.SCENE_LOOKUP[FloorTags.FT_SCENE_EXTERIROR]
 	print("[ExitDungeonAction] preparing to leaving dungeon from floor ", floor_info.floor_number(), " -> ", FloorTags.FT_SCENE_EXTERIROR)
 
+	var tapes = _get_keepable_tapes()
 	var args = { 
 		"dungeon_defeated": self.defeated, 
 		"dungeon_completed": self.completed,
-		"dungeon_tapes": _get_keepable_tapes(),
+		"dungeon_tapes": tapes.keep,
 		"dungeon_items": _get_keepable_items(floor_info.floor_number()),
+		"dungeon_stickers": _get_keepable_stickers(floor_info.floor_number(), tapes.drop),
 		"dungeon_floor": floor_info.floor_number(),
 	}
 
@@ -34,33 +36,64 @@ func _run():
 	WorldSystem.warp(target_scene, null, "ExitDungeon", args)
 	return true
 
-func _get_keepable_tapes() -> Array:
+func _get_keepable_tapes() -> Dictionary:
 	var saved_tapes = []
+	var unsaved_tapes = []
 	for tape in SaveState.party.get_tapes():
+		var saved = false
+
 		for i in range(tape.get_max_stickers()):
 			var sticker = tape.get_sticker(i)
 			if sticker != null && sticker.battle_move is MemorySigil:
 				saved_tapes.push_back(tape)
+				saved = true
+				break
+
+		if !saved:
+			unsaved_tapes.push_back(tape)
 
 	# Remove dungeon only stickers - this also helps keep saves compatible.
-	for tape in saved_tapes:
+	_prepare_tapes_for_exit(saved_tapes)
+	_prepare_tapes_for_exit(unsaved_tapes)
+	
+	return {"keep": saved_tapes, "drop": unsaved_tapes }
+
+func _get_keepable_items(floor_number: int) -> Array:
+	var result = []
+	var mul = 0.75 if self.defeated else 1.0
+	if floor_number > 2:
+		result.push_back({"item": FusedMaterial, "amount": int(floor_number * mul)})
+
+	for item_node in SaveState.inventory.get_category("resources").get_children():
+		var quantity = int(item_node.amount * mul)
+		if quantity > 0:
+			result.push_back({"item": item_node.item, "amount": quantity})
+
+	return result
+
+func _get_keepable_stickers(floor_number: int, tapes: Array) -> Array:
+	var stickers = []
+
+	for item_node in SaveState.inventory.get_category("stickers").get_children():
+		if item_node.amount > 0 && item_node.item is StickerItem && item_node.item.rarity == BaseItem.Rarity.RARITY_RARE:
+			stickers.push_back(item_node.item)
+
+	for tape in tapes:
+		for i in range(tape.get_max_stickers()):
+			var sticker = tape.get_sticker(i)
+			if sticker != null && sticker.rarity == BaseItem.Rarity.RARITY_RARE:
+				stickers.push_back(sticker)
+
+	stickers.shuffle()
+	if stickers.size() > floor_number:
+		stickers.resize(floor_number)
+
+	return stickers
+
+func _prepare_tapes_for_exit(tapes: Array):
+	for tape in tapes:
 		for i in range(tape.get_max_stickers()):
 			var sticker = tape.get_sticker(i)
 			if sticker != null && ("sigil" in sticker.battle_move.tags || "sigil_rare" in sticker.battle_move.tags):
 				tape.favorite = false
 				tape.peel_sticker(i, true)
-
-	return saved_tapes
-
-func _get_keepable_items(floor_number: int) -> Array:
-	var result = []
-	var mul = 0.5 if self.defeated else 1.0
-	if floor_number > 2:
-		result.push_back({"item": FusedMaterial, "amount": int(floor_number * mul * 0.5)})
-
-	for item_node in SaveState.inventory.get_all_items():
-		var quantity = int(item_node.amount * mul)
-		if item_node.get_category() == "resources" && quantity > 0:
-			result.push_back({"item": item_node.item, "amount": quantity})
-
-	return result

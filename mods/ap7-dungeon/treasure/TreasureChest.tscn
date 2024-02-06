@@ -264,30 +264,29 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498028, 0 )
 shape = SubResource( 6 )
 
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129395, 1, -0.625 )
+shape = SubResource( 2 )
+
 [node name="Parts" type="Spatial" parent="."]
 
 [node name="chest_base" type="MeshInstance" parent="Parts"]
 mesh = ExtResource( 7 )
 
 [node name="chest_lock_1" type="MeshInstance" parent="Parts"]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.811169, 0.685 )
-material_override = ExtResource( 4 )
+transform = Transform( 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0, 1, 0, 0.811169, 0.685 )
+material_override = ExtResource( 3 )
 mesh = ExtResource( 6 )
 
 [node name="Lid" type="Spatial" parent="Parts"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129395, 1, -0.625 )
+transform = Transform( 1, 0, 0, 0, -0.309017, 0.951056, 0, -0.951056, -0.309017, -0.0129395, 1, -0.625 )
 
 [node name="chest_latch_1" type="MeshInstance" parent="Parts/Lid"]
-transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0129395, 0.437, 0.749487 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.013, 0.437, 0.51 )
 mesh = ExtResource( 8 )
 
 [node name="chest_lid_1" type="MeshInstance" parent="Parts/Lid"]
 mesh = ExtResource( 9 )
-
-[node name="StaticBody" type="StaticBody" parent="Parts/Lid"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Parts/Lid/StaticBody"]
-shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "locked"

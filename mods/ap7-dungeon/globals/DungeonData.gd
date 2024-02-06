@@ -43,12 +43,13 @@ func generate_dungeon(s: int) -> DungeonInfo:
 		if a > 0:
 			var fi = make_floor(intro, combat_floor, 0, rng)
 			fi.add_tag(FloorTags.FT_NOCOMBAT)
+			if a == 2: fi.add_tag(FloorTags.FT_MEMORY)
 			di.add_normal_floor(fi)
 
 		for i in range(4):
 			di.add_normal_floor(make_floor(area, combat_floor, 1+i, rng))
 			combat_floor += 1
-		
+	
 	add_shrines(di, rng)
 	add_shops(di, rng)
 	add_floor_modifiers(di, rng)
@@ -88,6 +89,8 @@ func add_floor_modifiers(di: DungeonInfo, rng: Random):
 			fi.add_tag(FloorTags.FT_SWARMING)
 		elif roll < 0.22:
 			fi.add_tag(FloorTags.FT_SPRAWLING)
+		elif roll < 0.25:
+			fi.add_tag(FloorTags.FT_CHAOS)
 
 func add_secret_rooms(di: DungeonInfo, rng: Random):
 	# Some floors might be too hard on the first zone

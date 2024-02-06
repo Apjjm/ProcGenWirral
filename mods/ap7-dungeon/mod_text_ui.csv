@@ -7,7 +7,7 @@ AP7_DUNGEON_MOVE_CATEGORY_SIGIL,Sigils
 AP7_DUNGEON_MOVE_NAME_ALPHA_SIGIL,Alpha Strike
 AP7_DUNGEON_MOVE_DESC_ALPHA_SIGIL,"Gives 4 AP if used at the very start of battle. Attack power increases with AP gained."
 AP7_DUNGEON_MOVE_NAME_MEMORY_SIGIL,Memory Sigil
-AP7_DUNGEON_MOVE_DESC_MEMORY_SIGIL,"Recall a tape after leaving the dungeon. No battle effect."
+AP7_DUNGEON_MOVE_DESC_MEMORY_SIGIL,"Keep this tape if it is in your party when exiting the False Wirral. No battle effect."
 AP7_DUNGEON_MOVE_NAME_POWER_SIGIL,Power Sigil
 AP7_DUNGEON_MOVE_DESC_POWER_SIGIL,Recover 1 AP after each move.
 AP7_DUNGEON_MOVE_NAME_AIR_SIGIL,Air Sigil
@@ -96,6 +96,7 @@ AP7_DUNGEON_FLOOR_ADJ_PLANT,"Verdant "
 AP7_DUNGEON_FLOOR_ADJ_PLASTIC,"Synthetic "
 AP7_DUNGEON_FLOOR_ADJ_POISON,"Toxic "
 AP7_DUNGEON_FLOOR_ADJ_WATER,"Damp "
+AP7_DUNGEON_FLOOR_ADJ_CHAOS,"Chaos "
 AP7_DUNGEON_MENU_RERECORD_TITLE_FROM,"Select a tape from storage"
 AP7_DUNGEON_MENU_RERECORD_TITLE_TO,"Select a party tape to overwrite"
 AP7_DUNGEON_MENU_RERECORD_CONFIRM,"{tape_to} will be overwritten by {tape_from}.\nDo you wish to continue?"
@@ -170,6 +171,9 @@ AP7_DUNGEON_MENU_REWARD_FUSION_FILL_DESC,Makes your fusion meter fill a bit fast
 AP7_DUNGEON_MENU_REWARD_FUSION_RECORD_DESC,Increases recording chance when your fusion meter is full
 AP7_DUNGEON_MENU_REWARD_FUSION_TYPEADV_DESC,Makes your fusion meter fill a bit when you land a type-advantaged hit
 AP7_DUNGEON_MENU_REWARD_FUSION_VICTORY_DESC,Makes your fusion meter fill a bit when you win a battle
-AP7_DUNGEON_EXIT_UNUSED_MEMORY_CONFIRM,"You have unused Memory Sigils. You will return to New Wirral with any found resources and tapes with a Memory Sigil equipped.\nDo you want to leave anyway?"
+AP7_DUNGEON_EXIT_UNUSED_MEMORY_CONFIRM,"You will return to New Wirral with any found resources and tapes with a Memory Sigil equipped.\nYou have unused Memory Sigils. Do you want to leave anyway?"
 AP7_DUNGEON_EXIT_USED_MEMORY_CONFIRM,"You will return to New Wirral with any found resources and tapes with a Memory Sigil.\nAre you ready to leave?"
 AP7_DUNGEON_EXIT_NO_MEMORY_CONFIRM,"You will return to New Wirral with any found resources.\nAre you ready to leave?"
+AP7_DUNGEON_EXITED_FAILSAFE_MSG,"False Wirral: You have left the generated area while it was still active. This could have been a bug."
+AP7_DUNGEON_EXITED_FAILSAFE_WARP,"Warp Back (recommended)"
+AP7_DUNGEON_EXITED_FAILSAFE_EXIT,"Cancel and restore party (no rewards)"

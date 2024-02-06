@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://data/item_scripts/StickerItem.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/items/moves/ap7_dungeon_memory_sigil.tres" type="Resource" id=2]
+[ext_resource path="res://mods/ap7-dungeon/treasure/TreasureChest.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods/ap7-dungeon/parcels/RequireTagNode.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+name = ""
+aux_name = ""
+description = ""
+category = "misc"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = true
+value = 1
+usable_contexts = 0
+battle_usage = 0
+sort_order = 0
+battle_move = ExtResource( 2 )
+rarity = 0
+attributes = [  ]
+
+[node name="MemorySigilChest" type="Spatial"]
+script = ExtResource( 4 )
+tag = "memorysigil"
+
+[node name="TreasureChest" parent="." instance=ExtResource( 3 )]
+item = SubResource( 1 )
+one_time_save_flag = "AP7_DUNGEON_MIDPOINT_SIGIL"

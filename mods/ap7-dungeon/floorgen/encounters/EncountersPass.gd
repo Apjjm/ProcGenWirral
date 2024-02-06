@@ -17,10 +17,9 @@ func generate_encounters(floor_number: int, subfloor_number: int, floor_tags: Ar
 	var extra_density = 1.25 if (FloorTags.FT_TREASURE in floor_tags || FloorTags.FT_SWARMING in floor_tags) else 1.0
 	
 	# Lets try to keep floors feeling a bit more distinct by not having every overworld monster on every floor
-	var mt = MonsterTable.get_global()
-	var overworld_choices = mt.get_overworld_subset(EncountersUtil.calc_floor_tier(floor_number), self.max_distinct_overworld, rng)
-	var backup_choices = mt.get_backup(EncountersUtil.calc_floor_tier(floor_number-2))
-	var ranger_choices = mt.get_backup(EncountersUtil.calc_floor_tier(floor_number))
+	var overworld_choices = get_overworld_monsters(floor_number, floor_tags, rng)
+	var backup_choices = get_backup_monsters(floor_number-2, floor_tags)
+	var ranger_choices = get_backup_monsters(floor_number-2, floor_tags)
 	print("[EncountersPass] chosing from ", overworld_choices.size(), "/", backup_choices.size(), "/", ranger_choices.size(), " monsters")
 
 	var result = EncountersOverlay.new()
@@ -75,6 +74,22 @@ func generate_encounters(floor_number: int, subfloor_number: int, floor_tags: Ar
 
 	print("[EncountersPass] Generated ", result.encounters.size(), " monsters, ", result.rangers.size(), " rangers")
 	return result
+
+func get_overworld_monsters(floor_number: int, tags: Array, rng: Random) -> Array:
+	var mt = MonsterTable.get_global()
+	if FloorTags.FT_CHAOS in tags && floor_number > 2:
+		return mt.get_overworld_subset_untiered(self.max_distinct_overworld, rng)
+	else:
+		var tier = EncountersUtil.calc_floor_tier(floor_number)
+		return mt.get_overworld_subset(tier, self.max_distinct_overworld, rng)
+
+func get_backup_monsters(floor_number: int, tags: Array) -> Array:
+	var mt = MonsterTable.get_global()
+	if FloorTags.FT_CHAOS in tags && floor_number > 6: # Don't make the floor & rangers brutal in the early game
+		return mt.get_backup_untiered()
+	else:
+		var tier = EncountersUtil.calc_floor_tier(floor_number)
+		return mt.get_backup(tier)
 
 func select_monsters(overworld: Array, backup: Array, floor_number: int, rng: Random) -> Array:
 	var result = [ rng.choice(overworld) ]

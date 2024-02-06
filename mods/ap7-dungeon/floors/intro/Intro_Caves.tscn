@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://world/maps/PlainsMeshlib.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://mods/ap7-dungeon/parcels/RandomParcelRngRoot.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://mods/ap7-dungeon/npcs/CampsiteMerchantItems.tscn" type="PackedScene" id=20]
 [ext_resource path="res://world/core/LevelMap.gd" type="Script" id=21]
 [ext_resource path="res://mods/ap7-dungeon/parcels/props/RandomStickerMerchants.tres" type="Resource" id=22]
+[ext_resource path="res://mods/ap7-dungeon/parcels/props/MemorySigilChest.tscn" type="PackedScene" id=23]
 [ext_resource path="res://mods/ap7-dungeon/npcs/CampsiteMagikrab.tscn" type="PackedScene" id=24]
 
 [sub_resource type="BoxShape" id=2]
@@ -94,10 +95,6 @@ direction = Vector2( -1, 0 )
 
 [node name="Sprite" parent="RngRoot/ExitTraffikrab/Magikrab" index="2"]
 aabb = AABB( -2, 0, -2, 2, 3.4641, 4 )
-
-[node name="Node" type="Node" parent="RngRoot/ExitTraffikrab/Magikrab/Sprite" index="1"]
-
-[node name="Tween" type="Tween" parent="RngRoot/ExitTraffikrab/Magikrab/Sprite/Node"]
 
 [node name="Station" parent="RngRoot" instance=ExtResource( 6 )]
 transform = Transform( -4.47035e-08, 0, -1, 0, 1, 0, 1, 0, -4.47035e-08, 15.9604, 0.000822067, 5.2103 )
@@ -268,6 +265,9 @@ script = ExtResource( 12 )
 [node name="RandomParcelNode" type="Spatial" parent="RngRoot/GrassyTrees/Tree7"]
 script = ExtResource( 5 )
 parcel_set = ExtResource( 14 )
+
+[node name="MemorySigilChest" parent="RngRoot" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.47281, 2, -17.4279 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 1 )

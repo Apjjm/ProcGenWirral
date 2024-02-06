@@ -13,5 +13,6 @@ func init_content():
 	globals.add_child(load("res://mods/ap7-dungeon/globals/PlayerData.gd").new())
 	globals.add_child(load("res://mods/ap7-dungeon/globals/DungeonData.gd").new())
 	globals.add_child(load("res://mods/ap7-dungeon/globals/ModConsole.gd").new())
+	globals.add_child(load("res://mods/ap7-dungeon/globals/DungeonExitFailsafe.gd").new())
 
 	ShaderCache.queue_shaders(load("res://mods/ap7-dungeon/shaders/PrecompileShaders.tscn"))

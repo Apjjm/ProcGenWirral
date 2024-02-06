@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://nodes/actions/MessageDialogAction.gd" type="Script" id=1]
 [ext_resource path="res://world/npc/HumanNPC.tscn" type="PackedScene" id=2]
@@ -13,14 +13,15 @@
 [ext_resource path="res://mods/ap7-dungeon/parcels/RandomMerchantNode.gd" type="Script" id=11]
 [ext_resource path="res://nodes/actions/ExchangeMenuAction.gd" type="Script" id=12]
 [ext_resource path="res://data/items/smoke_bomb.tres" type="Resource" id=13]
+[ext_resource path="res://data/items/respool.tres" type="Resource" id=14]
 [ext_resource path="res://nodes/actions/ChangeMusicAction.gd" type="Script" id=16]
 [ext_resource path="res://music/demo/merchant_theme_1.ogg" type="AudioStream" id=17]
 [ext_resource path="res://data/items/cure_stat.tres" type="Resource" id=19]
 
 [node name="ItemMerchant" type="Spatial"]
 script = ExtResource( 11 )
-possible_items = [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 19 ), ExtResource( 7 ) ]
-item_cout = 6
+possible_items = [ ExtResource( 8 ), ExtResource( 14 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 19 ), ExtResource( 7 ) ]
+item_cout = 7
 item_stock = 0
 value_percentage = 2.0
 
