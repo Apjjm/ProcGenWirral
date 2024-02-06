@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://mods/ap7-flag-reset/ModContentInfo.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "Ap7Dungeon.FixFlags"
+name = "False Wirral Flag Reset"
+version_code = 1
+version_string = "0.1"
+author = "ap7"
+save_file_format_tag = ""
+save_file_format_tag_version = 0
+network_protocol_tag = ""
+modified_files = [  ]
+modified_dirs = [  ]
+translations = [  ]
