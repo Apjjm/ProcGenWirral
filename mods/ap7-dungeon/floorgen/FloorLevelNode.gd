@@ -50,9 +50,10 @@ func _load_task()->Promise:
 
 	PlayerData.get_global().apply_inner_player() # The floor is remade from seed if we reload a save. So reset player to floor start. 
 	
-	var fi = DungeonData.get_global().get_current_floor_or_default()
+	var di = DungeonData.get_global().get_current_dungeon()
+	var fi = di.get_current_floor() if di != null else DungeonData.get_fallback_floor()
 	print("[Floor] Starting load for floor ", fi.floor_number())
-	self.floor_data = get_node("FloorGenerator").generate_floor(fi)
+	self.floor_data = get_node("FloorGenerator").generate_floor(di, fi)
 	self.region_settings = self.floor_data.region_settings
 	self.map_metadata = self.floor_data.map
 	

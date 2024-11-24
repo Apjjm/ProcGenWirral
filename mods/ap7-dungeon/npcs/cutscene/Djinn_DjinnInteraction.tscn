@@ -137,18 +137,13 @@ formatting = [ "[color=#3fbb9f]{0}[/color]", "", "", "", "" ]
 [node name="OptionD" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction"]
 script = ExtResource( 6 )
 
-[node name="MessageDialogAction" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
-script = ExtResource( 3 )
-title = "{pawn}"
-messages = [ "AP7_DUNGEON_DJINNTERLUDE_DJINN_OPTION_D_1" ]
+[node name="StartDungeon" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
+script = ExtResource( 8 )
 
 [node name="SetLastWarp" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
 script = ExtResource( 7 )
 scene = "res://mods/ap7-dungeon/floors/Djinntermission.tscn"
 target = "InDungeon"
-
-[node name="StartDungeon" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
-script = ExtResource( 8 )
 
 [node name="Failer" type="Node" parent="MainDialog/NormalDialogue_Repeater/MenuDialogAction/OptionD"]
 script = ExtResource( 5 )

@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/RandomUnlockedDirectionAction.gd" type="Script" id=1]
+[ext_resource path="res://mods/ap7-dungeon/monsters/states/MotionLimitedGhostlyFloatingState.gd" type="Script" id=2]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonNPC.gd" type="Script" id=3]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/RandomSelectorAction.gd" type="Script" id=4]
+[ext_resource path="res://world/core/PlayerDetector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/npc/NPC.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/misc_utils/StateMachine.gd" type="Script" id=7]
+[ext_resource path="res://sfx/world/footsteps/land_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://world/monsters/MonsterPalette.gd" type="Script" id=9]
+[ext_resource path="res://mods/ap7-dungeon/monsters/actions/MotionLimitedWalkAction.gd" type="Script" id=10]
+[ext_resource path="res://data/monster_forms/hauntome.tres" type="Resource" id=11]
+[ext_resource path="res://sprites/monsters/world/hauntome.json" type="PackedScene" id=12]
+[ext_resource path="res://mods/ap7-dungeon/monsters/behaviors/DoNothing.tscn" type="PackedScene" id=13]
+[ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterBehavior.tscn" type="PackedScene" id=14]
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.9
+
+[sub_resource type="SphereShape" id=4]
+
+[sub_resource type="CapsuleShape" id=5]
+height = 2.0
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="Hauntome" instance=ExtResource( 6 )]
+collision_layer = 16512
+collision_mask = 40961
+script = ExtResource( 3 )
+gravity_scale = 0.0
+can_swim = false
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 3 )
+
+[node name="Sprite" parent="." index="2"]
+idle = "idle_"
+emission_palette = [ Color( 0.435294, 0.0862745, 0.145098, 1 ), Color( 0.694118, 0.12549, 0.192157, 1 ), Color( 0.913725, 0.258824, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
+emission = Color( 0, 0, 0, 1 )
+wave_amplitude = 0.0
+wave_t_frequency = 5.0
+wave_v_frequency = 0.0
+static_amount = 0.0
+static_offset = 0.0
+static_speed = 0.0
+sparkle = false
+sprite_rotation = Vector3( 0, 0, 0 )
+
+[node name="Sprite" parent="Sprite" index="0" instance=ExtResource( 12 )]
+
+[node name="Interaction" parent="." index="4"]
+display_marker = false
+
+[node name="CollisionShape" parent="Interaction" index="0"]
+shape = SubResource( 4 )
+
+[node name="Footsteps" parent="." index="5"]
+footsteps_disabled = true
+land_audio = ExtResource( 8 )
+
+[node name="PlayerTouchDetector" parent="." index="8" instance=ExtResource( 5 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerTouchDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0 )
+shape = SubResource( 5 )
+
+[node name="PlayerSightDetector" parent="." index="9" instance=ExtResource( 5 )]
+sneak_immunity = false
+
+[node name="CollisionShape" type="CollisionShape" parent="PlayerSightDetector" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="StateMachine" type="Node" parent="." index="10"]
+script = ExtResource( 7 )
+
+[node name="GhostlyFloating" type="Node" parent="StateMachine" index="0"]
+script = ExtResource( 2 )
+max_xz_speed = 4.0
+sprite_wave_amplitude = 0.0
+sprite_wave_t_frequency = 0.0
+sprite_wave_v_frequency = 0.0
+hover_height_idle = 2.0
+hover_height_moving = 1.5
+
+[node name="Nothing" type="Node" parent="StateMachine" index="1"]
+
+[node name="MonsterBehavior" parent="." index="11" instance=ExtResource( 14 )]
+
+[node name="spin" type="Node" parent="MonsterBehavior/Idle" index="0"]
+script = ExtResource( 1 )
+
+[node name="randomwalk" type="Node" parent="MonsterBehavior/Idle" index="1"]
+script = ExtResource( 4 )
+
+[node name="walk1" type="Node" parent="MonsterBehavior/Idle/randomwalk" index="0"]
+script = ExtResource( 10 )
+max_ticks = 8
+max_distance = 40.0
+can_fly = true
+can_jump = true
+can_glide = true
+can_fall = true
+
+[node name="walk2" type="Node" parent="MonsterBehavior/Idle/randomwalk" index="1"]
+script = ExtResource( 10 )
+max_ticks = 4
+max_distance = 40.0
+can_fly = true
+can_jump = true
+can_glide = true
+can_fall = true
+
+[node name="nothing" parent="MonsterBehavior/Pursue/AggroAction/Failer" index="0" instance=ExtResource( 13 )]
+
+[node name="MonsterPalette" type="Node" parent="." index="12"]
+script = ExtResource( 9 )
+species = ExtResource( 11 )
+
+[connection signal="interacted" from="Interaction" to="MonsterBehavior" method="battle"]
+[connection signal="detected" from="PlayerTouchDetector" to="MonsterBehavior" method="battle"]
+
+[editable path="MonsterBehavior"]

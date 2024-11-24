@@ -8,7 +8,7 @@
 script = ExtResource( 2 )
 form = ExtResource( 1 )
 overworld = ""
-buddy_tags = [ "starter", "astral", "sheep" ]
+buddy_tags = [ "starter", "astral", "sheep", "ghost" ]
 force_solo = false
 starter_stickers = [ ExtResource( 3 ) ]
 floor_tier = 4

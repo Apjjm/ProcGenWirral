@@ -1,13 +1,13 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://data/monster_forms/spooki-onna.tres" type="Resource" id=1]
+[ext_resource path="res://data/monster_forms/blunderbusk.tres" type="Resource" id=1]
 [ext_resource path="res://mods/ap7-dungeon/monsters/DungeonMonsterConfig.gd" type="Script" id=2]
 
 [resource]
 script = ExtResource( 2 )
 form = ExtResource( 1 )
-overworld = "res://mods/ap7-dungeon/monsters/overworld/DungeonSpookionna.tscn"
-buddy_tags = [ "ice", "tank", "ghost" ]
+overworld = "res://mods/ap7-dungeon/monsters/overworld/DungeonCharlequin.tscn"
+buddy_tags = [ "fire", "bullet", "pier" ]
 force_solo = false
 starter_stickers = [  ]
 floor_tier = 4

@@ -11,6 +11,9 @@ func floor_number() -> int:
 func subfloor_number() -> int:
 	return self.info["sub_number"] if self.info.has("sub_number") else 1
 
+func area_number() -> int:
+	return self.info["area_number"] if self.info.has("area_number") else int(floor_number() / 4)
+
 func tags() -> Array:
 	var t = []
 	if self.info.has("tags"): # Defensive copy
@@ -33,6 +36,9 @@ func warp_to() -> void:
 	print("[FloorInfo] Warp to floor: ", self.info["number"], " tags: ", self.info["tags"], " seed: ", self.info["floor_seed"], " scene: ", self.info["scene"])
 	var scene_args = { "disable_preservation": true, "disable_reentering": true, "ap7_floor_next": true }
 	WorldSystem.warp(self.info["scene"], null, "Start", scene_args)
+
+func set_area_number(area_number: int):
+	self.info["area_number"] = area_number
 
 func set_number(number: int):
 	self.info["number"] = number

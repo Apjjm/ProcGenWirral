@@ -41,8 +41,11 @@ func refresh_encounters():
 	
 	var rng = get_rng()
 	var dd = DungeonData.get_global() # Workaround for init from editor
-	var fi = dd.get_current_floor_or_default() if dd != null else FloorInfo.new({})
-	var exp_mul = EncountersUtil.calc_exp_multiplier(fi.floor_number())
+	var di = dd.get_current_dungeon() if dd != null else null
+	var fi = di.get_current_floor() if di != null else DungeonData.get_fallback_floor()
+	var enemy_scaling = di.get_level_multiplier() if di != null else 1.5
+	var exp_boost = di.get_exp_boost() if di != null else 1.0
+	var exp_mul = EncountersUtil.calc_exp_multiplier(fi.floor_number(), exp_boost)
 
 	for c in pawn.get_children():
 		if c is EncounterConfig:
@@ -70,7 +73,7 @@ func refresh_encounters():
 		encounter_config.add_child(config)
 		
 		config.tapes = []
-		config.level_override = EncountersUtil.calc_level(fi.floor_number(), self.floor_level_offset, self.floor_level_underlevel, self.floor_level_overlevel, rng)
+		config.level_override = EncountersUtil.calc_level(fi.floor_number(), self.floor_level_offset, self.floor_level_underlevel, self.floor_level_overlevel, enemy_scaling, rng)
 		config.exp_yield = int(self.encounter_exp * exp_mul)
 		if should_copy_sprite:
 			config.copy_human_sprite = config.get_path_to(pawn)

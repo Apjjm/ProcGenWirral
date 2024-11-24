@@ -13,9 +13,10 @@ func _run():
 	return true
 
 func _get_id_tag() -> String:
-	var cfi = DungeonData.get_global().get_current_floor_or_default()
+	var di = DungeonData.get_global().get_current_dungeon()
+	var fi = di.get_current_floor() if di != null else DungeonData.get_fallback_floor()
 	for tag in FloorTags.SCENE_LOOKUP.keys():
-		if cfi.has_tag(tag):
+		if fi.has_tag(tag):
 			return tag
 
 	return ""

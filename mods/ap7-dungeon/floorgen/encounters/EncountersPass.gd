@@ -12,15 +12,15 @@ export(int, 0, 42) var exp_gradient = 5
 export(int, 0, 9999) var exp_base_level = 0
 export(int, 1, 100) var max_distinct_overworld = 5
 
-func generate_encounters(floor_number: int, subfloor_number: int, floor_tags: Array, priority_room: int, layout: PlotLayout, rng: Random) -> EncountersOverlay:
+func generate_encounters(floor_number: int, area_number: int, subfloor_number: int, floor_tags: Array, priority_room: int, wild: bool, scaling: float, expboost: float, layout: PlotLayout, rng: Random) -> EncountersOverlay:
 	var element_tag = FloorTags.first_tag_matching(FloorTags.ALL_ELEMENT_TAGS, floor_tags)
 	var extra_density = 1.25 if (FloorTags.FT_TREASURE in floor_tags || FloorTags.FT_SWARMING in floor_tags) else 1.0
 	
 	# Lets try to keep floors feeling a bit more distinct by not having every overworld monster on every floor
-	var overworld_choices = get_overworld_monsters(floor_number, floor_tags, rng)
-	var backup_choices = get_backup_monsters(floor_number-2, floor_tags)
-	var ranger_choices = get_backup_monsters(floor_number-2, floor_tags)
-	print("[EncountersPass] chosing from ", overworld_choices.size(), "/", backup_choices.size(), "/", ranger_choices.size(), " monsters")
+	var overworld_choices = get_overworld_monsters(floor_number, area_number, floor_tags, wild, rng)
+	var backup_choices = get_backup_monsters(floor_number, subfloor_number, area_number, floor_tags, wild)
+	var ranger_choices = get_backup_monsters(floor_number, subfloor_number, area_number, floor_tags, wild)
+	print("[EncountersPass] choosing from ", overworld_choices.size(), "/", backup_choices.size(), "/", ranger_choices.size(), " monsters")
 
 	var result = EncountersOverlay.new()
 	var total_monsters = int(layout.plots.size() * self.enemy_density * extra_density)
@@ -31,8 +31,8 @@ func generate_encounters(floor_number: int, subfloor_number: int, floor_tags: Ar
 		var encounter = result.add_monster_encounter()
 		encounter.seed_value = rng.get_child_seed(encounter.id)
 		encounter.overworld_form = monsters[0].overworld
-		encounter.monsters = roll_tapes(floor_number, element_tag, monsters.size() > 2, is_fusion, monsters, rng)
-		encounter.exp_multiplier = EncountersUtil.calc_exp_multiplier(floor_number)
+		encounter.monsters = roll_tapes(floor_number, scaling, element_tag, monsters.size() > 2, is_fusion, monsters, rng)
+		encounter.exp_multiplier = EncountersUtil.calc_exp_multiplier(floor_number, expboost)
 		
 		# If there is a fusion, it is always the last two monsters.
 		if is_fusion && monsters.size() > 1:
@@ -63,32 +63,32 @@ func generate_encounters(floor_number: int, subfloor_number: int, floor_tags: Ar
 		if !plot.is_exit():
 			continue
 		
-		var ranger_monsters = select_ranger_monsters(ranger_choices, floor_number, rng)
-		var partner_monsters = select_ranger_monsters(ranger_choices, floor_number, rng) if subfloor_number > 1 else []
+		var ranger_monsters = select_ranger_monsters(ranger_choices, floor_number, area_number, rng)
+		var partner_monsters = select_ranger_monsters(ranger_choices, floor_number, area_number, rng) if subfloor_number > 1 else []
 		var encounter = result.add_ranger_encounter()
 		encounter.seed_value = rng.get_child_seed(encounter.id)
 		encounter.plot = plot.id
-		encounter.ranger_tapes = roll_tapes(floor_number+1, element_tag, false, false, ranger_monsters, rng)
-		encounter.partner_tapes = roll_tapes(floor_number+1, element_tag, false, false, partner_monsters, rng)
-		encounter.exp_multiplier = EncountersUtil.calc_exp_multiplier(floor_number)
+		encounter.ranger_tapes = roll_tapes(floor_number+1, scaling, element_tag, false, false, ranger_monsters, rng)
+		encounter.partner_tapes = roll_tapes(floor_number+1, scaling, element_tag, false, false, partner_monsters, rng)
+		encounter.exp_multiplier = EncountersUtil.calc_exp_multiplier(floor_number, expboost)
 
 	print("[EncountersPass] Generated ", result.encounters.size(), " monsters, ", result.rangers.size(), " rangers")
 	return result
 
-func get_overworld_monsters(floor_number: int, tags: Array, rng: Random) -> Array:
+func get_overworld_monsters(floor_number: int, area_number: int, tags: Array, wild: bool, rng: Random) -> Array:
 	var mt = MonsterTable.get_global()
-	if FloorTags.FT_CHAOS in tags && floor_number > 2:
+	if (wild || FloorTags.FT_CHAOS) in tags && floor_number > 2:
 		return mt.get_overworld_subset_untiered(self.max_distinct_overworld, rng)
 	else:
-		var tier = EncountersUtil.calc_floor_tier(floor_number)
+		var tier = min(4, max(1, area_number+1))
 		return mt.get_overworld_subset(tier, self.max_distinct_overworld, rng)
 
-func get_backup_monsters(floor_number: int, tags: Array) -> Array:
+func get_backup_monsters(floor_number: int, subfloor_number: int, area_number: int, tags: Array, wild: bool) -> Array:
 	var mt = MonsterTable.get_global()
-	if FloorTags.FT_CHAOS in tags && floor_number > 6: # Don't make the floor & rangers brutal in the early game
+	if (wild || FloorTags.FT_CHAOS) in tags && floor_number > 6: # Don't make the floor & rangers brutal in the early game
 		return mt.get_backup_untiered()
 	else:
-		var tier = EncountersUtil.calc_floor_tier(floor_number)
+		var tier = min(4, max(1, area_number+1 if subfloor_number > 1 else area_number))
 		return mt.get_backup(tier)
 
 func select_monsters(overworld: Array, backup: Array, floor_number: int, rng: Random) -> Array:
@@ -117,25 +117,25 @@ func select_monsters(overworld: Array, backup: Array, floor_number: int, rng: Ra
 	
 	return result
 
-func select_ranger_monsters(backup: Array, floor_number: int, rng: Random) -> Array:
+func select_ranger_monsters(backup: Array, floor_number: int, area_number: int, rng: Random) -> Array:
 	var result = [ rng.choice(backup), rng.choice(backup) ]
-	if floor_number > 20: result.push_back(rng.choice(backup))
+	if min(4, max(1, area_number+1)) > 3: result.push_back(rng.choice(backup))
 	return result
 
-func roll_tapes(floor_number: int, element_tag: String, is_swarm: bool, is_fusion: bool, monsters: Array, rng: Random) -> Array:
+func roll_tapes(floor_number: int, scaling: float, element_tag: String, is_swarm: bool, is_fusion: bool, monsters: Array, rng: Random) -> Array:
 	var result = []
 	var level_adj = (-1 if is_swarm else 0) + (1 if is_fusion else 0)
 	for monster in monsters:
 		var m = EncountersOverlay.EncounterTape.new()
 		m.form = monster.form
 		m.smartness = monster.smartness
-		m.level = EncountersUtil.calc_level(floor_number, level_adj, monster.underlevel_max, monster.overlevel_max, rng)
+		m.level = EncountersUtil.calc_level(floor_number, level_adj, monster.underlevel_max, monster.overlevel_max, scaling, rng)
 		var xp = BattleFormulas.get_exp_to_level(m.level, self.exp_gradient, self.exp_base_level)
 		
 		m.tape = MonsterTape.new()
 		m.tape.form = monster.form
 		m.tape.seed_value = rng.rand_int()
-		m.tape.type_override = EncountersUtil.calc_bootleg(floor_number, element_tag, is_fusion, rng)
+		m.tape.type_override = EncountersUtil.calc_bootleg(floor_number, element_tag, is_fusion, scaling, rng)
 		m.tape.assign_initial_stickers(true, rng)
 		m.tape.apply_exp_points(xp, rng, MonsterTape.MAX_TAPE_GRADE)
 		if m.tape.type_override.size() == 0:

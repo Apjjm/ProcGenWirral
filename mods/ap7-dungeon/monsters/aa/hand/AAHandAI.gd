@@ -1,5 +1,6 @@
 extends "res://battle/ai/WeightedAI.gd"
 
+const DungeonData = preload("../../../globals/DungeonData.gd")
 const PetrifiedStatus = preload("res://data/status_effects/petrified.tres")
 const StoneworkMove = preload("res://mods/ap7-dungeon/items/moves/ap7_aa_dungeon_stonework.tres")
 const SculptMove = preload("res://mods/ap7-dungeon/items/moves/ap7_aa_dungeon_sculpt.tres")
@@ -13,6 +14,11 @@ func _enter_tree():
 
 func _exit_tree():
 	restore_player_party()
+
+func _ready():
+	var dd = DungeonData.get_global()
+	if dd != null:
+		dd.connect("dungeon_exited", self, "_dungeon_exited")
 
 func _queue_animate_defeat():
 	return battle.queue_animation(Bind.new(self, "animate_defeat_aahand"))
@@ -92,9 +98,16 @@ func backup_player_party():
 		self.tapes_backup.push_back(snap)
 
 func restore_player_party():
+	if self.tapes_backup.empty():
+		print("[FinalBoss] Skipping restoring postfight tapes")
+		return
+
 	print("[FinalBoss] Restoring postfight tapes")
 	for i in range(SaveState.party.characters.size()):
 		var snap = self.tapes_backup[i]
 		var character = SaveState.party.characters[i]
 		for j in range(character.tapes.size()):
 			character.tapes[j].set_snapshot(snap[j], SaveState.CURRENT_VERSION)
+
+func _dungeon_exited():
+	self.tapes_backup = []

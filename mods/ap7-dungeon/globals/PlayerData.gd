@@ -25,7 +25,7 @@ func has_dungeon_player():
 func has_inner_player():
 	return SaveState.other_data.has(SAVE_KEY_NAME_INNER_PLAYER)
 
-func push_dungeon_player(initial_seed: int):
+func push_dungeon_player(initial_seed: String):
 	if has_dungeon_player():
 		push_error("[PlayerData] A dungeon player state is already pushed. Not pushing another.")
 		return
@@ -165,11 +165,17 @@ func make_char_snapshot(c: Character) -> Dictionary:
 	for tape in c.tapes:
 		tapes.push_back(tape.get_snapshot())
 
-	return { "level": c.level, "exp_points": c.exp_points, "tapes": tapes, "partner_id": c.partner_id }
+	return { "level": c.level, "exp_points": c.exp_points, "tapes": tapes, "partner_id": c.partner_id, "boost_max_hp": c.boost_max_hp, "boost_melee_attack": c.boost_melee_attack, "boost_melee_defense": c.boost_melee_defense, "boost_ranged_attack": c.boost_ranged_attack, "boost_ranged_defense": c.boost_ranged_defense, "boost_speed": c.boost_speed  }
 
 func set_char_snapshot(c: Character, s: Dictionary, v: int):
 	c.level = int(s.level)
 	c.exp_points = int(s.exp_points)
+	c.boost_max_hp = int(s.get("boost_max_hp", 0))
+	c.boost_melee_attack = int(s.get("boost_melee_attack", 0))
+	c.boost_melee_defense = int(s.get("boost_melee_defense", 0))
+	c.boost_ranged_attack = int(s.get("boost_ranged_attack", 0))
+	c.boost_ranged_defense = int(s.get("boost_ranged_defense", 0))
+	c.boost_speed = int(s.get("boost_speed", 0))
 	c.tapes.clear()
 	for tape_snap in s.tapes:
 		var tape = MonsterTape.new()

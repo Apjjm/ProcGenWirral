@@ -12,13 +12,13 @@ func _init():
 
 func _ready():
 	Console.register("dfgen", {
-		"description":"Generate a fresh dungeon floor layout with given seed. dfgen 0 uses random seed.", 
-		"args":[TYPE_INT], 
+		"description":"Generate a fresh dungeon floor layout with given seed.", 
+		"args":[TYPE_STRING], 
 		"target":[self, "_console_df_gen"]
 	})
 	Console.register("dfset", {
-		"description":"Set the seed of the current floor to the given value and reroll. dfset 0 uses random seed.", 
-		"args":[TYPE_INT], 
+		"description":"Set the seed of the current floor to the given value and reroll.", 
+		"args":[TYPE_STRING], 
 		"target":[self, "_console_df_seed"]
 	})
 	Console.register("dftag", {
@@ -97,21 +97,30 @@ func _console_remove_playertracker():
 		pmt.queue_free()
 		Console.writeLine("Removed a PlayerMotionTracker")
 
-func _console_df_gen(s: int):
-	var dungeon_seed = randi() if s == 0 else s
+func _console_df_gen(s: String):
+	var ga = DungeonData.GenerateArgs.new()
+	ga.seed_value = str(randi()) if s == "" else s
+	ga.wild_areas = false
+	ga.wild_enemies = false
+	ga.num_areas = 4
+	ga.rooms_per_area = 4
+	ga.enemy_scaling = 1.5
+	ga.exp_boost = 1.0
+
 	var pd = PlayerData.get_global()
 	if !pd.has_dungeon_player():
 		Console.writeLine("  pushing current player state...")
-		pd.push_dungeon_player(dungeon_seed)
+		pd.push_dungeon_player(ga.seed_value)
 
 	Console.writeLine("  generating floors...")
-	var di = DungeonData.get_global().generate_dungeon(dungeon_seed)
+
+	var di = DungeonData.get_global().generate_dungeon(ga)
 	
 	Console.writeLine("  going to floor 1...")
 	di.move_to_next_normal_floor().warp_to()
 
-func _console_df_seed(s: int):
-	var floor_seed = randi() if s == 0 else s
+func _console_df_seed(s: String):
+	var floor_seed = randi() if s == "" else s.hash()
 	var di = DungeonData.get_global().get_current_dungeon()
 	if di != null && di.has_current_floor():
 		if di != null && di.has_current_floor():

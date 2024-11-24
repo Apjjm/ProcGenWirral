@@ -1,5 +1,6 @@
 extends Node2D
 
+const DungeonInfo = preload("../DungeonInfo.gd")
 const FloorInfo = preload("../FloorInfo.gd")
 const FloorGenerator = preload("../floorgen/FloorGenerator.gd")
 const GeneratedFloor = preload("../floorgen/GeneratedFloor.gd")
@@ -44,7 +45,7 @@ func _unhandled_input(event):
 
 func _generate():
 	var info = { "floor_seed": randi() if self.rng_seed == 0 else self.rng_seed }
-	self._result = self._generator.generate_floor(FloorInfo.new(info))
+	self._result = self._generator.generate_floor(DungeonInfo.new({}), FloorInfo.new(info))
 
 func _draw():
 	if self._result != null:

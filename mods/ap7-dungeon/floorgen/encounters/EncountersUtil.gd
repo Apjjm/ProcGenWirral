@@ -6,35 +6,18 @@ const DEFAULT_EXP_MONSTER_ENCOUNTER = 80
 const DEFAULT_EXP_RANGER = 100
 const DEFAULT_EXP_RANGER_ENCOUNTER = 120
 
-static func calc_floor_tier(floor_number: int):
-	if floor_number <= 4:
-		return 1
-	elif floor_number <= 8:
-		return 2
-	elif floor_number <= 12:
-		return 3
-	else:
-		return 4
+static func calc_exp_multiplier(floor_number: int, boost: float):
+	return ((floor_number*0.07)+0.6)*boost
 
-static func calc_exp_multiplier(floor_number: int):
-	if floor_number <= 2: # First half of floor 1
-		return 0.8
-	elif floor_number <= 8:
-		return 1.0
-	elif floor_number <= 12: # Town encounters are significantly harder, you will take less of them at this pt.
-		return 1.25
-	else:
-		return 1.50
-
-static func calc_bootleg(floor_number: int, element_tag: String, is_fusion: bool, rng: Random) -> Array:
-	var chance = floor_number * 0.01 if is_fusion else floor_number * 0.003
+static func calc_bootleg(floor_number: int, element_tag: String, is_fusion: bool, scaling: float, rng: Random) -> Array:
+	var chance = (floor_number * 0.01 if is_fusion else floor_number * 0.003) * scaling
 	if element_tag == "":
 		return [] if rng.rand_float() > chance else [ BattleSetupUtil.random_type(rng) ]
 	else:
 		return [] if rng.rand_float() > (0.10+chance) else [ get_element_for_tag(element_tag, rng) ]
 
-static func calc_level(floor_number: int, offset: int, underlevel: int, overlevel: int, rng: Random):
-	var lvl = rng.rand_range_int(-underlevel,overlevel) + (floor_number+offset) * 1.5
+static func calc_level(floor_number: int, offset: int, underlevel: int, overlevel: int, scaling: float, rng: Random):
+	var lvl = rng.rand_range_int(-underlevel,overlevel) + (floor_number+offset) * scaling
 	return 3 + int(max(0, lvl))
 
 static func calc_fusion(floor_number: int, rng: Random) -> bool:

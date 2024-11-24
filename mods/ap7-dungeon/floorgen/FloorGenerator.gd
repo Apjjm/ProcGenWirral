@@ -1,6 +1,7 @@
 extends Node
 
 const GeneratedFloor = preload("GeneratedFloor.gd")
+const DungeonInfo = preload("../DungeonInfo.gd")
 const FloorInfo = preload("../FloorInfo.gd")
 const FloorTags = preload("../FloorTags.gd")
 
@@ -10,7 +11,7 @@ export var world_cell_size: Vector2
 # Size of a world cell if it is surrounded by walls
 export var world_interior_cell_size: Vector2 
 
-func generate_floor(info: FloorInfo) -> GeneratedFloor:
+func generate_floor(dungeon: DungeonInfo, info: FloorInfo) -> GeneratedFloor:
 	var tags = info.tags()
 	var result = GeneratedFloor.new()
 	result.number = info.floor_number()
@@ -32,7 +33,16 @@ func generate_floor(info: FloorInfo) -> GeneratedFloor:
 		result.parcels = get_node("Parcelling").generate_parcels(result.layout, result.zones, result.active_tags, rng)
 
 	if has_node("Encounters"):
-		result.encounters = get_node("Encounters").generate_encounters(result.number, info.subfloor_number(), result.active_tags, result.treasure_room, result.layout, rng)
+		result.encounters = get_node("Encounters").generate_encounters(result.number, 
+			info.area_number(),
+			info.subfloor_number(), 
+			result.active_tags, 
+			result.treasure_room, 
+			dungeon.get_wild_enemies(), 
+			dungeon.get_level_multiplier(), 
+			dungeon.get_exp_boost(), 
+			result.layout, 
+			rng)
 	
 	if has_node("Treasure"):
 		result.treasure = get_node("Treasure").generate_treasure(result.number, result.active_tags, result.treasure_room, result.layout, rng)

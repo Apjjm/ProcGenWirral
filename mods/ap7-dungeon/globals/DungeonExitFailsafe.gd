@@ -46,9 +46,9 @@ func _ask_about_warp():
 
 func _exit_in_place(dd, pd):
 	print("[DungeonExitFailsafe] Performing exit in place")
-	dd.clear_dungeon()
 	if pd.has_dungeon_player():
 		pd.pop_dungeon_player()
+	dd.clear_dungeon()
 
 func _warp_back_to_dungeon(dd, pd):
 	print("[DungeonExitFailsafe] Attempting warp back to dungeon")

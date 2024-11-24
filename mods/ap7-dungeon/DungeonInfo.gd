@@ -7,8 +7,17 @@ var info : Dictionary # Backed by a dictionary because this needs to live in a s
 func _init(info: Dictionary):
 	self.info = info
 
-func set_initial_seed(s: int):
-		self.info["initial_seed"] = s
+func set_initial_seed(s: String):
+	self.info["initial_seed"] = s
+
+func set_level_multiplier(v: float):
+	self.info["level_multiplier"] = v
+
+func set_wild_enemies(b: bool):
+	self.info["wild_enemies"] = b
+
+func set_exp_boost(v: float):
+	self.info["exp_boost"] = v
 
 func add_normal_floor(f: FloorInfo):
 	if !self.info.has("floors"):
@@ -94,13 +103,25 @@ func get_floors() -> Array:
 
 	return result
 
-func get_initial_seed() -> int:
+func get_initial_seed() -> String:
 	return self.info["initial_seed"] if self.info.has("initial_seed") else -1
+
+func get_level_multiplier() -> float:
+	return self.info["level_multiplier"] if self.info.has("level_multiplier") else 1.5
+
+func get_wild_enemies():
+	return self.info["wild_enemies"] if self.info.has("wild_enemies") else false
+
+func get_exp_boost() -> float:
+	return self.info["exp_boost"] if self.info.has("exp_boost") else 1.0
 
 func print_stats() -> void:
 	var floors = self.info["floors"] if self.info.has("floors") else []
 	var secrets = self.info["secret"].keys() if self.info.has("secret") else []
-	print("[DungeonInfo] Seed: ", get_initial_seed(), " Floors: ", floors.size(), " Secrets: ", secrets)
+	var multiplier = self.info["level_multiplier"] if self.info.has("level_multiplier") else "-"
+	var wild = self.info["wild_enemies"] if self.info.has("wild_enemies") else "-"
+	var boost = self.info["exp_boost"] if self.info.has("exp_boost") else "-"
+	print("[DungeonInfo] Seed: ", get_initial_seed(), " Floors: ", floors.size(), " Secrets: ", secrets, " Multiplier: ", multiplier, " Wild: ", wild, "Boost: ", boost)
 
 func print_spoilers() -> void:
 	print("[DungeonInfo] SPOILERS - Seed: ", get_initial_seed())

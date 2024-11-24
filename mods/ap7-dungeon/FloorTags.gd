@@ -149,7 +149,7 @@ const SCENE_LOOKUP = {
 	FT_SCENE_RANGER_PLASTIC: "res://mods/ap7-dungeon/floors/special/Special_RangerPlastic.tscn",
 	FT_SCENE_RANGER_POISON: "res://mods/ap7-dungeon/floors/special/Special_RangerPoison.tscn",
 	FT_SCENE_RANGER_WATER: "res://mods/ap7-dungeon/floors/special/Special_RangerWater.tscn",
-	FT_SCENE_INTRO_MALL: "res://mods/ap7-dungeon/floors/intro/Intro_Town.tscn", # TODO
+	FT_SCENE_INTRO_MALL: "res://mods/ap7-dungeon/floors/intro/Intro_Mall.tscn", # TODO
 	FT_SCENE_INTRO_CAVE: "res://mods/ap7-dungeon/floors/intro/Intro_Caves.tscn",
 	FT_SCENE_INTRO_TOWN: "res://mods/ap7-dungeon/floors/intro/Intro_Town.tscn",
 	FT_SCENE_INTRO_STATION: "res://mods/ap7-dungeon/floors/intro/Intro_Station.tscn",
